@@ -1,0 +1,827 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String   @id @default(cuid())
+  name           String
+  email          String   @unique
+  phone          String?
+  password       String
+  roleId         String
+  role           Role     @relation(fields: [roleId], references: [id])
+  status         String   @default("active") // active, inactive, suspended
+  emailVerified  Boolean  @default(false)
+  avatar         String?
+  canManageBlogs Boolean  @default(false) // Admin-granted blog management access
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  orders          Order[]
+  amcContracts    AmcContract[]
+  serviceRequests ServiceRequest[]
+  employee        Employee?
+  cartItems       CartItem[]
+  wishlistItems   WishlistItem[]
+  assignedLeads   Lead[]           @relation("AssignedLeads")
+  assignedTickets ServiceRequest[] @relation("AssignedTechnician")
+  assignedDeals   PipelineDeal[]   @relation("DealAssignee")
+  activityLogs    ActivityLog[]
+  blogPosts       BlogPost[]
+}
+
+model Role {
+  id          String @id @default(cuid())
+  roleName    String @unique // admin, manager, employee, customer
+  permissions String @default("[]") // JSON string of permissions
+  users       User[]
+}
+
+model Category {
+  id             String     @id @default(cuid())
+  name           String
+  slug           String     @unique
+  description    String? // Category description like WooCommerce
+  displayType    String     @default("products") // How to display: "products", "subcategories", "both"
+  menuOrder      Int        @default(0) // Sort order for menus
+  image          String?
+  thumbnail      String? // Thumbnail image for the category
+  bannerImage    String? // Banner image for category page
+  seoTitle       String? // SEO meta title
+  seoDescription String? // SEO meta description
+  status         String     @default("active") // active, draft
+  parentId       String?
+  parent         Category?  @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children       Category[] @relation("CategoryHierarchy")
+  products       Product[]
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+}
+
+model Product {
+  id               String   @id @default(cuid())
+  categoryId       String
+  category         Category @relation(fields: [categoryId], references: [id])
+  name             String
+  slug             String   @unique
+  description      String
+  shortDescription String?
+  longDescription  String? // Rich detailed description for product detail page
+  price            Float
+  steelGrade       String?
+  capacity         String?
+  dimensions       String?
+  stock            Int      @default(0)
+  moq              Int      @default(1)
+  leadTime         String?
+  featuredImage    String?
+  status           String   @default("active") // active, draft, archived
+  featured         Boolean  @default(false)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  images     ProductImage[]
+  variants   ProductVariant[]
+  orderItems OrderItem[]
+  cartItems  CartItem[]
+  wishlist   WishlistItem[]
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  image     String
+  sortOrder Int     @default(0)
+}
+
+model ProductVariant {
+  id         String  @id @default(cuid())
+  productId  String
+  product    Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  name       String // e.g., "Small", "Medium", "Large", "XL", "Custom"
+  sku        String? // Optional SKU for this variant
+  price      Float // Price for this specific size/variant
+  stock      Int     @default(0) // Stock for this specific variant
+  weight     String? // e.g., "50kg", "100kg"
+  dimensions String? // e.g., "600x400x850mm" for this specific variant
+  isDefault  Boolean @default(false) // Whether this is the default variant shown
+  sortOrder  Int     @default(0) // Display order
+
+  orderItems OrderItem[]
+  cartItems  CartItem[]
+}
+
+model Order {
+  id              String   @id @default(cuid())
+  customerId      String
+  customer        User     @relation(fields: [customerId], references: [id])
+  orderNumber     String   @unique
+  subtotal        Float
+  tax             Float    @default(0)
+  shipping        Float    @default(0)
+  total           Float
+  paymentStatus   String   @default("pending") // pending, paid, failed, refunded
+  paymentMethod   String? // razorpay, cod, bank_transfer
+  orderStatus     String   @default("pending") // pending, confirmed, processing, shipped, delivered, cancelled
+  shippingAddress String?
+  notes           String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  items OrderItem[]
+}
+
+model OrderItem {
+  id        String          @id @default(cuid())
+  orderId   String
+  order     Order           @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product         @relation(fields: [productId], references: [id])
+  variantId String?
+  variant   ProductVariant? @relation(fields: [variantId], references: [id])
+  qty       Int
+  price     Float
+}
+
+model CartItem {
+  id        String          @id @default(cuid())
+  userId    String
+  user      User            @relation(fields: [userId], references: [id])
+  productId String
+  product   Product         @relation(fields: [productId], references: [id])
+  variantId String?
+  variant   ProductVariant? @relation(fields: [variantId], references: [id])
+  qty       Int             @default(1)
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+}
+
+model WishlistItem {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([userId, productId])
+}
+
+model Lead {
+  id          String   @id @default(cuid())
+  name        String
+  company     String?
+  phone       String?
+  email       String?
+  city        String?
+  requirement String?
+  message     String?
+  status      String   @default("new") // new, contacted, quotation_sent, negotiation, won, lost
+  source      String? // website, referral, social, direct
+  assignedTo  String?
+  assignee    User?    @relation("AssignedLeads", fields: [assignedTo], references: [id])
+  notes       String? // JSON array of notes
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  quotations Quotation[]
+  companyRef Company?       @relation(fields: [companyId], references: [id])
+  companyId  String?
+  deals      PipelineDeal[]
+}
+
+model Quotation {
+  id              String  @id @default(cuid())
+  leadId          String?
+  lead            Lead?   @relation(fields: [leadId], references: [id])
+  quotationNumber String  @unique
+  amount          Float
+
+  // Customer details (snapshot at time of creation)
+  customerName    String  @default("N/A")
+  customerCompany String?
+  customerEmail   String?
+  customerPhone   String?
+  customerAddress String?
+  customerGst     String?
+
+  // Line items as JSON: [{desc, hsn, qty, unit, rate, discount, gstPercent, amount}]
+  items String?
+
+  // Tax breakdown
+  subtotal       Float @default(0)
+  cgstAmount     Float @default(0)
+  sgstAmount     Float @default(0)
+  igstAmount     Float @default(0)
+  discountAmount Float @default(0)
+  totalGst       Float @default(0)
+
+  // Additional fields
+  notes       String? // Internal notes
+  terms       String? // Terms & conditions (JSON array of strings)
+  bankDetails String? // Bank details JSON
+  validUntil  DateTime?
+  status      String    @default("draft") // draft, sent, accepted, rejected, expired
+
+  // Delivery
+  deliveryPeriod String? // e.g. "2-3 weeks"
+  installation   String? // e.g. "Included" / "Separate quotation"
+  warranty       String? // e.g. "12 months"
+
+  // Send tracking
+  emailSent      Boolean   @default(false)
+  emailSentAt    DateTime?
+  whatsappSent   Boolean   @default(false)
+  whatsappSentAt DateTime?
+  pdf            String? // URL to generated PDF
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Employee {
+  id                 String              @id @default(cuid())
+  userId             String              @unique
+  user               User                @relation(fields: [userId], references: [id])
+  department         String
+  designation        String
+  salary             Float
+  joiningDate        DateTime
+  status             String              @default("active") // active, on_leave, terminated
+  bankDetails        String? // JSON
+  documents          String? // JSON array
+  attendance         Attendance[]
+  tasks              Task[]
+  salarySlips        SalarySlip[]
+  leaves             Leave[]
+  performanceReviews PerformanceReview[]
+  appraisals         Appraisal[]
+  workReports        WorkReport[]
+  dailyFieldWorks    DailyFieldWork[]
+  assets             Asset[]
+}
+
+model Attendance {
+  id         String    @id @default(cuid())
+  employeeId String
+  employee   Employee  @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  date       DateTime
+  checkin    DateTime?
+  checkout   DateTime?
+  status     String    @default("present") // present, absent, half_day, holiday
+
+  // Live location fields
+  checkinLatitude   Float?
+  checkinLongitude  Float?
+  checkinAddress    String?
+  checkoutLatitude  Float?
+  checkoutLongitude Float?
+  checkoutAddress   String?
+  source            String? @default("web") // web, mobile
+}
+
+model Task {
+  id          String    @id @default(cuid())
+  employeeId  String
+  employee    Employee  @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  title       String
+  description String?
+  priority    String    @default("medium") // low, medium, high, urgent
+  status      String    @default("pending") // pending, in_progress, completed, cancelled
+  dueDate     DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model SalarySlip {
+  id         String   @id @default(cuid())
+  employeeId String
+  employee   Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  month      String // e.g., "2024-01"
+  basic      Float
+  hra        Float    @default(0)
+  allowance  Float    @default(0)
+  deduction  Float    @default(0)
+  netPay     Float
+  pdf        String?
+  createdAt  DateTime @default(now())
+}
+
+model Leave {
+  id         String   @id @default(cuid())
+  employeeId String
+  employee   Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  type       String // casual, sick, earned, unpaid
+  startDate  DateTime
+  endDate    DateTime
+  reason     String?
+  status     String   @default("pending") // pending, approved, rejected
+  createdAt  DateTime @default(now())
+}
+
+model AmcContract {
+  id              String           @id @default(cuid())
+  customerId      String
+  customer        User             @relation(fields: [customerId], references: [id])
+  plan            String
+  startDate       DateTime
+  endDate         DateTime
+  amount          Float
+  status          String           @default("active") // active, expired, cancelled
+  coverage        String? // JSON array of covered items
+  serviceRequests ServiceRequest[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+}
+
+model ServiceRequest {
+  id                 String       @id @default(cuid())
+  customerId         String
+  customer           User         @relation(fields: [customerId], references: [id])
+  contractId         String?
+  contract           AmcContract? @relation(fields: [contractId], references: [id])
+  issue              String
+  priority           String       @default("medium") // low, medium, high, critical
+  assignedTechnician String?
+  technician         User?        @relation("AssignedTechnician", fields: [assignedTechnician], references: [id])
+  status             String       @default("open") // open, in_progress, resolved, closed
+  resolution         String?
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+}
+
+model ActivityLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+  action    String
+  details   String? // JSON
+  ip        String?
+  createdAt DateTime @default(now())
+}
+
+model Setting {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String
+}
+
+model Inquiry {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String?
+  message   String
+  productId String?
+  status    String   @default("new") // new, read, replied, closed
+  createdAt DateTime @default(now())
+}
+
+model AmcQuote {
+  id            String   @id @default(cuid())
+  name          String
+  email         String
+  phone         String
+  company       String?
+  plan          String // Basic, Standard, Premium, Custom
+  equipmentList String? // JSON array of equipment names
+  kitchenSize   String? // small, medium, large, enterprise
+  city          String?
+  message       String?
+  status        String   @default("new") // new, contacted, quotation_sent, won, lost
+  emailSent     Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// ═══════════════════════════════════════════════════════════
+// CRM MODELS
+// ═══════════════════════════════════════════════════════════
+
+model Company {
+  id        String   @id @default(cuid())
+  name      String
+  industry  String?
+  website   String?
+  phone     String?
+  email     String?
+  address   String?
+  gstNumber String?
+  revenue   Float    @default(0)
+  status    String   @default("prospect") // prospect, active, inactive
+  notes     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  leads     Lead[]
+}
+
+model Pipeline {
+  id          String         @id @default(cuid())
+  name        String
+  description String?
+  isDefault   Boolean        @default(false)
+  stages      String         @default("[]") // JSON: [{id,name,order,color}]
+  status      String         @default("active")
+  deals       PipelineDeal[]
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+}
+
+model PipelineDeal {
+  id          String    @id @default(cuid())
+  pipelineId  String
+  pipeline    Pipeline  @relation(fields: [pipelineId], references: [id])
+  leadId      String?
+  lead        Lead?     @relation(fields: [leadId], references: [id])
+  title       String
+  value       Float     @default(0)
+  stage       String // stage name from pipeline stages JSON
+  probability Int       @default(50)
+  assigneeId  String?
+  assignee    User?     @relation("DealAssignee", fields: [assigneeId], references: [id])
+  closeDate   DateTime?
+  status      String    @default("open") // open, won, lost
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model EmailTemplate {
+  id         String   @id @default(cuid())
+  name       String
+  subject    String
+  body       String // HTML content
+  category   String   @default("general") // general, followup, quotation, nurture
+  variables  String   @default("[]") // JSON: ["name","company","email"]
+  usageCount Int      @default(0)
+  status     String   @default("active")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model EmailSequence {
+  id          String                    @id @default(cuid())
+  name        String
+  description String?
+  triggerType String                    @default("manual") // manual, lead_created, status_changed
+  status      String                    @default("active")
+  steps       EmailSequenceStep[]
+  enrollments EmailSequenceEnrollment[]
+  createdAt   DateTime                  @default(now())
+  updatedAt   DateTime                  @updatedAt
+}
+
+model EmailSequenceStep {
+  id         String        @id @default(cuid())
+  sequenceId String
+  sequence   EmailSequence @relation(fields: [sequenceId], references: [id], onDelete: Cascade)
+  templateId String?
+  subject    String
+  body       String
+  delayDays  Int           @default(0)
+  order      Int           @default(0)
+}
+
+model EmailSequenceEnrollment {
+  id          String        @id @default(cuid())
+  sequenceId  String
+  sequence    EmailSequence @relation(fields: [sequenceId], references: [id])
+  leadId      String?
+  leadEmail   String
+  currentStep Int           @default(0)
+  status      String        @default("active") // active, completed, paused
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model LeadSource {
+  id        String   @id @default(cuid())
+  name      String
+  type      String   @default("organic") // organic, paid, referral, social
+  cost      Float    @default(0)
+  status    String   @default("active")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Integration {
+  id        String    @id @default(cuid())
+  name      String
+  category  String    @default("crm") // crm, email, accounting, analytics
+  config    String    @default("{}") // JSON config
+  status    String    @default("disconnected") // connected, disconnected, error
+  lastSync  DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Conversation {
+  id         String                @id @default(cuid())
+  leadId     String?
+  channel    String                @default("email") // email, phone, whatsapp, chat
+  subject    String?
+  status     String                @default("open") // open, closed
+  assigneeId String?
+  messages   ConversationMessage[]
+  createdAt  DateTime              @default(now())
+  updatedAt  DateTime              @updatedAt
+}
+
+model ConversationMessage {
+  id             String       @id @default(cuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  senderType     String       @default("contact") // contact, agent, system
+  senderName     String
+  content        String
+  createdAt      DateTime     @default(now())
+}
+
+model CrmForm {
+  id          String   @id @default(cuid())
+  name        String
+  fields      String   @default("[]") // JSON: [{name,type,label,required,options}]
+  submissions Int      @default(0)
+  status      String   @default("active")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model CrmImport {
+  id         String   @id @default(cuid())
+  fileName   String
+  source     String   @default("csv") // csv, excel, api
+  records    Int      @default(0)
+  successful Int      @default(0)
+  failed     Int      @default(0)
+  status     String   @default("pending") // pending, processing, completed, failed
+  errors     String? // JSON error details
+  createdAt  DateTime @default(now())
+}
+
+// ═══════════════════════════════════════════════════════════
+// HRM MODELS
+// ═══════════════════════════════════════════════════════════
+
+model Department {
+  id        String   @id @default(cuid())
+  name      String
+  head      String?
+  budget    Float    @default(0)
+  status    String   @default("active")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Designation {
+  id        String   @id @default(cuid())
+  name      String
+  level     Int      @default(1)
+  minSalary Float    @default(0)
+  maxSalary Float    @default(0)
+  status    String   @default("active")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Holiday {
+  id        String   @id @default(cuid())
+  name      String
+  date      DateTime
+  type      String   @default("public") // public, optional, company
+  createdAt DateTime @default(now())
+}
+
+model Notice {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  priority  String   @default("normal") // normal, high, urgent
+  postedBy  String?
+  status    String   @default("active")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model JobOpening {
+  id           String   @id @default(cuid())
+  title        String
+  department   String
+  type         String   @default("full-time") // full-time, part-time, contract, internship
+  experience   String?
+  salaryRange  String?
+  description  String?
+  requirements String?
+  location     String?
+  status       String   @default("open") // open, closed, on_hold
+  applications Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Interview {
+  id             String   @id @default(cuid())
+  candidateName  String
+  candidateEmail String?
+  candidatePhone String?
+  position       String
+  date           DateTime
+  interviewer    String?
+  rating         Float    @default(0)
+  feedback       String?
+  status         String   @default("scheduled") // scheduled, completed, cancelled
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model PerformanceReview {
+  id         String   @id @default(cuid())
+  employeeId String
+  employee   Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  reviewerId String?
+  period     String // e.g. "Q1 2025"
+  score      Float    @default(0)
+  goals      String? // JSON
+  feedback   String?
+  status     String   @default("pending") // pending, completed
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Appraisal {
+  id          String   @id @default(cuid())
+  employeeId  String
+  employee    Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  cycle       String // e.g. "Annual 2025"
+  rating      Float    @default(0)
+  hikePercent Float    @default(0)
+  newSalary   Float    @default(0)
+  comments    String?
+  status      String   @default("pending") // pending, approved, rejected
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model TrainingProgram {
+  id        String    @id @default(cuid())
+  name      String
+  type      String    @default("internal") // internal, external, online
+  duration  String?
+  trainer   String?
+  enrolled  Int       @default(0)
+  maxSeats  Int       @default(0)
+  startDate DateTime?
+  endDate   DateTime?
+  status    String    @default("upcoming") // upcoming, ongoing, completed
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Asset {
+  id           String    @id @default(cuid())
+  name         String
+  type         String    @default("electronics") // electronics, furniture, vehicle, equipment
+  serialNo     String?
+  value        Float     @default(0)
+  assignedTo   String?
+  assignee     Employee? @relation(fields: [assignedTo], references: [id])
+  purchaseDate DateTime?
+  status       String    @default("available") // available, assigned, maintenance, retired
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model Shift {
+  id            String   @id @default(cuid())
+  name          String
+  startTime     String // e.g. "09:00"
+  endTime       String // e.g. "18:00"
+  breakDuration Int      @default(30) // minutes
+  employees     Int      @default(0)
+  supervisor    String?
+  status        String   @default("active")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model WorkReport {
+  id         String   @id @default(cuid())
+  employeeId String
+  employee   Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  date       DateTime
+  hours      Float    @default(8)
+  tasks      String? // JSON array of task descriptions
+  summary    String?
+  status     String   @default("submitted") // submitted, reviewed, approved
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model DailyFieldWork {
+  id              String    @id @default(cuid())
+  employeeId      String
+  employee        Employee  @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  date            DateTime
+  workType        String    @default("site_visit") // site_visit, installation, maintenance, delivery, meeting, inspection, other
+  title           String
+  description     String?
+  // Location fields
+  latitude        Float?
+  longitude       Float?
+  address         String?
+  // Client/Customer info
+  clientName      String?
+  clientPhone     String?
+  clientCompany   String?
+  // Follow-up
+  followUpDate    DateTime?
+  followUpNote    String?
+  followUpCreated Boolean   @default(false)
+  // Pipeline
+  pipelineDealId  String?
+  pipelineCreated Boolean   @default(false)
+  // Status
+  status          String    @default("completed") // completed, pending_followup
+  // Auto-delete after 1 month
+  expiresAt       DateTime
+  // Timestamps
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model Team {
+  id         String   @id @default(cuid())
+  name       String
+  leadId     String?
+  members    Int      @default(0)
+  department String?
+  status     String   @default("active")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String? // null = broadcast to all admins
+  title     String
+  message   String
+  type      String   @default("info") // info, order, lead, quotation, employee, system, alert
+  link      String? // optional navigation link (e.g. "orders", "leads")
+  linkId    String? // optional specific entity ID
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model BlogCategory {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  emoji       String? // Emoji icon for the category
+  color       String? // Accent color for the category
+  sortOrder   Int      @default(0)
+  status      String   @default("active") // active, inactive
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  posts BlogPost[]
+}
+
+model BlogPost {
+  id             String        @id @default(cuid())
+  title          String
+  slug           String        @unique
+  excerpt        String? // Short preview text
+  content        String // Full blog content (HTML or markdown)
+  featuredImage  String? // Main blog image URL
+  categoryId     String? // Reference to BlogCategory
+  categoryRef    BlogCategory? @relation(fields: [categoryId], references: [id])
+  category       String? // Blog category name (denormalized for backward compat)
+  tags           String? // JSON array of tags
+  authorId       String? // User who wrote the blog
+  author         User?         @relation(fields: [authorId], references: [id])
+  status         String        @default("draft") // draft, published, archived
+  featured       Boolean       @default(false) // Show on homepage
+  seoTitle       String?
+  seoDescription String?
+  publishedAt    DateTime? // When it was published
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model EmployeeLocation {
+  id         String   @id @default(cuid())
+  employeeId String
+  latitude   Float
+  longitude  Float
+  accuracy   Float?
+  address    String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}

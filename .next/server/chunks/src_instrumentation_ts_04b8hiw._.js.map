@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/instrumentation.ts"],"sourcesContent":["export async function register() {\n  // Auto-seed is now handled by /api/seed route on demand\n  // Removing the auto-seed setTimeout to improve server stability\n}\n"],"names":["register"],"mappings":"uCAAO,eAAeA,IAGtB"}
