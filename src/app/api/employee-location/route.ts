@@ -5,7 +5,7 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const { employeeId, latitude, longitude, accuracy } = body;
+    const { employeeId, latitude, longitude } = body;
 
     if (!employeeId || !latitude || !longitude) {
       return NextResponse.json(
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
         employeeId,
         latitude,
         longitude,
-        accuracy,
+        
       },
     });
 
@@ -40,7 +40,7 @@ export async function GET() {
   try {
     const locations = await prisma.employeeLocation.findMany({
       orderBy: {
-        createdAt: "desc",
+        timestamp: "desc",
       },
       take: 100,
     });

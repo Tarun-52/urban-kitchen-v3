@@ -38,10 +38,11 @@
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules",
-    "skills",
-    "examples",
-    "mini-services",
-    "scripts"
-  ]
+  "node_modules",
+  "skills",
+  "examples",
+  "mini-services",
+  "scripts",
+  "prisma/*.ts"
+]
 }
