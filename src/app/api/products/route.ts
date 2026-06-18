@@ -98,16 +98,7 @@ export async function GET(request: NextRequest) {
         status: false,
         success: false,
         message: "Failed to fetch products",
-        data: {
-          products: [],
-          pagination: {
-            page: 1,
-            limit: 12,
-            total: 0,
-            totalPages: 0,
-          },
-        },
-        products: [],
+        error: error instanceof Error ? error.message : String(error),
       },
       { status: 500 }
     );
@@ -230,23 +221,23 @@ export async function POST(request: NextRequest) {
 
     const responseData = product
       ? (() => {
-          if (product.variants && product.variants.length > 0) {
-            const prices = product.variants.map((v) => v.price);
-            const defaultVariant =
-              product.variants.find((v) => v.isDefault) || product.variants[0];
+        if (product.variants && product.variants.length > 0) {
+          const prices = product.variants.map((v) => v.price);
+          const defaultVariant =
+            product.variants.find((v) => v.isDefault) || product.variants[0];
 
-            return {
-              ...product,
-              priceRange: {
-                min: Math.min(...prices),
-                max: Math.max(...prices),
-              },
-              defaultVariant,
-            };
-          }
+          return {
+            ...product,
+            priceRange: {
+              min: Math.min(...prices),
+              max: Math.max(...prices),
+            },
+            defaultVariant,
+          };
+        }
 
-          return product;
-        })()
+        return product;
+      })()
       : null;
 
     return NextResponse.json(
