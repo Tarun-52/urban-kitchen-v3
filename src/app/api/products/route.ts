@@ -98,7 +98,13 @@ export async function GET(request: NextRequest) {
         status: false,
         success: false,
         message: "Failed to fetch products",
-        error: error instanceof Error ? error.message : String(error),
+        error:
+          error instanceof Error
+            ? {
+              message: error.message,
+              stack: error.stack,
+            }
+            : error,
       },
       { status: 500 }
     );
