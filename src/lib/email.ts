@@ -60,8 +60,8 @@ export async function sendAmcQuoteEmail(data: AmcQuoteEmailData): Promise<{ sent
   const htmlBody = `
     <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #111; border: 1px solid #2a2a2a; border-radius: 12px; overflow: hidden;">
       <!-- Header -->
-      <div style="background: linear-gradient(135deg, #0b0b0b 0%, #1a1a1a 100%); padding: 24px 32px; border-bottom: 2px solid #59ff00;">
-        <h1 style="margin: 0; color: #59ff00; font-size: 22px; font-weight: 700;">
+      <div style="background: linear-gradient(135deg, #0b0b0b 0%, #1a1a1a 100%); padding: 24px 32px; border-bottom: 2px solid #E8A33C;">
+        <h1 style="margin: 0; color: #E8A33C; font-size: 22px; font-weight: 700;">
           Urban Kitchen — New AMC Quote Request
         </h1>
         <p style="margin: 8px 0 0; color: #9ca3af; font-size: 13px;">
@@ -79,11 +79,11 @@ export async function sendAmcQuoteEmail(data: AmcQuoteEmailData): Promise<{ sent
           </tr>
           <tr>
             <td style="padding: 8px 0; color: #9ca3af; font-size: 13px;">Email</td>
-            <td style="padding: 8px 0;"><a href="mailto:${data.email}" style="color: #59ff00; font-size: 14px;">${data.email}</a></td>
+            <td style="padding: 8px 0;"><a href="mailto:${data.email}" style="color: #E8A33C; font-size: 14px;">${data.email}</a></td>
           </tr>
           <tr>
             <td style="padding: 8px 0; color: #9ca3af; font-size: 13px;">Phone</td>
-            <td style="padding: 8px 0;"><a href="tel:${data.phone}" style="color: #59ff00; font-size: 14px;">${data.phone}</a></td>
+            <td style="padding: 8px 0;"><a href="tel:${data.phone}" style="color: #E8A33C; font-size: 14px;">${data.phone}</a></td>
           </tr>
           ${data.company ? `<tr>
             <td style="padding: 8px 0; color: #9ca3af; font-size: 13px;">Company</td>
@@ -97,7 +97,7 @@ export async function sendAmcQuoteEmail(data: AmcQuoteEmailData): Promise<{ sent
 
         <!-- Plan Details -->
         <div style="background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px;">
-          <h3 style="margin: 0 0 12px; color: #59ff00; font-size: 16px;">Plan: ${data.plan} (${planPrices[data.plan] || 'N/A'})</h3>
+          <h3 style="margin: 0 0 12px; color: #E8A33C; font-size: 16px;">Plan: ${data.plan} (${planPrices[data.plan] || 'N/A'})</h3>
           <p style="margin: 0; color: #9ca3af; font-size: 13px;">Kitchen Size: ${data.kitchenSize || 'Not specified'}</p>
         </div>
 
@@ -156,8 +156,8 @@ export async function sendAmcQuoteConfirmation(data: AmcQuoteEmailData): Promise
 
   const htmlBody = `
     <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #111; border: 1px solid #2a2a2a; border-radius: 12px; overflow: hidden;">
-      <div style="background: linear-gradient(135deg, #0b0b0b 0%, #1a1a1a 100%); padding: 24px 32px; border-bottom: 2px solid #59ff00;">
-        <h1 style="margin: 0; color: #59ff00; font-size: 22px; font-weight: 700;">
+      <div style="background: linear-gradient(135deg, #0b0b0b 0%, #1a1a1a 100%); padding: 24px 32px; border-bottom: 2px solid #E8A33C;">
+        <h1 style="margin: 0; color: #E8A33C; font-size: 22px; font-weight: 700;">
           Urban Kitchen — AMC Quote Request Received
         </h1>
       </div>
@@ -166,16 +166,16 @@ export async function sendAmcQuoteConfirmation(data: AmcQuoteEmailData): Promise
           Dear <strong style="color: #fff;">${data.name}</strong>,
         </p>
         <p style="color: #d1d5db; font-size: 15px; line-height: 1.6;">
-          Thank you for your interest in our <strong style="color: #59ff00;">${data.plan} AMC Plan</strong>. 
+          Thank you for your interest in our <strong style="color: #E8A33C;">${data.plan} AMC Plan</strong>. 
           We have received your quote request and our team will get back to you within 24 hours with a detailed proposal.
         </p>
         <div style="background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 16px 20px; margin: 20px 0;">
           <p style="margin: 0; color: #9ca3af; font-size: 13px;">Your Request Reference</p>
-          <p style="margin: 4px 0 0; color: #59ff00; font-size: 18px; font-weight: 700;">#AMC-${Date.now().toString(36).toUpperCase()}</p>
+          <p style="margin: 4px 0 0; color: #E8A33C; font-size: 18px; font-weight: 700;">#AMC-${Date.now().toString(36).toUpperCase()}</p>
         </div>
         <p style="color: #9ca3af; font-size: 14px; line-height: 1.6;">
-          If you need immediate assistance, call us at <a href="tel:+917080488840" style="color: #59ff00;">+91-7080488840</a> 
-          or email <a href="mailto:info@urbankitchens.com" style="color: #59ff00;">info@urbankitchens.com</a>.
+          If you need immediate assistance, call us at <a href="tel:+917080488840" style="color: #E8A33C;">+91-7080488840</a> 
+          or email <a href="mailto:info@urbankitchens.com" style="color: #E8A33C;">info@urbankitchens.com</a>.
         </p>
       </div>
       <div style="background: #0b0b0b; padding: 16px 32px; border-top: 1px solid #1a1a1a; text-align: center;">

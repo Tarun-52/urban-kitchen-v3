@@ -55,7 +55,7 @@ function StatCounter({ end, label }: { end: number; label: string }) {
   const { count, ref } = useCounter(end)
   return (
     <div ref={ref} className="text-center">
-      <div className="font-(family-name:--font-poppins) text-3xl md:text-5xl font-bold text-#59ff00 mb-2">
+      <div className="font-(family-name:--font-poppins) text-3xl md:text-5xl font-bold text-#E8A33C mb-2">
         {count}+
       </div>
       <div className="text-gray-500 text-sm">{label}</div>
@@ -74,14 +74,14 @@ export default function AboutPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial="hidden" animate="visible">
             <motion.div variants={fadeUp} custom={0}>
-              <span className="text-#59ff00 text-sm font-medium uppercase tracking-wider">About Us</span>
+              <span className="text-#E8A33C text-sm font-medium uppercase tracking-wider">About Us</span>
             </motion.div>
             <motion.h1
               variants={fadeUp}
               custom={1}
               className="font-(family-name:--font-poppins) text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mt-3 mb-6"
             >
-              Built for <span className="text-#59ff00 neon-text">Excellence</span>,
+              Built for <span className="text-#E8A33C neon-text">Excellence</span>,
               <br />Driven by Innovation
             </motion.h1>
             <motion.p
@@ -118,9 +118,9 @@ export default function AboutPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <h2 className="font-(family-name:--font-poppins) text-2xl md:text-3xl font-bold mb-4">
-                Our <span className="text-#59ff00">Story</span>
+                Our <span className="text-#E8A33C">Story</span>
               </h2>
-              <div className="w-12 h-0.5 bg-#59ff00 mb-6" />
+              <div className="w-12 h-0.5 bg-#E8A33C mb-6" />
               <p className="text-gray-400 leading-relaxed mb-4">
                 Founded in 2009, Urban Kitchen began with a simple vision — to provide Indian 
                 commercial kitchens with world-class stainless steel equipment that matches 
@@ -148,10 +148,10 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-#151515 border border-#2a2a2a rounded-xl p-8 hover:border-[#59ff00]/30 transition-colors"
+              className="bg-#151515 border border-#2a2a2a rounded-xl p-8 hover:border-[#E8A33C]/30 transition-colors"
             >
-              <div className="w-14 h-14 rounded-xl bg-[#59ff00]/10 flex items-center justify-center mb-4">
-                <Target className="w-7 h-7 text-[#59ff00]" />
+              <div className="w-14 h-14 rounded-xl bg-[#E8A33C]/10 flex items-center justify-center mb-4">
+                <Target className="w-7 h-7 text-[#E8A33C]" />
               </div>
               <h3 className="font-[family-name:var(--font-poppins)] text-white text-xl font-bold mb-3">Our Mission</h3>
               <p className="text-gray-400 leading-relaxed">
@@ -165,10 +165,10 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-8 hover:border-[#59ff00]/30 transition-colors"
+              className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-8 hover:border-[#E8A33C]/30 transition-colors"
             >
-              <div className="w-14 h-14 rounded-xl bg-[#59ff00]/10 flex items-center justify-center mb-4">
-                <Eye className="w-7 h-7 text-[#59ff00]" />
+              <div className="w-14 h-14 rounded-xl bg-[#E8A33C]/10 flex items-center justify-center mb-4">
+                <Eye className="w-7 h-7 text-[#E8A33C]" />
               </div>
               <h3 className="font-[family-name:var(--font-poppins)] text-white text-xl font-bold mb-3">Our Vision</h3>
               <p className="text-gray-400 leading-relaxed">
@@ -203,7 +203,7 @@ export default function AboutPage() {
             className="text-center mb-12"
           >
             <motion.h2 variants={fadeUp} custom={0} className="font-[family-name:var(--font-poppins)] text-2xl md:text-3xl lg:text-4xl font-bold mb-3">
-              Our <span className="text-[#59ff00]">Leadership</span>
+              Our <span className="text-[#E8A33C]">Leadership</span>
             </motion.h2>
             <motion.p variants={fadeUp} custom={1} className="text-gray-500 max-w-xl mx-auto">
               Meet the people who drive Urban Kitchen forward
@@ -223,10 +223,10 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-6 text-center hover:border-[#59ff00]/30 hover-lift transition-all"
+                className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-6 text-center hover:border-[#E8A33C]/30 hover-lift transition-all"
               >
-                <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-[#59ff00]/10 border-2 border-[#59ff00]/20 flex items-center justify-center">
-                  <span className="text-[#59ff00] font-bold text-xl font-[family-name:var(--font-poppins)]">{member.initial}</span>
+                <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-[#E8A33C]/10 border-2 border-[#E8A33C]/20 flex items-center justify-center">
+                  <span className="text-[#E8A33C] font-bold text-xl font-[family-name:var(--font-poppins)]">{member.initial}</span>
                 </div>
                 <h3 className="text-white font-semibold text-base">{member.name}</h3>
                 <p className="text-gray-500 text-sm mt-1">{member.role}</p>
@@ -247,9 +247,9 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="font-[family-name:var(--font-poppins)] text-2xl md:text-3xl font-bold mb-4">
-                Manufacturing <span className="text-[#59ff00]">Facility</span>
+                Manufacturing <span className="text-[#E8A33C]">Facility</span>
               </h2>
-              <div className="w-12 h-0.5 bg-[#59ff00] mb-6" />
+              <div className="w-12 h-0.5 bg-[#E8A33C] mb-6" />
               <p className="text-gray-400 leading-relaxed mb-6">
                 Our state-of-the-art manufacturing facility in New Delhi is equipped with 
                 modern welding, fabrication, and quality testing equipment. Every product 
@@ -264,7 +264,7 @@ export default function AboutPage() {
                   'ISO 9001:2015 certified processes',
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-3 text-sm">
-                    <CheckCircle className="w-4 h-4 text-[#59ff00] shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-[#E8A33C] shrink-0" />
                     <span className="text-gray-300">{item}</span>
                   </div>
                 ))}

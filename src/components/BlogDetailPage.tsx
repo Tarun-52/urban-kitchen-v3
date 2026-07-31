@@ -192,7 +192,7 @@ export default function BlogDetailPage() {
           </p>
           <Button
             onClick={() => setView('blog')}
-            className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold"
+            className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Blog
@@ -213,7 +213,7 @@ export default function BlogDetailPage() {
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
           onClick={() => setView('blog')}
-          className="flex items-center gap-2 text-gray-500 hover:text-[#59ff00] text-sm mb-6 transition-colors group"
+          className="flex items-center gap-2 text-gray-500 hover:text-[#E8A33C] text-sm mb-6 transition-colors group"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           Back to Blog
@@ -249,12 +249,12 @@ export default function BlogDetailPage() {
               {/* Category + Featured badge */}
               <div className="absolute top-4 left-4 flex items-center gap-2">
                 {post.category && (
-                  <Badge className="bg-[#0b0b0b]/80 text-[#59ff00] border-[#59ff00]/20 backdrop-blur-sm">
+                  <Badge className="bg-[#0b0b0b]/80 text-[#E8A33C] border-[#E8A33C]/20 backdrop-blur-sm">
                     {categoryEmoji} {post.category}
                   </Badge>
                 )}
                 {post.featured && (
-                  <Badge className="bg-[#59ff00]/20 text-[#59ff00] border-[#59ff00]/30 backdrop-blur-sm">
+                  <Badge className="bg-[#E8A33C]/20 text-[#E8A33C] border-[#E8A33C]/30 backdrop-blur-sm">
                     ⭐ Featured
                   </Badge>
                 )}
@@ -285,7 +285,7 @@ export default function BlogDetailPage() {
                 <div className="flex items-center gap-2">
                   {post.author ? (
                     <>
-                      <div className="w-8 h-8 rounded-full bg-[#59ff00]/10 border border-[#59ff00]/30 flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-full bg-[#E8A33C]/10 border border-[#E8A33C]/30 flex items-center justify-center">
                         {post.author.avatar ? (
                           <img
                             src={post.author.avatar}
@@ -293,7 +293,7 @@ export default function BlogDetailPage() {
                             className="w-full h-full rounded-full object-cover"
                           />
                         ) : (
-                          <span className="text-[#59ff00] text-xs font-bold">
+                          <span className="text-[#E8A33C] text-xs font-bold">
                             {post.author.name.charAt(0).toUpperCase()}
                           </span>
                         )}
@@ -302,8 +302,8 @@ export default function BlogDetailPage() {
                     </>
                   ) : (
                     <>
-                      <div className="w-8 h-8 rounded-full bg-[#59ff00]/10 border border-[#59ff00]/30 flex items-center justify-center">
-                        <User className="w-4 h-4 text-[#59ff00]" />
+                      <div className="w-8 h-8 rounded-full bg-[#E8A33C]/10 border border-[#E8A33C]/30 flex items-center justify-center">
+                        <User className="w-4 h-4 text-[#E8A33C]" />
                       </div>
                       <span className="text-gray-300 font-medium">Urban Kitchen Team</span>
                     </>
@@ -333,7 +333,7 @@ export default function BlogDetailPage() {
                       navigator.clipboard.writeText(window.location.href)
                     }
                   }}
-                  className="ml-auto flex items-center gap-1.5 text-gray-500 hover:text-[#59ff00] transition-colors"
+                  className="ml-auto flex items-center gap-1.5 text-gray-500 hover:text-[#E8A33C] transition-colors"
                 >
                   <Share2 className="w-4 h-4" />
                   Share
@@ -345,7 +345,7 @@ export default function BlogDetailPage() {
                 <motion.div
                   variants={fadeUp}
                   custom={2}
-                  className="text-gray-300 text-lg leading-relaxed mb-8 border-l-2 border-[#59ff00]/40 pl-4 italic"
+                  className="text-gray-300 text-lg leading-relaxed mb-8 border-l-2 border-[#E8A33C]/40 pl-4 italic"
                 >
                   {post.excerpt}
                 </motion.div>
@@ -367,12 +367,12 @@ export default function BlogDetailPage() {
                     [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ul]:space-y-1
                     [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4 [&_ol]:space-y-1
                     [&_li]:text-gray-400 [&_li]:text-sm
-                    [&_a]:text-[#59ff00] [&_a]:underline [&_a:hover]:text-[#59ff00]/80
-                    [&_blockquote]:border-l-2 [&_blockquote]:border-[#59ff00]/40 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-gray-400 [&_blockquote]:my-4
+                    [&_a]:text-[#E8A33C] [&_a]:underline [&_a:hover]:text-[#E8A33C]/80
+                    [&_blockquote]:border-l-2 [&_blockquote]:border-[#E8A33C]/40 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-gray-400 [&_blockquote]:my-4
                     [&_img]:rounded-xl [&_img]:my-6 [&_img]:max-w-full
                     [&_strong]:text-white [&_strong]:font-semibold
                     [&_em]:text-gray-200
-                    [&_code]:bg-[#1a1a1a] [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-[#59ff00] [&_code]:text-sm
+                    [&_code]:bg-[#1a1a1a] [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-[#E8A33C] [&_code]:text-sm
                     [&_pre]:bg-[#1a1a1a] [&_pre]:p-4 [&_pre]:rounded-xl [&_pre]:overflow-x-auto [&_pre]:my-4
                     [&_table]:w-full [&_table]:border-collapse [&_table]:my-4
                     [&_th]:bg-[#1a1a1a] [&_th]:text-white [&_th]:px-4 [&_th]:py-2 [&_th]:text-left [&_th]:text-sm [&_th]:font-semibold [&_th]:border [&_th]:border-[#2a2a2a]
@@ -390,7 +390,7 @@ export default function BlogDetailPage() {
                       <Badge
                         key={tag}
                         variant="outline"
-                        className="border-[#2a2a2a] text-gray-400 text-xs hover:border-[#59ff00]/40 hover:text-[#59ff00] transition-colors"
+                        className="border-[#2a2a2a] text-gray-400 text-xs hover:border-[#E8A33C]/40 hover:text-[#E8A33C] transition-colors"
                       >
                         {tag}
                       </Badge>
@@ -412,7 +412,7 @@ export default function BlogDetailPage() {
                   </div>
                   <Button
                     onClick={() => setView('contact')}
-                    className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold whitespace-nowrap neon-glow"
+                    className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold whitespace-nowrap neon-glow"
                   >
                     Contact Us
                     <ArrowLeft className="w-4 h-4 ml-2 rotate-180" />
@@ -433,11 +433,11 @@ export default function BlogDetailPage() {
                 className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-5"
               >
                 <h3 className="text-white text-sm font-semibold mb-3 flex items-center gap-2">
-                  <User className="w-4 h-4 text-[#59ff00]" />
+                  <User className="w-4 h-4 text-[#E8A33C]" />
                   About the Author
                 </h3>
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-[#59ff00]/10 border border-[#59ff00]/30 flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-[#E8A33C]/10 border border-[#E8A33C]/30 flex items-center justify-center flex-shrink-0">
                     {post.author?.avatar ? (
                       <img
                         src={post.author.avatar}
@@ -445,7 +445,7 @@ export default function BlogDetailPage() {
                         className="w-full h-full rounded-full object-cover"
                       />
                     ) : (
-                      <span className="text-[#59ff00] text-lg font-bold">
+                      <span className="text-[#E8A33C] text-lg font-bold">
                         {post.author?.name?.charAt(0).toUpperCase() || 'U'}
                       </span>
                     )}
@@ -469,7 +469,7 @@ export default function BlogDetailPage() {
                 className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-5"
               >
                 <h3 className="text-white text-sm font-semibold mb-4 flex items-center gap-2">
-                  <Newspaper className="w-4 h-4 text-[#59ff00]" />
+                  <Newspaper className="w-4 h-4 text-[#E8A33C]" />
                   Related Articles
                 </h3>
 
@@ -483,7 +483,7 @@ export default function BlogDetailPage() {
                       <button
                         key={relPost.id}
                         onClick={() => setBlogDetail(relPost.id)}
-                        className="w-full flex items-start gap-3 p-3 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] hover:border-[#59ff00]/30 transition-all text-left group"
+                        className="w-full flex items-start gap-3 p-3 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] hover:border-[#E8A33C]/30 transition-all text-left group"
                       >
                         {/* Thumbnail */}
                         <div className="w-16 h-16 rounded-lg bg-[#151515] flex-shrink-0 overflow-hidden flex items-center justify-center">
@@ -498,7 +498,7 @@ export default function BlogDetailPage() {
                           )}
                         </div>
                         <div className="min-w-0 flex-1">
-                          <h4 className="text-white text-xs font-medium line-clamp-2 group-hover:text-[#59ff00] transition-colors leading-snug">
+                          <h4 className="text-white text-xs font-medium line-clamp-2 group-hover:text-[#E8A33C] transition-colors leading-snug">
                             {relPost.title}
                           </h4>
                           {relPost.publishedAt && (
@@ -519,12 +519,12 @@ export default function BlogDetailPage() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 }}
-                className="relative overflow-hidden rounded-xl border border-[#59ff00]/20 bg-gradient-to-br from-[#59ff00]/5 via-[#151515] to-[#59ff00]/5 p-5"
+                className="relative overflow-hidden rounded-xl border border-[#E8A33C]/20 bg-gradient-to-br from-[#E8A33C]/5 via-[#151515] to-[#E8A33C]/5 p-5"
               >
                 <div className="absolute inset-0 grid-pattern opacity-30" />
                 <div className="relative z-10">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-[#59ff00] text-xs font-semibold uppercase tracking-wider">
+                    <span className="text-[#E8A33C] text-xs font-semibold uppercase tracking-wider">
                       Need Expert Help?
                     </span>
                   </div>
@@ -534,7 +534,7 @@ export default function BlogDetailPage() {
                   <Button
                     onClick={() => setView('contact')}
                     size="sm"
-                    className="w-full bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold text-xs"
+                    className="w-full bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold text-xs"
                   >
                     Get Free Consultation
                   </Button>

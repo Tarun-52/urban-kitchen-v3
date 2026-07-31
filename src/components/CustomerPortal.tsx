@@ -234,7 +234,7 @@ export default function CustomerPortal() {
     return (
       <div className="min-h-screen bg-[#0b0b0b] pt-20 md:pt-24 flex items-center justify-center">
         <div className="flex flex-col items-center gap-3">
-          <Loader2 className="w-8 h-8 text-[#59ff00] animate-spin" />
+          <Loader2 className="w-8 h-8 text-[#E8A33C] animate-spin" />
           <p className="text-gray-500 text-sm">Loading your account...</p>
         </div>
       </div>
@@ -264,7 +264,7 @@ export default function CustomerPortal() {
                   onClick={() => setCustomerTab(tab.id)}
                   className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${
                     customerTab === tab.id
-                      ? 'bg-[#59ff00]/10 text-[#59ff00]'
+                      ? 'bg-[#E8A33C]/10 text-[#E8A33C]'
                       : 'text-gray-500 hover:text-white hover:bg-[#1a1a1a]'
                   }`}
                 >
@@ -310,7 +310,7 @@ export default function CustomerPortal() {
       <Dialog open={serviceDialog} onOpenChange={setServiceDialog}>
         <DialogContent className="bg-[#151515] border-[#2a2a2a] text-white max-w-md">
           <DialogHeader>
-            <DialogTitle className="text-[#59ff00]">Raise Service Request</DialogTitle>
+            <DialogTitle className="text-[#E8A33C]">Raise Service Request</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleRaiseService} className="space-y-4">
             <div>
@@ -350,7 +350,7 @@ export default function CustomerPortal() {
             <Button
               type="submit"
               disabled={submitting}
-              className="w-full bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold"
+              className="w-full bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold"
             >
               {submitting ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Submitting...</> : 'Submit Request'}
             </Button>
@@ -384,7 +384,7 @@ function OrdersTab({ orders, loading }: { orders: any[]; loading: boolean }) {
             key={s}
             onClick={() => setFilter(s)}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium capitalize whitespace-nowrap transition-colors ${
-              filter === s ? 'bg-[#59ff00]/10 text-[#59ff00] border border-[#59ff00]/20' : 'bg-[#1a1a1a] text-gray-500 hover:text-white border border-[#2a2a2a]'
+              filter === s ? 'bg-[#E8A33C]/10 text-[#E8A33C] border border-[#E8A33C]/20' : 'bg-[#1a1a1a] text-gray-500 hover:text-white border border-[#2a2a2a]'
             }`}
           >
             {s === 'all' ? 'All Orders' : s}
@@ -400,7 +400,7 @@ function OrdersTab({ orders, loading }: { orders: any[]; loading: boolean }) {
       ) : (
         <div className="space-y-3">
           {filtered.map((order: any) => (
-            <div key={order.id} className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-4 hover:border-[#59ff00]/20 transition-colors">
+            <div key={order.id} className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-4 hover:border-[#E8A33C]/20 transition-colors">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
@@ -411,14 +411,14 @@ function OrdersTab({ orders, loading }: { orders: any[]; loading: boolean }) {
                   <div className="flex items-center gap-4 text-xs text-gray-500">
                     <span>{formatDate(order.createdAt)}</span>
                     <span>{order.items?.length || 0} item(s)</span>
-                    <span className="text-[#59ff00] font-semibold">{formatPrice(order.total)}</span>
+                    <span className="text-[#E8A33C] font-semibold">{formatPrice(order.total)}</span>
                   </div>
                 </div>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={() => openDetail(order)}
-                  className="text-gray-500 hover:text-[#59ff00]"
+                  className="text-gray-500 hover:text-[#E8A33C]"
                 >
                   <Eye className="w-4 h-4 mr-1" /> Details
                 </Button>
@@ -432,7 +432,7 @@ function OrdersTab({ orders, loading }: { orders: any[]; loading: boolean }) {
       <Dialog open={detailOpen} onOpenChange={setDetailOpen}>
         <DialogContent className="bg-[#151515] border-[#2a2a2a] text-white max-w-lg">
           <DialogHeader>
-            <DialogTitle className="text-[#59ff00]">Order {selectedOrder?.orderNumber}</DialogTitle>
+            <DialogTitle className="text-[#E8A33C]">Order {selectedOrder?.orderNumber}</DialogTitle>
           </DialogHeader>
           {selectedOrder && (
             <div className="space-y-4">
@@ -458,7 +458,7 @@ function OrdersTab({ orders, loading }: { orders: any[]; loading: boolean }) {
                         <div className="text-white">{item.product?.name || `Product #${item.productId}`}</div>
                         <div className="text-gray-500 text-xs">Qty: {item.qty}</div>
                       </div>
-                      <span className="text-[#59ff00] font-semibold">{formatPrice(item.price * item.qty)}</span>
+                      <span className="text-[#E8A33C] font-semibold">{formatPrice(item.price * item.qty)}</span>
                     </div>
                   ))}
                 </div>
@@ -470,7 +470,7 @@ function OrdersTab({ orders, loading }: { orders: any[]; loading: boolean }) {
                 <div className="flex justify-between text-gray-400"><span>Shipping</span><span>{selectedOrder.shipping > 0 ? formatPrice(selectedOrder.shipping) : 'Free'}</span></div>
                 <div className="flex justify-between text-white font-semibold text-base pt-2 border-t border-[#2a2a2a]">
                   <span>Total</span>
-                  <span className="text-[#59ff00]">{formatPrice(selectedOrder.total)}</span>
+                  <span className="text-[#E8A33C]">{formatPrice(selectedOrder.total)}</span>
                 </div>
               </div>
             </div>
@@ -500,14 +500,14 @@ function WishlistTab({ wishlist, loading, onRemove }: {
           <Heart className="w-12 h-12 text-gray-700 mx-auto mb-3" />
           <h3 className="text-gray-400 font-semibold mb-1">Your Wishlist is Empty</h3>
           <p className="text-gray-600 text-sm mb-4">Browse products and add them to your wishlist</p>
-          <Button onClick={() => setView('products')} variant="outline" className="border-[#59ff00] text-[#59ff00] hover:bg-[#59ff00]/10">
+          <Button onClick={() => setView('products')} variant="outline" className="border-[#E8A33C] text-[#E8A33C] hover:bg-[#E8A33C]/10">
             Browse Products
           </Button>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {wishlist.map((item: any) => (
-            <div key={item.id} className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-4 flex gap-4 hover:border-[#59ff00]/20 transition-colors">
+            <div key={item.id} className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-4 flex gap-4 hover:border-[#E8A33C]/20 transition-colors">
               <div className="w-20 h-20 bg-[#1a1a1a] rounded-lg flex items-center justify-center shrink-0 overflow-hidden">
                 {item.product?.featuredImage ? (
                   <img src={item.product.featuredImage} alt={item.product.name} className="w-full h-full object-cover" />
@@ -517,12 +517,12 @@ function WishlistTab({ wishlist, loading, onRemove }: {
               </div>
               <div className="flex-1 min-w-0">
                 <h3
-                  className="text-white font-semibold text-sm truncate cursor-pointer hover:text-[#59ff00]"
+                  className="text-white font-semibold text-sm truncate cursor-pointer hover:text-[#E8A33C]"
                   onClick={() => setProductDetail(item.productId)}
                 >
                   {item.product?.name || `Product #${item.productId}`}
                 </h3>
-                <p className="text-[#59ff00] font-bold text-sm mt-1">{formatPrice(item.product?.price || 0)}</p>
+                <p className="text-[#E8A33C] font-bold text-sm mt-1">{formatPrice(item.product?.price || 0)}</p>
                 {item.product?.stock !== undefined && (
                   <p className={`text-xs mt-0.5 ${item.product.stock > 0 ? 'text-gray-500' : 'text-red-400'}`}>
                     {item.product.stock > 0 ? `${item.product.stock} in stock` : 'Out of stock'}
@@ -531,7 +531,7 @@ function WishlistTab({ wishlist, loading, onRemove }: {
                 <div className="flex items-center gap-2 mt-2">
                   <Button
                     size="sm"
-                    className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 h-7 text-xs px-2"
+                    className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 h-7 text-xs px-2"
                     disabled={(item.product?.stock || 0) <= 0}
                     onClick={() => {
                       if (item.product) {
@@ -584,7 +584,7 @@ function AmcTab({ contracts, loading }: { contracts: any[]; loading: boolean }) 
       ) : (
         <div className="space-y-4">
           {contracts.map((contract: any) => (
-            <div key={contract.id} className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-5 hover:border-[#59ff00]/20 transition-colors">
+            <div key={contract.id} className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-5 hover:border-[#E8A33C]/20 transition-colors">
               <div className="flex items-start justify-between mb-3">
                 <div>
                   <div className="flex items-center gap-2 mb-1">
@@ -593,7 +593,7 @@ function AmcTab({ contracts, loading }: { contracts: any[]; loading: boolean }) 
                   </div>
                   <p className="text-gray-500 text-xs">{formatDate(contract.startDate)} — {formatDate(contract.endDate)}</p>
                 </div>
-                <span className="text-[#59ff00] font-bold text-lg">{formatPrice(contract.amount)}</span>
+                <span className="text-[#E8A33C] font-bold text-lg">{formatPrice(contract.amount)}</span>
               </div>
               {contract.coverage && (
                 <div className="flex flex-wrap gap-2 mt-3">
@@ -603,7 +603,7 @@ function AmcTab({ contracts, loading }: { contracts: any[]; loading: boolean }) 
                 </div>
               )}
               {(contract.status === 'expired' || new Date(contract.endDate) < new Date(Date.now() + 30 * 86400000)) && contract.status === 'active' && (
-                <Button size="sm" className="mt-3 bg-[#59ff00] text-black hover:bg-[#59ff00]/90 text-xs h-8" onClick={() => toast.info('Renewal request submitted')}>
+                <Button size="sm" className="mt-3 bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 text-xs h-8" onClick={() => toast.info('Renewal request submitted')}>
                   <Wrench className="w-3 h-3 mr-1" /> Renew Contract
                 </Button>
               )}
@@ -628,7 +628,7 @@ function ServiceTab({ requests, loading, onRaise, amcContracts }: {
     <div>
       <div className="flex items-center justify-between mb-4">
         <h2 className="font-[family-name:var(--font-poppins)] text-lg font-bold text-white">Service Requests</h2>
-        <Button onClick={onRaise} size="sm" className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90">
+        <Button onClick={onRaise} size="sm" className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90">
           <Plus className="w-4 h-4 mr-1" /> Raise Request
         </Button>
       </div>
@@ -641,7 +641,7 @@ function ServiceTab({ requests, loading, onRaise, amcContracts }: {
       ) : (
         <div className="space-y-3">
           {requests.map((req: any) => (
-            <div key={req.id} className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-4 hover:border-[#59ff00]/20 transition-colors">
+            <div key={req.id} className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-4 hover:border-[#E8A33C]/20 transition-colors">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
@@ -767,8 +767,8 @@ function ProfileTab() {
       <div className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-6">
         {/* Avatar & Name */}
         <div className="flex items-center gap-4 mb-6">
-          <div className="w-20 h-20 rounded-full bg-[#59ff00]/10 border-2 border-[#59ff00]/30 flex items-center justify-center">
-            <span className="text-[#59ff00] font-bold text-2xl font-[family-name:var(--font-poppins)]">
+          <div className="w-20 h-20 rounded-full bg-[#E8A33C]/10 border-2 border-[#E8A33C]/30 flex items-center justify-center">
+            <span className="text-[#E8A33C] font-bold text-2xl font-[family-name:var(--font-poppins)]">
               {profileForm.name?.charAt(0)?.toUpperCase() || 'C'}
             </span>
           </div>
@@ -809,7 +809,7 @@ function ProfileTab() {
           </div>
         </div>
         <Button
-          className="mt-6 bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold"
+          className="mt-6 bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold"
           onClick={handleSaveProfile}
           disabled={savingProfile}
         >
@@ -824,7 +824,7 @@ function ProfileTab() {
 
         {/* Change Password */}
         <h3 className="text-white font-semibold mb-4 flex items-center gap-2">
-          <Lock className="w-4 h-4 text-[#59ff00]" /> Change Password
+          <Lock className="w-4 h-4 text-[#E8A33C]" /> Change Password
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
@@ -850,7 +850,7 @@ function ProfileTab() {
         </div>
         <Button
           variant="outline"
-          className="mt-4 border-[#59ff00] text-[#59ff00] hover:bg-[#59ff00]/10"
+          className="mt-4 border-[#E8A33C] text-[#E8A33C] hover:bg-[#E8A33C]/10"
           onClick={handleChangePassword}
           disabled={savingPassword}
         >

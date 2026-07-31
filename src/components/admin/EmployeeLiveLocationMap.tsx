@@ -66,7 +66,7 @@ export default function EmployeeLiveLocationMap() {
 
         <button
           onClick={fetchLocations}
-          className="w-fit rounded-lg border border-[#59ff00]/30 px-3 py-1 text-sm text-[#59ff00] hover:bg-[#59ff00]/10"
+          className="w-fit rounded-lg border border-[#E8A33C]/30 px-3 py-1 text-sm text-[#E8A33C] hover:bg-[#E8A33C]/10"
         >
           Refresh Location
         </button>

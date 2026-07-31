@@ -142,7 +142,7 @@ function generateQuotationEmailHtml(
         <td style="padding: 10px 12px; color: #d1d5db; font-size: 13px; text-align: right;">${formatINR(item.rate)}</td>
         ${item.discount ? `<td style="padding: 10px 12px; color: #f87171; font-size: 13px; text-align: right;">-${formatINR(item.discount)}</td>` : ''}
         <td style="padding: 10px 12px; color: #d1d5db; font-size: 13px; text-align: center;">${item.gstPercent ?? 0}%</td>
-        <td style="padding: 10px 12px; color: #59ff00; font-size: 13px; font-weight: 600; text-align: right;">${formatINR(item.amount)}</td>
+        <td style="padding: 10px 12px; color: #E8A33C; font-size: 13px; font-weight: 600; text-align: right;">${formatINR(item.amount)}</td>
       </tr>`
         )
         .join('')
@@ -167,7 +167,7 @@ function generateQuotationEmailHtml(
         <td style="padding: 10px 12px; color: #d1d5db; font-size: 13px; text-align: right;">${formatINR(item.rate)}</td>
         ${discountCell(item)}
         <td style="padding: 10px 12px; color: #d1d5db; font-size: 13px; text-align: center;">${item.gstPercent ?? 0}%</td>
-        <td style="padding: 10px 12px; color: #59ff00; font-size: 13px; font-weight: 600; text-align: right;">${formatINR(item.amount)}</td>
+        <td style="padding: 10px 12px; color: #E8A33C; font-size: 13px; font-weight: 600; text-align: right;">${formatINR(item.amount)}</td>
       </tr>`
         )
         .join('')
@@ -186,7 +186,7 @@ function generateQuotationEmailHtml(
   const bankHtml = bank
     ? `
     <div style="background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 16px 20px; margin-top: 20px;">
-      <h3 style="margin: 0 0 12px; color: #59ff00; font-size: 14px;">Bank Details for Payment</h3>
+      <h3 style="margin: 0 0 12px; color: #E8A33C; font-size: 14px;">Bank Details for Payment</h3>
       <table style="width: 100%; border-collapse: collapse;">
         ${bank.bankName ? `<tr><td style="padding: 4px 0; color: #9ca3af; font-size: 12px; width: 130px;">Bank</td><td style="padding: 4px 0; color: #ffffff; font-size: 13px;">${bank.bankName}</td></tr>` : ''}
         ${bank.accountName ? `<tr><td style="padding: 4px 0; color: #9ca3af; font-size: 12px;">Account Name</td><td style="padding: 4px 0; color: #ffffff; font-size: 13px;">${bank.accountName}</td></tr>` : ''}
@@ -201,15 +201,15 @@ function generateQuotationEmailHtml(
   <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 680px; margin: 0 auto; background: #111; border: 1px solid #2a2a2a; border-radius: 12px; overflow: hidden;">
 
     <!-- Header -->
-    <div style="background: linear-gradient(135deg, #0b0b0b 0%, #1a1a1a 100%); padding: 28px 32px; border-bottom: 2px solid #59ff00;">
+    <div style="background: linear-gradient(135deg, #0b0b0b 0%, #1a1a1a 100%); padding: 28px 32px; border-bottom: 2px solid #E8A33C;">
       <table style="width: 100%; border-collapse: collapse;">
         <tr>
           <td>
-            <h1 style="margin: 0; color: #59ff00; font-size: 24px; font-weight: 700; letter-spacing: -0.5px;">Urban Kitchen</h1>
+            <h1 style="margin: 0; color: #E8A33C; font-size: 24px; font-weight: 700; letter-spacing: -0.5px;">Urban Kitchen</h1>
             <p style="margin: 4px 0 0; color: #9ca3af; font-size: 12px;">Manufacturing & Solutions</p>
           </td>
           <td style="text-align: right;">
-            <p style="margin: 0; color: #59ff00; font-size: 18px; font-weight: 700;">QUOTATION</p>
+            <p style="margin: 0; color: #E8A33C; font-size: 18px; font-weight: 700;">QUOTATION</p>
             <p style="margin: 4px 0 0; color: #9ca3af; font-size: 13px;">${quotation.quotationNumber}</p>
           </td>
         </tr>
@@ -259,14 +259,14 @@ function generateQuotationEmailHtml(
     <div style="padding: 24px 32px;">
       <table style="width: 100%; border-collapse: collapse; background: #0d0d0d; border-radius: 8px; overflow: hidden;">
         <thead>
-          <tr style="border-bottom: 2px solid #59ff00;">
-            <th style="padding: 12px; color: #59ff00; font-size: 11px; text-transform: uppercase; text-align: center;">#</th>
-            <th style="padding: 12px; color: #59ff00; font-size: 11px; text-transform: uppercase; text-align: left;">Description</th>
-            <th style="padding: 12px; color: #59ff00; font-size: 11px; text-transform: uppercase; text-align: center;">Qty</th>
-            <th style="padding: 12px; color: #59ff00; font-size: 11px; text-transform: uppercase; text-align: right;">Rate</th>
-            ${hasDiscounts ? '<th style="padding: 12px; color: #59ff00; font-size: 11px; text-transform: uppercase; text-align: right;">Discount</th>' : ''}
-            <th style="padding: 12px; color: #59ff00; font-size: 11px; text-transform: uppercase; text-align: center;">GST</th>
-            <th style="padding: 12px; color: #59ff00; font-size: 11px; text-transform: uppercase; text-align: right;">Amount</th>
+          <tr style="border-bottom: 2px solid #E8A33C;">
+            <th style="padding: 12px; color: #E8A33C; font-size: 11px; text-transform: uppercase; text-align: center;">#</th>
+            <th style="padding: 12px; color: #E8A33C; font-size: 11px; text-transform: uppercase; text-align: left;">Description</th>
+            <th style="padding: 12px; color: #E8A33C; font-size: 11px; text-transform: uppercase; text-align: center;">Qty</th>
+            <th style="padding: 12px; color: #E8A33C; font-size: 11px; text-transform: uppercase; text-align: right;">Rate</th>
+            ${hasDiscounts ? '<th style="padding: 12px; color: #E8A33C; font-size: 11px; text-transform: uppercase; text-align: right;">Discount</th>' : ''}
+            <th style="padding: 12px; color: #E8A33C; font-size: 11px; text-transform: uppercase; text-align: center;">GST</th>
+            <th style="padding: 12px; color: #E8A33C; font-size: 11px; text-transform: uppercase; text-align: right;">Amount</th>
           </tr>
         </thead>
         <tbody>
@@ -298,9 +298,9 @@ function generateQuotationEmailHtml(
           <td style="padding: 6px 0; color: #9ca3af; font-size: 13px;">IGST</td>
           <td style="padding: 6px 0; color: #d1d5db; font-size: 13px; text-align: right;">${formatINR(quotation.igstAmount)}</td>
         </tr>` : ''}
-        <tr style="border-top: 2px solid #59ff00;">
+        <tr style="border-top: 2px solid #E8A33C;">
           <td style="padding: 12px 0 4px; color: #ffffff; font-size: 16px; font-weight: 700;">Total</td>
-          <td style="padding: 12px 0 4px; color: #59ff00; font-size: 18px; font-weight: 700; text-align: right;">${formatINR(quotation.amount)}</td>
+          <td style="padding: 12px 0 4px; color: #E8A33C; font-size: 18px; font-weight: 700; text-align: right;">${formatINR(quotation.amount)}</td>
         </tr>
       </table>
     </div>
@@ -329,11 +329,11 @@ function generateQuotationEmailHtml(
 
     <!-- CTA Button -->
     <div style="padding: 12px 32px 28px; text-align: center;">
-      <a href="mailto:${companyEmail}?subject=Re: Quotation ${quotation.quotationNumber}" style="display: inline-block; background: #59ff00; color: #000000; font-size: 14px; font-weight: 700; padding: 14px 36px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px;">
+      <a href="mailto:${companyEmail}?subject=Re: Quotation ${quotation.quotationNumber}" style="display: inline-block; background: #E8A33C; color: #000000; font-size: 14px; font-weight: 700; padding: 14px 36px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px;">
         Reply to This Quotation
       </a>
       <p style="margin: 12px 0 0; color: #6b7280; font-size: 12px;">
-        Have questions? Reach us at <a href="tel:${companyPhone}" style="color: #59ff00;">${companyPhone}</a> or <a href="mailto:${companyEmail}" style="color: #59ff00;">${companyEmail}</a>
+        Have questions? Reach us at <a href="tel:${companyPhone}" style="color: #E8A33C;">${companyPhone}</a> or <a href="mailto:${companyEmail}" style="color: #E8A33C;">${companyEmail}</a>
       </p>
     </div>
 

@@ -103,10 +103,10 @@ function LoginForm() {
 
       <div className="flex items-center justify-between">
         <label className="flex items-center gap-2 cursor-pointer">
-          <Checkbox className="data-[state=checked]:bg-[#59ff00] data-[state=checked]:border-[#59ff00]" />
+          <Checkbox className="data-[state=checked]:bg-[#E8A33C] data-[state=checked]:border-[#E8A33C]" />
           <span className="text-gray-400 text-xs">Remember me</span>
         </label>
-        <button type="button" className="text-[#59ff00] text-xs hover:underline">
+        <button type="button" className="text-[#E8A33C] text-xs hover:underline">
           Forgot password?
         </button>
       </div>
@@ -114,7 +114,7 @@ function LoginForm() {
       <Button
         type="submit"
         disabled={loading}
-        className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-bold h-11 text-base mt-2 neon-glow"
+        className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-bold h-11 text-base mt-2 neon-glow"
       >
         {loading ? (
           <span className="flex items-center gap-2">
@@ -131,7 +131,7 @@ function LoginForm() {
 
       <p className="text-center text-gray-500 text-sm mt-2">
         Don&apos;t have an account?{' '}
-        <button onClick={() => setView('register')} className="text-[#59ff00] hover:underline font-medium">
+        <button onClick={() => setView('register')} className="text-[#E8A33C] hover:underline font-medium">
           Register
         </button>
       </p>
@@ -151,7 +151,7 @@ function LoginForm() {
               onClick={() => { setEmail(d.email); setPassword(d.pass) }}
               className="w-full flex items-center justify-between px-2 py-1.5 rounded text-[11px] hover:bg-[#1a1a1a] transition-colors group"
             >
-              <span className="text-[#59ff00] font-medium">{d.role}</span>
+              <span className="text-[#E8A33C] font-medium">{d.role}</span>
               <span className="text-gray-600 group-hover:text-gray-400 transition-colors">{d.email}</span>
             </button>
           ))}
@@ -304,18 +304,18 @@ function RegisterForm() {
         <Checkbox
           checked={agreedToTerms}
           onCheckedChange={(checked) => setAgreedToTerms(checked === true)}
-          className="data-[state=checked]:bg-[#59ff00] data-[state=checked]:border-[#59ff00] mt-0.5"
+          className="data-[state=checked]:bg-[#E8A33C] data-[state=checked]:border-[#E8A33C] mt-0.5"
         />
         <span className="text-gray-400 text-xs leading-relaxed">
-          I agree to the <button type="button" className="text-[#59ff00] hover:underline">Terms of Service</button> and{' '}
-          <button type="button" className="text-[#59ff00] hover:underline">Privacy Policy</button>
+          I agree to the <button type="button" className="text-[#E8A33C] hover:underline">Terms of Service</button> and{' '}
+          <button type="button" className="text-[#E8A33C] hover:underline">Privacy Policy</button>
         </span>
       </label>
 
       <Button
         type="submit"
         disabled={loading || !agreedToTerms}
-        className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-bold h-11 text-base mt-2 neon-glow disabled:opacity-50"
+        className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-bold h-11 text-base mt-2 neon-glow disabled:opacity-50"
       >
         {loading ? (
           <span className="flex items-center gap-2">
@@ -332,7 +332,7 @@ function RegisterForm() {
 
       <p className="text-center text-gray-500 text-sm mt-2">
         Already have an account?{' '}
-        <button onClick={() => setView('login')} className="text-[#59ff00] hover:underline font-medium">
+        <button onClick={() => setView('login')} className="text-[#E8A33C] hover:underline font-medium">
           Login
         </button>
       </p>
@@ -356,11 +356,11 @@ export default function AuthPages() {
         <div className="glass rounded-2xl p-6 md:p-8">
           {/* Logo */}
           <div className="text-center mb-6">
-            <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-[#59ff00]/10 border border-[#59ff00]/30 flex items-center justify-center">
-              <Flame className="w-6 h-6 text-[#59ff00]" />
+            <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-[#E8A33C]/10 border border-[#E8A33C]/30 flex items-center justify-center">
+              <Flame className="w-6 h-6 text-[#E8A33C]" />
             </div>
             <h1 className="font-[family-name:var(--font-poppins)] text-xl font-bold">
-              <span className="text-[#59ff00]">Urban</span>
+              <span className="text-[#E8A33C]">Urban</span>
               <span className="text-white ml-1">Kitchens</span>
             </h1>
             <p className="text-gray-500 text-sm mt-1">

@@ -36,7 +36,7 @@ export default function SettingsTab({ settingsObj, setSettingsObj, settingsLoadi
           <div><Label className="text-gray-400 text-xs">Address</Label><Textarea value={settingsObj.company_address || ''} onChange={(e) => setSettingsObj(s => ({ ...s, company_address: e.target.value }))} className="bg-[#0b0b0b] border-[#2a2a2a] text-white" rows={3} /></div>
           <div><Label className="text-gray-400 text-xs">GST Number</Label><Input value={settingsObj.gst_number || ''} onChange={(e) => setSettingsObj(s => ({ ...s, gst_number: e.target.value }))} className="bg-[#0b0b0b] border-[#2a2a2a] text-white" /></div>
           <div><Label className="text-gray-400 text-xs">Currency</Label><Input value={settingsObj.currency || ''} onChange={(e) => setSettingsObj(s => ({ ...s, currency: e.target.value }))} className="bg-[#0b0b0b] border-[#2a2a2a] text-white" /></div>
-          <Button onClick={handleSaveSettings} disabled={settingsLoading} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold">{settingsLoading ? 'Saving...' : 'Save Settings'}</Button>
+          <Button onClick={handleSaveSettings} disabled={settingsLoading} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold">{settingsLoading ? 'Saving...' : 'Save Settings'}</Button>
         </CardContent>
       </Card>
     </motion.div>

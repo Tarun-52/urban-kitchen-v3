@@ -220,7 +220,7 @@ export default function ProductDetailPage() {
           <h2 className="text-gray-400 text-xl mb-2">{noProductSelected ? 'No product selected' : (error || 'Product not found')}</h2>
           <p className="text-gray-600 text-sm mb-6">The product you&apos;re looking for might have been removed or is temporarily unavailable.</p>
           <div className="flex items-center justify-center gap-3">
-            <Button onClick={() => setView('products')} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90">
+            <Button onClick={() => setView('products')} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90">
               🔍 Browse Products
             </Button>
             <Button onClick={() => setView('contact')} variant="outline" className="border-[#2a2a2a] text-gray-400 hover:text-white hover:bg-[#1a1a1a]">
@@ -265,7 +265,7 @@ export default function ProductDetailPage() {
         {/* Back Button */}
         <button
           onClick={() => setView('products')}
-          className="flex items-center gap-2 text-gray-500 hover:text-[#59ff00] text-sm mb-6 transition-colors group"
+          className="flex items-center gap-2 text-gray-500 hover:text-[#E8A33C] text-sm mb-6 transition-colors group"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           ← Back to Products
@@ -288,7 +288,7 @@ export default function ProductDetailPage() {
                 </div>
               )}
               {product.featured && (
-                <Badge className="absolute top-4 right-4 bg-[#59ff00]/20 text-[#59ff00] border-[#59ff00]/30">
+                <Badge className="absolute top-4 right-4 bg-[#E8A33C]/20 text-[#E8A33C] border-[#E8A33C]/30">
                   ⭐ Featured
                 </Badge>
               )}
@@ -300,17 +300,17 @@ export default function ProductDetailPage() {
             {/* Trust badges below image */}
             <div className="grid grid-cols-3 gap-3 mt-4">
               <div className="bg-[#151515] border border-[#2a2a2a] rounded-lg p-3 text-center">
-                <Truck className="w-5 h-5 text-[#59ff00] mx-auto mb-1" />
+                <Truck className="w-5 h-5 text-[#E8A33C] mx-auto mb-1" />
                 <p className="text-white text-xs font-medium">🚚 Pan India</p>
                 <p className="text-gray-600 text-[10px]">Delivery</p>
               </div>
               <div className="bg-[#151515] border border-[#2a2a2a] rounded-lg p-3 text-center">
-                <Shield className="w-5 h-5 text-[#59ff00] mx-auto mb-1" />
+                <Shield className="w-5 h-5 text-[#E8A33C] mx-auto mb-1" />
                 <p className="text-white text-xs font-medium">🛡️ Warranty</p>
                 <p className="text-gray-600 text-[10px]">Included</p>
               </div>
               <div className="bg-[#151515] border border-[#2a2a2a] rounded-lg p-3 text-center">
-                <Clock className="w-5 h-5 text-[#59ff00] mx-auto mb-1" />
+                <Clock className="w-5 h-5 text-[#E8A33C] mx-auto mb-1" />
                 <p className="text-white text-xs font-medium">⏱️ {product.leadTime || '7-10 days'}</p>
                 <p className="text-gray-600 text-[10px]">Lead Time</p>
               </div>
@@ -325,7 +325,7 @@ export default function ProductDetailPage() {
             className="flex flex-col"
           >
             {/* Category with emoji */}
-            <Badge className="w-fit bg-[#59ff00]/10 text-[#59ff00] border-[#59ff00]/20 mb-3">
+            <Badge className="w-fit bg-[#E8A33C]/10 text-[#E8A33C] border-[#E8A33C]/20 mb-3">
               {categoryEmoji} {product.category.name}
             </Badge>
 
@@ -336,18 +336,18 @@ export default function ProductDetailPage() {
 
             {/* Short Description */}
             {hasShortDesc && (
-              <p className="text-gray-300 text-sm mb-4 leading-relaxed border-l-2 border-[#59ff00]/40 pl-3">
+              <p className="text-gray-300 text-sm mb-4 leading-relaxed border-l-2 border-[#E8A33C]/40 pl-3">
                 {product.shortDescription}
               </p>
             )}
             {!hasShortDesc && hasBasicDesc && (
-              <p className="text-gray-400 text-sm mb-4 leading-relaxed border-l-2 border-[#59ff00]/40 pl-3">
+              <p className="text-gray-400 text-sm mb-4 leading-relaxed border-l-2 border-[#E8A33C]/40 pl-3">
                 {product.description}
               </p>
             )}
 
             {/* Price */}
-            <div className="font-[family-name:var(--font-poppins)] text-[#59ff00] text-3xl sm:text-4xl font-bold mb-1">
+            <div className="font-[family-name:var(--font-poppins)] text-[#E8A33C] text-3xl sm:text-4xl font-bold mb-1">
               {selectedVariant
                 ? formatPrice(selectedVariant.price)
                 : product.variants?.length && product.priceRange && product.priceRange.min !== product.priceRange.max
@@ -372,8 +372,8 @@ export default function ProductDetailPage() {
                       onClick={() => setSelectedVariant(v)}
                       className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors border ${
                         selectedVariant?.id === v.id
-                          ? 'bg-[#59ff00]/10 border-[#59ff00] text-[#59ff00]'
-                          : 'bg-[#1a1a1a] border-[#2a2a2a] text-gray-400 hover:border-[#59ff00]/40 hover:text-white'
+                          ? 'bg-[#E8A33C]/10 border-[#E8A33C] text-[#E8A33C]'
+                          : 'bg-[#1a1a1a] border-[#2a2a2a] text-gray-400 hover:border-[#E8A33C]/40 hover:text-white'
                       }`}
                     >
                       {v.name}
@@ -426,8 +426,8 @@ export default function ProductDetailPage() {
 
             {/* Stock Status */}
             <div className="flex items-center gap-2 mb-6">
-              <div className={`w-2.5 h-2.5 rounded-full ${(selectedVariant?.stock ?? product.stock) > 0 ? 'bg-[#59ff00] animate-pulse' : 'bg-red-500'}`} />
-              <span className={`text-sm ${(selectedVariant?.stock ?? product.stock) > 0 ? 'text-[#59ff00]' : 'text-red-400'}`}>
+              <div className={`w-2.5 h-2.5 rounded-full ${(selectedVariant?.stock ?? product.stock) > 0 ? 'bg-[#E8A33C] animate-pulse' : 'bg-red-500'}`} />
+              <span className={`text-sm ${(selectedVariant?.stock ?? product.stock) > 0 ? 'text-[#E8A33C]' : 'text-red-400'}`}>
                 {(selectedVariant?.stock ?? product.stock) > 0
                   ? `✅ ${(selectedVariant?.stock ?? product.stock)} units in stock`
                   : '❌ Currently out of stock'}
@@ -461,7 +461,7 @@ export default function ProductDetailPage() {
                 <Button
                   onClick={handleAddToCart}
                   disabled={(selectedVariant?.stock ?? product.stock) === 0}
-                  className="flex-1 bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-bold h-12 text-base"
+                  className="flex-1 bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-bold h-12 text-base"
                 >
                   <ShoppingCart className="w-5 h-5 mr-2" />
                   Add to Cart — {formatPrice((selectedVariant?.price ?? product.price) * qty)}
@@ -472,7 +472,7 @@ export default function ProductDetailPage() {
             {isRequestQuote && (
               <Button
                 onClick={() => setView('contact')}
-                className="w-full bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-bold h-12 text-base mb-4"
+                className="w-full bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-bold h-12 text-base mb-4"
               >
                 <Phone className="w-5 h-5 mr-2" />
                 📞 Request Quote for {product.name}
@@ -482,7 +482,7 @@ export default function ProductDetailPage() {
             <Button
               onClick={() => setView('contact')}
               variant="outline"
-              className="border-[#59ff00] text-[#59ff00] hover:bg-[#59ff00]/10 font-semibold h-11 mb-4"
+              className="border-[#E8A33C] text-[#E8A33C] hover:bg-[#E8A33C]/10 font-semibold h-11 mb-4"
             >
               <MessageSquare className="w-4 h-4 mr-2" />
               💬 Inquiry / Get Custom Quote
@@ -500,15 +500,15 @@ export default function ProductDetailPage() {
         >
           <Tabs defaultValue="full-details" className="w-full">
             <TabsList className="bg-[#151515] border border-[#2a2a2a] p-1 h-auto">
-              <TabsTrigger value="full-details" className="data-[state=active]:bg-[#59ff00]/10 data-[state=active]:text-[#59ff00]">
+              <TabsTrigger value="full-details" className="data-[state=active]:bg-[#E8A33C]/10 data-[state=active]:text-[#E8A33C]">
                 <FileText className="w-4 h-4 mr-1.5" />
                 📋 Full Details
               </TabsTrigger>
-              <TabsTrigger value="overview" className="data-[state=active]:bg-[#59ff00]/10 data-[state=active]:text-[#59ff00]">
+              <TabsTrigger value="overview" className="data-[state=active]:bg-[#E8A33C]/10 data-[state=active]:text-[#E8A33C]">
                 <Info className="w-4 h-4 mr-1.5" />
                 ✨ Overview
               </TabsTrigger>
-              <TabsTrigger value="specifications" className="data-[state=active]:bg-[#59ff00]/10 data-[state=active]:text-[#59ff00]">
+              <TabsTrigger value="specifications" className="data-[state=active]:bg-[#E8A33C]/10 data-[state=active]:text-[#E8A33C]">
                 <ListChecks className="w-4 h-4 mr-1.5" />
                 🔧 Specifications
               </TabsTrigger>
@@ -518,7 +518,7 @@ export default function ProductDetailPage() {
             <TabsContent value="full-details" className="mt-6">
               <div className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-6">
                 <h3 className="text-white text-lg font-bold mb-4 flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-[#59ff00]" />
+                  <FileText className="w-5 h-5 text-[#E8A33C]" />
                   {categoryEmoji} {product.name} — Full Details
                 </h3>
 
@@ -529,55 +529,55 @@ export default function ProductDetailPage() {
                 ) : (
                   <div className="text-gray-400 text-sm">
                     <p className="mb-4">{product.description || 'No detailed description available.'}</p>
-                    <p className="text-gray-500 italic">📞 Contact us at <a href="tel:+917080488840" className="text-[#59ff00] hover:underline">+91-7080488840</a> for more details about this product.</p>
+                    <p className="text-gray-500 italic">📞 Contact us at <a href="tel:+917080488840" className="text-[#E8A33C] hover:underline">+91-7080488840</a> for more details about this product.</p>
                   </div>
                 )}
 
                 {/* Key Features Section */}
                 <div className="mt-6 pt-4 border-t border-[#2a2a2a]">
-                  <h4 className="text-[#59ff00] text-sm font-semibold mb-3 flex items-center gap-2">
+                  <h4 className="text-[#E8A33C] text-sm font-semibold mb-3 flex items-center gap-2">
                     🔑 Key Features & Highlights
                   </h4>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {product.steelGrade && (
                       <li className="flex items-center gap-2 text-gray-400 text-sm">
-                        <span className="text-[#59ff00]">✓</span> 🔩 Steel Grade: <span className="text-white">{product.steelGrade}</span>
+                        <span className="text-[#E8A33C]">✓</span> 🔩 Steel Grade: <span className="text-white">{product.steelGrade}</span>
                       </li>
                     )}
                     {product.capacity && (
                       <li className="flex items-center gap-2 text-gray-400 text-sm">
-                        <span className="text-[#59ff00]">✓</span> 📦 Capacity: <span className="text-white">{product.capacity}</span>
+                        <span className="text-[#E8A33C]">✓</span> 📦 Capacity: <span className="text-white">{product.capacity}</span>
                       </li>
                     )}
                     {(selectedVariant?.dimensions || product.dimensions) && (
                       <li className="flex items-center gap-2 text-gray-400 text-sm">
-                        <span className="text-[#59ff00]">✓</span> 📐 Dimensions: <span className="text-white">{selectedVariant?.dimensions || product.dimensions}</span>
+                        <span className="text-[#E8A33C]">✓</span> 📐 Dimensions: <span className="text-white">{selectedVariant?.dimensions || product.dimensions}</span>
                       </li>
                     )}
                     {product.leadTime && (
                       <li className="flex items-center gap-2 text-gray-400 text-sm">
-                        <span className="text-[#59ff00]">✓</span> 🚚 Lead Time: <span className="text-white">{product.leadTime}</span>
+                        <span className="text-[#E8A33C]">✓</span> 🚚 Lead Time: <span className="text-white">{product.leadTime}</span>
                       </li>
                     )}
                     <li className="flex items-center gap-2 text-gray-400 text-sm">
-                      <span className="text-[#59ff00]">✓</span> 🛒 MOQ: <span className="text-white">{product.moq || 1} unit(s)</span>
+                      <span className="text-[#E8A33C]">✓</span> 🛒 MOQ: <span className="text-white">{product.moq || 1} unit(s)</span>
                     </li>
                     <li className="flex items-center gap-2 text-gray-400 text-sm">
-                      <span className="text-[#59ff00]">✓</span> 📊 Stock: <span className="text-white">{selectedVariant?.stock ?? product.stock} units</span>
+                      <span className="text-[#E8A33C]">✓</span> 📊 Stock: <span className="text-white">{selectedVariant?.stock ?? product.stock} units</span>
                     </li>
                     {product.featured && (
                       <li className="flex items-center gap-2 text-gray-400 text-sm">
-                        <span className="text-[#59ff00]">✓</span> ⭐ Featured Product
+                        <span className="text-[#E8A33C]">✓</span> ⭐ Featured Product
                       </li>
                     )}
                     <li className="flex items-center gap-2 text-gray-400 text-sm">
-                      <span className="text-[#59ff00]">✓</span> 🚛 Pan India Delivery
+                      <span className="text-[#E8A33C]">✓</span> 🚛 Pan India Delivery
                     </li>
                     <li className="flex items-center gap-2 text-gray-400 text-sm">
-                      <span className="text-[#59ff00]">✓</span> 🛡️ Warranty Included
+                      <span className="text-[#E8A33C]">✓</span> 🛡️ Warranty Included
                     </li>
                     <li className="flex items-center gap-2 text-gray-400 text-sm">
-                      <span className="text-[#59ff00]">✓</span> 🔧 Installation Support
+                      <span className="text-[#E8A33C]">✓</span> 🔧 Installation Support
                     </li>
                   </ul>
                 </div>
@@ -587,7 +587,7 @@ export default function ProductDetailPage() {
                   <Button
                     onClick={() => setView('contact')}
                     variant="outline"
-                    className="border-[#59ff00] text-[#59ff00] hover:bg-[#59ff00]/10 text-sm"
+                    className="border-[#E8A33C] text-[#E8A33C] hover:bg-[#E8A33C]/10 text-sm"
                   >
                     📧 Send Inquiry
                   </Button>
@@ -600,7 +600,7 @@ export default function ProductDetailPage() {
               <div className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-6">
                 {hasShortDesc && (
                   <div className="mb-4 pb-4 border-b border-[#2a2a2a]">
-                    <h3 className="text-[#59ff00] text-sm font-semibold mb-2 flex items-center gap-2">
+                    <h3 className="text-[#E8A33C] text-sm font-semibold mb-2 flex items-center gap-2">
                       <Zap className="w-4 h-4" />
                       ✨ Quick Summary
                     </h3>
@@ -659,7 +659,7 @@ export default function ProductDetailPage() {
             className="mt-16"
           >
             <h2 className="font-[family-name:var(--font-poppins)] text-xl md:text-2xl font-bold mb-6">
-              🔗 Related <span className="text-[#59ff00]">Products</span>
+              🔗 Related <span className="text-[#E8A33C]">Products</span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {related.map((rp) => {
@@ -668,7 +668,7 @@ export default function ProductDetailPage() {
                   <button
                     key={rp.id}
                     onClick={() => setProductDetail(rp.id)}
-                    className="group bg-[#151515] border border-[#2a2a2a] rounded-xl overflow-hidden hover:border-[#59ff00]/30 hover-lift transition-all text-left"
+                    className="group bg-[#151515] border border-[#2a2a2a] rounded-xl overflow-hidden hover:border-[#E8A33C]/30 hover-lift transition-all text-left"
                   >
                     <div className="h-36 bg-[#1a1a1a] flex items-center justify-center overflow-hidden">
                       {(rp as any).featuredImage ? (
@@ -678,16 +678,16 @@ export default function ProductDetailPage() {
                       )}
                     </div>
                     <div className="p-4">
-                      <Badge className="bg-[#59ff00]/10 text-[#59ff00] border-[#59ff00]/20 text-[10px] mb-2">
+                      <Badge className="bg-[#E8A33C]/10 text-[#E8A33C] border-[#E8A33C]/20 text-[10px] mb-2">
                         {rpEmoji} {rp.category.name}
                       </Badge>
-                      <h3 className="text-white text-sm font-semibold line-clamp-2 group-hover:text-[#59ff00] transition-colors">
+                      <h3 className="text-white text-sm font-semibold line-clamp-2 group-hover:text-[#E8A33C] transition-colors">
                         {rp.name}
                       </h3>
                       {rp.shortDescription && (
                         <p className="text-gray-500 text-xs mt-1 line-clamp-1">{rp.shortDescription}</p>
                       )}
-                      <span className="font-[family-name:var(--font-poppins)] text-[#59ff00] font-bold text-sm mt-2 block">
+                      <span className="font-[family-name:var(--font-poppins)] text-[#E8A33C] font-bold text-sm mt-2 block">
                         {rp.price === 0 ? 'Request Quote' : formatPrice(rp.price)}
                       </span>
                     </div>

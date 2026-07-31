@@ -220,7 +220,7 @@ export default function ProductsPage() {
           className="mb-8"
         >
           <h1 className="font-[family-name:var(--font-poppins)] text-2xl md:text-3xl font-bold mb-2">
-            Product <span className="text-[#59ff00]">Catalog</span>
+            Product <span className="text-[#E8A33C]">Catalog</span>
           </h1>
           <p className="text-gray-500 text-sm">
             {totalProducts} products available
@@ -239,7 +239,7 @@ export default function ProductsPage() {
                 {(selectedCategories.length > 0 || searchQuery) && (
                   <button
                     onClick={() => { setSelectedCategories([]); setSearchQuery(''); setLocalSearch(''); setPage(1) }}
-                    className="text-xs text-[#59ff00] hover:underline"
+                    className="text-xs text-[#E8A33C] hover:underline"
                   >
                     Clear All
                   </button>
@@ -258,7 +258,7 @@ export default function ProductsPage() {
                       <Checkbox
                         checked={selectedCategories.includes(cat.slug)}
                         onCheckedChange={() => toggleCategory(cat.slug)}
-                        className="data-[state=checked]:bg-[#59ff00] data-[state=checked]:border-[#59ff00]"
+                        className="data-[state=checked]:bg-[#E8A33C] data-[state=checked]:border-[#E8A33C]"
                       />
                       <span className="text-sm text-gray-400 group-hover:text-white transition-colors">
                         {cat.name}
@@ -310,7 +310,7 @@ export default function ProductsPage() {
                   <select
                     value={sort}
                     onChange={(e) => setSort(e.target.value as SortOption)}
-                    className="appearance-none bg-[#1a1a1a] border border-[#2a2a2a] text-gray-400 text-sm rounded-lg h-10 pl-3 pr-8 focus:outline-none focus:border-[#59ff00]/40"
+                    className="appearance-none bg-[#1a1a1a] border border-[#2a2a2a] text-gray-400 text-sm rounded-lg h-10 pl-3 pr-8 focus:outline-none focus:border-[#E8A33C]/40"
                   >
                     <option value="newest">Newest First</option>
                     <option value="price-asc">Price: Low to High</option>
@@ -328,14 +328,14 @@ export default function ProductsPage() {
                 {selectedCategories.map(slug => {
                   const cat = categories.find(c => c.slug === slug)
                   return cat ? (
-                    <Badge key={slug} className="bg-[#59ff00]/10 text-[#59ff00] border-[#59ff00]/20 gap-1 cursor-pointer" onClick={() => toggleCategory(slug)}>
+                    <Badge key={slug} className="bg-[#E8A33C]/10 text-[#E8A33C] border-[#E8A33C]/20 gap-1 cursor-pointer" onClick={() => toggleCategory(slug)}>
                       {cat.name}
                       <X className="w-3 h-3" />
                     </Badge>
                   ) : null
                 })}
                 {searchQuery && (
-                  <Badge className="bg-[#59ff00]/10 text-[#59ff00] border-[#59ff00]/20 gap-1 cursor-pointer" onClick={() => { setSearchQuery(''); setLocalSearch(''); setPage(1) }}>
+                  <Badge className="bg-[#E8A33C]/10 text-[#E8A33C] border-[#E8A33C]/20 gap-1 cursor-pointer" onClick={() => { setSearchQuery(''); setLocalSearch(''); setPage(1) }}>
                     &quot;{searchQuery}&quot;
                     <X className="w-3 h-3" />
                   </Badge>
@@ -358,7 +358,7 @@ export default function ProductsPage() {
                 <Button
                   onClick={() => { setSelectedCategories([]); setSearchQuery(''); setLocalSearch(''); setPage(1) }}
                   variant="outline"
-                  className="border-[#59ff00] text-[#59ff00] hover:bg-[#59ff00]/10"
+                  className="border-[#E8A33C] text-[#E8A33C] hover:bg-[#E8A33C]/10"
                 >
                   Clear Filters
                 </Button>
@@ -371,7 +371,7 @@ export default function ProductsPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.03 }}
-                    className="group bg-[#151515] border border-[#2a2a2a] rounded-xl overflow-hidden hover:border-[#59ff00]/30 hover-lift transition-all"
+                    className="group bg-[#151515] border border-[#2a2a2a] rounded-xl overflow-hidden hover:border-[#E8A33C]/30 hover-lift transition-all"
                   >
                     {/* Image */}
                     <div className="relative h-48 bg-[#1a1a1a] flex items-center justify-center overflow-hidden">
@@ -403,7 +403,7 @@ export default function ProductsPage() {
                       
                       <div className="absolute top-3 right-3">
                         {product.stock > 0 ? (
-                          <Badge className="bg-[#59ff00]/20 text-[#59ff00] border-[#59ff00]/30 text-xs">
+                          <Badge className="bg-[#E8A33C]/20 text-[#E8A33C] border-[#E8A33C]/30 text-xs">
                             ✅ In Stock
                           </Badge>
                         ) : (
@@ -418,7 +418,7 @@ export default function ProductsPage() {
                     <div className="p-4">
                       <h3
                         onClick={() => setProductDetail(product.id)}
-                        className="text-white font-semibold text-sm mb-1.5 line-clamp-2 cursor-pointer group-hover:text-[#59ff00] transition-colors"
+                        className="text-white font-semibold text-sm mb-1.5 line-clamp-2 cursor-pointer group-hover:text-[#E8A33C] transition-colors"
                       >
                         {CATEGORY_EMOJIS[product.category.slug] || '🔧'} {product.name}
                       </h3>
@@ -437,7 +437,7 @@ export default function ProductsPage() {
                       </div>
 
                       <div className="flex items-center justify-between mb-1.5">
-                        <span className="font-[family-name:var(--font-poppins)] text-[#59ff00] font-bold text-lg">
+                        <span className="font-[family-name:var(--font-poppins)] text-[#E8A33C] font-bold text-lg">
                           {product.variants?.length && product.priceRange && product.priceRange.min !== product.priceRange.max
                             ? `${formatPrice(product.priceRange.min)} - ${formatPrice(product.priceRange.max)}`
                             : formatPrice(product.price)}
@@ -458,7 +458,7 @@ export default function ProductsPage() {
                         <Button
                           onClick={() => handleAddToCart(product)}
                           disabled={(product.defaultVariant?.stock ?? product.variants?.[0]?.stock ?? product.stock) === 0}
-                          className="flex-1 bg-[#59ff00] text-black hover:bg-[#59ff00]/90 h-9 text-xs font-semibold"
+                          className="flex-1 bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 h-9 text-xs font-semibold"
                         >
                           <ShoppingCart className="w-3.5 h-3.5 mr-1" />
                           Add to Cart
@@ -533,8 +533,8 @@ export default function ProductsPage() {
                         onClick={() => setQuickViewVariant(v)}
                         className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors border ${
                           quickViewVariant?.id === v.id
-                            ? 'bg-[#59ff00]/10 border-[#59ff00] text-[#59ff00]'
-                            : 'bg-[#1a1a1a] border-[#2a2a2a] text-gray-400 hover:border-[#59ff00]/40 hover:text-white'
+                            ? 'bg-[#E8A33C]/10 border-[#E8A33C] text-[#E8A33C]'
+                            : 'bg-[#1a1a1a] border-[#2a2a2a] text-gray-400 hover:border-[#E8A33C]/40 hover:text-white'
                         }`}
                       >
                         {v.name}
@@ -557,11 +557,11 @@ export default function ProductsPage() {
                 </div>
                 {/* Details */}
                 <div className="flex flex-col">
-                  <Badge className="w-fit bg-[#59ff00]/10 text-[#59ff00] border-[#59ff00]/20 mb-3">
+                  <Badge className="w-fit bg-[#E8A33C]/10 text-[#E8A33C] border-[#E8A33C]/20 mb-3">
                     {CATEGORY_EMOJIS[quickViewProduct.category.slug] || ''} {quickViewProduct.category.name}
                   </Badge>
                   
-                  <span className="font-[family-name:var(--font-poppins)] text-[#59ff00] text-2xl font-bold mb-3">
+                  <span className="font-[family-name:var(--font-poppins)] text-[#E8A33C] text-2xl font-bold mb-3">
                     {quickViewVariant
                       ? formatPrice(quickViewVariant.price)
                       : quickViewProduct.variants?.length && quickViewProduct.priceRange && quickViewProduct.priceRange.min !== quickViewProduct.priceRange.max
@@ -594,7 +594,7 @@ export default function ProductsPage() {
                     )}
                     <div className="flex justify-between">
                       <span className="text-gray-500">📊 Availability</span>
-                      <span className={(quickViewVariant?.stock ?? quickViewProduct.stock) > 0 ? 'text-[#59ff00]' : 'text-red-400'}>
+                      <span className={(quickViewVariant?.stock ?? quickViewProduct.stock) > 0 ? 'text-[#E8A33C]' : 'text-red-400'}>
                         {(quickViewVariant?.stock ?? quickViewProduct.stock) > 0
                           ? `${quickViewVariant?.stock ?? quickViewProduct.stock} in stock`
                           : 'Out of stock'}
@@ -612,7 +612,7 @@ export default function ProductsPage() {
                     <Button
                       onClick={() => { handleAddToCart(quickViewProduct, quickViewVariant); setQuickViewProduct(null); setQuickViewVariant(null) }}
                       disabled={(quickViewVariant?.stock ?? quickViewProduct.stock) === 0}
-                      className="flex-1 bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold"
+                      className="flex-1 bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold"
                     >
                       <ShoppingCart className="w-4 h-4 mr-2" />
                       Add to Cart
@@ -626,7 +626,7 @@ export default function ProductsPage() {
                         setTimeout(() => setProductDetail(productId), 100)
                       }}
                       variant="outline"
-                      className="border-[#59ff00] text-[#59ff00] hover:bg-[#59ff00]/10"
+                      className="border-[#E8A33C] text-[#E8A33C] hover:bg-[#E8A33C]/10"
                     >
                       📋 Full Details
                     </Button>

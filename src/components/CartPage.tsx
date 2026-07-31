@@ -57,7 +57,7 @@ export default function CartPage() {
           </p>
           <Button
             onClick={() => setView('products')}
-            className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold px-8 h-12"
+            className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold px-8 h-12"
           >
             <ShoppingBag className="w-5 h-5 mr-2" />
             Continue Shopping
@@ -78,14 +78,14 @@ export default function CartPage() {
         >
           <button
             onClick={() => setView('products')}
-            className="flex items-center gap-2 text-gray-500 hover:text-[#59ff00] text-sm mb-4 transition-colors"
+            className="flex items-center gap-2 text-gray-500 hover:text-[#E8A33C] text-sm mb-4 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Continue Shopping
           </button>
           <div className="flex items-center justify-between">
             <h1 className="font-[family-name:var(--font-poppins)] text-2xl md:text-3xl font-bold">
-              Shopping <span className="text-[#59ff00]">Cart</span>
+              Shopping <span className="text-[#E8A33C]">Cart</span>
             </h1>
             <span className="text-gray-500 text-sm">{cartCount} item(s)</span>
           </div>
@@ -117,10 +117,10 @@ export default function CartPage() {
                     <h3 className="text-white font-semibold text-sm sm:text-base line-clamp-2 mb-1">
                       {item.name}
                       {item.variantName && (
-                        <span className="text-[#59ff00] text-xs font-normal ml-2">({item.variantName})</span>
+                        <span className="text-[#E8A33C] text-xs font-normal ml-2">({item.variantName})</span>
                       )}
                     </h3>
-                    <p className="text-[#59ff00] font-[family-name:var(--font-poppins)] font-bold text-sm sm:text-base mb-2">
+                    <p className="text-[#E8A33C] font-[family-name:var(--font-poppins)] font-bold text-sm sm:text-base mb-2">
                       {formatPrice(item.price)}
                     </p>
 
@@ -194,7 +194,7 @@ export default function CartPage() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-500">Shipping</span>
-                  <span className={shipping === 0 ? 'text-[#59ff00]' : 'text-white'}>
+                  <span className={shipping === 0 ? 'text-[#E8A33C]' : 'text-white'}>
                     {shipping === 0 ? 'FREE' : formatPrice(shipping)}
                   </span>
                 </div>
@@ -207,7 +207,7 @@ export default function CartPage() {
 
               <div className="flex justify-between items-center mb-6">
                 <span className="text-white font-semibold text-base">Total</span>
-                <span className="font-[family-name:var(--font-poppins)] text-[#59ff00] font-bold text-xl">
+                <span className="font-[family-name:var(--font-poppins)] text-[#E8A33C] font-bold text-xl">
                   {formatPrice(total)}
                 </span>
               </div>
@@ -231,14 +231,14 @@ export default function CartPage() {
 
               <Button
                 onClick={() => setView('checkout')}
-                className="w-full bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-bold h-12 text-base neon-glow"
+                className="w-full bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-bold h-12 text-base neon-glow"
               >
                 Proceed to Checkout
               </Button>
 
               <button
                 onClick={() => setView('products')}
-                className="w-full text-center text-gray-500 hover:text-[#59ff00] text-sm mt-3 transition-colors"
+                className="w-full text-center text-gray-500 hover:text-[#E8A33C] text-sm mt-3 transition-colors"
               >
                 Continue Shopping
               </button>

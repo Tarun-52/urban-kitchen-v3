@@ -120,7 +120,7 @@ export default function AdminDashboard() {
   const [selectedQuotation, setSelectedQuotation] = useState<any>(null)
   const [sendingQuotation, setSendingQuotation] = useState(false)
   const [quotationTemplate, setQuotationTemplate] = useState<'modern' | 'minimal' | 'corporate' | 'premium'>('modern')
-  const [companyCustomization, setCompanyCustomization] = useState({ logo: '', name: 'Urban Kitchen Manufacturing & Solutions', address: 'Sector 12, Industrial Area, New Delhi', contact: '+91-7080488840', email: 'sales@urbankitchen.com', website: 'www.urbankitchen.com', gstNumber: '07AABCU9603R1ZM', signature: '', terms: '', brandColor: '#59ff00', footerNotes: 'Thank you for your business!' })
+  const [companyCustomization, setCompanyCustomization] = useState({ logo: '', name: 'Urban Kitchen Manufacturing & Solutions', address: 'Sector 12, Industrial Area, New Delhi', contact: '+91-7080488840', email: 'sales@urbankitchen.com', website: 'www.urbankitchen.com', gstNumber: '07AABCU9603R1ZM', signature: '', terms: '', brandColor: '#E8A33C', footerNotes: 'Thank you for your business!' })
   const [employeeForm, setEmployeeForm] = useState({ name: '', email: '', phone: '', password: '', department: '', designation: '', salary: '', joiningDate: '' })
   const [amcForm, setAmcForm] = useState({ customerId: '', plan: '', startDate: '', endDate: '', amount: '', coverage: '' })
   const [serviceForm, setServiceForm] = useState({ customerId: '', contractId: '', issue: '', priority: 'medium', assignedTechnician: '' })
@@ -447,7 +447,7 @@ export default function AdminDashboard() {
       case 'employee': return 'bg-yellow-500/20 text-yellow-400'
       case 'system': return 'bg-gray-500/20 text-gray-400'
       case 'alert': return 'bg-red-500/20 text-red-400'
-      default: return 'bg-[#59ff00]/20 text-[#59ff00]'
+      default: return 'bg-[#E8A33C]/20 text-[#E8A33C]'
     }
   }
 
@@ -468,7 +468,7 @@ export default function AdminDashboard() {
     <>
       {filterSidebarItems(visibleMainNavItems, sidebarSearch).map(({ key, label, icon: Icon }) => (
         <button key={key} onClick={() => { setAdminTab(key); setMobileOpen(false) }}
-          className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 text-sm font-medium ${adminTab === key ? 'bg-[#59ff00]/10 text-[#59ff00] border border-[#59ff00]/20' : 'text-gray-400 hover:text-white hover:bg-white/5 border border-transparent'}`}
+          className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 text-sm font-medium ${adminTab === key ? 'bg-[#E8A33C]/10 text-[#E8A33C] border border-[#E8A33C]/20' : 'text-gray-400 hover:text-white hover:bg-white/5 border border-transparent'}`}
           title={sidebarCollapsed && !isMobile ? label : undefined}>
           <Icon className="w-5 h-5 flex-shrink-0" />
           {(!sidebarCollapsed || isMobile) && <span>{label}</span>}
@@ -483,7 +483,7 @@ export default function AdminDashboard() {
     const GroupIcon = group.icon
     return (
       <div className="mt-1">
-        <button onClick={() => setExpanded(!isExpanded)} className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 text-sm font-medium ${isActive ? 'text-[#59ff00]' : 'text-gray-400 hover:text-white'} hover:bg-white/5`} title={sidebarCollapsed && !isMobile ? group.label : undefined}>
+        <button onClick={() => setExpanded(!isExpanded)} className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 text-sm font-medium ${isActive ? 'text-[#E8A33C]' : 'text-gray-400 hover:text-white'} hover:bg-white/5`} title={sidebarCollapsed && !isMobile ? group.label : undefined}>
           <GroupIcon className="w-5 h-5 flex-shrink-0" />
           {(!sidebarCollapsed || isMobile) && (<><span className="flex-1 text-left">{group.label}</span><motion.div animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}><ChevronDown className="w-4 h-4" /></motion.div></>)}
         </button>
@@ -496,7 +496,7 @@ export default function AdminDashboard() {
                     {section.label && <p className="text-gray-600 text-[10px] font-bold tracking-widest px-3 py-1.5 mt-1">{section.label}</p>}
                     {section.items.map(({ key, label, icon: ItemIcon }) => (
                       <button key={key} onClick={() => { setAdminTab(key); setMobileOpen(false) }}
-                        className={`w-full flex items-center gap-2.5 px-3 py-1.5 rounded-md transition-all duration-200 text-xs font-medium ${adminTab === key ? 'bg-[#59ff00]/10 text-[#59ff00]' : 'text-gray-500 hover:text-white hover:bg-white/5'}`}>
+                        className={`w-full flex items-center gap-2.5 px-3 py-1.5 rounded-md transition-all duration-200 text-xs font-medium ${adminTab === key ? 'bg-[#E8A33C]/10 text-[#E8A33C]' : 'text-gray-500 hover:text-white hover:bg-white/5'}`}>
                         <ItemIcon className="w-4 h-4 flex-shrink-0" /><span>{label}</span>
                       </button>
                     ))}
@@ -520,7 +520,7 @@ export default function AdminDashboard() {
         <div className="flex flex-col h-full">
           <div className="p-4 flex items-center gap-3 border-b border-[#2a2a2a]">
             <Image src="/logo.jpg" alt="Urban Kitchen" width={36} height={36} className="w-9 h-9 rounded-lg object-contain flex-shrink-0" />
-            {!sidebarCollapsed && (<div className="overflow-hidden"><h1 className="text-white font-bold text-sm leading-tight">Urban Kitchen</h1><p className="text-[#59ff00] text-[10px] font-medium tracking-wider uppercase">Admin Panel</p></div>)}
+            {!sidebarCollapsed && (<div className="overflow-hidden"><h1 className="text-white font-bold text-sm leading-tight">Urban Kitchen</h1><p className="text-[#E8A33C] text-[10px] font-medium tracking-wider uppercase">Admin Panel</p></div>)}
           </div>
           {!sidebarCollapsed && (<div className="px-3 py-2"><div className="relative"><Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-500" /><Input placeholder="Search menu..." value={sidebarSearch} onChange={(e) => setSidebarSearch(e.target.value)} className="pl-8 bg-[#0b0b0b] border-[#2a2a2a] text-white placeholder:text-gray-600 h-8 text-xs rounded-lg" />{sidebarSearch && (<button onClick={() => setSidebarSearch('')} className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white"><X className="w-3 h-3" /></button>)}</div></div>)}
           <nav className="flex-1 py-1 px-2 space-y-0.5 overflow-y-auto custom-scrollbar">
@@ -530,7 +530,7 @@ export default function AdminDashboard() {
           </nav>
           <div className="p-2 border-t border-[#2a2a2a]"><button onClick={handleLogout} className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-red-400 hover:bg-red-500/10 transition-all duration-200 text-sm" title={sidebarCollapsed ? 'Logout' : undefined}><LogOut className="w-5 h-5 flex-shrink-0" />{!sidebarCollapsed && <span>Logout</span>}</button></div>
         </div>
-        <button onClick={() => setSidebarCollapsed(!sidebarCollapsed)} className="absolute top-5 z-10 w-6 h-6 rounded-full bg-[#181818] border border-[#2a2a2a] flex items-center justify-center text-gray-400 hover:text-[#59ff00] transition-colors" style={{ right: '-12px' }}>{sidebarCollapsed ? <ChevronRight className="w-3 h-3" /> : <ChevronLeft className="w-3 h-3" />}</button>
+        <button onClick={() => setSidebarCollapsed(!sidebarCollapsed)} className="absolute top-5 z-10 w-6 h-6 rounded-full bg-[#181818] border border-[#2a2a2a] flex items-center justify-center text-gray-400 hover:text-[#E8A33C] transition-colors" style={{ right: '-12px' }}>{sidebarCollapsed ? <ChevronRight className="w-3 h-3" /> : <ChevronLeft className="w-3 h-3" />}</button>
       </aside>
 
       {/* Mobile Sidebar */}
@@ -538,7 +538,7 @@ export default function AdminDashboard() {
         <SheetContent side="left" className="bg-[#101010] border-[#2a2a2a] w-72 p-0">
           <SheetHeader className="sr-only"><SheetTitle>Navigation</SheetTitle></SheetHeader>
           <div className="flex flex-col h-full">
-            <div className="p-4 flex items-center gap-3 border-b border-[#2a2a2a]"><Image src="/logo.jpg" alt="Urban Kitchen" width={36} height={36} className="w-9 h-9 rounded-lg object-contain flex-shrink-0" /><div className="overflow-hidden"><h1 className="text-white font-bold text-sm leading-tight">Urban Kitchen</h1><p className="text-[#59ff00] text-[10px] font-medium tracking-wider uppercase">Admin Panel</p></div></div>
+            <div className="p-4 flex items-center gap-3 border-b border-[#2a2a2a]"><Image src="/logo.jpg" alt="Urban Kitchen" width={36} height={36} className="w-9 h-9 rounded-lg object-contain flex-shrink-0" /><div className="overflow-hidden"><h1 className="text-white font-bold text-sm leading-tight">Urban Kitchen</h1><p className="text-[#E8A33C] text-[10px] font-medium tracking-wider uppercase">Admin Panel</p></div></div>
             <div className="px-3 py-2"><div className="relative"><Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-500" /><Input placeholder="Search menu..." value={sidebarSearch} onChange={(e) => setSidebarSearch(e.target.value)} className="pl-8 bg-[#0b0b0b] border-[#2a2a2a] text-white placeholder:text-gray-600 h-8 text-xs rounded-lg" /></div></div>
             <nav className="flex-1 py-1 px-2 space-y-0.5 overflow-y-auto custom-scrollbar">
               {renderNavItems(true)}
@@ -561,9 +561,9 @@ export default function AdminDashboard() {
             <div className="hidden md:flex items-center gap-2 bg-[#181818] border border-[#2a2a2a] rounded-lg px-3 py-1.5 w-64">
               <Search className="w-4 h-4 text-gray-500 flex-shrink-0" /><input type="text" placeholder="Search anything..." value={headerSearch} onChange={(e) => setHeaderSearch(e.target.value)} className="bg-transparent text-white text-sm placeholder:text-gray-500 outline-none w-full" />{headerSearch && <button onClick={() => setHeaderSearch('')} className="text-gray-500 hover:text-white"><X className="w-3 h-3" /></button>}
             </div>
-            <div className="hidden sm:flex items-center gap-2 bg-[#181818] border border-[#2a2a2a] rounded-lg px-3 py-1.5"><div className="w-2 h-2 rounded-full bg-[#59ff00] animate-pulse" /><span className="text-gray-400 text-xs">Online</span></div>
+            <div className="hidden sm:flex items-center gap-2 bg-[#181818] border border-[#2a2a2a] rounded-lg px-3 py-1.5"><div className="w-2 h-2 rounded-full bg-[#E8A33C] animate-pulse" /><span className="text-gray-400 text-xs">Online</span></div>
             <div className="relative" ref={notifRef}>
-              <button onClick={() => setNotifOpen(!notifOpen)} className="relative w-9 h-9 rounded-lg bg-[#181818] border border-[#2a2a2a] flex items-center justify-center text-gray-400 hover:text-white hover:border-[#59ff00]/30 transition-all">
+              <button onClick={() => setNotifOpen(!notifOpen)} className="relative w-9 h-9 rounded-lg bg-[#181818] border border-[#2a2a2a] flex items-center justify-center text-gray-400 hover:text-white hover:border-[#E8A33C]/30 transition-all">
                 <Bell className="w-4 h-4" />
                 {unreadCount > 0 && <span className="absolute -top-1 -right-1 min-w-4 h-4 rounded-full bg-red-500 text-white text-[9px] font-bold flex items-center justify-center px-1">{unreadCount > 99 ? '99+' : unreadCount}</span>}
               </button>
@@ -582,7 +582,7 @@ export default function AdminDashboard() {
                         {unreadCount > 0 && <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-red-500/20 text-red-400 border border-red-500/30 font-medium">{unreadCount} new</span>}
                       </div>
                       {unreadCount > 0 && (
-                        <button onClick={handleMarkAllRead} className="text-[#59ff00] text-[11px] font-medium hover:underline">Mark all read</button>
+                        <button onClick={handleMarkAllRead} className="text-[#E8A33C] text-[11px] font-medium hover:underline">Mark all read</button>
                       )}
                     </div>
                     <div className="overflow-y-auto max-h-[380px] custom-scrollbar">
@@ -597,7 +597,7 @@ export default function AdminDashboard() {
                           <div
                             key={n.id}
                             onClick={() => handleNotifClick(n)}
-                            className={`flex items-start gap-3 px-4 py-3 border-b border-[#2a2a2a] last:border-0 cursor-pointer transition-colors ${n.read ? 'hover:bg-white/[0.02]' : 'bg-[#59ff00]/[0.03] hover:bg-[#59ff00]/[0.06]'}`}
+                            className={`flex items-start gap-3 px-4 py-3 border-b border-[#2a2a2a] last:border-0 cursor-pointer transition-colors ${n.read ? 'hover:bg-white/[0.02]' : 'bg-[#E8A33C]/[0.03] hover:bg-[#E8A33C]/[0.06]'}`}
                           >
                             <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm flex-shrink-0 ${notifTypeColor(n.type)}`}>
                               {notifTypeIcon(n.type)}
@@ -605,7 +605,7 @@ export default function AdminDashboard() {
                             <div className="flex-1 min-w-0">
                               <div className="flex items-start justify-between gap-2">
                                 <p className={`text-sm font-medium leading-tight ${n.read ? 'text-gray-400' : 'text-white'}`}>{n.title}</p>
-                                {!n.read && <div className="w-2 h-2 rounded-full bg-[#59ff00] flex-shrink-0 mt-1.5" />}
+                                {!n.read && <div className="w-2 h-2 rounded-full bg-[#E8A33C] flex-shrink-0 mt-1.5" />}
                               </div>
                               <p className="text-gray-500 text-xs mt-0.5 line-clamp-2">{n.message}</p>
                               <p className="text-gray-600 text-[10px] mt-1">
@@ -618,7 +618,7 @@ export default function AdminDashboard() {
                     </div>
                     {notifications.length > 0 && (
                       <div className="px-4 py-2.5 border-t border-[#2a2a2a] bg-[#101010]">
-                        <button onClick={() => { setNotifOpen(false) }} className="w-full text-center text-gray-400 text-xs hover:text-[#59ff00] transition-colors">
+                        <button onClick={() => { setNotifOpen(false) }} className="w-full text-center text-gray-400 text-xs hover:text-[#E8A33C] transition-colors">
                           Close
                         </button>
                       </div>
@@ -627,7 +627,7 @@ export default function AdminDashboard() {
                 )}
               </AnimatePresence>
             </div>
-            <div className="flex items-center gap-2 pl-2 border-l border-[#2a2a2a]"><div className="w-8 h-8 rounded-full bg-[#59ff00]/20 border border-[#59ff00]/30 flex items-center justify-center"><span className="text-[#59ff00] text-xs font-bold">A</span></div><div className="hidden xl:block"><p className="text-white text-xs font-medium">Admin</p><p className="text-gray-500 text-[10px]">Super Admin</p></div></div>
+            <div className="flex items-center gap-2 pl-2 border-l border-[#2a2a2a]"><div className="w-8 h-8 rounded-full bg-[#E8A33C]/20 border border-[#E8A33C]/30 flex items-center justify-center"><span className="text-[#E8A33C] text-xs font-bold">A</span></div><div className="hidden xl:block"><p className="text-white text-xs font-medium">Admin</p><p className="text-gray-500 text-[10px]">Super Admin</p></div></div>
           </div>
         </header>
         <div className="flex-1 overflow-y-auto custom-scrollbar p-4 lg:p-6">

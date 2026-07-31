@@ -64,12 +64,12 @@ export default function CustomersTab({
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-white text-xl font-bold">Users & Customers</h2>
-        <Button onClick={openNewUser} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold"><Plus className="w-4 h-4 mr-1" /> Add User</Button>
+        <Button onClick={openNewUser} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold"><Plus className="w-4 h-4 mr-1" /> Add User</Button>
       </div>
       <div className="flex gap-2">
         {['all', 'admin', 'manager', 'employee', 'customer'].map(r => (
           <Button key={r} variant={roleFilter === r ? 'default' : 'ghost'} size="sm" onClick={() => setRoleFilter(r)}
-            className={roleFilter === r ? 'bg-[#59ff00] text-black' : 'text-gray-400 hover:text-white capitalize'}>{r === 'all' ? 'All' : r}</Button>
+            className={roleFilter === r ? 'bg-[#E8A33C] text-black' : 'text-gray-400 hover:text-white capitalize'}>{r === 'all' ? 'All' : r}</Button>
         ))}
       </div>
       <Card className="bg-[#181818] border-[#2a2a2a]">
@@ -83,7 +83,7 @@ export default function CustomersTab({
                     <TableCell className="text-white text-sm">{u.name}</TableCell>
                     <TableCell className="text-gray-300 text-sm">{u.email}</TableCell>
                     <TableCell className="text-gray-300 text-sm">{u.phone || '-'}</TableCell>
-                    <TableCell><Badge className="bg-[#59ff00]/20 text-[#59ff00] border-[#59ff00]/30 text-[10px]">{u.role?.roleName || '-'}</Badge></TableCell>
+                    <TableCell><Badge className="bg-[#E8A33C]/20 text-[#E8A33C] border-[#E8A33C]/30 text-[10px]">{u.role?.roleName || '-'}</Badge></TableCell>
                     <TableCell><Badge className={`text-[10px] ${statusBadgeCls(u.status)}`}>{u.status}</Badge></TableCell>
                     <TableCell>
                       <div className="flex gap-1">
@@ -123,7 +123,7 @@ export default function CustomersTab({
               </Select>
             </div>
           </div>
-          <DialogFooter><Button variant="ghost" onClick={() => setUserDialog(false)} className="text-gray-400">Cancel</Button><Button onClick={handleSaveUser} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90">{editUser ? 'Update' : 'Create'}</Button></DialogFooter>
+          <DialogFooter><Button variant="ghost" onClick={() => setUserDialog(false)} className="text-gray-400">Cancel</Button><Button onClick={handleSaveUser} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90">{editUser ? 'Update' : 'Create'}</Button></DialogFooter>
         </DialogContent>
       </Dialog>
     </motion.div>
