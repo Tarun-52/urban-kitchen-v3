@@ -17,19 +17,18 @@ export async function POST(request: Request) {
     const bytes = await file.arrayBuffer()
     const buffer = Buffer.from(bytes)
 
-    const uploadDir = path.join(process.cwd(), 'public', 'products')
+    const uploadDir = path.join(process.cwd(), 'uploads', 'products')
     if (!existsSync(uploadDir)) {
       await mkdir(uploadDir, { recursive: true })
     }
 
-    const ext = path.extname(file.name) || '.png'
     const safeName = file.name.replace(/[^a-zA-Z0-9.\-]/g, '_')
     const uniqueName = Date.now() + '-' + safeName
     const filePath = path.join(uploadDir, uniqueName)
 
     await writeFile(filePath, buffer)
 
-    const url = '/products/' + uniqueName
+    const url = '/api/files/products/' + uniqueName
 
     return NextResponse.json({
       status: true,
