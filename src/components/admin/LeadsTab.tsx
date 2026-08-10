@@ -75,7 +75,7 @@ export default function LeadsTab({ leads, employees, setLeadForm, setLeadDialog,
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-white text-xl font-bold">Leads</h2>
-        <Button onClick={() => { setLeadForm({ name: '', company: '', phone: '', email: '', city: '', requirement: '', message: '', source: 'website', assignedTo: '' }); setLeadDialog(true) }} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold"><Plus className="w-4 h-4 mr-1" /> Add Lead</Button>
+        <Button onClick={() => { setLeadForm({ name: '', company: '', phone: '', email: '', city: '', requirement: '', message: '', source: 'website', assignedTo: '' }); setLeadDialog(true) }} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold"><Plus className="w-4 h-4 mr-1" /> Add Lead</Button>
       </div>
       <Card className="bg-[#181818] border-[#2a2a2a]">
         <CardContent className="p-0">
@@ -92,7 +92,7 @@ export default function LeadsTab({ leads, employees, setLeadForm, setLeadDialog,
                     <TableCell className="text-gray-300 text-sm">
                       <div className="flex items-center gap-1">
                         <span>{getEmployeeName(l)}</span>
-                        <Button size="sm" variant="ghost" onClick={() => handleOpenReassign(l)} className="text-[#E8A33C] hover:text-[#E8A33C]/80 hover:bg-[#E8A33C]/10 h-6 w-6 p-0 ml-1" title="Reassign lead">
+                        <Button size="sm" variant="ghost" onClick={() => handleOpenReassign(l)} className="text-[#59ff00] hover:text-[#59ff00]/80 hover:bg-[#59ff00]/10 h-6 w-6 p-0 ml-1" title="Reassign lead">
                           <UserPlus className="w-3 h-3" />
                         </Button>
                       </div>
@@ -135,9 +135,9 @@ export default function LeadsTab({ leads, employees, setLeadForm, setLeadDialog,
                   <SelectValue placeholder="Select employee" />
                 </SelectTrigger>
                 <SelectContent className="bg-[#181818] border-[#2a2a2a]">
-                  <SelectItem value="__none__" className="text-gray-400 focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Unassigned</SelectItem>
+                  <SelectItem value="__none__" className="text-gray-400 focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Unassigned</SelectItem>
                   {employees.map((e: any) => (
-                    <SelectItem key={e.id} value={e.userId} className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">{e.user?.name}</SelectItem>
+                    <SelectItem key={e.id} value={e.userId} className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">{e.user?.name}</SelectItem>
                   ))}
                 </SelectContent>
               </Select>
@@ -145,7 +145,7 @@ export default function LeadsTab({ leads, employees, setLeadForm, setLeadDialog,
           </div>
           <DialogFooter>
             <Button variant="ghost" onClick={() => setReassignDialog(false)} className="text-gray-400 hover:text-white">Cancel</Button>
-            <Button onClick={handleReassign} disabled={reassigning} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold">
+            <Button onClick={handleReassign} disabled={reassigning} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold">
               {reassigning ? 'Reassigning...' : 'Reassign'}
             </Button>
           </DialogFooter>

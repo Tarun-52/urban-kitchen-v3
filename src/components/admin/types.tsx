@@ -19,8 +19,8 @@ import {
 import type { AdminTab } from '@/lib/store'
 
 // ─── Constants ──────────────────────────────────────────────
-export const NEON = '#E8A33C'
-export const CHART_COLORS = ['#E8A33C', '#00b4d8', '#f77f00', '#d62828', '#7209b7', '#4cc9f0']
+export const NEON = '#59ff00'
+export const CHART_COLORS = ['#59ff00', '#00b4d8', '#f77f00', '#d62828', '#7209b7', '#4cc9f0']
 
 // ─── Sidebar Navigation Types ────────────────────────────────
 export interface SidebarItem {

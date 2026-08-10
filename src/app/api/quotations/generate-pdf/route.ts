@@ -75,7 +75,7 @@ function amountToWords(amount: number): string {
 
 // ─── Color Constants ─────────────────────────────────────────────────────────
 
-const GREEN_ACCENT = rgb(89 / 255, 1.0, 0 / 255) // #E8A33C
+const GREEN_ACCENT = rgb(89 / 255, 1.0, 0 / 255) // #59ff00
 const DARK_GREEN = rgb(0.15, 0.45, 0.1)
 const BLACK = rgb(0, 0, 0)
 const WHITE = rgb(1, 1, 1)

@@ -470,7 +470,7 @@ export default function CheckoutPage() {
           </p>
           <Button
             onClick={() => setView('products')}
-            className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold px-8 h-12"
+            className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold px-8 h-12"
           >
             <ShoppingBag className="w-5 h-5 mr-2" />
             Browse Products
@@ -523,7 +523,7 @@ export default function CheckoutPage() {
         </div>
         <div className="flex justify-between">
           <span className="text-gray-500">Shipping</span>
-          <span className={shippingCost === 0 ? 'text-[#E8A33C]' : 'text-white'}>
+          <span className={shippingCost === 0 ? 'text-[#59ff00]' : 'text-white'}>
             {shippingCost === 0 ? 'FREE' : formatPrice(shippingCost)}
           </span>
         </div>
@@ -536,7 +536,7 @@ export default function CheckoutPage() {
 
       <div className="flex justify-between items-center mb-5">
         <span className="text-white font-semibold text-base">Total</span>
-        <span className="font-[family-name:var(--font-poppins)] text-[#E8A33C] font-bold text-xl">
+        <span className="font-[family-name:var(--font-poppins)] text-[#59ff00] font-bold text-xl">
           {formatPrice(total)}
         </span>
       </div>
@@ -544,11 +544,11 @@ export default function CheckoutPage() {
       {/* Trust Badges */}
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-2 text-gray-500 text-xs">
-          <ShieldCheck className="w-4 h-4 text-[#E8A33C]" />
+          <ShieldCheck className="w-4 h-4 text-[#59ff00]" />
           <span>Secure 256-bit SSL encryption</span>
         </div>
         <div className="flex items-center gap-2 text-gray-500 text-xs">
-          <Lock className="w-4 h-4 text-[#E8A33C]" />
+          <Lock className="w-4 h-4 text-[#59ff00]" />
           <span>Your payment info is safe with us</span>
         </div>
       </div>
@@ -570,9 +570,9 @@ export default function CheckoutPage() {
                 className={`
                   w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-300
                   ${isCompleted
-                    ? 'bg-[#E8A33C] border-[#E8A33C] text-black'
+                    ? 'bg-[#59ff00] border-[#59ff00] text-black'
                     : isActive
-                      ? 'border-[#E8A33C] text-[#E8A33C] bg-[#E8A33C]/10'
+                      ? 'border-[#59ff00] text-[#59ff00] bg-[#59ff00]/10'
                       : 'border-[#2a2a2a] text-gray-600 bg-[#151515]'
                   }
                 `}
@@ -587,7 +587,7 @@ export default function CheckoutPage() {
               </motion.div>
               <span className={`
                 text-xs mt-1.5 font-medium hidden sm:block
-                ${isActive ? 'text-[#E8A33C]' : isCompleted ? 'text-[#E8A33C]/70' : 'text-gray-600'}
+                ${isActive ? 'text-[#59ff00]' : isCompleted ? 'text-[#59ff00]/70' : 'text-gray-600'}
               `}>
                 {step.label}
               </span>
@@ -595,7 +595,7 @@ export default function CheckoutPage() {
             {i < STEPS.length - 1 && (
               <div className={`
                 w-12 sm:w-20 md:w-28 h-0.5 mx-2 transition-colors duration-300
-                ${step.num < currentStep ? 'bg-[#E8A33C]' : 'bg-[#2a2a2a]'}
+                ${step.num < currentStep ? 'bg-[#59ff00]' : 'bg-[#2a2a2a]'}
               `} />
             )}
           </div>
@@ -615,7 +615,7 @@ export default function CheckoutPage() {
     >
       <div className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-6 md:p-8 max-w-lg mx-auto">
         <h2 className="font-[family-name:var(--font-poppins)] text-xl font-bold text-white mb-1">
-          Sign In to <span className="text-[#E8A33C]">Checkout</span>
+          Sign In to <span className="text-[#59ff00]">Checkout</span>
         </h2>
         <p className="text-gray-500 text-sm mb-6">
           Log in or create an account to continue with your order.
@@ -625,13 +625,13 @@ export default function CheckoutPage() {
           <TabsList className="bg-[#1a1a1a] border border-[#2a2a2a] w-full mb-6 h-10">
             <TabsTrigger
               value="login"
-              className="flex-1 data-[state=active]:bg-[#E8A33C] data-[state=active]:text-black data-[state=active]:shadow-none text-gray-400 text-sm"
+              className="flex-1 data-[state=active]:bg-[#59ff00] data-[state=active]:text-black data-[state=active]:shadow-none text-gray-400 text-sm"
             >
               Login
             </TabsTrigger>
             <TabsTrigger
               value="register"
-              className="flex-1 data-[state=active]:bg-[#E8A33C] data-[state=active]:text-black data-[state=active]:shadow-none text-gray-400 text-sm"
+              className="flex-1 data-[state=active]:bg-[#59ff00] data-[state=active]:text-black data-[state=active]:shadow-none text-gray-400 text-sm"
             >
               Register
             </TabsTrigger>
@@ -647,7 +647,7 @@ export default function CheckoutPage() {
                   placeholder="you@example.com"
                   value={loginForm.email}
                   onChange={(e) => { setLoginForm(prev => ({ ...prev, email: e.target.value })); if (authErrors.email) setAuthErrors(prev => { const n = {...prev}; delete n.email; return n }) }}
-                  className="bg-[#1a1a1a] border-[#2a2a2a] text-white h-11 focus-visible:border-[#E8A33C] focus-visible:ring-1 focus-visible:ring-[#E8A33C]/30"
+                  className="bg-[#1a1a1a] border-[#2a2a2a] text-white h-11 focus-visible:border-[#59ff00] focus-visible:ring-1 focus-visible:ring-[#59ff00]/30"
                   onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
                 />
                 {authErrors.email && <p className="text-red-400 text-xs mt-1">{authErrors.email}</p>}
@@ -661,7 +661,7 @@ export default function CheckoutPage() {
                     placeholder="Enter your password"
                     value={loginForm.password}
                     onChange={(e) => { setLoginForm(prev => ({ ...prev, password: e.target.value })); if (authErrors.password) setAuthErrors(prev => { const n = {...prev}; delete n.password; return n }) }}
-                    className="bg-[#1a1a1a] border-[#2a2a2a] text-white h-11 pr-10 focus-visible:border-[#E8A33C] focus-visible:ring-1 focus-visible:ring-[#E8A33C]/30"
+                    className="bg-[#1a1a1a] border-[#2a2a2a] text-white h-11 pr-10 focus-visible:border-[#59ff00] focus-visible:ring-1 focus-visible:ring-[#59ff00]/30"
                     onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
                   />
                   <button
@@ -678,7 +678,7 @@ export default function CheckoutPage() {
               <Button
                 onClick={handleLogin}
                 disabled={authLoading}
-                className="w-full bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold h-12 neon-glow mt-2"
+                className="w-full bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold h-12 neon-glow mt-2"
               >
                 {authLoading ? <Loader2 className="w-5 h-5 animate-spin mr-2" /> : null}
                 {authLoading ? 'Signing In...' : 'Sign In & Continue'}
@@ -695,7 +695,7 @@ export default function CheckoutPage() {
                   placeholder="John Doe"
                   value={registerForm.name}
                   onChange={(e) => { setRegisterForm(prev => ({ ...prev, name: e.target.value })); if (authErrors.regName) setAuthErrors(prev => { const n = {...prev}; delete n.regName; return n }) }}
-                  className="bg-[#1a1a1a] border-[#2a2a2a] text-white h-11 focus-visible:border-[#E8A33C] focus-visible:ring-1 focus-visible:ring-[#E8A33C]/30"
+                  className="bg-[#1a1a1a] border-[#2a2a2a] text-white h-11 focus-visible:border-[#59ff00] focus-visible:ring-1 focus-visible:ring-[#59ff00]/30"
                 />
                 {authErrors.regName && <p className="text-red-400 text-xs mt-1">{authErrors.regName}</p>}
               </div>
@@ -707,7 +707,7 @@ export default function CheckoutPage() {
                   placeholder="you@example.com"
                   value={registerForm.email}
                   onChange={(e) => { setRegisterForm(prev => ({ ...prev, email: e.target.value })); if (authErrors.regEmail) setAuthErrors(prev => { const n = {...prev}; delete n.regEmail; return n }) }}
-                  className="bg-[#1a1a1a] border-[#2a2a2a] text-white h-11 focus-visible:border-[#E8A33C] focus-visible:ring-1 focus-visible:ring-[#E8A33C]/30"
+                  className="bg-[#1a1a1a] border-[#2a2a2a] text-white h-11 focus-visible:border-[#59ff00] focus-visible:ring-1 focus-visible:ring-[#59ff00]/30"
                 />
                 {authErrors.regEmail && <p className="text-red-400 text-xs mt-1">{authErrors.regEmail}</p>}
               </div>
@@ -719,7 +719,7 @@ export default function CheckoutPage() {
                   placeholder="9876543210"
                   value={registerForm.phone}
                   onChange={(e) => { setRegisterForm(prev => ({ ...prev, phone: e.target.value })); if (authErrors.regPhone) setAuthErrors(prev => { const n = {...prev}; delete n.regPhone; return n }) }}
-                  className="bg-[#1a1a1a] border-[#2a2a2a] text-white h-11 focus-visible:border-[#E8A33C] focus-visible:ring-1 focus-visible:ring-[#E8A33C]/30"
+                  className="bg-[#1a1a1a] border-[#2a2a2a] text-white h-11 focus-visible:border-[#59ff00] focus-visible:ring-1 focus-visible:ring-[#59ff00]/30"
                 />
                 {authErrors.regPhone && <p className="text-red-400 text-xs mt-1">{authErrors.regPhone}</p>}
               </div>
@@ -732,7 +732,7 @@ export default function CheckoutPage() {
                     placeholder="Min 6 characters"
                     value={registerForm.password}
                     onChange={(e) => { setRegisterForm(prev => ({ ...prev, password: e.target.value })); if (authErrors.regPassword) setAuthErrors(prev => { const n = {...prev}; delete n.regPassword; return n }) }}
-                    className="bg-[#1a1a1a] border-[#2a2a2a] text-white h-11 pr-10 focus-visible:border-[#E8A33C] focus-visible:ring-1 focus-visible:ring-[#E8A33C]/30"
+                    className="bg-[#1a1a1a] border-[#2a2a2a] text-white h-11 pr-10 focus-visible:border-[#59ff00] focus-visible:ring-1 focus-visible:ring-[#59ff00]/30"
                   />
                   <button
                     type="button"
@@ -752,7 +752,7 @@ export default function CheckoutPage() {
                   placeholder="Re-enter your password"
                   value={registerForm.confirmPassword}
                   onChange={(e) => { setRegisterForm(prev => ({ ...prev, confirmPassword: e.target.value })); if (authErrors.regConfirmPassword) setAuthErrors(prev => { const n = {...prev}; delete n.regConfirmPassword; return n }) }}
-                  className="bg-[#1a1a1a] border-[#2a2a2a] text-white h-11 focus-visible:border-[#E8A33C] focus-visible:ring-1 focus-visible:ring-[#E8A33C]/30"
+                  className="bg-[#1a1a1a] border-[#2a2a2a] text-white h-11 focus-visible:border-[#59ff00] focus-visible:ring-1 focus-visible:ring-[#59ff00]/30"
                 />
                 {authErrors.regConfirmPassword && <p className="text-red-400 text-xs mt-1">{authErrors.regConfirmPassword}</p>}
               </div>
@@ -760,7 +760,7 @@ export default function CheckoutPage() {
               <Button
                 onClick={handleRegister}
                 disabled={authLoading}
-                className="w-full bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold h-12 neon-glow mt-2"
+                className="w-full bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold h-12 neon-glow mt-2"
               >
                 {authLoading ? <Loader2 className="w-5 h-5 animate-spin mr-2" /> : null}
                 {authLoading ? 'Creating Account...' : 'Create Account & Continue'}
@@ -783,7 +783,7 @@ export default function CheckoutPage() {
     >
       <div className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-6 md:p-8">
         <h2 className="font-[family-name:var(--font-poppins)] text-xl font-bold text-white mb-1">
-          Shipping <span className="text-[#E8A33C]">Details</span>
+          Shipping <span className="text-[#59ff00]">Details</span>
         </h2>
         <p className="text-gray-500 text-sm mb-6">
           Where should we deliver your order?
@@ -793,14 +793,14 @@ export default function CheckoutPage() {
           {/* Full Name */}
           <div>
             <Label className="text-gray-400 text-sm mb-1.5 block">
-              Full Name <span className="text-[#E8A33C]">*</span>
+              Full Name <span className="text-[#59ff00]">*</span>
             </Label>
             <Input
               placeholder="Full Name"
               value={shipping.fullName}
               onChange={(e) => handleShippingChange('fullName', e.target.value)}
               onBlur={() => handleShippingBlur('fullName')}
-              className={`bg-[#1a1a1a] text-white h-11 focus-visible:border-[#E8A33C] focus-visible:ring-1 focus-visible:ring-[#E8A33C]/30 ${shippingTouched.fullName && shippingErrors.fullName ? 'border-red-500/60 focus-visible:border-red-400 focus-visible:ring-red-400/20' : 'border-[#2a2a2a]'}`}
+              className={`bg-[#1a1a1a] text-white h-11 focus-visible:border-[#59ff00] focus-visible:ring-1 focus-visible:ring-[#59ff00]/30 ${shippingTouched.fullName && shippingErrors.fullName ? 'border-red-500/60 focus-visible:border-red-400 focus-visible:ring-red-400/20' : 'border-[#2a2a2a]'}`}
             />
             {shippingTouched.fullName && shippingErrors.fullName && (
               <p className="text-red-400 text-xs mt-1 animate-in fade-in slide-in-from-top-1 duration-200">{shippingErrors.fullName}</p>
@@ -810,7 +810,7 @@ export default function CheckoutPage() {
           {/* Phone */}
           <div>
             <Label className="text-gray-400 text-sm mb-1.5 block">
-              Phone Number <span className="text-[#E8A33C]">*</span>
+              Phone Number <span className="text-[#59ff00]">*</span>
             </Label>
             <Input
               type="tel"
@@ -818,7 +818,7 @@ export default function CheckoutPage() {
               value={shipping.phone}
               onChange={(e) => handleShippingChange('phone', e.target.value)}
               onBlur={() => handleShippingBlur('phone')}
-              className={`bg-[#1a1a1a] text-white h-11 focus-visible:border-[#E8A33C] focus-visible:ring-1 focus-visible:ring-[#E8A33C]/30 ${shippingTouched.phone && shippingErrors.phone ? 'border-red-500/60 focus-visible:border-red-400 focus-visible:ring-red-400/20' : 'border-[#2a2a2a]'}`}
+              className={`bg-[#1a1a1a] text-white h-11 focus-visible:border-[#59ff00] focus-visible:ring-1 focus-visible:ring-[#59ff00]/30 ${shippingTouched.phone && shippingErrors.phone ? 'border-red-500/60 focus-visible:border-red-400 focus-visible:ring-red-400/20' : 'border-[#2a2a2a]'}`}
             />
             {shippingTouched.phone && shippingErrors.phone && (
               <p className="text-red-400 text-xs mt-1 animate-in fade-in slide-in-from-top-1 duration-200">{shippingErrors.phone}</p>
@@ -828,7 +828,7 @@ export default function CheckoutPage() {
           {/* Email */}
           <div className="md:col-span-2">
             <Label className="text-gray-400 text-sm mb-1.5 block">
-              Email <span className="text-[#E8A33C]">*</span>
+              Email <span className="text-[#59ff00]">*</span>
             </Label>
             <Input
               type="email"
@@ -836,7 +836,7 @@ export default function CheckoutPage() {
               value={shipping.email}
               onChange={(e) => handleShippingChange('email', e.target.value)}
               onBlur={() => handleShippingBlur('email')}
-              className={`bg-[#1a1a1a] text-white h-11 focus-visible:border-[#E8A33C] focus-visible:ring-1 focus-visible:ring-[#E8A33C]/30 ${shippingTouched.email && shippingErrors.email ? 'border-red-500/60 focus-visible:border-red-400 focus-visible:ring-red-400/20' : 'border-[#2a2a2a]'}`}
+              className={`bg-[#1a1a1a] text-white h-11 focus-visible:border-[#59ff00] focus-visible:ring-1 focus-visible:ring-[#59ff00]/30 ${shippingTouched.email && shippingErrors.email ? 'border-red-500/60 focus-visible:border-red-400 focus-visible:ring-red-400/20' : 'border-[#2a2a2a]'}`}
             />
             {shippingTouched.email && shippingErrors.email && (
               <p className="text-red-400 text-xs mt-1 animate-in fade-in slide-in-from-top-1 duration-200">{shippingErrors.email}</p>
@@ -846,14 +846,14 @@ export default function CheckoutPage() {
           {/* Address Line 1 */}
           <div className="md:col-span-2">
             <Label className="text-gray-400 text-sm mb-1.5 block">
-              Address Line 1 <span className="text-[#E8A33C]">*</span>
+              Address Line 1 <span className="text-[#59ff00]">*</span>
             </Label>
             <Input
               placeholder="House no., Building, Street"
               value={shipping.address1}
               onChange={(e) => handleShippingChange('address1', e.target.value)}
               onBlur={() => handleShippingBlur('address1')}
-              className={`bg-[#1a1a1a] text-white h-11 focus-visible:border-[#E8A33C] focus-visible:ring-1 focus-visible:ring-[#E8A33C]/30 ${shippingTouched.address1 && shippingErrors.address1 ? 'border-red-500/60 focus-visible:border-red-400 focus-visible:ring-red-400/20' : 'border-[#2a2a2a]'}`}
+              className={`bg-[#1a1a1a] text-white h-11 focus-visible:border-[#59ff00] focus-visible:ring-1 focus-visible:ring-[#59ff00]/30 ${shippingTouched.address1 && shippingErrors.address1 ? 'border-red-500/60 focus-visible:border-red-400 focus-visible:ring-red-400/20' : 'border-[#2a2a2a]'}`}
             />
             {shippingTouched.address1 && shippingErrors.address1 && (
               <p className="text-red-400 text-xs mt-1 animate-in fade-in slide-in-from-top-1 duration-200">{shippingErrors.address1}</p>
@@ -867,21 +867,21 @@ export default function CheckoutPage() {
               placeholder="Area, Colony, Landmark (Optional)"
               value={shipping.address2}
               onChange={(e) => handleShippingChange('address2', e.target.value)}
-              className="bg-[#1a1a1a] border-[#2a2a2a] text-white h-11 focus-visible:border-[#E8A33C] focus-visible:ring-1 focus-visible:ring-[#E8A33C]/30"
+              className="bg-[#1a1a1a] border-[#2a2a2a] text-white h-11 focus-visible:border-[#59ff00] focus-visible:ring-1 focus-visible:ring-[#59ff00]/30"
             />
           </div>
 
           {/* City */}
           <div>
             <Label className="text-gray-400 text-sm mb-1.5 block">
-              City <span className="text-[#E8A33C]">*</span>
+              City <span className="text-[#59ff00]">*</span>
             </Label>
             <Input
               placeholder="City"
               value={shipping.city}
               onChange={(e) => handleShippingChange('city', e.target.value)}
               onBlur={() => handleShippingBlur('city')}
-              className={`bg-[#1a1a1a] text-white h-11 focus-visible:border-[#E8A33C] focus-visible:ring-1 focus-visible:ring-[#E8A33C]/30 ${shippingTouched.city && shippingErrors.city ? 'border-red-500/60 focus-visible:border-red-400 focus-visible:ring-red-400/20' : 'border-[#2a2a2a]'}`}
+              className={`bg-[#1a1a1a] text-white h-11 focus-visible:border-[#59ff00] focus-visible:ring-1 focus-visible:ring-[#59ff00]/30 ${shippingTouched.city && shippingErrors.city ? 'border-red-500/60 focus-visible:border-red-400 focus-visible:ring-red-400/20' : 'border-[#2a2a2a]'}`}
             />
             {shippingTouched.city && shippingErrors.city && (
               <p className="text-red-400 text-xs mt-1 animate-in fade-in slide-in-from-top-1 duration-200">{shippingErrors.city}</p>
@@ -891,13 +891,13 @@ export default function CheckoutPage() {
           {/* State */}
           <div>
             <Label className="text-gray-400 text-sm mb-1.5 block">
-              State <span className="text-[#E8A33C]">*</span>
+              State <span className="text-[#59ff00]">*</span>
             </Label>
             <select
               value={shipping.state}
               onChange={(e) => { handleShippingChange('state', e.target.value); handleShippingBlur('state') }}
               onBlur={() => handleShippingBlur('state')}
-              className={`w-full h-11 bg-[#1a1a1a] text-white rounded-md px-3 text-sm focus:outline-none focus:border-[#E8A33C] focus:ring-1 focus:ring-[#E8A33C]/30 appearance-none cursor-pointer ${shippingTouched.state && shippingErrors.state ? 'border-2 border-red-500/60 focus:border-red-400 focus:ring-red-400/20' : 'border border-[#2a2a2a]'}`}
+              className={`w-full h-11 bg-[#1a1a1a] text-white rounded-md px-3 text-sm focus:outline-none focus:border-[#59ff00] focus:ring-1 focus:ring-[#59ff00]/30 appearance-none cursor-pointer ${shippingTouched.state && shippingErrors.state ? 'border-2 border-red-500/60 focus:border-red-400 focus:ring-red-400/20' : 'border border-[#2a2a2a]'}`}
             >
               <option value="" className="bg-[#1a1a1a]">Select State</option>
               {INDIAN_STATES.map(state => (
@@ -912,7 +912,7 @@ export default function CheckoutPage() {
           {/* PIN Code */}
           <div>
             <Label className="text-gray-400 text-sm mb-1.5 block">
-              PIN Code <span className="text-[#E8A33C]">*</span>
+              PIN Code <span className="text-[#59ff00]">*</span>
             </Label>
             <Input
               type="text"
@@ -921,7 +921,7 @@ export default function CheckoutPage() {
               value={shipping.pincode}
               onChange={(e) => handleShippingChange('pincode', e.target.value.replace(/\D/g, ''))}
               onBlur={() => handleShippingBlur('pincode')}
-              className={`bg-[#1a1a1a] text-white h-11 focus-visible:border-[#E8A33C] focus-visible:ring-1 focus-visible:ring-[#E8A33C]/30 ${shippingTouched.pincode && shippingErrors.pincode ? 'border-red-500/60 focus-visible:border-red-400 focus-visible:ring-red-400/20' : 'border-[#2a2a2a]'}`}
+              className={`bg-[#1a1a1a] text-white h-11 focus-visible:border-[#59ff00] focus-visible:ring-1 focus-visible:ring-[#59ff00]/30 ${shippingTouched.pincode && shippingErrors.pincode ? 'border-red-500/60 focus-visible:border-red-400 focus-visible:ring-red-400/20' : 'border-[#2a2a2a]'}`}
             />
             {shippingTouched.pincode && shippingErrors.pincode && (
               <p className="text-red-400 text-xs mt-1 animate-in fade-in slide-in-from-top-1 duration-200">{shippingErrors.pincode}</p>
@@ -938,7 +938,7 @@ export default function CheckoutPage() {
               value={shipping.gstNumber}
               onChange={(e) => handleShippingChange('gstNumber', e.target.value.toUpperCase())}
               onBlur={() => handleShippingBlur('gstNumber')}
-              className={`bg-[#1a1a1a] text-white h-11 focus-visible:border-[#E8A33C] focus-visible:ring-1 focus-visible:ring-[#E8A33C]/30 ${shippingTouched.gstNumber && shippingErrors.gstNumber ? 'border-red-500/60 focus-visible:border-red-400 focus-visible:ring-red-400/20' : 'border-[#2a2a2a]'}`}
+              className={`bg-[#1a1a1a] text-white h-11 focus-visible:border-[#59ff00] focus-visible:ring-1 focus-visible:ring-[#59ff00]/30 ${shippingTouched.gstNumber && shippingErrors.gstNumber ? 'border-red-500/60 focus-visible:border-red-400 focus-visible:ring-red-400/20' : 'border-[#2a2a2a]'}`}
             />
             {shippingTouched.gstNumber && shippingErrors.gstNumber && (
               <p className="text-red-400 text-xs mt-1 animate-in fade-in slide-in-from-top-1 duration-200">{shippingErrors.gstNumber}</p>
@@ -952,7 +952,7 @@ export default function CheckoutPage() {
               placeholder="Special instructions for delivery (Optional)"
               value={shipping.notes}
               onChange={(e) => handleShippingChange('notes', e.target.value)}
-              className="bg-[#1a1a1a] border-[#2a2a2a] text-white min-h-[80px] focus-visible:border-[#E8A33C] focus-visible:ring-1 focus-visible:ring-[#E8A33C]/30"
+              className="bg-[#1a1a1a] border-[#2a2a2a] text-white min-h-[80px] focus-visible:border-[#59ff00] focus-visible:ring-1 focus-visible:ring-[#59ff00]/30"
             />
           </div>
         </div>
@@ -970,7 +970,7 @@ export default function CheckoutPage() {
           <Button
             type="button"
             onClick={handleShippingNext}
-            className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold h-12 px-6 neon-glow"
+            className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold h-12 px-6 neon-glow"
           >
             Continue to Payment
             <ArrowRight className="w-4 h-4 ml-2" />
@@ -991,7 +991,7 @@ export default function CheckoutPage() {
     >
       <div className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-6 md:p-8">
         <h2 className="font-[family-name:var(--font-poppins)] text-xl font-bold text-white mb-1">
-          Payment <span className="text-[#E8A33C]">Method</span>
+          Payment <span className="text-[#59ff00]">Method</span>
         </h2>
         <p className="text-gray-500 text-sm mb-6">
           Choose how you would like to pay for your order.
@@ -1005,14 +1005,14 @@ export default function CheckoutPage() {
             className={`
               flex items-center gap-4 p-4 rounded-xl border-2 text-left transition-all duration-200
               ${paymentMethod === 'cod'
-                ? 'border-[#E8A33C] bg-[#E8A33C]/5'
-                : 'border-[#2a2a2a] bg-[#1a1a1a] hover:border-[#E8A33C]/30'
+                ? 'border-[#59ff00] bg-[#59ff00]/5'
+                : 'border-[#2a2a2a] bg-[#1a1a1a] hover:border-[#59ff00]/30'
               }
             `}
           >
             <div className={`
               w-12 h-12 rounded-lg flex items-center justify-center shrink-0
-              ${paymentMethod === 'cod' ? 'bg-[#E8A33C]/20 text-[#E8A33C]' : 'bg-[#151515] text-gray-500'}
+              ${paymentMethod === 'cod' ? 'bg-[#59ff00]/20 text-[#59ff00]' : 'bg-[#151515] text-gray-500'}
             `}>
               <Banknote className="w-6 h-6" />
             </div>
@@ -1026,9 +1026,9 @@ export default function CheckoutPage() {
             </div>
             <div className={`
               w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all
-              ${paymentMethod === 'cod' ? 'border-[#E8A33C]' : 'border-[#2a2a2a]'}
+              ${paymentMethod === 'cod' ? 'border-[#59ff00]' : 'border-[#2a2a2a]'}
             `}>
-              {paymentMethod === 'cod' && <div className="w-2.5 h-2.5 rounded-full bg-[#E8A33C]" />}
+              {paymentMethod === 'cod' && <div className="w-2.5 h-2.5 rounded-full bg-[#59ff00]" />}
             </div>
           </button>
 
@@ -1038,17 +1038,17 @@ export default function CheckoutPage() {
             className={`
               flex items-center gap-4 p-4 rounded-xl border-2 text-left transition-all duration-200 relative
               ${paymentMethod === 'razorpay'
-                ? 'border-[#E8A33C] bg-[#E8A33C]/5'
-                : 'border-[#2a2a2a] bg-[#1a1a1a] hover:border-[#E8A33C]/30'
+                ? 'border-[#59ff00] bg-[#59ff00]/5'
+                : 'border-[#2a2a2a] bg-[#1a1a1a] hover:border-[#59ff00]/30'
               }
             `}
           >
-            <Badge className="absolute -top-2.5 right-3 bg-[#E8A33C] text-black text-[10px] font-bold px-2 py-0 h-5">
+            <Badge className="absolute -top-2.5 right-3 bg-[#59ff00] text-black text-[10px] font-bold px-2 py-0 h-5">
               Recommended
             </Badge>
             <div className={`
               w-12 h-12 rounded-lg flex items-center justify-center shrink-0
-              ${paymentMethod === 'razorpay' ? 'bg-[#E8A33C]/20 text-[#E8A33C]' : 'bg-[#151515] text-gray-500'}
+              ${paymentMethod === 'razorpay' ? 'bg-[#59ff00]/20 text-[#59ff00]' : 'bg-[#151515] text-gray-500'}
             `}>
               <CreditCard className="w-6 h-6" />
             </div>
@@ -1062,9 +1062,9 @@ export default function CheckoutPage() {
             </div>
             <div className={`
               w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all
-              ${paymentMethod === 'razorpay' ? 'border-[#E8A33C]' : 'border-[#2a2a2a]'}
+              ${paymentMethod === 'razorpay' ? 'border-[#59ff00]' : 'border-[#2a2a2a]'}
             `}>
-              {paymentMethod === 'razorpay' && <div className="w-2.5 h-2.5 rounded-full bg-[#E8A33C]" />}
+              {paymentMethod === 'razorpay' && <div className="w-2.5 h-2.5 rounded-full bg-[#59ff00]" />}
             </div>
           </button>
 
@@ -1074,14 +1074,14 @@ export default function CheckoutPage() {
             className={`
               flex items-center gap-4 p-4 rounded-xl border-2 text-left transition-all duration-200
               ${paymentMethod === 'bank_transfer'
-                ? 'border-[#E8A33C] bg-[#E8A33C]/5'
-                : 'border-[#2a2a2a] bg-[#1a1a1a] hover:border-[#E8A33C]/30'
+                ? 'border-[#59ff00] bg-[#59ff00]/5'
+                : 'border-[#2a2a2a] bg-[#1a1a1a] hover:border-[#59ff00]/30'
               }
             `}
           >
             <div className={`
               w-12 h-12 rounded-lg flex items-center justify-center shrink-0
-              ${paymentMethod === 'bank_transfer' ? 'bg-[#E8A33C]/20 text-[#E8A33C]' : 'bg-[#151515] text-gray-500'}
+              ${paymentMethod === 'bank_transfer' ? 'bg-[#59ff00]/20 text-[#59ff00]' : 'bg-[#151515] text-gray-500'}
             `}>
               <Building2 className="w-6 h-6" />
             </div>
@@ -1095,9 +1095,9 @@ export default function CheckoutPage() {
             </div>
             <div className={`
               w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all
-              ${paymentMethod === 'bank_transfer' ? 'border-[#E8A33C]' : 'border-[#2a2a2a]'}
+              ${paymentMethod === 'bank_transfer' ? 'border-[#59ff00]' : 'border-[#2a2a2a]'}
             `}>
-              {paymentMethod === 'bank_transfer' && <div className="w-2.5 h-2.5 rounded-full bg-[#E8A33C]" />}
+              {paymentMethod === 'bank_transfer' && <div className="w-2.5 h-2.5 rounded-full bg-[#59ff00]" />}
             </div>
           </button>
         </div>
@@ -1108,7 +1108,7 @@ export default function CheckoutPage() {
             termsHighlight
               ? 'bg-red-500/10 border-red-500/60 ring-2 ring-red-500/30'
               : termsAccepted
-                ? 'bg-[#E8A33C]/5 border-[#E8A33C]/30'
+                ? 'bg-[#59ff00]/5 border-[#59ff00]/30'
                 : 'bg-[#1a1a1a] border-[#2a2a2a]'
           }`}
         >
@@ -1119,16 +1119,16 @@ export default function CheckoutPage() {
               setTermsAccepted(checked === true)
               if (checked) setTermsHighlight(false)
             }}
-            className={`mt-0.5 data-[state=checked]:bg-[#E8A33C] data-[state=checked]:border-[#E8A33C] data-[state=checked]:text-black ${
+            className={`mt-0.5 data-[state=checked]:bg-[#59ff00] data-[state=checked]:border-[#59ff00] data-[state=checked]:text-black ${
               termsHighlight ? 'border-red-500 animate-pulse' : ''
             }`}
           />
           <div className="flex-1">
             <Label htmlFor="terms" className="text-gray-400 text-sm cursor-pointer leading-relaxed">
               I agree to the{' '}
-              <span className="text-[#E8A33C] hover:underline cursor-pointer">Terms of Service</span>
+              <span className="text-[#59ff00] hover:underline cursor-pointer">Terms of Service</span>
               {' '}and{' '}
-              <span className="text-[#E8A33C] hover:underline cursor-pointer">Privacy Policy</span>
+              <span className="text-[#59ff00] hover:underline cursor-pointer">Privacy Policy</span>
             </Label>
             {termsHighlight && (
               <p className="text-red-400 text-xs mt-1.5 font-medium flex items-center gap-1">
@@ -1152,7 +1152,7 @@ export default function CheckoutPage() {
           <Button
             onClick={handlePlaceOrder}
             disabled={orderPlacing}
-            className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold h-12 px-8 neon-glow disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold h-12 px-8 neon-glow disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {orderPlacing ? (
               <>
@@ -1197,13 +1197,13 @@ export default function CheckoutPage() {
         >
           <button
             onClick={() => currentStep === 1 ? setView('cart') : goBack()}
-            className="flex items-center gap-2 text-gray-500 hover:text-[#E8A33C] text-sm mb-4 transition-colors"
+            className="flex items-center gap-2 text-gray-500 hover:text-[#59ff00] text-sm mb-4 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             {currentStep === 1 ? 'Back to Cart' : 'Previous Step'}
           </button>
           <h1 className="font-[family-name:var(--font-poppins)] text-2xl md:text-3xl font-bold">
-            Secure <span className="text-[#E8A33C]">Checkout</span>
+            Secure <span className="text-[#59ff00]">Checkout</span>
           </h1>
         </motion.div>
 
@@ -1243,15 +1243,15 @@ export default function CheckoutPage() {
             <div className="lg:hidden col-span-full">
               <Collapsible open={summaryOpen} onOpenChange={setSummaryOpen}>
                 <CollapsibleTrigger asChild>
-                  <button className="w-full flex items-center justify-between bg-[#151515] border border-[#2a2a2a] rounded-xl p-4 hover:border-[#E8A33C]/20 transition-colors">
+                  <button className="w-full flex items-center justify-between bg-[#151515] border border-[#2a2a2a] rounded-xl p-4 hover:border-[#59ff00]/20 transition-colors">
                     <div className="flex items-center gap-2">
                       <span className="text-white font-semibold text-sm">Order Summary</span>
-                      <Badge className="bg-[#E8A33C]/10 text-[#E8A33C] border-[#E8A33C]/20 text-xs">
+                      <Badge className="bg-[#59ff00]/10 text-[#59ff00] border-[#59ff00]/20 text-xs">
                         {cartItems.length} {cartItems.length === 1 ? 'item' : 'items'}
                       </Badge>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="font-[family-name:var(--font-poppins)] text-[#E8A33C] font-bold">
+                      <span className="font-[family-name:var(--font-poppins)] text-[#59ff00] font-bold">
                         {formatPrice(total)}
                       </span>
                       {summaryOpen ? <ChevronUp className="w-4 h-4 text-gray-400" /> : <ChevronDown className="w-4 h-4 text-gray-400" />}
@@ -1295,7 +1295,7 @@ export default function CheckoutPage() {
             {/* Amount Display */}
             <div className="text-center py-4 bg-[#1a1a1a] rounded-lg border border-[#2a2a2a]">
               <p className="text-gray-400 text-xs mb-1">Amount to pay</p>
-              <p className="font-[family-name:var(--font-poppins)] text-[#E8A33C] font-bold text-2xl">
+              <p className="font-[family-name:var(--font-poppins)] text-[#59ff00] font-bold text-2xl">
                 {formatPrice(total)}
               </p>
             </div>

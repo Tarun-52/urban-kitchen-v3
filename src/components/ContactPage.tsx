@@ -99,7 +99,7 @@ export default function ContactPage() {
           animate="visible"
           className="text-center mb-12"
         >
-          <motion.span variants={fadeUp} custom={0} className="text-[#E8A33C] text-sm font-medium uppercase tracking-wider">
+          <motion.span variants={fadeUp} custom={0} className="text-[#59ff00] text-sm font-medium uppercase tracking-wider">
             Get in Touch
           </motion.span>
           <motion.h1
@@ -107,7 +107,7 @@ export default function ContactPage() {
             custom={1}
             className="font-[family-name:var(--font-poppins)] text-3xl sm:text-4xl md:text-5xl font-extrabold mt-2 mb-4"
           >
-            Contact <span className="text-[#E8A33C]">Us</span>
+            Contact <span className="text-[#59ff00]">Us</span>
           </motion.h1>
           <motion.p variants={fadeUp} custom={2} className="text-gray-400 max-w-xl mx-auto">
             Have a question or need a quote? We&apos;d love to hear from you. 
@@ -124,9 +124,9 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05 }}
-              className="group bg-[#151515] border border-[#2a2a2a] rounded-xl p-5 text-center hover:border-[#E8A33C]/30 hover-lift transition-all block"
+              className="group bg-[#151515] border border-[#2a2a2a] rounded-xl p-5 text-center hover:border-[#59ff00]/30 hover-lift transition-all block"
             >
-              <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-[#E8A33C]/10 flex items-center justify-center text-[#E8A33C] group-hover:bg-[#E8A33C]/20 transition-colors">
+              <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-[#59ff00]/10 flex items-center justify-center text-[#59ff00] group-hover:bg-[#59ff00]/20 transition-colors">
                 {card.icon}
               </div>
               <h3 className="text-white font-semibold text-sm mb-2">{card.title}</h3>
@@ -211,7 +211,7 @@ export default function ContactPage() {
                 <Button
                   type="submit"
                   disabled={submitting}
-                  className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold h-11 self-start px-8"
+                  className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold h-11 self-start px-8"
                 >
                   {submitting ? (
                     <span className="flex items-center gap-2">
@@ -240,7 +240,7 @@ export default function ContactPage() {
             <div className="bg-[#151515] border border-[#2a2a2a] rounded-xl h-64 md:h-80 flex items-center justify-center relative overflow-hidden">
               <div className="absolute inset-0 grid-pattern opacity-30" />
               <div className="relative text-center">
-                <MapPin className="w-10 h-10 text-[#E8A33C] mx-auto mb-2" />
+                <MapPin className="w-10 h-10 text-[#59ff00] mx-auto mb-2" />
                 <p className="text-gray-400 text-sm">Plot No. 45, Sector 12</p>
                 <p className="text-gray-500 text-xs">Industrial Area, New Delhi</p>
               </div>
@@ -252,16 +252,16 @@ export default function ContactPage() {
                 Follow Us
               </h3>
               <div className="flex items-center gap-3">
-                <a href="#" className="w-11 h-11 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-gray-500 hover:text-[#E8A33C] hover:border-[#E8A33C]/30 transition-colors">
+                <a href="#" className="w-11 h-11 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-gray-500 hover:text-[#59ff00] hover:border-[#59ff00]/30 transition-colors">
                   <Facebook className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-11 h-11 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-gray-500 hover:text-[#E8A33C] hover:border-[#E8A33C]/30 transition-colors">
+                <a href="#" className="w-11 h-11 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-gray-500 hover:text-[#59ff00] hover:border-[#59ff00]/30 transition-colors">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-11 h-11 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-gray-500 hover:text-[#E8A33C] hover:border-[#E8A33C]/30 transition-colors">
+                <a href="#" className="w-11 h-11 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-gray-500 hover:text-[#59ff00] hover:border-[#59ff00]/30 transition-colors">
                   <Twitter className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-11 h-11 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-gray-500 hover:text-[#E8A33C] hover:border-[#E8A33C]/30 transition-colors">
+                <a href="#" className="w-11 h-11 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-gray-500 hover:text-[#59ff00] hover:border-[#59ff00]/30 transition-colors">
                   <Linkedin className="w-5 h-5" />
                 </a>
               </div>

@@ -749,7 +749,7 @@ export default function EmployeePortal() {
     return (
       <div className="min-h-screen bg-[#0b0b0b] pt-20 md:pt-24 flex items-center justify-center">
         <div className="flex flex-col items-center gap-3">
-          <Loader2 className="w-8 h-8 text-[#E8A33C] animate-spin" />
+          <Loader2 className="w-8 h-8 text-[#59ff00] animate-spin" />
           <p className="text-gray-500 text-sm">Loading employee portal...</p>
         </div>
       </div>
@@ -798,7 +798,7 @@ export default function EmployeePortal() {
           <h2 className="text-white font-semibold text-lg mb-2">Employee Record Not Found</h2>
           <p className="text-gray-500 text-sm mb-4">Your account does not have an associated employee record. Click below to auto-create one, or contact HR.</p>
           <div className="flex flex-col gap-2">
-            <Button onClick={handleAutoCreateEmployee} disabled={autoCreating} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold">
+            <Button onClick={handleAutoCreateEmployee} disabled={autoCreating} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold">
               {autoCreating ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Creating...</> : 'Create Employee Record'}
             </Button>
             <Button onClick={handleLogout} variant="outline" className="border-[#2a2a2a] text-gray-400">
@@ -833,7 +833,7 @@ export default function EmployeePortal() {
                   onClick={() => setEmployeeTab(tab.id)}
                   className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${
                     employeeTab === tab.id
-                      ? 'bg-[#E8A33C]/10 text-[#E8A33C]'
+                      ? 'bg-[#59ff00]/10 text-[#59ff00]'
                       : 'text-gray-500 hover:text-white hover:bg-[#1a1a1a]'
                   }`}
                 >
@@ -890,12 +890,12 @@ export default function EmployeePortal() {
                     </div>
                     <div className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-5">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-[#E8A33C]/10 flex items-center justify-center">
-                          <CheckSquare className="w-5 h-5 text-[#E8A33C]" />
+                        <div className="w-10 h-10 rounded-lg bg-[#59ff00]/10 flex items-center justify-center">
+                          <CheckSquare className="w-5 h-5 text-[#59ff00]" />
                         </div>
                         <div>
                           <div className="text-gray-500 text-xs">Completed</div>
-                          <div className="text-[#E8A33C] font-semibold text-lg">{completedTasks}</div>
+                          <div className="text-[#59ff00] font-semibold text-lg">{completedTasks}</div>
                         </div>
                       </div>
                     </div>
@@ -913,7 +913,7 @@ export default function EmployeePortal() {
                             ? 'bg-gray-500/10 border border-gray-500/20 text-gray-500'
                             : checkedIn
                             ? 'bg-red-500/10 border border-red-500/20 text-red-400 hover:bg-red-500/20'
-                            : 'bg-[#1a1a1a] border border-[#2a2a2a] text-gray-400 hover:text-[#E8A33C] hover:border-[#E8A33C]/30'
+                            : 'bg-[#1a1a1a] border border-[#2a2a2a] text-gray-400 hover:text-[#59ff00] hover:border-[#59ff00]/30'
                         }`}
                       >
                         {submitting ? <Loader2 className="w-5 h-5 animate-spin" /> : checkoutTime ? <Square className="w-5 h-5" /> : checkedIn ? <Square className="w-5 h-5" /> : <Play className="w-5 h-5" />}
@@ -921,25 +921,25 @@ export default function EmployeePortal() {
                       </button>
                       <button
                         onClick={() => setEmployeeTab('tasks')}
-                        className="flex flex-col items-center gap-2 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg p-4 text-gray-400 hover:text-[#E8A33C] hover:border-[#E8A33C]/30 transition-colors"
+                        className="flex flex-col items-center gap-2 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg p-4 text-gray-400 hover:text-[#59ff00] hover:border-[#59ff00]/30 transition-colors"
                       >
                         <CheckSquare className="w-5 h-5" /><span className="text-xs">View Tasks</span>
                       </button>
                       <button
                         onClick={() => setEmployeeTab('fieldwork')}
-                        className="flex flex-col items-center gap-2 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg p-4 text-gray-400 hover:text-[#E8A33C] hover:border-[#E8A33C]/30 transition-colors"
+                        className="flex flex-col items-center gap-2 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg p-4 text-gray-400 hover:text-[#59ff00] hover:border-[#59ff00]/30 transition-colors"
                       >
                         <Briefcase className="w-5 h-5" /><span className="text-xs">Daily Work</span>
                       </button>
                       <button
                         onClick={() => setLeaveDialog(true)}
-                        className="flex flex-col items-center gap-2 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg p-4 text-gray-400 hover:text-[#E8A33C] hover:border-[#E8A33C]/30 transition-colors"
+                        className="flex flex-col items-center gap-2 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg p-4 text-gray-400 hover:text-[#59ff00] hover:border-[#59ff00]/30 transition-colors"
                       >
                         <CalendarDays className="w-5 h-5" /><span className="text-xs">Apply Leave</span>
                       </button>
                       <button
                         onClick={() => setEmployeeTab('salary')}
-                        className="flex flex-col items-center gap-2 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg p-4 text-gray-400 hover:text-[#E8A33C] hover:border-[#E8A33C]/30 transition-colors"
+                        className="flex flex-col items-center gap-2 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg p-4 text-gray-400 hover:text-[#59ff00] hover:border-[#59ff00]/30 transition-colors"
                       >
                         <DollarSign className="w-5 h-5" /><span className="text-xs">View Payslip</span>
                       </button>
@@ -975,17 +975,17 @@ export default function EmployeePortal() {
                       <div className="mt-6">
                         <div className="flex items-center justify-between mb-3">
                           <h3 className="text-white font-semibold flex items-center gap-2">
-                            <Briefcase className="w-4 h-4 text-[#E8A33C]" />
+                            <Briefcase className="w-4 h-4 text-[#59ff00]" />
                             Today&apos;s Work & Meetings
                           </h3>
-                          <button onClick={() => setEmployeeTab('fieldwork')} className="text-[#E8A33C] text-xs hover:underline">View All</button>
+                          <button onClick={() => setEmployeeTab('fieldwork')} className="text-[#59ff00] text-xs hover:underline">View All</button>
                         </div>
                         <div className="space-y-2">
                           {todayFW.map((fw: any) => (
                             <div key={fw.id} className="bg-[#151515] border border-[#2a2a2a] rounded-lg p-3 flex items-center justify-between">
                               <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 rounded-lg bg-[#E8A33C]/10 flex items-center justify-center">
-                                  <Briefcase className="w-4 h-4 text-[#E8A33C]" />
+                                <div className="w-8 h-8 rounded-lg bg-[#59ff00]/10 flex items-center justify-center">
+                                  <Briefcase className="w-4 h-4 text-[#59ff00]" />
                                 </div>
                                 <div>
                                   <div className="text-white text-sm">{fw.title}</div>
@@ -1006,7 +1006,7 @@ export default function EmployeePortal() {
               {employeeTab === 'attendance' && (
                 <div>
                   <h2 className="font-[family-name:var(--font-poppins)] text-lg font-bold text-white mb-4 flex items-center gap-2">
-                    <MapPinned className="w-5 h-5 text-[#E8A33C]" />
+                    <MapPinned className="w-5 h-5 text-[#59ff00]" />
                     Attendance & Live Location
                   </h2>
 
@@ -1020,7 +1020,7 @@ export default function EmployeePortal() {
                           ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
                           : checkedIn
                           ? 'bg-red-500 text-white hover:bg-red-600'
-                          : 'bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90'
+                          : 'bg-[#59ff00] text-black hover:bg-[#59ff00]/90'
                         }
                       >
                         {submitting ? (
@@ -1046,7 +1046,7 @@ export default function EmployeePortal() {
                           }
                         }}
                         disabled={locationLoading}
-                        className="border-[#2a2a2a] text-gray-300 hover:text-[#E8A33C] hover:border-[#E8A33C]/50"
+                        className="border-[#2a2a2a] text-gray-300 hover:text-[#59ff00] hover:border-[#59ff00]/50"
                       >
                         {locationLoading ? (
                           <><Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" />Detecting...</>
@@ -1059,7 +1059,7 @@ export default function EmployeePortal() {
                         variant="ghost"
                         size="sm"
                         onClick={() => setShowMap(!showMap)}
-                        className="text-gray-400 hover:text-[#E8A33C]"
+                        className="text-gray-400 hover:text-[#59ff00]"
                       >
                         <Navigation className="w-3.5 h-3.5 mr-1.5" />
                         {showMap ? 'Hide Map' : 'Show Map'}
@@ -1076,7 +1076,7 @@ export default function EmployeePortal() {
                     {/* Current location info */}
                     {currentLocation && (
                       <div className="flex items-start gap-2 bg-[#0b0b0b] border border-[#2a2a2a] rounded-lg p-3 mb-4">
-                        <MapPin className="w-4 h-4 text-[#E8A33C] mt-0.5 flex-shrink-0" />
+                        <MapPin className="w-4 h-4 text-[#59ff00] mt-0.5 flex-shrink-0" />
                         <div>
                           <p className="text-white text-sm font-medium">Your Live Location</p>
                           <p className="text-gray-400 text-xs mt-0.5">{currentLocation.address}</p>
@@ -1134,7 +1134,7 @@ export default function EmployeePortal() {
                           else if (date > now) bgClass = 'bg-[#0b0b0b] text-gray-700'
                           else if (date.getDay() === 0) bgClass = 'bg-blue-500/10 text-blue-400'
                           cells.push(
-                            <div key={d} className={`rounded-md p-1.5 text-xs font-medium ${bgClass} ${isToday ? 'ring-1 ring-[#E8A33C]' : ''}`}>
+                            <div key={d} className={`rounded-md p-1.5 text-xs font-medium ${bgClass} ${isToday ? 'ring-1 ring-[#59ff00]' : ''}`}>
                               {d}
                             </div>
                           )
@@ -1180,7 +1180,7 @@ export default function EmployeePortal() {
                                   <td className="px-4 py-3">
                                     {hasLocation ? (
                                       <div className="flex items-center gap-1.5">
-                                        <MapPin className="w-3 h-3 text-[#E8A33C]" />
+                                        <MapPin className="w-3 h-3 text-[#59ff00]" />
                                         <span className="text-gray-400 text-xs truncate max-w-[150px]">
                                           {att.checkinAddress || `${att.checkinLatitude?.toFixed(4)}, ${att.checkinLongitude?.toFixed(4)}`}
                                         </span>
@@ -1213,7 +1213,7 @@ export default function EmployeePortal() {
                   {/* A. Header with Quick Add buttons */}
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-3">
                     <h2 className="font-[family-name:var(--font-poppins)] text-lg font-bold text-white flex items-center gap-2">
-                      <CalendarDays className="w-5 h-5 text-[#E8A33C]" />
+                      <CalendarDays className="w-5 h-5 text-[#59ff00]" />
                       Daily Work &amp; Meetings
                     </h2>
                     <div className="flex gap-2 flex-wrap">
@@ -1227,14 +1227,14 @@ export default function EmployeePortal() {
                       <Button
                         onClick={() => { setNewFieldWork(prev => ({ ...prev, workType: 'site_visit' })); setFieldWorkDialog(true) }}
                         size="sm"
-                        className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90"
+                        className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90"
                       >
                         <Plus className="w-4 h-4 mr-1" />Add Work
                       </Button>
                       <Button
                         onClick={() => { setNewFieldWork(prev => ({ ...prev, workType: 'installation' })); setFieldWorkDialog(true) }}
                         size="sm"
-                        className="bg-[#1a1a1a] text-gray-400 border border-[#2a2a2a] hover:text-[#E8A33C] hover:border-[#E8A33C]/30"
+                        className="bg-[#1a1a1a] text-gray-400 border border-[#2a2a2a] hover:text-[#59ff00] hover:border-[#59ff00]/30"
                       >
                         <MapPin className="w-4 h-4 mr-1" />Add Site Visit
                       </Button>
@@ -1251,8 +1251,8 @@ export default function EmployeePortal() {
                     const todayPendingFollowup = todayFW.filter((fw: any) => fw.status === 'pending_followup').length
                     if (todayFW.length === 0) return null
                     return (
-                      <div className="bg-[#151515] border border-[#E8A33C]/20 rounded-xl p-4 mb-6">
-                        <h4 className="text-[#E8A33C] text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-2">
+                      <div className="bg-[#151515] border border-[#59ff00]/20 rounded-xl p-4 mb-6">
+                        <h4 className="text-[#59ff00] text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-2">
                           <CalendarDays className="w-3.5 h-3.5" /> Today&apos;s Summary
                         </h4>
                         <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
@@ -1271,12 +1271,12 @@ export default function EmployeePortal() {
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
                     <div className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-lg bg-[#E8A33C]/10 flex items-center justify-center">
-                          <CalendarDays className="w-4 h-4 text-[#E8A33C]" />
+                        <div className="w-9 h-9 rounded-lg bg-[#59ff00]/10 flex items-center justify-center">
+                          <CalendarDays className="w-4 h-4 text-[#59ff00]" />
                         </div>
                         <div>
                           <div className="text-gray-500 text-xs">Today&apos;s Entries</div>
-                          <div className="text-[#E8A33C] font-semibold text-lg">{fieldWork.filter((fw: any) => new Date(fw.date).toDateString() === new Date().toDateString()).length}</div>
+                          <div className="text-[#59ff00] font-semibold text-lg">{fieldWork.filter((fw: any) => new Date(fw.date).toDateString() === new Date().toDateString()).length}</div>
                         </div>
                       </div>
                     </div>
@@ -1328,7 +1328,7 @@ export default function EmployeePortal() {
                         onClick={() => setFieldWorkView('list')}
                         className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                           fieldWorkView === 'list'
-                            ? 'bg-[#E8A33C]/10 text-[#E8A33C] border border-[#E8A33C]/20'
+                            ? 'bg-[#59ff00]/10 text-[#59ff00] border border-[#59ff00]/20'
                             : 'bg-[#1a1a1a] text-gray-500 hover:text-white border border-[#2a2a2a]'
                         }`}
                       >
@@ -1338,7 +1338,7 @@ export default function EmployeePortal() {
                         onClick={() => setFieldWorkView('calendar')}
                         className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                           fieldWorkView === 'calendar'
-                            ? 'bg-[#E8A33C]/10 text-[#E8A33C] border border-[#E8A33C]/20'
+                            ? 'bg-[#59ff00]/10 text-[#59ff00] border border-[#59ff00]/20'
                             : 'bg-[#1a1a1a] text-gray-500 hover:text-white border border-[#2a2a2a]'
                         }`}
                       >
@@ -1363,7 +1363,7 @@ export default function EmployeePortal() {
                         onClick={() => setFieldWorkFilter(f.id)}
                         className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors ${
                           fieldWorkFilter === f.id
-                            ? 'bg-[#E8A33C]/10 text-[#E8A33C] border border-[#E8A33C]/20'
+                            ? 'bg-[#59ff00]/10 text-[#59ff00] border border-[#59ff00]/20'
                             : 'bg-[#1a1a1a] text-gray-500 hover:text-white border border-[#2a2a2a]'
                         }`}
                       >
@@ -1424,9 +1424,9 @@ export default function EmployeePortal() {
                                   day === null
                                     ? ''
                                     : selectedCalDate === day
-                                    ? 'bg-[#E8A33C]/20 text-[#E8A33C] border border-[#E8A33C]/30'
+                                    ? 'bg-[#59ff00]/20 text-[#59ff00] border border-[#59ff00]/30'
                                     : day === today
-                                    ? 'bg-[#1a1a1a] text-white border border-[#E8A33C]/20'
+                                    ? 'bg-[#1a1a1a] text-white border border-[#59ff00]/20'
                                     : 'text-gray-400 hover:bg-[#1a1a1a] hover:text-white'
                                 }`}
                               >
@@ -1434,12 +1434,12 @@ export default function EmployeePortal() {
                                 {day !== null && dayEntries[day] && (
                                   <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 flex gap-0.5">
                                     {dayEntries[day].length <= 3 ? (
-                                      dayEntries[day].map((_, i) => <span key={i} className="w-1 h-1 rounded-full bg-[#E8A33C]" />)
+                                      dayEntries[day].map((_, i) => <span key={i} className="w-1 h-1 rounded-full bg-[#59ff00]" />)
                                     ) : (
                                       <>
-                                        <span className="w-1 h-1 rounded-full bg-[#E8A33C]" />
-                                        <span className="w-1 h-1 rounded-full bg-[#E8A33C]" />
-                                        <span className="text-[8px] text-[#E8A33C] leading-none">+{dayEntries[day].length - 2}</span>
+                                        <span className="w-1 h-1 rounded-full bg-[#59ff00]" />
+                                        <span className="w-1 h-1 rounded-full bg-[#59ff00]" />
+                                        <span className="text-[8px] text-[#59ff00] leading-none">+{dayEntries[day].length - 2}</span>
                                       </>
                                     )}
                                   </span>
@@ -1453,7 +1453,7 @@ export default function EmployeePortal() {
                         {selectedCalDate !== null && (
                           <div className="space-y-2">
                             <h4 className="text-gray-400 text-sm font-semibold flex items-center gap-2">
-                              <CalendarDays className="w-4 h-4 text-[#E8A33C]" />
+                              <CalendarDays className="w-4 h-4 text-[#59ff00]" />
                               {new Date(year, month, selectedCalDate).toLocaleDateString('en-IN', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' })}
                               <span className="text-gray-600 text-xs">({selectedEntries.length} entries)</span>
                             </h4>
@@ -1482,7 +1482,7 @@ export default function EmployeePortal() {
                                   other: 'bg-gray-500/10 border-gray-500/20',
                                 }
                                 return (
-                                  <div key={fw.id} className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-4 hover:border-[#E8A33C]/20 transition-colors">
+                                  <div key={fw.id} className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-4 hover:border-[#59ff00]/20 transition-colors">
                                     <div className="flex items-start gap-3">
                                       <div className={`w-9 h-9 rounded-lg flex items-center justify-center border shrink-0 ${workTypeBg[fw.workType] || workTypeBg.other}`}>
                                         {workTypeIcon[fw.workType] || workTypeIcon.other}
@@ -1569,7 +1569,7 @@ export default function EmployeePortal() {
                         {sortedDates.map(dateKey => (
                           <div key={dateKey}>
                             <div className="flex items-center gap-2 mb-3">
-                              <CalendarDays className="w-4 h-4 text-[#E8A33C]" />
+                              <CalendarDays className="w-4 h-4 text-[#59ff00]" />
                               <h3 className="text-gray-400 text-sm font-semibold">
                                 {new Date(dateKey).toLocaleDateString('en-IN', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' })}
                               </h3>
@@ -1577,7 +1577,7 @@ export default function EmployeePortal() {
                             </div>
                             <div className="space-y-2">
                               {grouped[dateKey].map((fw: any) => (
-                                <div key={fw.id} className={`bg-[#151515] border rounded-xl p-4 transition-colors ${fw.status === 'postponed' ? 'border-orange-500/20 hover:border-orange-500/40' : fw.workType === 'meeting' ? 'border-purple-500/10 hover:border-purple-500/30' : 'border-[#2a2a2a] hover:border-[#E8A33C]/20'}`}>
+                                <div key={fw.id} className={`bg-[#151515] border rounded-xl p-4 transition-colors ${fw.status === 'postponed' ? 'border-orange-500/20 hover:border-orange-500/40' : fw.workType === 'meeting' ? 'border-purple-500/10 hover:border-purple-500/30' : 'border-[#2a2a2a] hover:border-[#59ff00]/20'}`}>
                                   <div className="flex items-start justify-between gap-3">
                                     <div className="flex items-start gap-3 flex-1 min-w-0">
                                       <div className={`w-9 h-9 rounded-lg flex items-center justify-center border shrink-0 ${workTypeBg[fw.workType] || workTypeBg.other}`}>
@@ -1611,8 +1611,8 @@ export default function EmployeePortal() {
                                         {/* Client info prominently displayed */}
                                         {fw.clientName && (
                                           <div className="mt-2 flex items-center gap-2 bg-[#0b0b0b] border border-[#2a2a2a] rounded-lg px-3 py-1.5">
-                                            <div className="w-6 h-6 rounded-full bg-[#E8A33C]/10 flex items-center justify-center shrink-0">
-                                              <Users className="w-3 h-3 text-[#E8A33C]" />
+                                            <div className="w-6 h-6 rounded-full bg-[#59ff00]/10 flex items-center justify-center shrink-0">
+                                              <Users className="w-3 h-3 text-[#59ff00]" />
                                             </div>
                                             <div className="min-w-0">
                                               <span className="text-white text-xs font-medium">{fw.clientName}</span>
@@ -1628,7 +1628,7 @@ export default function EmployeePortal() {
                                           </span>
                                           {fw.address && (
                                             <span className="flex items-center gap-1">
-                                              <MapPin className="w-3 h-3 text-[#E8A33C]" />
+                                              <MapPin className="w-3 h-3 text-[#59ff00]" />
                                               <span className="truncate max-w-[200px]">{fw.address}</span>
                                             </span>
                                           )}
@@ -1721,7 +1721,7 @@ export default function EmployeePortal() {
                         onClick={() => setTaskFilter(s)}
                         className={`px-3 py-1.5 rounded-lg text-xs font-medium capitalize whitespace-nowrap transition-colors ${
                           taskFilter === s
-                            ? 'bg-[#E8A33C]/10 text-[#E8A33C] border border-[#E8A33C]/20'
+                            ? 'bg-[#59ff00]/10 text-[#59ff00] border border-[#59ff00]/20'
                             : 'bg-[#1a1a1a] text-gray-500 hover:text-white border border-[#2a2a2a]'
                         }`}
                       >
@@ -1736,7 +1736,7 @@ export default function EmployeePortal() {
                   ) : (
                     <div className="space-y-3">
                       {filteredTasks.map((task: any) => (
-                        <div key={task.id} className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-4 hover:border-[#E8A33C]/20 transition-colors">
+                        <div key={task.id} className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-4 hover:border-[#59ff00]/20 transition-colors">
                           <div className="flex items-start justify-between gap-4">
                             <div className="flex items-start gap-3 flex-1">
                               <button
@@ -1799,7 +1799,7 @@ export default function EmployeePortal() {
                     <Button
                       onClick={() => setLeadDialog(true)}
                       size="sm"
-                      className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90"
+                      className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90"
                     >
                       <Plus className="w-4 h-4 mr-1" />New Lead
                     </Button>
@@ -1809,12 +1809,12 @@ export default function EmployeePortal() {
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
                     <div className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-lg bg-[#E8A33C]/10 flex items-center justify-center">
-                          <Users className="w-4 h-4 text-[#E8A33C]" />
+                        <div className="w-9 h-9 rounded-lg bg-[#59ff00]/10 flex items-center justify-center">
+                          <Users className="w-4 h-4 text-[#59ff00]" />
                         </div>
                         <div>
                           <div className="text-gray-500 text-xs">Total Leads</div>
-                          <div className="text-[#E8A33C] font-semibold text-lg">{leads.length}</div>
+                          <div className="text-[#59ff00] font-semibold text-lg">{leads.length}</div>
                         </div>
                       </div>
                     </div>
@@ -1865,7 +1865,7 @@ export default function EmployeePortal() {
                   ) : (
                     <div className="space-y-3 max-h-[600px] overflow-y-auto pr-1 custom-scrollbar">
                       {leads.map((lead: any) => (
-                        <div key={lead.id} className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-4 hover:border-[#E8A33C]/20 transition-colors">
+                        <div key={lead.id} className="bg-[#151515] border border-[#2a2a2a] rounded-xl p-4 hover:border-[#59ff00]/20 transition-colors">
                           <div className="flex items-start justify-between gap-4">
                             <div className="flex-1 min-w-0">
                               <div className="flex items-center gap-2 mb-1">
@@ -1963,14 +1963,14 @@ export default function EmployeePortal() {
                                   ? 'bg-yellow-500/10 border-yellow-500/20'
                                   : 'bg-red-500/10 border-red-500/20'
                                 return (
-                                  <div key={deal.id} className="bg-[#151515] border border-[#2a2a2a] rounded-lg p-3 hover:border-[#E8A33C]/20 transition-colors">
+                                  <div key={deal.id} className="bg-[#151515] border border-[#2a2a2a] rounded-lg p-3 hover:border-[#59ff00]/20 transition-colors">
                                     <h4 className="text-white text-sm font-semibold truncate">{deal.title}</h4>
                                     {deal.leadName && (
                                       <p className="text-gray-500 text-xs mt-0.5 truncate">{deal.leadName}</p>
                                     )}
                                     <div className="flex items-center justify-between mt-2">
                                       {deal.value && (
-                                        <span className="text-[#E8A33C] text-xs font-medium">{formatPrice(deal.value)}</span>
+                                        <span className="text-[#59ff00] text-xs font-medium">{formatPrice(deal.value)}</span>
                                       )}
                                       <span className={`text-xs font-medium px-2 py-0.5 rounded border ${probBg} ${probColor}`}>
                                         {deal.probability || 0}%
@@ -2026,7 +2026,7 @@ export default function EmployeePortal() {
                     <Button
                       onClick={() => setLeaveDialog(true)}
                       size="sm"
-                      className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90"
+                      className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90"
                     >
                       <Plus className="w-4 h-4 mr-1" />Apply Leave
                     </Button>
@@ -2099,7 +2099,7 @@ export default function EmployeePortal() {
       <Dialog open={leadDialog} onOpenChange={setLeadDialog}>
         <DialogContent className="bg-[#151515] border-[#2a2a2a] text-white max-w-md">
           <DialogHeader>
-            <DialogTitle className="text-[#E8A33C]">New Lead</DialogTitle>
+            <DialogTitle className="text-[#59ff00]">New Lead</DialogTitle>
           </DialogHeader>
           <div className="space-y-3">
             <div>
@@ -2187,7 +2187,7 @@ export default function EmployeePortal() {
             <Button
               onClick={handleCreateLead}
               disabled={submitting}
-              className="w-full bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold"
+              className="w-full bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold"
             >
               {submitting ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Creating...</> : 'Create Lead'}
             </Button>
@@ -2199,7 +2199,7 @@ export default function EmployeePortal() {
       <Dialog open={leaveDialog} onOpenChange={setLeaveDialog}>
         <DialogContent className="bg-[#151515] border-[#2a2a2a] text-white max-w-md">
           <DialogHeader>
-            <DialogTitle className="text-[#E8A33C]">Apply for Leave</DialogTitle>
+            <DialogTitle className="text-[#59ff00]">Apply for Leave</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleApplyLeave} className="space-y-4">
             <div>
@@ -2233,7 +2233,7 @@ export default function EmployeePortal() {
             <Button
               type="submit"
               disabled={submitting}
-              className="w-full bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold"
+              className="w-full bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold"
             >
               {submitting ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Submitting...</> : 'Submit Leave Request'}
             </Button>
@@ -2245,7 +2245,7 @@ export default function EmployeePortal() {
       <Dialog open={fieldWorkDialog} onOpenChange={(open) => { setFieldWorkDialog(open); if (!open) setNewFieldWork({ workType: 'site_visit', title: '', description: '', clientName: '', clientPhone: '', clientCompany: '', followUpDate: '', followUpNote: '', outcome: '', postponeReason: '', newMeetingDate: '' }) }}>
         <DialogContent className="bg-[#151515] border-[#2a2a2a] text-white max-w-lg max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-[#E8A33C] flex items-center gap-2">
+            <DialogTitle className="text-[#59ff00] flex items-center gap-2">
               {newFieldWork.workType === 'meeting' ? <Users className="w-5 h-5 text-purple-400" /> : <CalendarDays className="w-5 h-5" />}
               {newFieldWork.workType === 'meeting' ? 'Add Meeting' : 'Add Work Entry'}
             </DialogTitle>
@@ -2344,7 +2344,7 @@ export default function EmployeePortal() {
 
             <div className="border-t border-[#2a2a2a] pt-4">
               <h4 className="text-gray-300 text-sm font-semibold mb-3 flex items-center gap-2">
-                <Users className="w-4 h-4 text-[#E8A33C]" /> Client Details (Optional)
+                <Users className="w-4 h-4 text-[#59ff00]" /> Client Details (Optional)
               </h4>
               <div className="space-y-3">
                 <div className="grid grid-cols-2 gap-3">
@@ -2420,7 +2420,7 @@ export default function EmployeePortal() {
 
             <div className="bg-[#0b0b0b] border border-[#2a2a2a] rounded-lg p-3">
               <p className="text-gray-500 text-xs flex items-center gap-1.5">
-                <MapPin className="w-3 h-3 text-[#E8A33C]" />
+                <MapPin className="w-3 h-3 text-[#59ff00]" />
                 Your live location will be auto-captured when you submit this entry
               </p>
               <p className="text-gray-600 text-xs mt-1">
@@ -2431,7 +2431,7 @@ export default function EmployeePortal() {
             <Button
               onClick={handleCreateFieldWork}
               disabled={submitting}
-              className="w-full bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold"
+              className="w-full bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold"
             >
               {submitting ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Saving...</> : newFieldWork.workType === 'meeting' ? 'Add Meeting' : 'Add Work Entry'}
             </Button>
@@ -2443,7 +2443,7 @@ export default function EmployeePortal() {
       <Dialog open={editFieldWorkDialog} onOpenChange={(open) => { setEditFieldWorkDialog(open); if (!open) { setEditFieldWorkEntry(null); setEditFieldWorkForm({ workType: 'site_visit', title: '', description: '', clientName: '', clientPhone: '', clientCompany: '', followUpDate: '', followUpNote: '', status: 'completed' }) } }}>
         <DialogContent className="bg-[#151515] border-[#2a2a2a] text-white max-w-lg max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-[#E8A33C] flex items-center gap-2">
+            <DialogTitle className="text-[#59ff00] flex items-center gap-2">
               {editFieldWorkForm.workType === 'meeting' ? <Users className="w-5 h-5 text-purple-400" /> : <CalendarDays className="w-5 h-5" />}
               {editFieldWorkForm.workType === 'meeting' ? 'Edit Meeting' : 'Edit Work Entry'}
             </DialogTitle>
@@ -2487,7 +2487,7 @@ export default function EmployeePortal() {
 
             <div className="border-t border-[#2a2a2a] pt-4">
               <h4 className="text-gray-300 text-sm font-semibold mb-3 flex items-center gap-2">
-                <Users className="w-4 h-4 text-[#E8A33C]" /> Client Details (Optional)
+                <Users className="w-4 h-4 text-[#59ff00]" /> Client Details (Optional)
               </h4>
               <div className="space-y-3">
                 <div className="grid grid-cols-2 gap-3">
@@ -2567,7 +2567,7 @@ export default function EmployeePortal() {
             <Button
               onClick={handleEditFieldWork}
               disabled={submitting}
-              className="w-full bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold"
+              className="w-full bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold"
             >
               {submitting ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Saving...</> : editFieldWorkForm.workType === 'meeting' ? 'Update Meeting' : 'Update Work Entry'}
             </Button>
@@ -2640,8 +2640,8 @@ function SalarySlipCard({ slip }: { slip: any }) {
         className="w-full flex items-center justify-between p-4 hover:bg-[#1a1a1a] transition-colors"
       >
         <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-lg bg-[#E8A33C]/10 flex items-center justify-center">
-            <FileText className="w-5 h-5 text-[#E8A33C]" />
+          <div className="w-10 h-10 rounded-lg bg-[#59ff00]/10 flex items-center justify-center">
+            <FileText className="w-5 h-5 text-[#59ff00]" />
           </div>
           <div className="text-left">
             <div className="text-white font-semibold text-sm">{slip.month}</div>
@@ -2649,7 +2649,7 @@ function SalarySlipCard({ slip }: { slip: any }) {
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <span className="text-[#E8A33C] font-bold">{formatPrice(slip.netPay)}</span>
+          <span className="text-[#59ff00] font-bold">{formatPrice(slip.netPay)}</span>
           {expanded ? <ChevronUp className="w-4 h-4 text-gray-500" /> : <ChevronDown className="w-4 h-4 text-gray-500" />}
         </div>
       </button>
@@ -2664,9 +2664,9 @@ function SalarySlipCard({ slip }: { slip: any }) {
           <Separator className="bg-[#2a2a2a] my-3" />
           <div className="flex items-center justify-between">
             <span className="text-white font-semibold">Net Pay</span>
-            <span className="text-[#E8A33C] font-bold text-lg">{formatPrice(slip.netPay)}</span>
+            <span className="text-[#59ff00] font-bold text-lg">{formatPrice(slip.netPay)}</span>
           </div>
-          <Button variant="outline" size="sm" className="mt-3 border-[#2a2a2a] text-gray-500 hover:text-[#E8A33C] hover:border-[#E8A33C]/30 w-full">
+          <Button variant="outline" size="sm" className="mt-3 border-[#2a2a2a] text-gray-500 hover:text-[#59ff00] hover:border-[#59ff00]/30 w-full">
             <FileText className="w-4 h-4 mr-2" />Download PDF
           </Button>
         </div>

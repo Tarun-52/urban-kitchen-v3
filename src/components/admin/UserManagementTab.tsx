@@ -29,7 +29,7 @@ const cardCls = 'bg-[#181818] border-[#2a2a2a]'
 
 const roleBadgeCls = (rn: string) => {
   const m: Record<string, string> = {
-    admin: 'bg-[#E8A33C]/20 text-[#E8A33C] border-[#E8A33C]/30',
+    admin: 'bg-[#59ff00]/20 text-[#59ff00] border-[#59ff00]/30',
     manager: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
     accountant: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
     hr_manager: 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30',
@@ -270,19 +270,19 @@ export default function UserManagementTab({ user }: UserManagementTabProps) {
       <div className="flex items-center justify-between flex-wrap gap-4">
         <div>
           <h2 className="text-white text-xl font-bold flex items-center gap-2">
-            <Shield className="w-6 h-6 text-[#E8A33C]" />
+            <Shield className="w-6 h-6 text-[#59ff00]" />
             User & Role Management
           </h2>
           <p className="text-gray-500 text-sm mt-1">Define users, assign roles, and control granular permissions for each section</p>
         </div>
         <div className="flex gap-2">
           {canManageUsers && (
-            <Button onClick={openNewUser} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold">
+            <Button onClick={openNewUser} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold">
               <UserPlus className="w-4 h-4 mr-1" /> Add User
             </Button>
           )}
           {canManageRoles && (
-            <Button onClick={openNewRole} variant="outline" className="border-[#E8A33C]/30 text-[#E8A33C] hover:bg-[#E8A33C]/10">
+            <Button onClick={openNewRole} variant="outline" className="border-[#59ff00]/30 text-[#59ff00] hover:bg-[#59ff00]/10">
               <Plus className="w-4 h-4 mr-1" /> New Role
             </Button>
           )}
@@ -293,7 +293,7 @@ export default function UserManagementTab({ user }: UserManagementTabProps) {
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
         <StatCard label="Total Users" value={users.length} icon={Users} color="text-blue-400" />
         <StatCard label="Roles" value={roles.length} icon={Lock} color="text-purple-400" delay={0.05} />
-        <StatCard label="Admins" value={users.filter(u => u.role?.roleName === 'admin').length} icon={Shield} color="text-[#E8A33C]" delay={0.1} />
+        <StatCard label="Admins" value={users.filter(u => u.role?.roleName === 'admin').length} icon={Shield} color="text-[#59ff00]" delay={0.1} />
         <StatCard label="Managers" value={users.filter(u => u.role?.roleName === 'manager').length} icon={UserCog} color="text-purple-400" delay={0.15} />
         <StatCard label="Accountants" value={users.filter(u => u.role?.roleName === 'accountant').length} icon={Key} color="text-emerald-400" delay={0.2} />
         <StatCard label="HR Managers" value={users.filter(u => u.role?.roleName === 'hr_manager').length} icon={Users} color="text-cyan-400" delay={0.25} />
@@ -302,10 +302,10 @@ export default function UserManagementTab({ user }: UserManagementTabProps) {
       {/* Tabs */}
       <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as any)} className="space-y-4">
         <TabsList className="bg-[#181818] border border-[#2a2a2a]">
-          <TabsTrigger value="users" className="data-[state=active]:bg-[#E8A33C]/10 data-[state=active]:text-[#E8A33C]">
+          <TabsTrigger value="users" className="data-[state=active]:bg-[#59ff00]/10 data-[state=active]:text-[#59ff00]">
             <Users className="w-4 h-4 mr-1" /> Users ({users.length})
           </TabsTrigger>
-          <TabsTrigger value="roles" className="data-[state=active]:bg-[#E8A33C]/10 data-[state=active]:text-[#E8A33C]">
+          <TabsTrigger value="roles" className="data-[state=active]:bg-[#59ff00]/10 data-[state=active]:text-[#59ff00]">
             <Lock className="w-4 h-4 mr-1" /> Roles ({roles.length})
           </TabsTrigger>
         </TabsList>
@@ -322,7 +322,7 @@ export default function UserManagementTab({ user }: UserManagementTabProps) {
               {['all', 'admin', 'manager', 'accountant', 'hr_manager', 'sales_executive', 'employee', 'customer'].map(r => (
                 <Button key={r} variant={roleFilter === r ? 'default' : 'ghost'} size="sm"
                   onClick={() => setRoleFilter(r)}
-                  className={roleFilter === r ? 'bg-[#E8A33C] text-black text-xs h-8' : 'text-gray-400 hover:text-white text-xs h-8 capitalize'}>
+                  className={roleFilter === r ? 'bg-[#59ff00] text-black text-xs h-8' : 'text-gray-400 hover:text-white text-xs h-8 capitalize'}>
                   {r === 'all' ? 'All' : r.replace('_', ' ')}
                 </Button>
               ))}
@@ -351,7 +351,7 @@ export default function UserManagementTab({ user }: UserManagementTabProps) {
                         <TableRow key={u.id} className="border-[#2a2a2a] hover:bg-white/5">
                           <TableCell>
                             <div className="flex items-center gap-2">
-                              <div className="w-8 h-8 rounded-full bg-[#E8A33C]/10 flex items-center justify-center text-[#E8A33C] text-xs font-bold">
+                              <div className="w-8 h-8 rounded-full bg-[#59ff00]/10 flex items-center justify-center text-[#59ff00] text-xs font-bold">
                                 {u.name?.charAt(0)?.toUpperCase() || '?'}
                               </div>
                               <span className="text-white text-sm font-medium">{u.name}</span>
@@ -366,11 +366,11 @@ export default function UserManagementTab({ user }: UserManagementTabProps) {
                           <TableCell className="max-w-[200px]">
                             <div className="flex flex-wrap gap-1">
                               {isAllPerms ? (
-                                <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#E8A33C]/10 text-[#E8A33C] border border-[#E8A33C]/20">All Access</span>
+                                <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#59ff00]/10 text-[#59ff00] border border-[#59ff00]/20">All Access</span>
                               ) : perms.length > 0 ? (
                                 <>
                                   {perms.slice(0, 3).map((p: string) => (
-                                    <span key={p} className="text-[10px] px-1.5 py-0.5 rounded bg-[#E8A33C]/10 text-[#E8A33C] border border-[#E8A33C]/20 capitalize">
+                                    <span key={p} className="text-[10px] px-1.5 py-0.5 rounded bg-[#59ff00]/10 text-[#59ff00] border border-[#59ff00]/20 capitalize">
                                       {p.replace(/_/g, ' ')}
                                     </span>
                                   ))}
@@ -421,7 +421,7 @@ export default function UserManagementTab({ user }: UserManagementTabProps) {
 
               return (
                 <motion.div key={r.id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
-                  <Card className={`${cardCls} hover:border-[#E8A33C]/20 transition-colors`}>
+                  <Card className={`${cardCls} hover:border-[#59ff00]/20 transition-colors`}>
                     <CardHeader className="pb-3">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
@@ -448,7 +448,7 @@ export default function UserManagementTab({ user }: UserManagementTabProps) {
                       </div>
                       <div className="flex flex-wrap gap-1">
                         {isAllPerms ? (
-                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#E8A33C]/10 text-[#E8A33C] border border-[#E8A33C]/20">Full Access (All Permissions)</span>
+                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#59ff00]/10 text-[#59ff00] border border-[#59ff00]/20">Full Access (All Permissions)</span>
                         ) : (
                           <>
                             {perms.slice(0, 6).map((p: string) => {
@@ -478,7 +478,7 @@ export default function UserManagementTab({ user }: UserManagementTabProps) {
         <DialogContent className="bg-[#181818] border-[#2a2a2a] text-white max-w-md">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <UserCog className="w-5 h-5 text-[#E8A33C]" />
+              <UserCog className="w-5 h-5 text-[#59ff00]" />
               {editUser ? 'Edit User' : 'Create New User'}
             </DialogTitle>
             <DialogDescription className="text-gray-500">
@@ -527,8 +527,8 @@ export default function UserManagementTab({ user }: UserManagementTabProps) {
                     <div className="mt-1.5 p-2 rounded bg-[#0b0b0b] border border-[#2a2a2a]">
                       <p className="text-gray-500 text-[10px] mb-1">This role grants access to:</p>
                       <div className="flex flex-wrap gap-1">
-                        {isAll ? <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#E8A33C]/10 text-[#E8A33C]">All Permissions</span> :
-                          perms.slice(0, 8).map(p => <span key={p} className="text-[10px] px-1 py-0.5 rounded bg-[#E8A33C]/10 text-[#E8A33C] capitalize">{p.replace(/_/g, ' ')}</span>)
+                        {isAll ? <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#59ff00]/10 text-[#59ff00]">All Permissions</span> :
+                          perms.slice(0, 8).map(p => <span key={p} className="text-[10px] px-1 py-0.5 rounded bg-[#59ff00]/10 text-[#59ff00] capitalize">{p.replace(/_/g, ' ')}</span>)
                         }
                         {!isAll && perms.length > 8 && <span className="text-gray-500 text-[10px]">+{perms.length - 8}</span>}
                       </div>
@@ -551,7 +551,7 @@ export default function UserManagementTab({ user }: UserManagementTabProps) {
           </div>
           <DialogFooter>
             <Button variant="ghost" onClick={() => setUserDialog(false)} className="text-gray-400">Cancel</Button>
-            <Button onClick={handleSaveUser} disabled={savingUser} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold">
+            <Button onClick={handleSaveUser} disabled={savingUser} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold">
               {savingUser ? <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" /> : editUser ? 'Update User' : 'Create User'}
             </Button>
           </DialogFooter>
@@ -563,7 +563,7 @@ export default function UserManagementTab({ user }: UserManagementTabProps) {
         <DialogContent className="bg-[#181818] border-[#2a2a2a] text-white max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <Lock className="w-5 h-5 text-[#E8A33C]" />
+              <Lock className="w-5 h-5 text-[#59ff00]" />
               {editRole ? `Edit Role — ${editRole.roleName.replace('_', ' ')}` : 'Create New Role'}
             </DialogTitle>
             <DialogDescription className="text-gray-500">
@@ -599,10 +599,10 @@ export default function UserManagementTab({ user }: UserManagementTabProps) {
             <div className="p-3 rounded-lg bg-[#0b0b0b] border border-[#2a2a2a] flex items-center justify-between">
               <div className="text-sm">
                 <span className="text-gray-400">Selected: </span>
-                <span className="text-[#E8A33C] font-bold">{roleForm.permissions.length}</span>
+                <span className="text-[#59ff00] font-bold">{roleForm.permissions.length}</span>
                 <span className="text-gray-500"> / {ALL_PERMISSIONS.length} permissions</span>
               </div>
-              <Button variant="ghost" size="sm" onClick={selectAllPermissions} className="text-[#E8A33C] text-xs h-7">
+              <Button variant="ghost" size="sm" onClick={selectAllPermissions} className="text-[#59ff00] text-xs h-7">
                 {roleForm.permissions.length === ALL_PERMISSIONS.length ? 'Deselect All' : 'Select All'}
               </Button>
             </div>
@@ -630,7 +630,7 @@ export default function UserManagementTab({ user }: UserManagementTabProps) {
                       </div>
                       <div className="flex items-center gap-2">
                         <Button variant="ghost" size="sm" onClick={(e) => { e.stopPropagation(); selectAllInGroup(group.key) }}
-                          className="text-[#E8A33C] text-[10px] h-6 px-2">
+                          className="text-[#59ff00] text-[10px] h-6 px-2">
                           {selectedInGroup === groupPerms.length ? 'Deselect All' : 'Select All'}
                         </Button>
                         {isExpanded ? <ChevronUp className="w-4 h-4 text-gray-400" /> : <ChevronDown className="w-4 h-4 text-gray-400" />}
@@ -655,17 +655,17 @@ export default function UserManagementTab({ user }: UserManagementTabProps) {
                                   type="button"
                                   className={`flex items-start gap-2.5 p-2.5 rounded-lg border text-left transition-all ${
                                     isSelected
-                                      ? 'bg-[#E8A33C]/10 border-[#E8A33C]/30 text-[#E8A33C]'
-                                      : 'bg-[#0b0b0b] border-[#2a2a2a] text-gray-400 hover:border-[#E8A33C]/20'
+                                      ? 'bg-[#59ff00]/10 border-[#59ff00]/30 text-[#59ff00]'
+                                      : 'bg-[#0b0b0b] border-[#2a2a2a] text-gray-400 hover:border-[#59ff00]/20'
                                   }`}
                                 >
                                   <div className={`w-4 h-4 rounded border flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                                    isSelected ? 'bg-[#E8A33C] border-[#E8A33C]' : 'border-gray-500'
+                                    isSelected ? 'bg-[#59ff00] border-[#59ff00]' : 'border-gray-500'
                                   }`}>
                                     {isSelected && <Check className="w-3 h-3 text-black" />}
                                   </div>
                                   <div>
-                                    <p className={`text-xs font-medium ${isSelected ? 'text-[#E8A33C]' : 'text-gray-300'}`}>{perm.label}</p>
+                                    <p className={`text-xs font-medium ${isSelected ? 'text-[#59ff00]' : 'text-gray-300'}`}>{perm.label}</p>
                                     <p className="text-[10px] text-gray-500 mt-0.5">{perm.description}</p>
                                   </div>
                                 </button>
@@ -691,7 +691,7 @@ export default function UserManagementTab({ user }: UserManagementTabProps) {
 
           <DialogFooter>
             <Button variant="ghost" onClick={() => setRoleDialog(false)} className="text-gray-400">Cancel</Button>
-            <Button onClick={handleSaveRole} disabled={savingRole} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold">
+            <Button onClick={handleSaveRole} disabled={savingRole} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold">
               {savingRole ? <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" /> : editRole ? 'Update Role' : 'Create Role'}
             </Button>
           </DialogFooter>

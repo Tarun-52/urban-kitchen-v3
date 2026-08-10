@@ -26,7 +26,7 @@ interface DashboardTabProps {
 export default function DashboardTab({ dashboardData, openOrderDetail, openLeadDetail }: DashboardTabProps) {
   const ov = dashboardData?.overview || {}
   const stats = [
-    { label: 'Total Revenue', value: fmt(ov.totalRevenue || 0), icon: IndianRupee, color: 'text-[#E8A33C]', bg: 'bg-[#E8A33C]/10' },
+    { label: 'Total Revenue', value: fmt(ov.totalRevenue || 0), icon: IndianRupee, color: 'text-[#59ff00]', bg: 'bg-[#59ff00]/10' },
     { label: 'Total Orders', value: ov.totalOrders || 0, icon: ShoppingCart, color: 'text-blue-400', bg: 'bg-blue-500/10' },
     { label: 'Total Leads', value: ov.totalLeads || 0, icon: Users, color: 'text-purple-400', bg: 'bg-purple-500/10' },
     { label: 'Total Products', value: ov.totalProducts || 0, icon: Package, color: 'text-orange-400', bg: 'bg-orange-500/10' },
@@ -38,7 +38,7 @@ export default function DashboardTab({ dashboardData, openOrderDetail, openLeadD
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((s, i) => (
           <motion.div key={s.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}>
-            <Card className="bg-[#181818] border-[#2a2a2a] hover:border-[#E8A33C]/30 transition-colors">
+            <Card className="bg-[#181818] border-[#2a2a2a] hover:border-[#59ff00]/30 transition-colors">
               <CardContent className="p-5">
                 <div className="flex items-center justify-between">
                   <div>
@@ -60,7 +60,7 @@ export default function DashboardTab({ dashboardData, openOrderDetail, openLeadD
         <Card className="bg-[#181818] border-[#2a2a2a] lg:col-span-2">
           <CardHeader className="pb-2">
             <CardTitle className="text-white text-base flex items-center gap-2">
-              <TrendingUp className="w-4 h-4 text-[#E8A33C]" /> Revenue Overview
+              <TrendingUp className="w-4 h-4 text-[#59ff00]" /> Revenue Overview
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -69,15 +69,15 @@ export default function DashboardTab({ dashboardData, openOrderDetail, openLeadD
                 <AreaChart data={dashboardData?.monthlyRevenue || []}>
                   <defs>
                     <linearGradient id="revGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#E8A33C" stopOpacity={0.3} />
-                      <stop offset="95%" stopColor="#E8A33C" stopOpacity={0} />
+                      <stop offset="5%" stopColor="#59ff00" stopOpacity={0.3} />
+                      <stop offset="95%" stopColor="#59ff00" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="#2a2a2a" />
                   <XAxis dataKey="month" stroke="#666" tick={{ fill: '#999', fontSize: 11 }} />
                   <YAxis stroke="#666" tick={{ fill: '#999', fontSize: 11 }} tickFormatter={(v) => `₹${(v / 1000).toFixed(0)}k`} />
                   <Tooltip content={<CustomTooltip />} />
-                  <Area type="monotone" dataKey="revenue" stroke="#E8A33C" strokeWidth={2} fill="url(#revGrad)" name="Revenue" />
+                  <Area type="monotone" dataKey="revenue" stroke="#59ff00" strokeWidth={2} fill="url(#revGrad)" name="Revenue" />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
@@ -184,7 +184,7 @@ export default function DashboardTab({ dashboardData, openOrderDetail, openLeadD
                     <TableRow key={o.id} className="border-[#2a2a2a] hover:bg-white/5 cursor-pointer" onClick={() => openOrderDetail(o)}>
                       <TableCell className="text-white text-xs font-mono">{o.orderNumber}</TableCell>
                       <TableCell className="text-gray-300 text-xs">{o.customer?.name}</TableCell>
-                      <TableCell className="text-[#E8A33C] text-xs font-semibold">{fmt(o.total)}</TableCell>
+                      <TableCell className="text-[#59ff00] text-xs font-semibold">{fmt(o.total)}</TableCell>
                       <TableCell><Badge className={`text-[10px] ${orderBadge(o.orderStatus)}`}>{o.orderStatus}</Badge></TableCell>
                     </TableRow>
                   ))}
@@ -231,14 +231,14 @@ export default function DashboardTab({ dashboardData, openOrderDetail, openLeadD
       <Card className="bg-[#181818] border-[#2a2a2a]">
         <CardHeader className="pb-2">
           <CardTitle className="text-white text-base flex items-center gap-2">
-            <Shield className="w-4 h-4 text-[#E8A33C]" /> AMC Overview
+            <Shield className="w-4 h-4 text-[#59ff00]" /> AMC Overview
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="p-4 rounded-lg bg-[#0b0b0b] border border-[#2a2a2a] text-center">
               <p className="text-gray-400 text-xs mb-1">Active Contracts</p>
-              <p className="text-[#E8A33C] text-2xl font-bold">{dashboardData?.amcStats?.active || 0}</p>
+              <p className="text-[#59ff00] text-2xl font-bold">{dashboardData?.amcStats?.active || 0}</p>
             </div>
             <div className="p-4 rounded-lg bg-[#0b0b0b] border border-[#2a2a2a] text-center">
               <p className="text-gray-400 text-xs mb-1">Expiring Soon</p>

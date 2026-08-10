@@ -22,7 +22,7 @@ export default function CategoriesTab({ categories, openNewCategory, openEditCat
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="space-y-4">
       <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
         <h2 className="text-white text-xl font-bold">Categories</h2>
-        <Button onClick={openNewCategory} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold">
+        <Button onClick={openNewCategory} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold">
           <Plus className="w-4 h-4 mr-1" /> Add Category
         </Button>
       </div>
@@ -60,7 +60,7 @@ export default function CategoriesTab({ categories, openNewCategory, openEditCat
                     <TableCell className="text-gray-400 text-sm font-mono">{c.slug}</TableCell>
                     <TableCell className="text-gray-300 text-sm">{c.parent?.name || '—'}</TableCell>
                     <TableCell>
-                      <Badge className="bg-[#E8A33C]/10 text-[#E8A33C] border-[#E8A33C]/30">
+                      <Badge className="bg-[#59ff00]/10 text-[#59ff00] border-[#59ff00]/30">
                         {c._count?.products || 0}
                       </Badge>
                     </TableCell>

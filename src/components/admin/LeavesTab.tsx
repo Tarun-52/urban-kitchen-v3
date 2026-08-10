@@ -27,7 +27,7 @@ export default function LeavesTab({ leaveList, leaveFilter, setLeaveFilter }: Le
       <div className="flex gap-2">
         {['all', 'pending', 'approved', 'rejected'].map(s => (
           <Button key={s} variant={leaveFilter === s ? 'default' : 'ghost'} size="sm" onClick={() => setLeaveFilter(s)}
-            className={leaveFilter === s ? 'bg-[#E8A33C] text-black' : 'text-gray-400 capitalize'}>{s === 'all' ? 'All' : s}</Button>
+            className={leaveFilter === s ? 'bg-[#59ff00] text-black' : 'text-gray-400 capitalize'}>{s === 'all' ? 'All' : s}</Button>
         ))}
       </div>
       <Card className="bg-[#181818] border-[#2a2a2a]">

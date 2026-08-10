@@ -415,13 +415,13 @@ export default function AmcPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#0b0b0b] via-transparent to-[#0b0b0b]" />
 
         {/* Decorative glow */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#E8A33C]/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-[#E8A33C]/3 rounded-full blur-[100px]" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#59ff00]/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-[#59ff00]/3 rounded-full blur-[100px]" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial="hidden" animate="visible" variants={stagger}>
             <motion.div variants={fadeUp} custom={0}>
-              <Badge className="bg-[#E8A33C]/10 text-[#E8A33C] border-[#E8A33C]/20 mb-6 px-4 py-1.5 text-sm">
+              <Badge className="bg-[#59ff00]/10 text-[#59ff00] border-[#59ff00]/20 mb-6 px-4 py-1.5 text-sm">
                 <Shield className="w-3.5 h-3.5 mr-1.5" />
                 Annual Maintenance Contracts
               </Badge>
@@ -433,7 +433,7 @@ export default function AmcPage() {
               className="font-[family-name:var(--font-poppins)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight mb-6"
             >
               Keep Your Kitchen{' '}
-              <span className="text-[#E8A33C] neon-text">Running</span>
+              <span className="text-[#59ff00] neon-text">Running</span>
               <br />
               at Peak Performance
             </motion.h1>
@@ -454,7 +454,7 @@ export default function AmcPage() {
             >
               <Button
                 onClick={() => handleGetQuote('Premium')}
-                className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold px-8 h-12 text-base neon-glow"
+                className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold px-8 h-12 text-base neon-glow"
               >
                 Get a Free Quote
                 <ArrowRight className="w-4 h-4 ml-2" />
@@ -462,7 +462,7 @@ export default function AmcPage() {
               <Button
                 onClick={handleContactSupport}
                 variant="outline"
-                className="border-[#E8A33C] text-[#E8A33C] hover:bg-[#E8A33C]/10 font-semibold px-8 h-12 text-base"
+                className="border-[#59ff00] text-[#59ff00] hover:bg-[#59ff00]/10 font-semibold px-8 h-12 text-base"
               >
                 <Headphones className="w-4 h-4 mr-2" />
                 Contact Support
@@ -484,7 +484,7 @@ export default function AmcPage() {
               { icon: <Star className="w-5 h-5" />, text: '15+ Years' },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2 text-gray-400 text-sm">
-                <span className="text-[#E8A33C]">{item.icon}</span>
+                <span className="text-[#59ff00]">{item.icon}</span>
                 {item.text}
               </div>
             ))}
@@ -497,8 +497,8 @@ export default function AmcPage() {
           transition={{ repeat: Infinity, duration: 2 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
-          <div className="w-6 h-10 rounded-full border-2 border-[#E8A33C]/30 flex items-start justify-center p-1">
-            <div className="w-1.5 h-3 bg-[#E8A33C] rounded-full" />
+          <div className="w-6 h-10 rounded-full border-2 border-[#59ff00]/30 flex items-start justify-center p-1">
+            <div className="w-1.5 h-3 bg-[#59ff00] rounded-full" />
           </div>
         </motion.div>
       </section>
@@ -514,7 +514,7 @@ export default function AmcPage() {
             className="text-center mb-12"
           >
             <motion.h2 variants={fadeUp} custom={0} className="font-[family-name:var(--font-poppins)] text-2xl md:text-3xl lg:text-4xl font-bold mb-3">
-              Choose Your <span className="text-[#E8A33C]">AMC Plan</span>
+              Choose Your <span className="text-[#59ff00]">AMC Plan</span>
             </motion.h2>
             <motion.p variants={fadeUp} custom={1} className="text-gray-500 max-w-xl mx-auto">
               Flexible plans designed to keep your commercial kitchen running without interruption
@@ -531,14 +531,14 @@ export default function AmcPage() {
                 transition={{ delay: i * 0.1 }}
                 className={`group relative bg-[#151515] border rounded-xl p-6 md:p-8 hover-lift transition-all ${
                   plan.featured
-                    ? 'border-[#E8A33C]/50 shadow-[0_0_30px_rgba(89,255,0,0.15)] hover:border-[#E8A33C]/70'
-                    : 'border-[#2a2a2a] hover:border-[#E8A33C]/30'
+                    ? 'border-[#59ff00]/50 shadow-[0_0_30px_rgba(89,255,0,0.15)] hover:border-[#59ff00]/70'
+                    : 'border-[#2a2a2a] hover:border-[#59ff00]/30'
                 }`}
               >
                 {/* Badge */}
                 {plan.badge && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-[#E8A33C] text-black font-semibold px-4 py-1 text-xs border-none">
+                    <Badge className="bg-[#59ff00] text-black font-semibold px-4 py-1 text-xs border-none">
                       {plan.badge}
                     </Badge>
                   </div>
@@ -555,14 +555,14 @@ export default function AmcPage() {
                   {/* Plan header */}
                   <div className="text-center mb-6">
                     <div className={`w-14 h-14 mx-auto mb-4 rounded-xl flex items-center justify-center ${
-                      plan.featured ? 'bg-[#E8A33C]/20' : 'bg-[#E8A33C]/10'
+                      plan.featured ? 'bg-[#59ff00]/20' : 'bg-[#59ff00]/10'
                     }`}>
                       {plan.featured ? (
-                        <Shield className="w-7 h-7 text-[#E8A33C]" />
+                        <Shield className="w-7 h-7 text-[#59ff00]" />
                       ) : plan.name === 'Standard' ? (
-                        <Wrench className="w-7 h-7 text-[#E8A33C]" />
+                        <Wrench className="w-7 h-7 text-[#59ff00]" />
                       ) : (
-                        <Clock className="w-7 h-7 text-[#E8A33C]" />
+                        <Clock className="w-7 h-7 text-[#59ff00]" />
                       )}
                     </div>
                     <h3 className="font-[family-name:var(--font-poppins)] text-white text-xl font-bold mb-1">
@@ -570,7 +570,7 @@ export default function AmcPage() {
                     </h3>
                     <p className="text-gray-500 text-sm mb-4">{plan.description}</p>
                     <div className="flex items-baseline justify-center gap-1">
-                      <span className="font-[family-name:var(--font-poppins)] text-3xl md:text-4xl font-extrabold text-[#E8A33C]">
+                      <span className="font-[family-name:var(--font-poppins)] text-3xl md:text-4xl font-extrabold text-[#59ff00]">
                         {formatPrice(plan.price)}
                       </span>
                       <span className="text-gray-500 text-sm">/year</span>
@@ -586,7 +586,7 @@ export default function AmcPage() {
                       <div key={feature.text} className="flex items-center gap-3">
                         <CheckCircle2
                           className={`w-4 h-4 shrink-0 ${
-                            feature.included ? 'text-[#E8A33C]' : 'text-gray-700'
+                            feature.included ? 'text-[#59ff00]' : 'text-gray-700'
                           }`}
                         />
                         <span
@@ -605,8 +605,8 @@ export default function AmcPage() {
                     onClick={() => handleGetQuote(plan.name)}
                     className={`w-full h-11 font-semibold text-sm ${
                       plan.featured
-                        ? 'bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 neon-glow'
-                        : 'border border-[#E8A33C] text-[#E8A33C] bg-transparent hover:bg-[#E8A33C]/10'
+                        ? 'bg-[#59ff00] text-black hover:bg-[#59ff00]/90 neon-glow'
+                        : 'border border-[#59ff00] text-[#59ff00] bg-transparent hover:bg-[#59ff00]/10'
                     }`}
                     variant={plan.featured ? 'default' : 'outline'}
                   >
@@ -629,7 +629,7 @@ export default function AmcPage() {
               Need a custom plan?{' '}
               <button
                 onClick={() => handleGetQuote('Custom')}
-                className="text-[#E8A33C] font-extrabold text-lg inline-flex items-center gap-1.5 animate-neon-blink hover:scale-105 transition-transform"
+                className="text-[#59ff00] font-extrabold text-lg inline-flex items-center gap-1.5 animate-neon-blink hover:scale-105 transition-transform"
                 style={{ textShadow: '0 0 10px rgba(89, 255, 0, 0.8), 0 0 20px rgba(89, 255, 0, 0.4), 0 0 40px rgba(89, 255, 0, 0.2)' }}
               >
                 ⚡ Get a Custom Quote <ArrowRight className="w-4 h-4" />
@@ -651,7 +651,7 @@ export default function AmcPage() {
             className="text-center mb-12"
           >
             <motion.h2 variants={fadeUp} custom={0} className="font-[family-name:var(--font-poppins)] text-2xl md:text-3xl lg:text-4xl font-bold mb-3">
-              What&apos;s <span className="text-[#E8A33C]">Covered</span>
+              What&apos;s <span className="text-[#59ff00]">Covered</span>
             </motion.h2>
             <motion.p variants={fadeUp} custom={1} className="text-gray-500 max-w-xl mx-auto">
               Our AMC covers all major categories of commercial kitchen equipment
@@ -666,12 +666,12 @@ export default function AmcPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group bg-[#151515] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#E8A33C]/30 hover-lift transition-all"
+                className="group bg-[#151515] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#59ff00]/30 hover-lift transition-all"
               >
-                <div className="w-14 h-14 mb-4 rounded-xl bg-[#E8A33C]/10 flex items-center justify-center text-[#E8A33C] group-hover:bg-[#E8A33C]/20 transition-colors">
+                <div className="w-14 h-14 mb-4 rounded-xl bg-[#59ff00]/10 flex items-center justify-center text-[#59ff00] group-hover:bg-[#59ff00]/20 transition-colors">
                   {item.icon}
                 </div>
-                <h3 className="text-white font-[family-name:var(--font-poppins)] font-semibold text-lg mb-2 group-hover:text-[#E8A33C] transition-colors">
+                <h3 className="text-white font-[family-name:var(--font-poppins)] font-semibold text-lg mb-2 group-hover:text-[#59ff00] transition-colors">
                   {item.title}
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
@@ -692,7 +692,7 @@ export default function AmcPage() {
             className="text-center mb-12"
           >
             <motion.h2 variants={fadeUp} custom={0} className="font-[family-name:var(--font-poppins)] text-2xl md:text-3xl lg:text-4xl font-bold mb-3">
-              How It <span className="text-[#E8A33C]">Works</span>
+              How It <span className="text-[#59ff00]">Works</span>
             </motion.h2>
             <motion.p variants={fadeUp} custom={1} className="text-gray-500 max-w-xl mx-auto">
               Getting started with your AMC is simple — four easy steps
@@ -701,7 +701,7 @@ export default function AmcPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
             {/* Connecting line - desktop only */}
-            <div className="hidden lg:block absolute top-[52px] left-[calc(12.5%+28px)] right-[calc(12.5%+28px)] h-px bg-gradient-to-r from-[#E8A33C]/30 via-[#E8A33C]/20 to-[#E8A33C]/30" />
+            <div className="hidden lg:block absolute top-[52px] left-[calc(12.5%+28px)] right-[calc(12.5%+28px)] h-px bg-gradient-to-r from-[#59ff00]/30 via-[#59ff00]/20 to-[#59ff00]/30" />
 
             {steps.map((step, i) => (
               <motion.div
@@ -714,21 +714,21 @@ export default function AmcPage() {
               >
                 <div className="relative z-10 flex flex-col items-center">
                   {/* Step number circle */}
-                  <div className="w-16 h-16 rounded-full bg-[#151515] border-2 border-[#E8A33C]/30 flex items-center justify-center mb-4 group-hover:border-[#E8A33C] group-hover:bg-[#E8A33C]/10 transition-all">
-                    <span className="font-[family-name:var(--font-poppins)] text-[#E8A33C] font-bold text-lg absolute opacity-30">
+                  <div className="w-16 h-16 rounded-full bg-[#151515] border-2 border-[#59ff00]/30 flex items-center justify-center mb-4 group-hover:border-[#59ff00] group-hover:bg-[#59ff00]/10 transition-all">
+                    <span className="font-[family-name:var(--font-poppins)] text-[#59ff00] font-bold text-lg absolute opacity-30">
                       {step.number}
                     </span>
-                    <span className="text-[#E8A33C] relative z-10">{step.icon}</span>
+                    <span className="text-[#59ff00] relative z-10">{step.icon}</span>
                   </div>
 
                   {/* Arrow for mobile */}
                   {i < steps.length - 1 && (
-                    <div className="lg:hidden text-[#E8A33C]/30 mb-2">
+                    <div className="lg:hidden text-[#59ff00]/30 mb-2">
                       <ArrowRight className="w-5 h-5 rotate-90" />
                     </div>
                   )}
 
-                  <h3 className="text-white font-[family-name:var(--font-poppins)] font-semibold text-base mb-2 group-hover:text-[#E8A33C] transition-colors">
+                  <h3 className="text-white font-[family-name:var(--font-poppins)] font-semibold text-base mb-2 group-hover:text-[#59ff00] transition-colors">
                     {step.title}
                   </h3>
                   <p className="text-gray-500 text-sm leading-relaxed max-w-[220px]">
@@ -752,7 +752,7 @@ export default function AmcPage() {
             className="text-center mb-12"
           >
             <motion.h2 variants={fadeUp} custom={0} className="font-[family-name:var(--font-poppins)] text-2xl md:text-3xl lg:text-4xl font-bold mb-3">
-              Why Choose <span className="text-[#E8A33C]">Our AMC</span>
+              Why Choose <span className="text-[#59ff00]">Our AMC</span>
             </motion.h2>
             <motion.p variants={fadeUp} custom={1} className="text-gray-500 max-w-xl mx-auto">
               Numbers that speak for our commitment to keeping your kitchen running
@@ -778,7 +778,7 @@ export default function AmcPage() {
             className="text-center mb-12"
           >
             <motion.h2 variants={fadeUp} custom={0} className="font-[family-name:var(--font-poppins)] text-2xl md:text-3xl lg:text-4xl font-bold mb-3">
-              Frequently Asked <span className="text-[#E8A33C]">Questions</span>
+              Frequently Asked <span className="text-[#59ff00]">Questions</span>
             </motion.h2>
             <motion.p variants={fadeUp} custom={1} className="text-gray-500 max-w-xl mx-auto">
               Everything you need to know about our Annual Maintenance Contracts
@@ -796,9 +796,9 @@ export default function AmcPage() {
                 <AccordionItem
                   key={i}
                   value={`faq-${i}`}
-                  className="bg-[#151515] border border-[#2a2a2a] rounded-xl px-6 data-[state=open]:border-[#E8A33C]/30 transition-colors"
+                  className="bg-[#151515] border border-[#2a2a2a] rounded-xl px-6 data-[state=open]:border-[#59ff00]/30 transition-colors"
                 >
-                  <AccordionTrigger className="text-left text-white hover:text-[#E8A33C] hover:no-underline py-5 text-sm md:text-base font-medium">
+                  <AccordionTrigger className="text-left text-white hover:text-[#59ff00] hover:no-underline py-5 text-sm md:text-base font-medium">
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-gray-400 text-sm leading-relaxed">
@@ -814,7 +814,7 @@ export default function AmcPage() {
       {/* ═══════════════════ CTA SECTION ═══════════════════ */}
       <section className="py-16 md:py-24 bg-[#0b0b0b] relative overflow-hidden">
         <div className="absolute inset-0 grid-pattern opacity-50" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#E8A33C]/5 rounded-full blur-[150px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#59ff00]/5 rounded-full blur-[150px]" />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -822,11 +822,11 @@ export default function AmcPage() {
           viewport={{ once: true }}
           className="relative z-10 max-w-3xl mx-auto px-4 text-center"
         >
-          <div className="w-16 h-16 mx-auto mb-6 rounded-xl bg-[#E8A33C]/10 flex items-center justify-center">
-            <Phone className="w-8 h-8 text-[#E8A33C]" />
+          <div className="w-16 h-16 mx-auto mb-6 rounded-xl bg-[#59ff00]/10 flex items-center justify-center">
+            <Phone className="w-8 h-8 text-[#59ff00]" />
           </div>
           <h2 className="font-[family-name:var(--font-poppins)] text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
-            Get Your <span className="text-[#E8A33C]">AMC Consultation</span>
+            Get Your <span className="text-[#59ff00]">AMC Consultation</span>
           </h2>
           <p className="text-gray-400 mb-8 text-lg">
             Speak with our maintenance experts to find the perfect plan for your commercial kitchen. 
@@ -835,14 +835,14 @@ export default function AmcPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               onClick={() => handleGetQuote('Premium')}
-              className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold px-8 h-12 text-base neon-glow"
+              className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold px-8 h-12 text-base neon-glow"
             >
               Get a Free Quote
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
             <a
               href="tel:+917080488840"
-              className="text-gray-400 hover:text-[#E8A33C] text-sm flex items-center gap-2 transition-colors"
+              className="text-gray-400 hover:text-[#59ff00] text-sm flex items-center gap-2 transition-colors"
             >
               <Phone className="w-4 h-4" />
               +91-7080488840
@@ -858,8 +858,8 @@ export default function AmcPage() {
             <>
               <DialogHeader>
                 <DialogTitle className="font-[family-name:var(--font-poppins)] text-xl flex items-center gap-2">
-                  <Shield className="w-5 h-5 text-[#E8A33C]" />
-                  Get AMC Quote — <span className="text-[#E8A33C]">{selectedPlan} Plan</span>
+                  <Shield className="w-5 h-5 text-[#59ff00]" />
+                  Get AMC Quote — <span className="text-[#59ff00]">{selectedPlan} Plan</span>
                 </DialogTitle>
                 <DialogDescription className="text-gray-400">
                   Fill in your details and we&apos;ll send you a customized quote within 24 hours.
@@ -877,7 +877,7 @@ export default function AmcPage() {
                       value={formData.name}
                       onChange={(e) => updateField('name', e.target.value)}
                       placeholder="Rahul Sharma"
-                      className="bg-[#1a1a1a] border-[#2a2a2a] text-white focus:border-[#E8A33C] h-10"
+                      className="bg-[#1a1a1a] border-[#2a2a2a] text-white focus:border-[#59ff00] h-10"
                     />
                   </div>
                   <div className="space-y-2">
@@ -889,7 +889,7 @@ export default function AmcPage() {
                       value={formData.email}
                       onChange={(e) => updateField('email', e.target.value)}
                       placeholder="rahul@company.com"
-                      className="bg-[#1a1a1a] border-[#2a2a2a] text-white focus:border-[#E8A33C] h-10"
+                      className="bg-[#1a1a1a] border-[#2a2a2a] text-white focus:border-[#59ff00] h-10"
                     />
                   </div>
                 </div>
@@ -905,7 +905,7 @@ export default function AmcPage() {
                       value={formData.phone}
                       onChange={(e) => updateField('phone', e.target.value)}
                       placeholder="+91-9876543210"
-                      className="bg-[#1a1a1a] border-[#2a2a2a] text-white focus:border-[#E8A33C] h-10"
+                      className="bg-[#1a1a1a] border-[#2a2a2a] text-white focus:border-[#59ff00] h-10"
                     />
                   </div>
                   <div className="space-y-2">
@@ -914,7 +914,7 @@ export default function AmcPage() {
                       value={formData.company}
                       onChange={(e) => updateField('company', e.target.value)}
                       placeholder="Hotel Sunrise Pvt Ltd"
-                      className="bg-[#1a1a1a] border-[#2a2a2a] text-white focus:border-[#E8A33C] h-10"
+                      className="bg-[#1a1a1a] border-[#2a2a2a] text-white focus:border-[#59ff00] h-10"
                     />
                   </div>
                 </div>
@@ -929,7 +929,7 @@ export default function AmcPage() {
                     value={formData.city}
                     onChange={(e) => updateField('city', e.target.value)}
                     placeholder="New Delhi"
-                    className="bg-[#1a1a1a] border-[#2a2a2a] text-white focus:border-[#E8A33C] h-10"
+                    className="bg-[#1a1a1a] border-[#2a2a2a] text-white focus:border-[#59ff00] h-10"
                   />
                 </div>
 
@@ -947,8 +947,8 @@ export default function AmcPage() {
                         onClick={() => updateField('kitchenSize', size.value)}
                         className={`p-3 rounded-lg border text-sm text-center transition-all ${
                           formData.kitchenSize === size.value
-                            ? 'bg-[#E8A33C]/10 border-[#E8A33C]/50 text-[#E8A33C]'
-                            : 'bg-[#1a1a1a] border-[#2a2a2a] text-gray-400 hover:border-[#E8A33C]/30'
+                            ? 'bg-[#59ff00]/10 border-[#59ff00]/50 text-[#59ff00]'
+                            : 'bg-[#1a1a1a] border-[#2a2a2a] text-gray-400 hover:border-[#59ff00]/30'
                         }`}
                       >
                         <span className="text-lg block mb-1">{size.icon}</span>
@@ -972,8 +972,8 @@ export default function AmcPage() {
                         onClick={() => toggleEquipment(eq)}
                         className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
                           selectedEquipment.includes(eq)
-                            ? 'bg-[#E8A33C]/10 border-[#E8A33C]/50 text-[#E8A33C]'
-                            : 'bg-[#1a1a1a] border-[#2a2a2a] text-gray-400 hover:border-[#E8A33C]/30'
+                            ? 'bg-[#59ff00]/10 border-[#59ff00]/50 text-[#59ff00]'
+                            : 'bg-[#1a1a1a] border-[#2a2a2a] text-gray-400 hover:border-[#59ff00]/30'
                         }`}
                       >
                         {selectedEquipment.includes(eq) && <CheckCircle2 className="w-3 h-3 inline mr-1" />}
@@ -993,7 +993,7 @@ export default function AmcPage() {
                     value={formData.message}
                     onChange={(e) => updateField('message', e.target.value)}
                     placeholder="Tell us about your kitchen setup, specific equipment concerns, or any questions..."
-                    className="bg-[#1a1a1a] border-[#2a2a2a] text-white focus:border-[#E8A33C] min-h-[80px] resize-none"
+                    className="bg-[#1a1a1a] border-[#2a2a2a] text-white focus:border-[#59ff00] min-h-[80px] resize-none"
                     rows={3}
                   />
                 </div>
@@ -1006,7 +1006,7 @@ export default function AmcPage() {
                   </div>
                   <div className="text-right">
                     <p className="text-gray-400 text-xs">Starting at</p>
-                    <p className="text-[#E8A33C] font-[family-name:var(--font-poppins)] font-bold text-lg">
+                    <p className="text-[#59ff00] font-[family-name:var(--font-poppins)] font-bold text-lg">
                       {selectedPlan === 'Basic' ? formatPrice(15000) :
                        selectedPlan === 'Standard' ? formatPrice(35000) :
                        selectedPlan === 'Premium' ? formatPrice(65000) : 'Custom'}
@@ -1019,7 +1019,7 @@ export default function AmcPage() {
                 <Button
                   onClick={handleSubmit}
                   disabled={submitting}
-                  className="w-full h-12 bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold text-base neon-glow"
+                  className="w-full h-12 bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold text-base neon-glow"
                 >
                   {submitting ? (
                     <>
@@ -1042,8 +1042,8 @@ export default function AmcPage() {
           ) : (
             /* ─── Success State ─── */
             <div className="py-8 text-center">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#E8A33C]/10 border-2 border-[#E8A33C] flex items-center justify-center">
-                <CheckCircle2 className="w-10 h-10 text-[#E8A33C]" />
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#59ff00]/10 border-2 border-[#59ff00] flex items-center justify-center">
+                <CheckCircle2 className="w-10 h-10 text-[#59ff00]" />
               </div>
               <h3 className="font-[family-name:var(--font-poppins)] text-2xl font-bold text-white mb-2">
                 Quote Request Submitted!
@@ -1055,20 +1055,20 @@ export default function AmcPage() {
               {referenceNumber && (
                 <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg p-4 mb-6 max-w-xs mx-auto">
                   <p className="text-gray-500 text-xs mb-1">Your Reference Number</p>
-                  <p className="text-[#E8A33C] font-[family-name:var(--font-poppins)] font-bold text-xl">{referenceNumber}</p>
+                  <p className="text-[#59ff00] font-[family-name:var(--font-poppins)] font-bold text-xl">{referenceNumber}</p>
                 </div>
               )}
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6">
                 <Button
                   onClick={() => handleDialogClose(false)}
-                  className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold"
+                  className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold"
                 >
                   Done
                 </Button>
                 <a
                   href="tel:+917080488840"
-                  className="text-gray-400 hover:text-[#E8A33C] text-sm flex items-center gap-2 transition-colors"
+                  className="text-gray-400 hover:text-[#59ff00] text-sm flex items-center gap-2 transition-colors"
                 >
                   <Phone className="w-4 h-4" />
                   Call us for urgent queries
@@ -1095,10 +1095,10 @@ function StatCard({ stat, index }: { stat: (typeof stats)[number]; index: number
       transition={{ delay: index * 0.1 }}
       className="group glass rounded-xl p-6 text-center hover-lift"
     >
-      <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-[#E8A33C]/10 flex items-center justify-center text-[#E8A33C] group-hover:bg-[#E8A33C]/20 transition-colors">
+      <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-[#59ff00]/10 flex items-center justify-center text-[#59ff00] group-hover:bg-[#59ff00]/20 transition-colors">
         {stat.icon}
       </div>
-      <div className="font-[family-name:var(--font-poppins)] text-2xl md:text-4xl font-bold text-[#E8A33C]">
+      <div className="font-[family-name:var(--font-poppins)] text-2xl md:text-4xl font-bold text-[#59ff00]">
         {count}
         {stat.suffix}
       </div>

@@ -22,7 +22,7 @@ export default function ServiceTab({ serviceRequests, setServiceForm, setService
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-white text-xl font-bold">Service Requests</h2>
-        <Button onClick={() => { setServiceForm({ customerId: '', contractId: '', issue: '', priority: 'medium', assignedTechnician: '' }); setServiceDialog(true) }} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold"><Plus className="w-4 h-4 mr-1" /> New Request</Button>
+        <Button onClick={() => { setServiceForm({ customerId: '', contractId: '', issue: '', priority: 'medium', assignedTechnician: '' }); setServiceDialog(true) }} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold"><Plus className="w-4 h-4 mr-1" /> New Request</Button>
       </div>
       <Card className="bg-[#181818] border-[#2a2a2a]">
         <CardContent className="p-0">

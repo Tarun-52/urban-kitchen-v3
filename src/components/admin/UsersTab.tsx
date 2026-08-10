@@ -39,7 +39,7 @@ const ALL_PERMISSIONS = [
 function StatCard({ label, value, icon: Icon, color, delay = 0 }: { label: string; value: string | number; icon: React.ElementType; color: string; delay?: number }) {
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay }}>
-      <Card className="bg-[#181818] border-[#2a2a2a] hover:border-[#E8A33C]/30 transition-colors">
+      <Card className="bg-[#181818] border-[#2a2a2a] hover:border-[#59ff00]/30 transition-colors">
         <CardContent className="p-4">
           <div className="flex items-center justify-between">
             <div>
@@ -59,7 +59,7 @@ function StatCard({ label, value, icon: Icon, color, delay = 0 }: { label: strin
 // ─── Role Badge Colors ──────────────────────────────────────
 const roleBadgeCls = (rn: string) => {
   switch (rn) {
-    case 'admin': return 'bg-[#E8A33C]/20 text-[#E8A33C] border-[#E8A33C]/30'
+    case 'admin': return 'bg-[#59ff00]/20 text-[#59ff00] border-[#59ff00]/30'
     case 'manager': return 'bg-purple-500/20 text-purple-400 border-purple-500/30'
     case 'hr': return 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30'
     case 'employee': return 'bg-blue-500/20 text-blue-400 border-blue-500/30'
@@ -282,8 +282,8 @@ export default function UsersTab({
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
       {/* Header */}
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-[#E8A33C]/10 border border-[#E8A33C]/30 flex items-center justify-center">
-          <Users className="w-5 h-5 text-[#E8A33C]" />
+        <div className="w-10 h-10 rounded-xl bg-[#59ff00]/10 border border-[#59ff00]/30 flex items-center justify-center">
+          <Users className="w-5 h-5 text-[#59ff00]" />
         </div>
         <div>
           <h2 className="text-white text-xl font-bold">Users & Access Control</h2>
@@ -294,7 +294,7 @@ export default function UsersTab({
       {/* Stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         <StatCard label="Total Users" value={totalUsers} icon={Users} color="text-blue-400" />
-        <StatCard label="Admins" value={adminCount} icon={Shield} color="text-[#E8A33C]" delay={0.1} />
+        <StatCard label="Admins" value={adminCount} icon={Shield} color="text-[#59ff00]" delay={0.1} />
         <StatCard label="Managers" value={managerCount} icon={Award} color="text-purple-400" delay={0.2} />
         <StatCard label="Employees" value={employeeCount} icon={UserCog} color="text-yellow-400" delay={0.3} />
       </div>
@@ -302,10 +302,10 @@ export default function UsersTab({
       {/* Tabs */}
       <Tabs value={activeTab} onValueChange={setActiveTab}>
         <TabsList className="bg-[#181818] border border-[#2a2a2a]">
-          <TabsTrigger value="users" className="data-[state=active]:bg-[#E8A33C] data-[state=active]:text-black text-gray-400 text-xs">
+          <TabsTrigger value="users" className="data-[state=active]:bg-[#59ff00] data-[state=active]:text-black text-gray-400 text-xs">
             <Users className="w-3.5 h-3.5 mr-1.5" /> Users
           </TabsTrigger>
-          <TabsTrigger value="roles" className="data-[state=active]:bg-[#E8A33C] data-[state=active]:text-black text-gray-400 text-xs">
+          <TabsTrigger value="roles" className="data-[state=active]:bg-[#59ff00] data-[state=active]:text-black text-gray-400 text-xs">
             <Lock className="w-3.5 h-3.5 mr-1.5" /> Roles & Permissions
           </TabsTrigger>
         </TabsList>
@@ -327,13 +327,13 @@ export default function UsersTab({
                 {['all', ...roleList.map((r: any) => r.roleName)].map(r => (
                   <Button key={r} variant={roleFilter === r ? 'default' : 'ghost'} size="sm"
                     onClick={() => setRoleFilter(r)}
-                    className={roleFilter === r ? 'bg-[#E8A33C] text-black h-8 text-xs' : 'text-gray-400 hover:text-white capitalize h-8 text-xs'}>
+                    className={roleFilter === r ? 'bg-[#59ff00] text-black h-8 text-xs' : 'text-gray-400 hover:text-white capitalize h-8 text-xs'}>
                     {r === 'all' ? 'All' : r}
                   </Button>
                 ))}
               </div>
             </div>
-            <Button onClick={openNewUser} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold">
+            <Button onClick={openNewUser} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold">
               <Plus className="w-4 h-4 mr-1" /> Add User
             </Button>
           </div>
@@ -363,7 +363,7 @@ export default function UsersTab({
                         <TableRow key={u.id} className="border-[#2a2a2a] hover:bg-white/5">
                           <TableCell className="text-white text-sm font-medium">
                             <div className="flex items-center gap-2">
-                              <div className="w-7 h-7 rounded-full bg-[#E8A33C]/10 border border-[#E8A33C]/30 flex items-center justify-center text-[10px] font-bold text-[#E8A33C]">
+                              <div className="w-7 h-7 rounded-full bg-[#59ff00]/10 border border-[#59ff00]/30 flex items-center justify-center text-[10px] font-bold text-[#59ff00]">
                                 {(u.name || 'U').charAt(0).toUpperCase()}
                               </div>
                               {u.name}
@@ -379,12 +379,12 @@ export default function UsersTab({
                           <TableCell className="max-w-[180px]">
                             {isAdmin ? (
                               <div className="flex flex-wrap gap-0.5">
-                                <span className="text-[10px] px-2 py-0.5 rounded bg-[#E8A33C]/20 text-[#E8A33C] border border-[#E8A33C]/30 font-medium">Full Access</span>
+                                <span className="text-[10px] px-2 py-0.5 rounded bg-[#59ff00]/20 text-[#59ff00] border border-[#59ff00]/30 font-medium">Full Access</span>
                               </div>
                             ) : permList.length > 0 || u.canManageBlogs ? (
                               <div className="flex flex-wrap gap-0.5">
                                 {permList.slice(0, 3).map((p: string) => (
-                                  <span key={p} className="text-[9px] px-1.5 py-0.5 rounded bg-[#E8A33C]/10 text-[#E8A33C] capitalize">{p}</span>
+                                  <span key={p} className="text-[9px] px-1.5 py-0.5 rounded bg-[#59ff00]/10 text-[#59ff00] capitalize">{p}</span>
                                 ))}
                                 {u.canManageBlogs && (
                                   <span className="text-[9px] px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Blog</span>
@@ -403,7 +403,7 @@ export default function UsersTab({
                               <Button size="sm" variant="ghost" onClick={() => openEditUser(u)} className="text-blue-400 h-7 w-7 p-0" title="Edit user">
                                 <Edit className="w-3.5 h-3.5" />
                               </Button>
-                              <Button size="sm" variant="ghost" onClick={() => openPermEdit(u)} className="text-[#E8A33C] h-7 w-7 p-0" title="Manage access">
+                              <Button size="sm" variant="ghost" onClick={() => openPermEdit(u)} className="text-[#59ff00] h-7 w-7 p-0" title="Manage access">
                                 <Lock className="w-3.5 h-3.5" />
                               </Button>
                               <Button size="sm" variant="ghost" onClick={() => handleDeleteUser(u.id)} className="text-red-400 h-7 w-7 p-0" title="Delete user">
@@ -430,7 +430,7 @@ export default function UsersTab({
         <TabsContent value="roles" className="space-y-4 mt-4">
           <div className="flex items-center justify-between">
             <p className="text-gray-400 text-sm">Manage roles and their permissions. Users inherit permissions from their assigned role.</p>
-            <Button onClick={openNewRole} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold">
+            <Button onClick={openNewRole} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold">
               <Plus className="w-4 h-4 mr-1" /> Create Role
             </Button>
           </div>
@@ -442,12 +442,12 @@ export default function UsersTab({
               const isAllAccess = perms.includes('all')
               const usersWithRole = userList.filter((u: any) => u.roleId === role.id || u.role?.id === role.id).length
               return (
-                <Card key={role.id} className="bg-[#181818] border-[#2a2a2a] hover:border-[#E8A33C]/30 transition-colors">
+                <Card key={role.id} className="bg-[#181818] border-[#2a2a2a] hover:border-[#59ff00]/30 transition-colors">
                   <CardContent className="p-4">
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex items-center gap-2">
                         <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${roleBadgeCls(role.roleName).replace('border-', 'bg-').split(' ').find(c => c.startsWith('bg-')) || 'bg-gray-500/20'}`}>
-                          {role.roleName === 'admin' ? <Shield className="w-4 h-4 text-[#E8A33C]" /> :
+                          {role.roleName === 'admin' ? <Shield className="w-4 h-4 text-[#59ff00]" /> :
                            role.roleName === 'manager' ? <Award className="w-4 h-4 text-purple-400" /> :
                            <Lock className="w-4 h-4 text-gray-400" />}
                         </div>
@@ -471,12 +471,12 @@ export default function UsersTab({
                       <p className="text-gray-400 text-[10px] font-medium uppercase tracking-wider">Permissions</p>
                       {isAllAccess ? (
                         <div className="flex flex-wrap gap-1">
-                          <span className="text-[10px] px-2 py-0.5 rounded bg-[#E8A33C]/20 text-[#E8A33C] border border-[#E8A33C]/30 font-medium">Full Access (All)</span>
+                          <span className="text-[10px] px-2 py-0.5 rounded bg-[#59ff00]/20 text-[#59ff00] border border-[#59ff00]/30 font-medium">Full Access (All)</span>
                         </div>
                       ) : perms.length > 0 ? (
                         <div className="flex flex-wrap gap-1">
                           {perms.map((p: string) => (
-                            <span key={p} className="text-[10px] px-1.5 py-0.5 rounded bg-[#E8A33C]/10 text-[#E8A33C] capitalize">{p}</span>
+                            <span key={p} className="text-[10px] px-1.5 py-0.5 rounded bg-[#59ff00]/10 text-[#59ff00] capitalize">{p}</span>
                           ))}
                         </div>
                       ) : (
@@ -547,7 +547,7 @@ export default function UsersTab({
           </div>
           <DialogFooter>
             <Button variant="ghost" onClick={() => setUserDialog(false)} className="text-gray-400">Cancel</Button>
-            <Button onClick={handleSaveUser} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90">{editUser ? 'Update' : 'Create'}</Button>
+            <Button onClick={handleSaveUser} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90">{editUser ? 'Update' : 'Create'}</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
@@ -578,8 +578,8 @@ export default function UsersTab({
                 <div className="grid grid-cols-3 gap-2">
                   {ALL_PERMISSIONS.map(({ key, label }) => (
                     <button key={key} onClick={() => togglePermission(key)} type="button"
-                      className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-xs font-medium transition-all ${permEditPermissions.includes(key) || permEditPermissions.includes('all') ? 'bg-[#E8A33C]/10 border-[#E8A33C]/30 text-[#E8A33C]' : 'bg-[#0b0b0b] border-[#2a2a2a] text-gray-400 hover:border-[#E8A33C]/20'}`}>
-                      <div className={`w-4 h-4 rounded border flex items-center justify-center ${permEditPermissions.includes(key) || permEditPermissions.includes('all') ? 'bg-[#E8A33C] border-[#E8A33C]' : 'border-gray-500'}`}>
+                      className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-xs font-medium transition-all ${permEditPermissions.includes(key) || permEditPermissions.includes('all') ? 'bg-[#59ff00]/10 border-[#59ff00]/30 text-[#59ff00]' : 'bg-[#0b0b0b] border-[#2a2a2a] text-gray-400 hover:border-[#59ff00]/20'}`}>
+                      <div className={`w-4 h-4 rounded border flex items-center justify-center ${permEditPermissions.includes(key) || permEditPermissions.includes('all') ? 'bg-[#59ff00] border-[#59ff00]' : 'border-gray-500'}`}>
                         {(permEditPermissions.includes(key) || permEditPermissions.includes('all')) && <Check className="w-3 h-3 text-black" />}
                       </div>
                       {label}
@@ -594,22 +594,22 @@ export default function UsersTab({
                   onClick={() => setPermEditCanManageBlogs(!permEditCanManageBlogs)}
                   className={`flex items-center justify-between w-full px-4 py-3 rounded-lg border transition-all ${
                     permEditCanManageBlogs
-                      ? 'bg-[#E8A33C]/10 border-[#E8A33C]/30'
-                      : 'bg-[#0b0b0b] border-[#2a2a2a] hover:border-[#E8A33C]/20'
+                      ? 'bg-[#59ff00]/10 border-[#59ff00]/30'
+                      : 'bg-[#0b0b0b] border-[#2a2a2a] hover:border-[#59ff00]/20'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${permEditCanManageBlogs ? 'bg-[#E8A33C]/20' : 'bg-[#1a1a1a]'}`}>
-                      <svg xmlns="http://www.w3.org/2000/svg" className={`w-4.5 h-4.5 ${permEditCanManageBlogs ? 'text-[#E8A33C]' : 'text-gray-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${permEditCanManageBlogs ? 'bg-[#59ff00]/20' : 'bg-[#1a1a1a]'}`}>
+                      <svg xmlns="http://www.w3.org/2000/svg" className={`w-4.5 h-4.5 ${permEditCanManageBlogs ? 'text-[#59ff00]' : 'text-gray-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
                       </svg>
                     </div>
                     <div className="text-left">
-                      <p className={`text-sm font-medium ${permEditCanManageBlogs ? 'text-[#E8A33C]' : 'text-gray-300'}`}>Blog Management</p>
+                      <p className={`text-sm font-medium ${permEditCanManageBlogs ? 'text-[#59ff00]' : 'text-gray-300'}`}>Blog Management</p>
                       <p className="text-gray-600 text-[10px]">Allow this user to create, edit, and delete blog posts</p>
                     </div>
                   </div>
-                  <div className={`w-10 h-5 rounded-full transition-all flex items-center ${permEditCanManageBlogs ? 'bg-[#E8A33C] justify-end' : 'bg-[#2a2a2a] justify-start'}`}>
+                  <div className={`w-10 h-5 rounded-full transition-all flex items-center ${permEditCanManageBlogs ? 'bg-[#59ff00] justify-end' : 'bg-[#2a2a2a] justify-start'}`}>
                     <div className={`w-4 h-4 rounded-full bg-white mx-0.5 transition-all ${permEditCanManageBlogs ? 'shadow-[0_0_8px_rgba(89,255,0,0.5)]' : ''}`} />
                   </div>
                 </button>
@@ -618,7 +618,7 @@ export default function UsersTab({
           )}
           <DialogFooter>
             <Button variant="ghost" onClick={() => setPermDialog(false)} className="text-gray-400">Cancel</Button>
-            <Button onClick={handleSavePermissions} disabled={permSaving} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold">
+            <Button onClick={handleSavePermissions} disabled={permSaving} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold">
               {permSaving ? <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" /> : 'Save Permissions'}
             </Button>
           </DialogFooter>
@@ -654,8 +654,8 @@ export default function UsersTab({
                       permissions: f.permissions.includes(key) ? f.permissions.filter(p => p !== key) : [...f.permissions, key]
                     }))
                   }} type="button"
-                    className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-xs font-medium transition-all ${roleForm.permissions.includes(key) ? 'bg-[#E8A33C]/10 border-[#E8A33C]/30 text-[#E8A33C]' : 'bg-[#0b0b0b] border-[#2a2a2a] text-gray-400 hover:border-[#E8A33C]/20'}`}>
-                    <div className={`w-4 h-4 rounded border flex items-center justify-center ${roleForm.permissions.includes(key) ? 'bg-[#E8A33C] border-[#E8A33C]' : 'border-gray-500'}`}>
+                    className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-xs font-medium transition-all ${roleForm.permissions.includes(key) ? 'bg-[#59ff00]/10 border-[#59ff00]/30 text-[#59ff00]' : 'bg-[#0b0b0b] border-[#2a2a2a] text-gray-400 hover:border-[#59ff00]/20'}`}>
+                    <div className={`w-4 h-4 rounded border flex items-center justify-center ${roleForm.permissions.includes(key) ? 'bg-[#59ff00] border-[#59ff00]' : 'border-gray-500'}`}>
                       {roleForm.permissions.includes(key) && <Check className="w-3 h-3 text-black" />}
                     </div>
                     {label}
@@ -666,7 +666,7 @@ export default function UsersTab({
           </div>
           <DialogFooter>
             <Button variant="ghost" onClick={() => setRoleDialog(false)} className="text-gray-400">Cancel</Button>
-            <Button onClick={handleSaveRole} disabled={roleSaving} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold">
+            <Button onClick={handleSaveRole} disabled={roleSaving} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold">
               {roleSaving ? <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" /> : roleEditItem ? 'Update Role' : 'Create Role'}
             </Button>
           </DialogFooter>

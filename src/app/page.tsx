@@ -9,7 +9,7 @@ import Footer from '@/components/Footer'
 const DynamicLoading = () => (
   <div className="flex items-center justify-center py-32">
     <div className="flex flex-col items-center gap-4">
-      <div className="w-10 h-10 border-2 border-[#E8A33C]/30 border-t-[#E8A33C] rounded-full animate-spin" />
+      <div className="w-10 h-10 border-2 border-[#59ff00]/30 border-t-[#59ff00] rounded-full animate-spin" />
       <p className="text-gray-500 text-sm">Loading...</p>
     </div>
   </div>
@@ -64,7 +64,7 @@ export default function Home() {
         <div className="h-16 bg-[#0b0b0b]/80 backdrop-blur-sm border-b border-[#1a1a1a]" />
         <main className="flex-1 flex items-center justify-center">
           <div className="flex flex-col items-center gap-4">
-            <div className="w-10 h-10 border-2 border-[#E8A33C]/30 border-t-[#E8A33C] rounded-full animate-spin" />
+            <div className="w-10 h-10 border-2 border-[#59ff00]/30 border-t-[#59ff00] rounded-full animate-spin" />
             <p className="text-gray-500 text-sm">Loading...</p>
           </div>
         </main>

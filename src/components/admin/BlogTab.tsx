@@ -215,20 +215,20 @@ export default function BlogTab({
       {/* ─── Header ─────────────────────────────────────────── */}
       <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
         <div className="flex items-center gap-2">
-          <Newspaper className="w-5 h-5 text-[#E8A33C]" />
+          <Newspaper className="w-5 h-5 text-[#59ff00]" />
           <h2 className="text-white text-xl font-bold">Blog Posts</h2>
         </div>
         <div className="flex items-center gap-2">
           <Button
             onClick={openNewCategory}
             variant="outline"
-            className="border-[#E8A33C] text-[#E8A33C] hover:bg-[#E8A33C]/10 font-semibold"
+            className="border-[#59ff00] text-[#59ff00] hover:bg-[#59ff00]/10 font-semibold"
           >
             <FolderPlus className="w-4 h-4 mr-1" /> Add Category
           </Button>
           <Button
             onClick={openNew}
-            className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold"
+            className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold"
           >
             <Plus className="w-4 h-4 mr-1" /> Add Blog Post
           </Button>
@@ -242,7 +242,7 @@ export default function BlogTab({
           {categories.map((cat) => (
             <div
               key={cat.id}
-              className="flex items-center gap-1.5 bg-[#151515] border border-[#2a2a2a] rounded-lg px-3 py-1.5 group hover:border-[#E8A33C]/30 transition-all"
+              className="flex items-center gap-1.5 bg-[#151515] border border-[#2a2a2a] rounded-lg px-3 py-1.5 group hover:border-[#59ff00]/30 transition-all"
             >
               <span className="text-sm">{cat.emoji || '📰'}</span>
               <span className="text-gray-300 text-xs font-medium">{cat.name}</span>
@@ -282,10 +282,10 @@ export default function BlogTab({
             <SelectValue placeholder="Status" />
           </SelectTrigger>
           <SelectContent className="bg-[#181818] border-[#2a2a2a]">
-            <SelectItem value="all" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">All Statuses</SelectItem>
-            <SelectItem value="draft" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Draft</SelectItem>
-            <SelectItem value="published" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Published</SelectItem>
-            <SelectItem value="archived" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Archived</SelectItem>
+            <SelectItem value="all" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">All Statuses</SelectItem>
+            <SelectItem value="draft" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Draft</SelectItem>
+            <SelectItem value="published" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Published</SelectItem>
+            <SelectItem value="archived" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Archived</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -333,7 +333,7 @@ export default function BlogTab({
                           <p className="text-gray-500 text-xs font-mono">{blog.slug}</p>
                         </div>
                         {blog.featured && (
-                          <Badge className="bg-[#E8A33C]/10 text-[#E8A33C] border-[#E8A33C]/30 text-[10px] flex-shrink-0">
+                          <Badge className="bg-[#59ff00]/10 text-[#59ff00] border-[#59ff00]/30 text-[10px] flex-shrink-0">
                             Featured
                           </Badge>
                         )}
@@ -341,7 +341,7 @@ export default function BlogTab({
                     </TableCell>
                     {/* Category */}
                     <TableCell>
-                      <Badge className="bg-[#E8A33C]/10 text-[#E8A33C] border-[#E8A33C]/30 text-[10px]">
+                      <Badge className="bg-[#59ff00]/10 text-[#59ff00] border-[#59ff00]/30 text-[10px]">
                         {blog.categoryRef?.emoji || ''} {blog.category || blog.categoryRef?.name || '—'}
                       </Badge>
                     </TableCell>
@@ -416,19 +416,19 @@ export default function BlogTab({
             <TabsList className="bg-[#0b0b0b] border border-[#2a2a2a] w-full">
               <TabsTrigger
                 value="content"
-                className="data-[state=active]:bg-[#E8A33C]/10 data-[state=active]:text-[#E8A33C] flex-1 gap-1.5"
+                className="data-[state=active]:bg-[#59ff00]/10 data-[state=active]:text-[#59ff00] flex-1 gap-1.5"
               >
                 <FileText className="w-3.5 h-3.5" /> Content
               </TabsTrigger>
               <TabsTrigger
                 value="media"
-                className="data-[state=active]:bg-[#E8A33C]/10 data-[state=active]:text-[#E8A33C] flex-1 gap-1.5"
+                className="data-[state=active]:bg-[#59ff00]/10 data-[state=active]:text-[#59ff00] flex-1 gap-1.5"
               >
                 <ImageIcon className="w-3.5 h-3.5" /> Media
               </TabsTrigger>
               <TabsTrigger
                 value="seo"
-                className="data-[state=active]:bg-[#E8A33C]/10 data-[state=active]:text-[#E8A33C] flex-1 gap-1.5"
+                className="data-[state=active]:bg-[#59ff00]/10 data-[state=active]:text-[#59ff00] flex-1 gap-1.5"
               >
                 <Globe className="w-3.5 h-3.5" /> SEO
               </TabsTrigger>
@@ -509,7 +509,7 @@ export default function BlogTab({
                         <SelectItem
                           key={cat.id}
                           value={cat.id}
-                          className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]"
+                          className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]"
                         >
                           {cat.emoji || '📰'} {cat.name}
                         </SelectItem>
@@ -519,7 +519,7 @@ export default function BlogTab({
                   <button
                     type="button"
                     onClick={openNewCategory}
-                    className="text-[#E8A33C] text-[10px] hover:underline flex items-center gap-1"
+                    className="text-[#59ff00] text-[10px] hover:underline flex items-center gap-1"
                   >
                     <Plus className="w-3 h-3" /> Add new category
                   </button>
@@ -534,9 +534,9 @@ export default function BlogTab({
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="bg-[#181818] border-[#2a2a2a]">
-                      <SelectItem value="draft" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Draft</SelectItem>
-                      <SelectItem value="published" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Published</SelectItem>
-                      <SelectItem value="archived" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Archived</SelectItem>
+                      <SelectItem value="draft" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Draft</SelectItem>
+                      <SelectItem value="published" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Published</SelectItem>
+                      <SelectItem value="archived" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Archived</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -564,7 +564,7 @@ export default function BlogTab({
                   onCheckedChange={(checked) =>
                     setBlogForm({ ...blogForm, featured: !!checked })
                   }
-                  className="data-[state=checked]:bg-[#E8A33C] data-[state=checked]:border-[#E8A33C] border-[#2a2a2a]"
+                  className="data-[state=checked]:bg-[#59ff00] data-[state=checked]:border-[#59ff00] border-[#2a2a2a]"
                 />
                 <Label htmlFor="blog-featured" className="text-gray-300 text-sm cursor-pointer">
                   Featured post (shown prominently on the blog page)
@@ -611,7 +611,7 @@ export default function BlogTab({
                     <Button
                       type="button"
                       variant="outline"
-                      className="w-full bg-[#0b0b0b] border-[#2a2a2a] text-gray-300 hover:text-white hover:border-[#E8A33C]/50"
+                      className="w-full bg-[#0b0b0b] border-[#2a2a2a] text-gray-300 hover:text-white hover:border-[#59ff00]/50"
                       onClick={() => fileInputRef.current?.click()}
                       disabled={uploading}
                     >
@@ -666,7 +666,7 @@ export default function BlogTab({
             {/* ─── SEO Tab ──────────────────────────────────────── */}
             <TabsContent value="seo" className="space-y-4 mt-4">
               <div className="flex items-center gap-2 mb-2">
-                <Globe className="w-4 h-4 text-[#E8A33C]" />
+                <Globe className="w-4 h-4 text-[#59ff00]" />
                 <p className="text-gray-300 text-sm font-medium">Search Engine Optimization</p>
               </div>
 
@@ -734,7 +734,7 @@ export default function BlogTab({
             </Button>
             <Button
               onClick={handleSaveBlog}
-              className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold"
+              className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold"
             >
               {editBlog ? 'Update Post' : 'Publish Post'}
             </Button>
@@ -818,8 +818,8 @@ export default function BlogTab({
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent className="bg-[#181818] border-[#2a2a2a]">
-                    <SelectItem value="active" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Active</SelectItem>
-                    <SelectItem value="inactive" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Inactive</SelectItem>
+                    <SelectItem value="active" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Active</SelectItem>
+                    <SelectItem value="inactive" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Inactive</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -827,7 +827,7 @@ export default function BlogTab({
 
             {/* Preview */}
             <div className="flex items-center gap-2 p-3 bg-[#0b0b0b] rounded-lg border border-[#2a2a2a]">
-              <Badge className="bg-[#E8A33C]/10 text-[#E8A33C] border-[#E8A33C]/30 text-xs">
+              <Badge className="bg-[#59ff00]/10 text-[#59ff00] border-[#59ff00]/30 text-xs">
                 {categoryForm.emoji || '📰'} {categoryForm.name || 'Category Name'}
               </Badge>
               {categoryForm.status === 'inactive' && (
@@ -846,7 +846,7 @@ export default function BlogTab({
             </Button>
             <Button
               onClick={handleSaveCategory}
-              className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold"
+              className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold"
             >
               {editCategory ? 'Update' : 'Create'} Category
             </Button>

@@ -32,7 +32,7 @@ export default function OrdersTab({
       <div className="flex gap-2 flex-wrap">
         {orderStatuses.map((s) => (
           <Button key={s} variant={orderStatusFilter === s ? 'default' : 'ghost'} size="sm" onClick={() => setOrderStatusFilter(s)}
-            className={orderStatusFilter === s ? 'bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold' : 'text-gray-400 hover:text-white hover:bg-white/5 capitalize'}>
+            className={orderStatusFilter === s ? 'bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold' : 'text-gray-400 hover:text-white hover:bg-white/5 capitalize'}>
             {s === 'all' ? 'All' : s}
           </Button>
         ))}
@@ -63,7 +63,7 @@ export default function OrdersTab({
                     <TableCell className="text-white text-xs font-mono">{o.orderNumber}</TableCell>
                     <TableCell className="text-gray-300 text-sm">{o.customer?.name}</TableCell>
                     <TableCell className="text-gray-300 text-sm">{o.items?.length || 0} items</TableCell>
-                    <TableCell className="text-[#E8A33C] text-sm font-semibold">{fmt(o.total)}</TableCell>
+                    <TableCell className="text-[#59ff00] text-sm font-semibold">{fmt(o.total)}</TableCell>
                     <TableCell><Badge className={`text-[10px] ${paymentBadge(o.paymentStatus)}`}>{o.paymentStatus}</Badge></TableCell>
                     <TableCell><Badge className={`text-[10px] ${orderBadge(o.orderStatus)}`}>{o.orderStatus}</Badge></TableCell>
                     <TableCell className="text-gray-400 text-xs">{fmtDate(o.createdAt)}</TableCell>
@@ -78,7 +78,7 @@ export default function OrdersTab({
                           </SelectTrigger>
                           <SelectContent className="bg-[#181818] border-[#2a2a2a]">
                             {['pending', 'confirmed', 'processing', 'shipped', 'delivered', 'cancelled'].map((s) => (
-                              <SelectItem key={s} value={s} className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C] capitalize">{s}</SelectItem>
+                              <SelectItem key={s} value={s} className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00] capitalize">{s}</SelectItem>
                             ))}
                           </SelectContent>
                         </Select>

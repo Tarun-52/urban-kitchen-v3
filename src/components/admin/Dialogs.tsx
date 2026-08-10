@@ -220,7 +220,7 @@ export default function Dialogs(props: DialogsProps) {
                   <SelectTrigger className="bg-[#0b0b0b] border-[#2a2a2a] text-white"><SelectValue placeholder="Select" /></SelectTrigger>
                   <SelectContent className="bg-[#181818] border-[#2a2a2a]">
                     {categories.map((c: any) => (
-                      <SelectItem key={c.id} value={c.id} className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">{c.name}</SelectItem>
+                      <SelectItem key={c.id} value={c.id} className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">{c.name}</SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
@@ -248,7 +248,7 @@ export default function Dialogs(props: DialogsProps) {
                 )}
                 <div className="flex-1">
                   <input type="file" ref={fileInputRef} className="hidden" accept="image/jpeg,image/png,image/webp,image/gif,image/svg+xml" onChange={async (e) => { const file = e.target.files?.[0]; if (file) { const url = await handleImageUpload(file); if (url) setProductForm(p => ({ ...p, featuredImage: url })); e.target.value = '' } else { e.target.value = '' } }} />
-                  <Button type="button" variant="outline" className="w-full bg-[#0b0b0b] border-[#2a2a2a] text-gray-300 hover:text-white hover:border-[#E8A33C]/50" onClick={() => fileInputRef.current?.click()} disabled={uploading}>
+                  <Button type="button" variant="outline" className="w-full bg-[#0b0b0b] border-[#2a2a2a] text-gray-300 hover:text-white hover:border-[#59ff00]/50" onClick={() => fileInputRef.current?.click()} disabled={uploading}>
                     {uploading ? (<><div className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin mr-2" />Uploading...</>) : (<><Upload className="w-4 h-4 mr-2" />Upload Image</>)}
                   </Button>
                   <p className="text-gray-600 text-[10px] mt-1">JPG, PNG, WebP, GIF, SVG (max 5MB)</p>
@@ -264,9 +264,9 @@ export default function Dialogs(props: DialogsProps) {
                 <Select value={productForm.status} onValueChange={(v) => setProductForm(p => ({ ...p, status: v }))}>
                   <SelectTrigger className="bg-[#0b0b0b] border-[#2a2a2a] text-white"><SelectValue /></SelectTrigger>
                   <SelectContent className="bg-[#181818] border-[#2a2a2a]">
-                    <SelectItem value="active" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Active</SelectItem>
-                    <SelectItem value="draft" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Draft</SelectItem>
-                    <SelectItem value="archived" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Archived</SelectItem>
+                    <SelectItem value="active" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Active</SelectItem>
+                    <SelectItem value="draft" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Draft</SelectItem>
+                    <SelectItem value="archived" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Archived</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -292,8 +292,8 @@ export default function Dialogs(props: DialogsProps) {
           {/* Variants */}
           <div className="mt-5 border-t border-[#2a2a2a] pt-4">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-white text-sm font-semibold flex items-center gap-2"><Package className="w-4 h-4 text-[#E8A33C]" />Size / Variants</h3>
-              <Button type="button" size="sm" className="bg-[#E8A33C]/10 text-[#E8A33C] hover:bg-[#E8A33C]/20 border border-[#E8A33C]/30 font-semibold" onClick={() => setProductVariants(prev => [...prev, { ...emptyVariantForm, sortOrder: prev.length, name: `Variant ${prev.length + 1}` }])}><Plus className="w-3.5 h-3.5 mr-1" /> Add Variant</Button>
+              <h3 className="text-white text-sm font-semibold flex items-center gap-2"><Package className="w-4 h-4 text-[#59ff00]" />Size / Variants</h3>
+              <Button type="button" size="sm" className="bg-[#59ff00]/10 text-[#59ff00] hover:bg-[#59ff00]/20 border border-[#59ff00]/30 font-semibold" onClick={() => setProductVariants(prev => [...prev, { ...emptyVariantForm, sortOrder: prev.length, name: `Variant ${prev.length + 1}` }])}><Plus className="w-3.5 h-3.5 mr-1" /> Add Variant</Button>
             </div>
             {productVariants.length === 0 ? (
               <div className="text-center py-6 rounded-lg border border-dashed border-[#2a2a2a]">
@@ -304,7 +304,7 @@ export default function Dialogs(props: DialogsProps) {
             ) : (
               <div className="space-y-2 max-h-64 overflow-y-auto custom-scrollbar">
                 {productVariants.map((v, idx) => (
-                  <div key={idx} className="bg-[#0b0b0b] border border-[#2a2a2a] rounded-lg p-3 hover:border-[#E8A33C]/20 transition-colors">
+                  <div key={idx} className="bg-[#0b0b0b] border border-[#2a2a2a] rounded-lg p-3 hover:border-[#59ff00]/20 transition-colors">
                     <div className="flex items-start gap-2">
                       <div className="flex-1 grid grid-cols-3 gap-2">
                         <div className="space-y-1"><Label className="text-gray-500 text-[10px] uppercase tracking-wider">Name</Label><Input className="bg-[#181818] border-[#2a2a2a] text-white h-8 text-sm" placeholder="e.g. Small" value={v.name} onChange={(e) => { const u = [...productVariants]; u[idx] = { ...u[idx], name: e.target.value }; setProductVariants(u) }} /></div>
@@ -332,7 +332,7 @@ export default function Dialogs(props: DialogsProps) {
           </div>
           <DialogFooter className="mt-4">
             <Button variant="ghost" onClick={() => setProductDialog(false)} className="text-gray-400 hover:text-white">Cancel</Button>
-            <Button onClick={handleSaveProduct} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold">{editProduct ? 'Update' : 'Create'}</Button>
+            <Button onClick={handleSaveProduct} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold">{editProduct ? 'Update' : 'Create'}</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
@@ -346,9 +346,9 @@ export default function Dialogs(props: DialogsProps) {
           </DialogHeader>
           <Tabs defaultValue="general" className="w-full">
             <TabsList className="bg-[#0b0b0b] border border-[#2a2a2a] w-full">
-              <TabsTrigger value="general" className="data-[state=active]:bg-[#E8A33C]/10 data-[state=active]:text-[#E8A33C] flex-1">General</TabsTrigger>
-              <TabsTrigger value="images" className="data-[state=active]:bg-[#E8A33C]/10 data-[state=active]:text-[#E8A33C] flex-1">Images</TabsTrigger>
-              <TabsTrigger value="seo" className="data-[state=active]:bg-[#E8A33C]/10 data-[state=active]:text-[#E8A33C] flex-1">SEO</TabsTrigger>
+              <TabsTrigger value="general" className="data-[state=active]:bg-[#59ff00]/10 data-[state=active]:text-[#59ff00] flex-1">General</TabsTrigger>
+              <TabsTrigger value="images" className="data-[state=active]:bg-[#59ff00]/10 data-[state=active]:text-[#59ff00] flex-1">Images</TabsTrigger>
+              <TabsTrigger value="seo" className="data-[state=active]:bg-[#59ff00]/10 data-[state=active]:text-[#59ff00] flex-1">SEO</TabsTrigger>
             </TabsList>
             <TabsContent value="general" className="space-y-3 mt-3">
               <div className="space-y-1.5"><Label className="text-gray-300 text-sm">Name *</Label><Input className="bg-[#0b0b0b] border-[#2a2a2a] text-white" placeholder="Category name" value={categoryForm.name} onChange={(e) => setCategoryForm(p => ({ ...p, name: e.target.value }))} /></div>
@@ -357,15 +357,15 @@ export default function Dialogs(props: DialogsProps) {
                 <Select value={categoryForm.parentId} onValueChange={(v) => setCategoryForm(p => ({ ...p, parentId: v }))}>
                   <SelectTrigger className="bg-[#0b0b0b] border-[#2a2a2a] text-white"><SelectValue placeholder="None (Top Level)" /></SelectTrigger>
                   <SelectContent className="bg-[#181818] border-[#2a2a2a]">
-                    <SelectItem value="none" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">None (Top Level)</SelectItem>
-                    {categories.filter((c: any) => c.id !== editCategory?.id).map((c: any) => (<SelectItem key={c.id} value={c.id} className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">{c.name}</SelectItem>))}
+                    <SelectItem value="none" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">None (Top Level)</SelectItem>
+                    {categories.filter((c: any) => c.id !== editCategory?.id).map((c: any) => (<SelectItem key={c.id} value={c.id} className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">{c.name}</SelectItem>))}
                   </SelectContent>
                 </Select>
               </div>
               <div className="space-y-1.5"><Label className="text-gray-300 text-sm">Description</Label><Textarea className="bg-[#0b0b0b] border-[#2a2a2a] text-white" rows={3} placeholder="Category description..." value={categoryForm.description} onChange={(e) => setCategoryForm(p => ({ ...p, description: e.target.value }))} /></div>
               <div className="grid grid-cols-3 gap-3">
-                <div className="space-y-1.5"><Label className="text-gray-300 text-sm">Status</Label><Select value={categoryForm.status} onValueChange={(v) => setCategoryForm(p => ({ ...p, status: v }))}><SelectTrigger className="bg-[#0b0b0b] border-[#2a2a2a] text-white"><SelectValue /></SelectTrigger><SelectContent className="bg-[#181818] border-[#2a2a2a]"><SelectItem value="active" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Active</SelectItem><SelectItem value="draft" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Draft</SelectItem></SelectContent></Select></div>
-                <div className="space-y-1.5"><Label className="text-gray-300 text-sm">Display Type</Label><Select value={categoryForm.displayType} onValueChange={(v) => setCategoryForm(p => ({ ...p, displayType: v }))}><SelectTrigger className="bg-[#0b0b0b] border-[#2a2a2a] text-white"><SelectValue /></SelectTrigger><SelectContent className="bg-[#181818] border-[#2a2a2a]"><SelectItem value="products" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Products</SelectItem><SelectItem value="subcategories" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Subcategories</SelectItem><SelectItem value="both" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Both</SelectItem></SelectContent></Select></div>
+                <div className="space-y-1.5"><Label className="text-gray-300 text-sm">Status</Label><Select value={categoryForm.status} onValueChange={(v) => setCategoryForm(p => ({ ...p, status: v }))}><SelectTrigger className="bg-[#0b0b0b] border-[#2a2a2a] text-white"><SelectValue /></SelectTrigger><SelectContent className="bg-[#181818] border-[#2a2a2a]"><SelectItem value="active" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Active</SelectItem><SelectItem value="draft" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Draft</SelectItem></SelectContent></Select></div>
+                <div className="space-y-1.5"><Label className="text-gray-300 text-sm">Display Type</Label><Select value={categoryForm.displayType} onValueChange={(v) => setCategoryForm(p => ({ ...p, displayType: v }))}><SelectTrigger className="bg-[#0b0b0b] border-[#2a2a2a] text-white"><SelectValue /></SelectTrigger><SelectContent className="bg-[#181818] border-[#2a2a2a]"><SelectItem value="products" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Products</SelectItem><SelectItem value="subcategories" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Subcategories</SelectItem><SelectItem value="both" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Both</SelectItem></SelectContent></Select></div>
                 <div className="space-y-1.5"><Label className="text-gray-300 text-sm">Menu Order</Label><Input type="number" className="bg-[#0b0b0b] border-[#2a2a2a] text-white" value={categoryForm.menuOrder} onChange={(e) => setCategoryForm(p => ({ ...p, menuOrder: e.target.value }))} /></div>
               </div>
             </TabsContent>
@@ -381,7 +381,7 @@ export default function Dialogs(props: DialogsProps) {
           </Tabs>
           <DialogFooter className="mt-4">
             <Button variant="ghost" onClick={() => setCategoryDialog(false)} className="text-gray-400 hover:text-white">Cancel</Button>
-            <Button onClick={handleSaveCategory} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold">{editCategory ? 'Update' : 'Create'}</Button>
+            <Button onClick={handleSaveCategory} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold">{editCategory ? 'Update' : 'Create'}</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
@@ -424,7 +424,7 @@ export default function Dialogs(props: DialogsProps) {
                 {(selectedOrder.items || []).map((item: any, i: number) => (
                   <div key={i} className="flex items-center justify-between py-2 border-b border-[#2a2a2a] last:border-0">
                     <div><p className="text-white text-sm">{item.product?.name}</p><p className="text-gray-500 text-xs">Qty: {item.qty} × {fmt(item.price)}</p></div>
-                    <p className="text-[#E8A33C] text-sm font-semibold">{fmt(item.qty * item.price)}</p>
+                    <p className="text-[#59ff00] text-sm font-semibold">{fmt(item.qty * item.price)}</p>
                   </div>
                 ))}
               </div>
@@ -434,7 +434,7 @@ export default function Dialogs(props: DialogsProps) {
                 <div className="flex justify-between"><span className="text-gray-400">Tax (18%)</span><span className="text-white">{fmt(selectedOrder.tax)}</span></div>
                 <div className="flex justify-between"><span className="text-gray-400">Shipping</span><span className="text-white">{fmt(selectedOrder.shipping)}</span></div>
                 <Separator className="bg-[#2a2a2a] my-1" />
-                <div className="flex justify-between font-bold"><span className="text-white">Total</span><span className="text-[#E8A33C]">{fmt(selectedOrder.total)}</span></div>
+                <div className="flex justify-between font-bold"><span className="text-white">Total</span><span className="text-[#59ff00]">{fmt(selectedOrder.total)}</span></div>
               </div>
             </div>
           )}
@@ -461,10 +461,10 @@ export default function Dialogs(props: DialogsProps) {
                 <Select value={leadForm.source} onValueChange={(v) => setLeadForm(p => ({ ...p, source: v }))}>
                   <SelectTrigger className="bg-[#0b0b0b] border-[#2a2a2a] text-white"><SelectValue /></SelectTrigger>
                   <SelectContent className="bg-[#181818] border-[#2a2a2a]">
-                    <SelectItem value="website" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Website</SelectItem>
-                    <SelectItem value="referral" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Referral</SelectItem>
-                    <SelectItem value="social" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Social</SelectItem>
-                    <SelectItem value="direct" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Direct</SelectItem>
+                    <SelectItem value="website" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Website</SelectItem>
+                    <SelectItem value="referral" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Referral</SelectItem>
+                    <SelectItem value="social" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Social</SelectItem>
+                    <SelectItem value="direct" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Direct</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -472,7 +472,7 @@ export default function Dialogs(props: DialogsProps) {
                 <Select value={leadForm.assignedTo} onValueChange={(v) => setLeadForm(p => ({ ...p, assignedTo: v }))}>
                   <SelectTrigger className="bg-[#0b0b0b] border-[#2a2a2a] text-white"><SelectValue placeholder="Select" /></SelectTrigger>
                   <SelectContent className="bg-[#181818] border-[#2a2a2a]">
-                    {employees.map((e: any) => (<SelectItem key={e.id} value={e.userId} className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">{e.user?.name}</SelectItem>))}
+                    {employees.map((e: any) => (<SelectItem key={e.id} value={e.userId} className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">{e.user?.name}</SelectItem>))}
                   </SelectContent>
                 </Select>
               </div>
@@ -480,7 +480,7 @@ export default function Dialogs(props: DialogsProps) {
           </div>
           <DialogFooter className="mt-4">
             <Button variant="ghost" onClick={() => setLeadDialog(false)} className="text-gray-400 hover:text-white">Cancel</Button>
-            <Button onClick={handleSaveLead} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold">Create Lead</Button>
+            <Button onClick={handleSaveLead} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold">Create Lead</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
@@ -492,7 +492,7 @@ export default function Dialogs(props: DialogsProps) {
           {selectedLead && (
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-[#E8A33C]/10 border border-[#E8A33C]/30 flex items-center justify-center"><Users className="w-5 h-5 text-[#E8A33C]" /></div>
+                <div className="w-12 h-12 rounded-full bg-[#59ff00]/10 border border-[#59ff00]/30 flex items-center justify-center"><Users className="w-5 h-5 text-[#59ff00]" /></div>
                 <div><p className="text-white font-bold text-lg">{selectedLead.name}</p>{selectedLead.company && <p className="text-gray-400 text-sm">{selectedLead.company}</p>}</div>
               </div>
               <div className="grid grid-cols-2 gap-3 text-sm">
@@ -521,8 +521,8 @@ export default function Dialogs(props: DialogsProps) {
                 }}>
                   <SelectTrigger className="bg-[#0b0b0b] border-[#2a2a2a] text-white"><SelectValue placeholder="Select employee" /></SelectTrigger>
                   <SelectContent className="bg-[#181818] border-[#2a2a2a]">
-                    <SelectItem value="__none__" className="text-gray-400 focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Unassigned</SelectItem>
-                    {employees.map((e: any) => (<SelectItem key={e.id} value={e.userId || e.id} className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">{e.user?.name || e.name}</SelectItem>))}
+                    <SelectItem value="__none__" className="text-gray-400 focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Unassigned</SelectItem>
+                    {employees.map((e: any) => (<SelectItem key={e.id} value={e.userId || e.id} className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">{e.user?.name || e.name}</SelectItem>))}
                   </SelectContent>
                 </Select>
               </div>
@@ -531,7 +531,7 @@ export default function Dialogs(props: DialogsProps) {
                 <Select value={selectedLead.status} onValueChange={(v) => handleUpdateLeadStatus(selectedLead.id, v)}>
                   <SelectTrigger className="bg-[#0b0b0b] border-[#2a2a2a] text-white"><SelectValue /></SelectTrigger>
                   <SelectContent className="bg-[#181818] border-[#2a2a2a]">
-                    {['new', 'contacted', 'quotation_sent', 'negotiation', 'won', 'lost'].map((s) => (<SelectItem key={s} value={s} className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C] capitalize">{s.replace('_', ' ')}</SelectItem>))}
+                    {['new', 'contacted', 'quotation_sent', 'negotiation', 'won', 'lost'].map((s) => (<SelectItem key={s} value={s} className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00] capitalize">{s.replace('_', ' ')}</SelectItem>))}
                   </SelectContent>
                 </Select>
               </div>
@@ -541,12 +541,12 @@ export default function Dialogs(props: DialogsProps) {
                   {selectedLead.quotations.map((q: any) => (
                     <div key={q.id} className="flex items-center justify-between py-2 border-b border-[#2a2a2a]">
                       <div><p className="text-white text-sm font-mono">{q.quotationNumber}</p><p className="text-gray-500 text-xs">{fmtDate(q.createdAt)}</p></div>
-                      <div className="text-right"><p className="text-[#E8A33C] text-sm font-semibold">{fmt(q.amount)}</p><Badge className={q.status === 'accepted' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' : q.status === 'rejected' ? 'bg-red-500/20 text-red-400 border-red-500/30' : 'bg-gray-500/20 text-gray-400 border-gray-500/30'}>{q.status}</Badge></div>
+                      <div className="text-right"><p className="text-[#59ff00] text-sm font-semibold">{fmt(q.amount)}</p><Badge className={q.status === 'accepted' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' : q.status === 'rejected' ? 'bg-red-500/20 text-red-400 border-red-500/30' : 'bg-gray-500/20 text-gray-400 border-gray-500/30'}>{q.status}</Badge></div>
                     </div>
                   ))}
                 </div>
               )}
-              <Button onClick={onOpenQuotationFromLead} className="w-full bg-[#E8A33C]/10 text-[#E8A33C] hover:bg-[#E8A33C]/20 border border-[#E8A33C]/30 font-semibold"><FileText className="w-4 h-4 mr-2" /> Create Quotation</Button>
+              <Button onClick={onOpenQuotationFromLead} className="w-full bg-[#59ff00]/10 text-[#59ff00] hover:bg-[#59ff00]/20 border border-[#59ff00]/30 font-semibold"><FileText className="w-4 h-4 mr-2" /> Create Quotation</Button>
             </div>
           )}
         </DialogContent>
@@ -560,10 +560,10 @@ export default function Dialogs(props: DialogsProps) {
             <DialogDescription className="text-gray-400">{editQuotation ? `Editing ${editQuotation.quotationNumber}` : (selectedLead ? `For ${selectedLead.name}` : 'Fill in the details below')}</DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
-            <div><h3 className="text-[#E8A33C] text-sm font-semibold mb-2 flex items-center gap-2"><Palette className="w-4 h-4" /> Template Style</h3>
+            <div><h3 className="text-[#59ff00] text-sm font-semibold mb-2 flex items-center gap-2"><Palette className="w-4 h-4" /> Template Style</h3>
               <div className="grid grid-cols-4 gap-2">
                 {(['modern', 'minimal', 'corporate', 'premium'] as const).map(t => (
-                  <button key={t} onClick={() => setQuotationTemplate(t)} className={`p-2 rounded-lg border transition-all text-center ${quotationTemplate === t ? 'border-[#E8A33C] bg-[#E8A33C]/10 text-[#E8A33C]' : 'border-[#2a2a2a] bg-[#0b0b0b] text-gray-400 hover:border-gray-600'}`}>
+                  <button key={t} onClick={() => setQuotationTemplate(t)} className={`p-2 rounded-lg border transition-all text-center ${quotationTemplate === t ? 'border-[#59ff00] bg-[#59ff00]/10 text-[#59ff00]' : 'border-[#2a2a2a] bg-[#0b0b0b] text-gray-400 hover:border-gray-600'}`}>
                     <div className="text-xs font-semibold capitalize">{t}</div>
                     <div className="text-[9px] mt-0.5 opacity-60">{t === 'modern' ? 'Bold & vibrant' : t === 'minimal' ? 'Clean & simple' : t === 'corporate' ? 'Professional' : 'Luxury feel'}</div>
                   </button>
@@ -583,7 +583,7 @@ export default function Dialogs(props: DialogsProps) {
                 <div className="space-y-1"><Label className="text-gray-400 text-xs">Footer Notes</Label><Input className="bg-[#181818] border-[#2a2a2a] text-white h-9 text-sm" value={companyCustomization.footerNotes} onChange={e => setCompanyCustomization(c => ({ ...c, footerNotes: e.target.value }))} /></div>
               </div>
             </details>
-            <div><h3 className="text-[#E8A33C] text-sm font-semibold mb-2">Customer Details</h3>
+            <div><h3 className="text-[#59ff00] text-sm font-semibold mb-2">Customer Details</h3>
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-1"><Label className="text-gray-400 text-xs">Name *</Label><Input className="bg-[#0b0b0b] border-[#2a2a2a] text-white h-9 text-sm" value={quotationCustomerName} onChange={e => setQuotationCustomerName(e.target.value)} placeholder="Customer name" /></div>
                 <div className="space-y-1"><Label className="text-gray-400 text-xs">Company</Label><Input className="bg-[#0b0b0b] border-[#2a2a2a] text-white h-9 text-sm" value={quotationCustomerCompany} onChange={e => setQuotationCustomerCompany(e.target.value)} placeholder="Company name" /></div>
@@ -595,19 +595,19 @@ export default function Dialogs(props: DialogsProps) {
             </div>
             <Separator className="bg-[#2a2a2a]" />
             <div>
-              <div className="flex items-center justify-between mb-2"><h3 className="text-[#E8A33C] text-sm font-semibold">Line Items</h3>
-                <Button variant="ghost" size="sm" onClick={() => setQuotationItems([...quotationItems, { desc: '', hsn: '', qty: '1', unit: 'Nos', rate: '', discount: '0', gstPercent: '18' }])} className="text-[#E8A33C] hover:bg-[#E8A33C]/10 h-7 text-xs"><Plus className="w-3 h-3 mr-1" /> Add Item</Button>
+              <div className="flex items-center justify-between mb-2"><h3 className="text-[#59ff00] text-sm font-semibold">Line Items</h3>
+                <Button variant="ghost" size="sm" onClick={() => setQuotationItems([...quotationItems, { desc: '', hsn: '', qty: '1', unit: 'Nos', rate: '', discount: '0', gstPercent: '18' }])} className="text-[#59ff00] hover:bg-[#59ff00]/10 h-7 text-xs"><Plus className="w-3 h-3 mr-1" /> Add Item</Button>
               </div>
               <div className="space-y-2">
                 {quotationItems.map((item, idx) => (
                   <div key={idx} className="grid grid-cols-12 gap-2 items-end bg-[#0b0b0b] border border-[#2a2a2a] rounded-lg p-2">
-                    <div className="col-span-4 space-y-0.5 relative"><Label className="text-gray-500 text-[10px]">Description</Label><Input className="bg-[#181818] border-[#2a2a2a] text-white h-8 text-xs" value={item.desc} onChange={e => { const n = [...quotationItems]; n[idx] = { ...n[idx], desc: e.target.value }; setQuotationItems(n); handleProductSearch(e.target.value, idx) }} onFocus={() => { if (item.desc.length >= 2) handleProductSearch(item.desc, idx) }} placeholder="Product / Service" />{productSuggestions[idx] && productSuggestions[idx].length > 0 && (<div className="absolute z-50 top-full left-0 right-0 bg-[#181818] border border-[#2a2a2a] rounded-md mt-0.5 max-h-32 overflow-y-auto shadow-lg" onClick={e => e.stopPropagation()}>{productSuggestions[idx].map((p: any) => (<button key={p.id} type="button" className="w-full text-left px-2 py-1.5 text-xs text-white hover:bg-[#E8A33C]/10 flex justify-between items-center" onClick={() => { const n = [...quotationItems]; n[idx] = { ...n[idx], desc: p.name, rate: String(p.price), hsn: p.hsnCode || '' }; setQuotationItems(n); setProductSuggestions({}) }}><span>{p.name}</span><span className="text-[#E8A33C] text-[10px]">₹{Number(p.price).toLocaleString('en-IN')}</span></button>))}</div>)}</div>
+                    <div className="col-span-4 space-y-0.5 relative"><Label className="text-gray-500 text-[10px]">Description</Label><Input className="bg-[#181818] border-[#2a2a2a] text-white h-8 text-xs" value={item.desc} onChange={e => { const n = [...quotationItems]; n[idx] = { ...n[idx], desc: e.target.value }; setQuotationItems(n); handleProductSearch(e.target.value, idx) }} onFocus={() => { if (item.desc.length >= 2) handleProductSearch(item.desc, idx) }} placeholder="Product / Service" />{productSuggestions[idx] && productSuggestions[idx].length > 0 && (<div className="absolute z-50 top-full left-0 right-0 bg-[#181818] border border-[#2a2a2a] rounded-md mt-0.5 max-h-32 overflow-y-auto shadow-lg" onClick={e => e.stopPropagation()}>{productSuggestions[idx].map((p: any) => (<button key={p.id} type="button" className="w-full text-left px-2 py-1.5 text-xs text-white hover:bg-[#59ff00]/10 flex justify-between items-center" onClick={() => { const n = [...quotationItems]; n[idx] = { ...n[idx], desc: p.name, rate: String(p.price), hsn: p.hsnCode || '' }; setQuotationItems(n); setProductSuggestions({}) }}><span>{p.name}</span><span className="text-[#59ff00] text-[10px]">₹{Number(p.price).toLocaleString('en-IN')}</span></button>))}</div>)}</div>
                     <div className="col-span-1 space-y-0.5"><Label className="text-gray-500 text-[10px]">HSN</Label><Input className="bg-[#181818] border-[#2a2a2a] text-white h-8 text-xs" value={item.hsn} onChange={e => { const n = [...quotationItems]; n[idx] = { ...n[idx], hsn: e.target.value }; setQuotationItems(n) }} placeholder="8419" /></div>
                     <div className="col-span-1 space-y-0.5"><Label className="text-gray-500 text-[10px]">Qty</Label><Input type="number" className="bg-[#181818] border-[#2a2a2a] text-white h-8 text-xs" value={item.qty} onChange={e => { const n = [...quotationItems]; n[idx] = { ...n[idx], qty: e.target.value }; setQuotationItems(n) }} /></div>
                     <div className="col-span-1 space-y-0.5"><Label className="text-gray-500 text-[10px]">Unit</Label><Input className="bg-[#181818] border-[#2a2a2a] text-white h-8 text-xs" value={item.unit} onChange={e => { const n = [...quotationItems]; n[idx] = { ...n[idx], unit: e.target.value }; setQuotationItems(n) }} /></div>
                     <div className="col-span-2 space-y-0.5"><Label className="text-gray-500 text-[10px]">Rate (₹)</Label><Input type="number" className="bg-[#181818] border-[#2a2a2a] text-white h-8 text-xs" value={item.rate} onChange={e => { const n = [...quotationItems]; n[idx] = { ...n[idx], rate: e.target.value }; setQuotationItems(n) }} placeholder="0" /></div>
                     <div className="col-span-1 space-y-0.5"><Label className="text-gray-500 text-[10px]">Disc%</Label><Input type="number" className="bg-[#181818] border-[#2a2a2a] text-white h-8 text-xs" value={item.discount} onChange={e => { const n = [...quotationItems]; n[idx] = { ...n[idx], discount: e.target.value }; setQuotationItems(n) }} /></div>
-                    <div className="col-span-1 space-y-0.5"><Label className="text-gray-500 text-[10px]">GST%</Label><div className="bg-[#181818] border border-[#2a2a2a] rounded-md h-8 flex items-center px-2 text-xs text-[#E8A33C] font-semibold">18%</div></div>
+                    <div className="col-span-1 space-y-0.5"><Label className="text-gray-500 text-[10px]">GST%</Label><div className="bg-[#181818] border border-[#2a2a2a] rounded-md h-8 flex items-center px-2 text-xs text-[#59ff00] font-semibold">18%</div></div>
                     <div className="col-span-1 flex items-center justify-center"><Button variant="ghost" size="sm" onClick={() => setQuotationItems(quotationItems.filter((_, i) => i !== idx))} className="text-red-400 hover:text-red-300 hover:bg-red-500/10 h-8 w-8 p-0" disabled={quotationItems.length <= 1}><Trash2 className="w-3.5 h-3.5" /></Button></div>
                   </div>
                 ))}
@@ -625,14 +625,14 @@ export default function Dialogs(props: DialogsProps) {
                       <div className="flex justify-between text-xs"><span className="text-gray-400">CGST (9%)</span><span className="text-gray-300">{fmt(t.cgst)}</span></div>
                       <div className="flex justify-between text-xs"><span className="text-gray-400">SGST (9%)</span><span className="text-gray-300">{fmt(t.sgst)}</span></div>
                       <div className="flex justify-between text-xs"><span className="text-gray-400">Total GST (18%)</span><span className="text-gray-300">{fmt(t.totalGst)}</span></div>
-                      <div className="flex justify-between text-sm pt-2 border-t border-[#2a2a2a]"><span className="text-white font-bold">Grand Total</span><span className="text-[#E8A33C] font-bold text-lg">{fmt(t.grandTotal)}</span></div>
+                      <div className="flex justify-between text-sm pt-2 border-t border-[#2a2a2a]"><span className="text-white font-bold">Grand Total</span><span className="text-[#59ff00] font-bold text-lg">{fmt(t.grandTotal)}</span></div>
                     </div>
                   </div>
                 )
               })()}
             </div>
             <Separator className="bg-[#2a2a2a]" />
-            <div><h3 className="text-[#E8A33C] text-sm font-semibold mb-2">Additional Details</h3>
+            <div><h3 className="text-[#59ff00] text-sm font-semibold mb-2">Additional Details</h3>
               <div className="grid grid-cols-3 gap-3">
                 <div className="space-y-1"><Label className="text-gray-400 text-xs">Valid Until</Label><Input type="date" className="bg-[#0b0b0b] border-[#2a2a2a] text-white h-9 text-sm" value={quotationValidUntil} onChange={e => setQuotationValidUntil(e.target.value)} /></div>
                 <div className="space-y-1"><Label className="text-gray-400 text-xs">Delivery Period</Label><Input className="bg-[#0b0b0b] border-[#2a2a2a] text-white h-9 text-sm" value={quotationDeliveryPeriod} onChange={e => setQuotationDeliveryPeriod(e.target.value)} /></div>
@@ -647,7 +647,7 @@ export default function Dialogs(props: DialogsProps) {
           <DialogFooter className="mt-4 gap-2">
             <Button variant="ghost" onClick={() => setQuotationDialog(false)} className="text-gray-400 hover:text-white">Cancel</Button>
             <Button variant="outline" onClick={() => window.print()} className="border-[#2a2a2a] text-gray-300 hover:text-white"><Printer className="w-4 h-4 mr-2" /> Print</Button>
-            <Button onClick={handleSaveQuotation} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold">{editQuotation ? <><Edit className="w-4 h-4 mr-2" /> Update Quotation</> : <><FileText className="w-4 h-4 mr-2" /> Create Quotation</>}</Button>
+            <Button onClick={handleSaveQuotation} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold">{editQuotation ? <><Edit className="w-4 h-4 mr-2" /> Update Quotation</> : <><FileText className="w-4 h-4 mr-2" /> Create Quotation</>}</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
@@ -674,7 +674,7 @@ export default function Dialogs(props: DialogsProps) {
           </div>
           <DialogFooter className="mt-4">
             <Button variant="ghost" onClick={() => setEmployeeDialog(false)} className="text-gray-400 hover:text-white">Cancel</Button>
-            <Button onClick={handleSaveEmployee} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold">Create Employee</Button>
+            <Button onClick={handleSaveEmployee} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold">Create Employee</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
@@ -697,7 +697,7 @@ export default function Dialogs(props: DialogsProps) {
           </div>
           <DialogFooter className="mt-4">
             <Button variant="ghost" onClick={() => setAmcDialog(false)} className="text-gray-400 hover:text-white">Cancel</Button>
-            <Button onClick={handleSaveAmc} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold">Create Contract</Button>
+            <Button onClick={handleSaveAmc} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold">Create Contract</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
@@ -715,10 +715,10 @@ export default function Dialogs(props: DialogsProps) {
                 <Select value={serviceForm.priority} onValueChange={(v) => setServiceForm(p => ({ ...p, priority: v }))}>
                   <SelectTrigger className="bg-[#0b0b0b] border-[#2a2a2a] text-white"><SelectValue /></SelectTrigger>
                   <SelectContent className="bg-[#181818] border-[#2a2a2a]">
-                    <SelectItem value="low" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Low</SelectItem>
-                    <SelectItem value="medium" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Medium</SelectItem>
-                    <SelectItem value="high" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">High</SelectItem>
-                    <SelectItem value="critical" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">Critical</SelectItem>
+                    <SelectItem value="low" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Low</SelectItem>
+                    <SelectItem value="medium" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Medium</SelectItem>
+                    <SelectItem value="high" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">High</SelectItem>
+                    <SelectItem value="critical" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">Critical</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -727,7 +727,7 @@ export default function Dialogs(props: DialogsProps) {
           </div>
           <DialogFooter className="mt-4">
             <Button variant="ghost" onClick={() => setServiceDialog(false)} className="text-gray-400 hover:text-white">Cancel</Button>
-            <Button onClick={handleSaveServiceRequest} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold">Create Request</Button>
+            <Button onClick={handleSaveServiceRequest} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold">Create Request</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

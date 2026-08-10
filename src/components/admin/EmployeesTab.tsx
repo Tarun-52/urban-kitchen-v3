@@ -60,7 +60,7 @@ export default function EmployeesTab({
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-white text-xl font-bold">Employees</h2>
-        <Button onClick={openNewEmp} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold"><Plus className="w-4 h-4 mr-1" /> Add Employee</Button>
+        <Button onClick={openNewEmp} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold"><Plus className="w-4 h-4 mr-1" /> Add Employee</Button>
       </div>
       <Card className="bg-[#181818] border-[#2a2a2a]">
         <CardContent className="p-0">
@@ -73,7 +73,7 @@ export default function EmployeesTab({
                     <TableCell className="text-white text-sm">{e.user?.name || '-'}</TableCell>
                     <TableCell className="text-gray-300 text-sm">{e.department}</TableCell>
                     <TableCell className="text-gray-300 text-sm">{e.designation}</TableCell>
-                    <TableCell className="text-[#E8A33C] text-sm font-semibold">{fmt(e.salary)}</TableCell>
+                    <TableCell className="text-[#59ff00] text-sm font-semibold">{fmt(e.salary)}</TableCell>
                     <TableCell className="text-gray-400 text-sm">{fmtDate(e.joiningDate)}</TableCell>
                     <TableCell><Badge className={`text-[10px] ${statusBadgeCls(e.status)}`}>{e.status}</Badge></TableCell>
                     <TableCell>
@@ -103,7 +103,7 @@ export default function EmployeesTab({
             <div><Label className="text-gray-400 text-xs">Joining Date</Label><Input type="date" value={empEditForm.joiningDate} onChange={(e) => setEmpEditForm(f => ({ ...f, joiningDate: e.target.value }))} className="bg-[#0b0b0b] border-[#2a2a2a] text-white" /></div>
             {editEmp && <div><Label className="text-gray-400 text-xs">Status</Label><Select value={empEditForm.status} onValueChange={(v) => setEmpEditForm(f => ({ ...f, status: v }))}><SelectTrigger className="bg-[#0b0b0b] border-[#2a2a2a] text-white"><SelectValue /></SelectTrigger><SelectContent className="bg-[#181818] border-[#2a2a2a]"><SelectItem value="active" className="text-white">Active</SelectItem><SelectItem value="on_leave" className="text-white">On Leave</SelectItem><SelectItem value="terminated" className="text-white">Terminated</SelectItem></SelectContent></Select></div>}
           </div>
-          <DialogFooter><Button variant="ghost" onClick={() => setEmpEditDialog(false)} className="text-gray-400">Cancel</Button><Button onClick={handleSaveEmp} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90">{editEmp ? 'Update' : 'Create'}</Button></DialogFooter>
+          <DialogFooter><Button variant="ghost" onClick={() => setEmpEditDialog(false)} className="text-gray-400">Cancel</Button><Button onClick={handleSaveEmp} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90">{editEmp ? 'Update' : 'Create'}</Button></DialogFooter>
         </DialogContent>
       </Dialog>
     </motion.div>

@@ -131,13 +131,13 @@ export default function BlogPage() {
       <section className="relative py-16 md:py-24 overflow-hidden">
         {/* Background decorations */}
         <div className="absolute inset-0 grid-pattern opacity-50" />
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#E8A33C]/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#E8A33C]/3 rounded-full blur-[100px]" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#59ff00]/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#59ff00]/3 rounded-full blur-[100px]" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" animate="visible" variants={stagger} className="text-center">
             <motion.div variants={fadeUp} custom={0}>
-              <Badge className="bg-[#E8A33C]/10 text-[#E8A33C] border-[#E8A33C]/20 mb-6 px-4 py-1.5 text-sm">
+              <Badge className="bg-[#59ff00]/10 text-[#59ff00] border-[#59ff00]/20 mb-6 px-4 py-1.5 text-sm">
                 <Newspaper className="w-3.5 h-3.5 mr-1.5" />
                 Urban Kitchen Blog
               </Badge>
@@ -149,7 +149,7 @@ export default function BlogPage() {
               className="font-[family-name:var(--font-poppins)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4"
             >
               Insights &{' '}
-              <span className="text-[#E8A33C] neon-text">Expertise</span>
+              <span className="text-[#59ff00] neon-text">Expertise</span>
               <br />
               for Commercial Kitchens
             </motion.h1>
@@ -172,7 +172,7 @@ export default function BlogPage() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search articles..."
-                  className="bg-[#151515] border-[#2a2a2a] text-white h-12 pl-12 pr-4 text-base rounded-xl focus:border-[#E8A33C]/50 focus:ring-[#E8A33C]/20 placeholder:text-gray-600"
+                  className="bg-[#151515] border-[#2a2a2a] text-white h-12 pl-12 pr-4 text-base rounded-xl focus:border-[#59ff00]/50 focus:ring-[#59ff00]/20 placeholder:text-gray-600"
                 />
               </div>
             </motion.div>
@@ -193,8 +193,8 @@ export default function BlogPage() {
               onClick={() => setActiveCategory('All')}
               className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                 activeCategory === 'All'
-                  ? 'bg-[#E8A33C] text-black shadow-[0_0_15px_rgba(89,255,0,0.3)]'
-                  : 'bg-[#151515] text-gray-400 border border-[#2a2a2a] hover:text-white hover:border-[#E8A33C]/40'
+                  ? 'bg-[#59ff00] text-black shadow-[0_0_15px_rgba(89,255,0,0.3)]'
+                  : 'bg-[#151515] text-gray-400 border border-[#2a2a2a] hover:text-white hover:border-[#59ff00]/40'
               }`}
             >
               📰 All
@@ -205,8 +205,8 @@ export default function BlogPage() {
                 onClick={() => setActiveCategory(cat.name)}
                 className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   activeCategory === cat.name
-                    ? 'bg-[#E8A33C] text-black shadow-[0_0_15px_rgba(89,255,0,0.3)]'
-                    : 'bg-[#151515] text-gray-400 border border-[#2a2a2a] hover:text-white hover:border-[#E8A33C]/40'
+                    ? 'bg-[#59ff00] text-black shadow-[0_0_15px_rgba(89,255,0,0.3)]'
+                    : 'bg-[#151515] text-gray-400 border border-[#2a2a2a] hover:text-white hover:border-[#59ff00]/40'
                 }`}
               >
                 {cat.emoji || '📰'} {cat.name}
@@ -261,7 +261,7 @@ export default function BlogPage() {
                     setActiveCategory('All')
                   }}
                   variant="outline"
-                  className="border-[#E8A33C] text-[#E8A33C] hover:bg-[#E8A33C]/10"
+                  className="border-[#59ff00] text-[#59ff00] hover:bg-[#59ff00]/10"
                 >
                   Clear Filters
                 </Button>
@@ -280,7 +280,7 @@ export default function BlogPage() {
                   variants={fadeUp}
                   custom={i}
                   onClick={() => setBlogDetail(post.id)}
-                  className="group bg-[#151515] border border-[#2a2a2a] rounded-xl overflow-hidden hover:border-[#E8A33C]/30 hover-lift transition-all cursor-pointer"
+                  className="group bg-[#151515] border border-[#2a2a2a] rounded-xl overflow-hidden hover:border-[#59ff00]/30 hover-lift transition-all cursor-pointer"
                 >
                   {/* Featured Image */}
                   <div className="relative h-52 bg-[#1a1a1a] overflow-hidden">
@@ -303,14 +303,14 @@ export default function BlogPage() {
 
                     {/* Category Badge */}
                     {post.category && (
-                      <Badge className="absolute top-3 left-3 bg-[#0b0b0b]/80 text-[#E8A33C] border-[#E8A33C]/20 text-xs backdrop-blur-sm">
+                      <Badge className="absolute top-3 left-3 bg-[#0b0b0b]/80 text-[#59ff00] border-[#59ff00]/20 text-xs backdrop-blur-sm">
                         {getCategoryEmoji(post.category, post.categoryRef)} {post.category}
                       </Badge>
                     )}
 
                     {/* Featured Badge */}
                     {post.featured && (
-                      <Badge className="absolute top-3 right-3 bg-[#E8A33C]/20 text-[#E8A33C] border-[#E8A33C]/30 text-xs">
+                      <Badge className="absolute top-3 right-3 bg-[#59ff00]/20 text-[#59ff00] border-[#59ff00]/30 text-xs">
                         ⭐ Featured
                       </Badge>
                     )}
@@ -329,7 +329,7 @@ export default function BlogPage() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-white font-semibold text-base mb-2 line-clamp-2 group-hover:text-[#E8A33C] transition-colors leading-snug">
+                    <h3 className="text-white font-semibold text-base mb-2 line-clamp-2 group-hover:text-[#59ff00] transition-colors leading-snug">
                       {post.title}
                     </h3>
 
@@ -345,7 +345,7 @@ export default function BlogPage() {
                       <div className="flex items-center gap-2">
                         {post.author ? (
                           <>
-                            <div className="w-7 h-7 rounded-full bg-[#E8A33C]/10 border border-[#E8A33C]/30 flex items-center justify-center">
+                            <div className="w-7 h-7 rounded-full bg-[#59ff00]/10 border border-[#59ff00]/30 flex items-center justify-center">
                               {post.author.avatar ? (
                                 <img
                                   src={post.author.avatar}
@@ -353,7 +353,7 @@ export default function BlogPage() {
                                   className="w-full h-full rounded-full object-cover"
                                 />
                               ) : (
-                                <span className="text-[#E8A33C] text-xs font-bold">
+                                <span className="text-[#59ff00] text-xs font-bold">
                                   {post.author.name.charAt(0).toUpperCase()}
                                 </span>
                               )}
@@ -367,7 +367,7 @@ export default function BlogPage() {
                           <span className="text-gray-600 text-xs">Urban Kitchen Team</span>
                         )}
                       </div>
-                      <span className="flex items-center gap-1 text-[#E8A33C] text-xs font-semibold group-hover:gap-2 transition-all">
+                      <span className="flex items-center gap-1 text-[#59ff00] text-xs font-semibold group-hover:gap-2 transition-all">
                         Read More
                         <ArrowRight className="w-3.5 h-3.5" />
                       </span>

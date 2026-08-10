@@ -32,7 +32,7 @@ export default function ProductsTab({
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="space-y-4">
       <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
         <h2 className="text-white text-xl font-bold">Products</h2>
-        <Button onClick={openNewProduct} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold">
+        <Button onClick={openNewProduct} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold">
           <Plus className="w-4 h-4 mr-1" /> Add Product
         </Button>
       </div>
@@ -51,9 +51,9 @@ export default function ProductsTab({
             <SelectValue placeholder="Category" />
           </SelectTrigger>
           <SelectContent className="bg-[#181818] border-[#2a2a2a]">
-            <SelectItem value="all" className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">All Categories</SelectItem>
+            <SelectItem value="all" className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">All Categories</SelectItem>
             {categories.map((c: any) => (
-              <SelectItem key={c.id} value={c.slug} className="text-white focus:bg-[#E8A33C]/10 focus:text-[#E8A33C]">{c.name}</SelectItem>
+              <SelectItem key={c.id} value={c.slug} className="text-white focus:bg-[#59ff00]/10 focus:text-[#59ff00]">{c.name}</SelectItem>
             ))}
           </SelectContent>
         </Select>
@@ -94,7 +94,7 @@ export default function ProductsTab({
                     <TableCell className="text-gray-300 text-sm">{p.category?.name}</TableCell>
                     <TableCell>
                       <div>
-                        <span className="text-[#E8A33C] text-sm font-semibold">
+                        <span className="text-[#59ff00] text-sm font-semibold">
                           {p.variants && p.variants.length > 0
                             ? (p.priceRange?.min != null && p.priceRange?.max != null
                                 ? `${fmt(p.priceRange.min)} - ${fmt(p.priceRange.max)}`
@@ -102,7 +102,7 @@ export default function ProductsTab({
                             : fmt(p.price)}
                         </span>
                         {p.variants && p.variants.length > 0 && (
-                          <Badge className="ml-2 bg-[#E8A33C]/10 text-[#E8A33C] border-[#E8A33C]/30 text-[10px]">
+                          <Badge className="ml-2 bg-[#59ff00]/10 text-[#59ff00] border-[#59ff00]/30 text-[10px]">
                             {p.variants.length} {p.variants.length === 1 ? 'size' : 'sizes'}
                           </Badge>
                         )}
@@ -114,7 +114,7 @@ export default function ProductsTab({
                     <TableCell><Badge className={statusBadgeCls(p.status)}>{p.status}</Badge></TableCell>
                     <TableCell>
                       {p.featured ? (
-                        <Check className="w-4 h-4 text-[#E8A33C]" />
+                        <Check className="w-4 h-4 text-[#59ff00]" />
                       ) : (
                         <span className="text-gray-600">—</span>
                       )}

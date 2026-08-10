@@ -87,7 +87,7 @@ export default function Navbar() {
                 className="w-8 h-8 md:w-9 md:h-9 rounded-lg object-contain group-hover:scale-105 transition-transform"
               />
               <span className="font-[family-name:var(--font-poppins)] text-lg md:text-xl font-bold tracking-tight">
-                <span className="text-[#E8A33C] neon-text">Urban</span>
+                <span className="text-[#59ff00] neon-text">Urban</span>
                 <span className="text-white ml-1">Kitchen</span>
               </span>
             </button>
@@ -100,7 +100,7 @@ export default function Navbar() {
                   onClick={() => handleNavClick(link.view)}
                   className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-md ${
                     currentView === link.view
-                      ? 'text-[#E8A33C]'
+                      ? 'text-[#59ff00]'
                       : 'text-gray-400 hover:text-white'
                   }`}
                 >
@@ -108,7 +108,7 @@ export default function Navbar() {
                   {currentView === link.view && (
                     <motion.div
                       layoutId="activeNav"
-                      className="absolute bottom-0 left-2 right-2 h-0.5 bg-[#E8A33C] rounded-full"
+                      className="absolute bottom-0 left-2 right-2 h-0.5 bg-[#59ff00] rounded-full"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -144,7 +144,7 @@ export default function Navbar() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setSearchOpen(!searchOpen)}
-                className="text-gray-400 hover:text-[#E8A33C] hover:bg-[#E8A33C]/10 hidden md:flex"
+                className="text-gray-400 hover:text-[#59ff00] hover:bg-[#59ff00]/10 hidden md:flex"
               >
                 <Search className="w-5 h-5" />
               </Button>
@@ -154,14 +154,14 @@ export default function Navbar() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setView('cart')}
-                className="relative text-gray-400 hover:text-[#E8A33C] hover:bg-[#E8A33C]/10"
+                className="relative text-gray-400 hover:text-[#59ff00] hover:bg-[#59ff00]/10"
               >
                 <ShoppingCart className="w-5 h-5" />
                 {cartCount > 0 && (
                   <motion.span
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="absolute -top-1 -right-1 w-5 h-5 bg-[#E8A33C] text-black text-xs font-bold rounded-full flex items-center justify-center"
+                    className="absolute -top-1 -right-1 w-5 h-5 bg-[#59ff00] text-black text-xs font-bold rounded-full flex items-center justify-center"
                   >
                     {cartCount}
                   </motion.span>
@@ -174,10 +174,10 @@ export default function Navbar() {
                   variant="ghost"
                   size="icon"
                   onClick={handleProfileClick}
-                  className="text-gray-400 hover:text-[#E8A33C] hover:bg-[#E8A33C]/10 hidden md:flex"
+                  className="text-gray-400 hover:text-[#59ff00] hover:bg-[#59ff00]/10 hidden md:flex"
                 >
-                  <div className="w-7 h-7 rounded-full bg-[#E8A33C]/20 border border-[#E8A33C]/40 flex items-center justify-center">
-                    <span className="text-[#E8A33C] text-xs font-bold">
+                  <div className="w-7 h-7 rounded-full bg-[#59ff00]/20 border border-[#59ff00]/40 flex items-center justify-center">
+                    <span className="text-[#59ff00] text-xs font-bold">
                       {user?.name?.charAt(0)?.toUpperCase() || 'U'}
                     </span>
                   </div>
@@ -185,7 +185,7 @@ export default function Navbar() {
               ) : (
                 <Button
                   onClick={() => setView('login')}
-                  className="hidden md:flex bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold text-sm h-9 px-4"
+                  className="hidden md:flex bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold text-sm h-9 px-4"
                 >
                   <User className="w-4 h-4 mr-1" />
                   Login
@@ -197,7 +197,7 @@ export default function Navbar() {
                 variant="ghost"
                 size="icon"
                 onClick={toggleMobileMenu}
-                className="md:hidden text-gray-400 hover:text-[#E8A33C] hover:bg-[#E8A33C]/10"
+                className="md:hidden text-gray-400 hover:text-[#59ff00] hover:bg-[#59ff00]/10"
               >
                 <Menu className="w-5 h-5" />
               </Button>
@@ -211,7 +211,7 @@ export default function Navbar() {
         <SheetContent side="right" className="bg-[#0b0b0b] border-[#2a2a2a] w-[280px]">
           <SheetHeader>
             <SheetTitle className="font-[family-name:var(--font-poppins)] text-left">
-              <span className="text-[#E8A33C]">Urban</span>
+              <span className="text-[#59ff00]">Urban</span>
               <span className="text-white ml-1">Kitchen</span>
             </SheetTitle>
           </SheetHeader>
@@ -235,7 +235,7 @@ export default function Navbar() {
                 onClick={() => handleNavClick(link.view)}
                 className={`flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
                   currentView === link.view
-                    ? 'bg-[#E8A33C]/10 text-[#E8A33C] border border-[#E8A33C]/20'
+                    ? 'bg-[#59ff00]/10 text-[#59ff00] border border-[#59ff00]/20'
                     : 'text-gray-400 hover:text-white hover:bg-[#151515]'
                 }`}
               >
@@ -264,7 +264,7 @@ export default function Navbar() {
             ) : (
               <Button
                 onClick={() => { setView('login'); toggleMobileMenu(); }}
-                className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold w-full"
+                className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold w-full"
               >
                 <User className="w-4 h-4 mr-2" />
                 Login / Register

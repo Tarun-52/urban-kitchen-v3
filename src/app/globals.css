@@ -42,8 +42,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --color-neon: #E8A243;
-  --color-neon-dim: #A87430;
+  --color-neon: #59ff00;
+  --color-neon-dim: #3a9f00;
   --color-dark-bg: #0b0b0b;
   --color-dark-card: #151515;
   --color-dark-surface: #1a1a1a;
@@ -58,31 +58,31 @@
   --card-foreground: oklch(0.98 0 0);
   --popover: oklch(0.08 0 0);
   --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.78 0.155 68);
+  --primary: oklch(0.78 0.24 142);
   --primary-foreground: oklch(0.04 0 0);
   --secondary: oklch(0.12 0 0);
   --secondary-foreground: oklch(0.98 0 0);
   --muted: oklch(0.15 0 0);
   --muted-foreground: oklch(0.62 0 0);
-  --accent: oklch(0.78 0.155 68);
+  --accent: oklch(0.78 0.24 142);
   --accent-foreground: oklch(0.04 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.78 0.155 68);
-  --chart-1: oklch(0.78 0.155 68);
+  --ring: oklch(0.78 0.24 142);
+  --chart-1: oklch(0.78 0.24 142);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
   --sidebar: oklch(0.06 0 0);
   --sidebar-foreground: oklch(0.98 0 0);
-  --sidebar-primary: oklch(0.78 0.155 68);
+  --sidebar-primary: oklch(0.78 0.24 142);
   --sidebar-primary-foreground: oklch(0.04 0 0);
   --sidebar-accent: oklch(0.12 0 0);
   --sidebar-accent-foreground: oklch(0.98 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.78 0.155 68);
+  --sidebar-ring: oklch(0.78 0.24 142);
 }
 
 @layer base {
@@ -110,7 +110,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #E8A243;
+  background: #59ff00;
 }
 
 /* Neon glow effects */
@@ -127,7 +127,7 @@
 }
 
 .neon-border {
-  border-color: #E8A243;
+  border-color: #59ff00;
   box-shadow: 0 0 5px rgba(232, 162, 67, 0.2), inset 0 0 5px rgba(232, 162, 67, 0.1);
 }
 
@@ -158,7 +158,7 @@
   inset: 0;
   border-radius: 12px;
   padding: 1px;
-  background: linear-gradient(135deg, #E8A243, transparent, #E8A243);
+  background: linear-gradient(135deg, #59ff00, transparent, #59ff00);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);

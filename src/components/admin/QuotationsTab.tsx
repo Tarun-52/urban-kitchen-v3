@@ -87,7 +87,7 @@ export default function QuotationsTab({
           <h2 className="text-white text-xl font-bold">Quotations</h2>
           <p className="text-gray-500 text-xs mt-0.5">Create and manage quotations for your customers</p>
         </div>
-        <Button onClick={openNewQuotation} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90 font-semibold shadow-[0_0_20px_rgba(89,255,0,0.3)] w-full sm:w-auto">
+        <Button onClick={openNewQuotation} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold shadow-[0_0_20px_rgba(89,255,0,0.3)] w-full sm:w-auto">
           <Plus className="w-4 h-4 mr-2" /> Create Quotation
         </Button>
       </div>
@@ -109,12 +109,12 @@ export default function QuotationsTab({
               <TableBody>
                 {quotationList.map((q: any) => (
                   <TableRow key={q.id} className="border-[#2a2a2a] hover:bg-white/5">
-                    <TableCell className="text-white text-sm font-mono cursor-pointer hover:text-[#E8A33C]" onClick={() => openQuotationDetail(q)}>{q.quotationNumber}</TableCell>
+                    <TableCell className="text-white text-sm font-mono cursor-pointer hover:text-[#59ff00]" onClick={() => openQuotationDetail(q)}>{q.quotationNumber}</TableCell>
                     <TableCell className="text-gray-300 text-sm">
                       <div>{q.customerName || q.lead?.name || '-'}</div>
                       {q.customerCompany && <div className="text-gray-500 text-xs">{q.customerCompany}</div>}
                     </TableCell>
-                    <TableCell className="text-[#E8A33C] text-sm font-semibold">{fmt(q.amount)}</TableCell>
+                    <TableCell className="text-[#59ff00] text-sm font-semibold">{fmt(q.amount)}</TableCell>
                     <TableCell>
                       <Select value={q.status} onValueChange={(v) => handleQuotationStatusChange(q.id, v)}>
                         <SelectTrigger className="h-7 w-28 text-xs bg-transparent border-0 p-0">
@@ -139,7 +139,7 @@ export default function QuotationsTab({
                     </TableCell>
                     <TableCell>
                       <div className="flex items-center gap-1">
-                        <Button variant="ghost" size="sm" onClick={() => openQuotationDetail(q)} className="text-gray-400 hover:text-[#E8A33C] h-7 w-7 p-0" title="View"><Eye className="w-3.5 h-3.5" /></Button>
+                        <Button variant="ghost" size="sm" onClick={() => openQuotationDetail(q)} className="text-gray-400 hover:text-[#59ff00] h-7 w-7 p-0" title="View"><Eye className="w-3.5 h-3.5" /></Button>
                         <Button variant="ghost" size="sm" onClick={() => openEditQuotation(q)} className="text-gray-400 hover:text-yellow-400 h-7 w-7 p-0" title="Edit"><Edit className="w-3.5 h-3.5" /></Button>
                         <Button variant="ghost" size="sm" onClick={() => handleSendQuotation(q.id, 'email')} className="text-gray-400 hover:text-blue-400 h-7 w-7 p-0" title="Send Email"><Mail className="w-3.5 h-3.5" /></Button>
                         <Button variant="ghost" size="sm" onClick={() => handleSendQuotation(q.id, 'whatsapp')} className="text-gray-400 hover:text-green-400 h-7 w-7 p-0" title="Send WhatsApp"><MessageSquare className="w-3.5 h-3.5" /></Button>
@@ -170,7 +170,7 @@ export default function QuotationsTab({
                 {q.customerCompany && <p className="text-gray-500 text-xs">{q.customerCompany}</p>}
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-[#E8A33C] font-bold">{fmt(q.amount)}</span>
+                <span className="text-[#59ff00] font-bold">{fmt(q.amount)}</span>
                 <span className="text-gray-500 text-xs">{q.validUntil ? fmtDate(q.validUntil) : 'No expiry'}</span>
               </div>
               <div className="flex items-center gap-1.5">
@@ -178,7 +178,7 @@ export default function QuotationsTab({
                 {q.whatsappSent && <Badge className="text-[9px] bg-green-500/20 text-green-400 border-green-500/30">WA Sent</Badge>}
               </div>
               <div className="flex flex-wrap gap-2 pt-2 border-t border-[#2a2a2a]">
-                <Button size="sm" onClick={() => openQuotationDetail(q)} className="bg-[#E8A33C]/10 text-[#E8A33C] hover:bg-[#E8A33C]/20 border border-[#E8A33C]/30 h-7 text-xs"><Eye className="w-3 h-3 mr-1" /> View</Button>
+                <Button size="sm" onClick={() => openQuotationDetail(q)} className="bg-[#59ff00]/10 text-[#59ff00] hover:bg-[#59ff00]/20 border border-[#59ff00]/30 h-7 text-xs"><Eye className="w-3 h-3 mr-1" /> View</Button>
                 <Button size="sm" onClick={() => openEditQuotation(q)} className="bg-yellow-500/10 text-yellow-400 hover:bg-yellow-500/20 border border-yellow-500/30 h-7 text-xs"><Edit className="w-3 h-3 mr-1" /> Edit</Button>
                 <Button size="sm" onClick={() => handleSendQuotation(q.id, 'email')} className="bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 border border-blue-500/30 h-7 text-xs"><Mail className="w-3 h-3 mr-1" /> Email</Button>
                 <Button size="sm" onClick={() => handleSendQuotation(q.id, 'whatsapp')} className="bg-green-500/10 text-green-400 hover:bg-green-500/20 border border-green-500/30 h-7 text-xs"><MessageSquare className="w-3 h-3 mr-1" /> WhatsApp</Button>
@@ -238,8 +238,8 @@ export default function QuotationsTab({
                           <TableCell className="text-white text-xs">{item.desc}{item.hsn ? <span className="text-gray-500 ml-1">({item.hsn})</span> : ''}</TableCell>
                           <TableCell className="text-gray-300 text-xs text-right">{item.qty} {item.unit || 'Nos'}</TableCell>
                           <TableCell className="text-gray-300 text-xs text-right">{fmt(item.rate || 0)}</TableCell>
-                          <TableCell className="text-[#E8A33C] text-xs text-right">{item.gstPercent || 18}%</TableCell>
-                          <TableCell className="text-[#E8A33C] text-xs text-right font-semibold">{fmt(item.amount || 0)}</TableCell>
+                          <TableCell className="text-[#59ff00] text-xs text-right">{item.gstPercent || 18}%</TableCell>
+                          <TableCell className="text-[#59ff00] text-xs text-right font-semibold">{fmt(item.amount || 0)}</TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
@@ -252,7 +252,7 @@ export default function QuotationsTab({
                   {selectedQuotation.discountAmount > 0 && <div className="flex justify-between text-sm"><span className="text-gray-400">Discount</span><span className="text-red-400">-{fmt(selectedQuotation.discountAmount)}</span></div>}
                   <div className="flex justify-between text-sm"><span className="text-gray-400">CGST (9%)</span><span className="text-gray-300">{fmt(selectedQuotation.cgstAmount || 0)}</span></div>
                   <div className="flex justify-between text-sm"><span className="text-gray-400">SGST (9%)</span><span className="text-gray-300">{fmt(selectedQuotation.sgstAmount || 0)}</span></div>
-                  <div className="flex justify-between text-sm pt-2 border-t border-[#2a2a2a]"><span className="text-white font-bold">Grand Total</span><span className="text-[#E8A33C] font-bold text-lg">{fmt(selectedQuotation.amount)}</span></div>
+                  <div className="flex justify-between text-sm pt-2 border-t border-[#2a2a2a]"><span className="text-white font-bold">Grand Total</span><span className="text-[#59ff00] font-bold text-lg">{fmt(selectedQuotation.amount)}</span></div>
                 </div>
               </div>
               <div className="flex items-center gap-4 text-xs">
@@ -260,11 +260,11 @@ export default function QuotationsTab({
                 {selectedQuotation.whatsappSent && <span className="text-green-400">💬 WhatsApp sent {selectedQuotation.whatsappSentAt ? fmtDate(selectedQuotation.whatsappSentAt) : ''}</span>}
               </div>
               <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-[#2a2a2a]">
-                <Button onClick={() => openEditQuotation(selectedQuotation)} variant="outline" className="border-[#E8A33C]/50 text-[#E8A33C] hover:bg-[#E8A33C]/10"><Edit className="w-4 h-4 mr-2" /> Edit</Button>
+                <Button onClick={() => openEditQuotation(selectedQuotation)} variant="outline" className="border-[#59ff00]/50 text-[#59ff00] hover:bg-[#59ff00]/10"><Edit className="w-4 h-4 mr-2" /> Edit</Button>
                 <Button onClick={() => handleGeneratePdf(selectedQuotation.id)} variant="outline" className="border-[#2a2a2a] text-gray-300 hover:text-white"><FileText className="w-4 h-4 mr-2" /> Download PDF</Button>
                 <Button onClick={() => handleSendQuotation(selectedQuotation.id, 'email')} className="bg-blue-600 text-white hover:bg-blue-700" disabled={sendingQuotation}><Mail className="w-4 h-4 mr-2" /> Send Email</Button>
                 <Button onClick={() => handleSendQuotation(selectedQuotation.id, 'whatsapp')} className="bg-green-600 text-white hover:bg-green-700" disabled={sendingQuotation}><MessageSquare className="w-4 h-4 mr-2" /> WhatsApp</Button>
-                <Button onClick={() => handleSendQuotation(selectedQuotation.id, 'both')} className="bg-[#E8A33C] text-black hover:bg-[#E8A33C]/90" disabled={sendingQuotation}><Send className="w-4 h-4 mr-2" /> Send Both</Button>
+                <Button onClick={() => handleSendQuotation(selectedQuotation.id, 'both')} className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90" disabled={sendingQuotation}><Send className="w-4 h-4 mr-2" /> Send Both</Button>
               </div>
             </div>
           )}
