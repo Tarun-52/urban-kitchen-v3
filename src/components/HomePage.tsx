@@ -68,6 +68,14 @@ const CATEGORY_EMOJIS: Record<string, string> = {
   'food-carts': '🛒',
 }
 
+/* ─── Hero slider images ─── */
+const heroImages = [
+  '/Herobaner-1.png',
+  '/Herobaner-2.png',
+  '/Herobaner-3.png',
+  '/Herobaner-4.png',
+]
+
 /* ─── Partner logos for scrolling sections ─── */
 const partnerLogos = [
   { name: 'Taj Hotels', image: '/partners/taj-hotels.png' },
@@ -205,6 +213,15 @@ export default function HomePage() {
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([])
   const [featuredBlogs, setFeaturedBlogs] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  /* ─── Hero slider auto-play ─── */
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length)
+    }, 2000)
+    return () => clearInterval(interval)
+  }, [])
 
   useEffect(() => {
     const loadData = async () => {
@@ -251,13 +268,45 @@ export default function HomePage() {
     <div className="min-h-screen">
       {/* ═══════════════════ HERO ═══════════════════ */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-[#0b0b0b] grid-pattern" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0b0b0b] via-transparent to-[#0b0b0b]" />
+        {/* Background Image Slider */}
+        <div className="absolute inset-0">
+          {heroImages.map((img, index) => (
+            <div
+              key={img}
+              className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+              style={{ opacity: currentSlide === index ? 1 : 0 }}
+            >
+              <img
+                src={img}
+                alt={`Hero banner ${index + 1}`}
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-[#0b0b0b]/75" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0b0b0b]/60 via-transparent to-[#0b0b0b]/90" />
         
         {/* Decorative glow */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#59ff00]/5 rounded-full blur-[120px]" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#59ff00]/3 rounded-full blur-[100px]" />
+
+        {/* Slider dots indicator */}
+        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+          {heroImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`transition-all duration-300 rounded-full ${
+                currentSlide === index
+                  ? 'w-8 h-2 bg-[#59ff00]'
+                  : 'w-2 h-2 bg-white/30 hover:bg-white/50'
+              }`}
+            />
+          ))}
+        </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial="hidden" animate="visible" variants={stagger}>
@@ -814,20 +863,20 @@ export default function HomePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="group bg-[#151515] border border-[#2a2a2a] rounded-xl overflow-hidden hover:border-[#59ff00]/30 hover-lift transition-all cursor-pointer"
+                  className="group bg-[#151515] border border-[#2a2a2a] rounded-xl overflow-hidden hover:border-neon/30 hover-lift transition-all cursor-pointer"
                   onClick={() => setBlogDetail(blog.id)}
                 >
                   {/* Image */}
-                  <div className="relative h-48 bg-[#1a1a1a] overflow-hidden">
+                  <div className="relative h-48 bg-dark-surface overflow-hidden">
                     {blog.featuredImage ? (
                       <img src={blog.featuredImage} alt={blog.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     ) : (
                       <div className="flex items-center justify-center h-full">
-                        <Newspaper className="w-12 h-12 text-[#59ff00]/30" />
+                        <Newspaper className="w-12 h-12 text-neon/30" />
                       </div>
                     )}
                     {blog.category && (
-                      <Badge className="absolute top-3 left-3 bg-[#59ff00]/20 text-[#59ff00] border-[#59ff00]/30 text-xs">
+                      <Badge className="absolute top-3 left-3 bg-neon/20 text-neon border-neon/30 text-xs">
                         {blog.category}
                       </Badge>
                     )}
@@ -838,7 +887,7 @@ export default function HomePage() {
                     <div className="flex items-center gap-3 text-xs text-gray-500 mb-3">
                       {blog.author && (
                         <span className="flex items-center gap-1">
-                          <span className="w-5 h-5 rounded-full bg-[#59ff00]/10 flex items-center justify-center text-[#59ff00] text-[10px] font-bold">
+                          <span className="w-5 h-5 rounded-full bg-neon/10 flex items-center justify-center text-neon text-[10px] font-bold">
                             {blog.author.name?.charAt(0) || 'U'}
                           </span>
                           {blog.author.name}
@@ -849,13 +898,13 @@ export default function HomePage() {
                         {blog.publishedAt ? new Date(blog.publishedAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : new Date(blog.createdAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}
                       </span>
                     </div>
-                    <h3 className="text-white font-semibold text-base mb-2 line-clamp-2 group-hover:text-[#59ff00] transition-colors">
+                    <h3 className="text-white font-semibold text-base mb-2 line-clamp-2 group-hover:text-neon transition-colors">
                       {blog.title}
                     </h3>
                     {blog.excerpt && (
                       <p className="text-gray-500 text-sm line-clamp-2 mb-3">{blog.excerpt}</p>
                     )}
-                    <span className="text-[#59ff00] text-sm font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                    <span className="text-neon text-sm font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                       Read More <ArrowRight className="w-3.5 h-3.5" />
                     </span>
                   </div>
