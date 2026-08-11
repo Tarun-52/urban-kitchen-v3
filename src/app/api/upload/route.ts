@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {
   try {
-    // Use env vars if available, otherwise use hardcoded values
     const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'kixnmz25'
     const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || 'urban_kitchen_preset'
 
@@ -13,38 +12,32 @@ export async function POST(request: Request) {
       return NextResponse.json({ status: false, message: 'No file provided' }, { status: 400 })
     }
 
-    const arrayBuffer = await file.arrayBuffer()
-    const uint8Array = new Uint8Array(arrayBuffer)
-    let binary = ''
-    for (let i = 0; i < uint8Array.length; i++) {
-      binary += String.fromCharCode(uint8Array[i])
-    }
-    const base64 = btoa(binary)
-    const dataUri = 'data:' + (file.type || 'image/png') + ';base64,' + base64
+    const buffer = Buffer.from(await file.arrayBuffer())
+
+    // Send as multipart form data directly (no base64)
+    const cloudForm = new FormData()
+    cloudForm.append('file', new Blob([buffer], { type: file.type || 'image/png' }), file.name || 'image.png')
+    cloudForm.append('upload_preset', uploadPreset)
+    cloudForm.append('folder', 'products')
 
     const res = await fetch(
       'https://api.cloudinary.com/v1_1/' + cloudName + '/image/upload',
       {
         method: 'POST',
-        body: JSON.stringify({
-          file: dataUri,
-          upload_preset: uploadPreset,
-          folder: 'products',
-        }),
-        headers: { 'Content-Type': 'application/json' },
+        body: cloudForm,
       }
     )
 
-    const resText = await res.text()
+    const text = await res.text()
 
     if (!res.ok) {
       return NextResponse.json(
-        { status: false, message: 'Upload failed: ' + resText.substring(0, 200) },
+        { status: false, message: 'Cloudinary: ' + text.substring(0, 300) },
         { status: 500 }
       )
     }
 
-    const data = JSON.parse(resText)
+    const data = JSON.parse(text)
 
     return NextResponse.json({
       status: true,
