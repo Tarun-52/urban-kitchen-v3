@@ -238,15 +238,18 @@ export default function AdminDashboard() {
   }, [adminTab, doFetchLeads, doFetchEmployees])
 
   // ─── Image Upload Handler ──────────────────────────────
-  const handleImageUpload = async (file: File): Promise<string | null> => {
+    const handleImageUpload = async (file: File): Promise<string | null> => {
     setUploading(true)
     try {
-      const formData = new FormData(); formData.append('file', file)
-      const res = await fetch('/api/upload', { method: 'POST', body: formData })
+      const formData = new FormData()
+      formData.append('file', file)
+      formData.append('upload_preset', 'urban_kitchen_preset')
+      formData.append('folder', 'products')
+      const res = await fetch('https://api.cloudinary.com/v1_1/kixnmz25/image/upload', { method: 'POST', body: formData })
       if (!res.ok) { toast.error(`Upload failed (HTTP ${res.status})`); return null }
       const json = await res.json()
-      if (json.status && json.data?.url) { toast.success('Image uploaded successfully'); return json.data.url as string }
-      else { toast.error(json.message || 'Upload failed'); return null }
+      if (json.secure_url) { toast.success('Image uploaded successfully'); return json.secure_url as string }
+      else { toast.error('Upload failed'); return null }
     } catch (e) { console.error(e); toast.error('Failed to upload image'); return null } finally { setUploading(false) }
   }
 
