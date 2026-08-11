@@ -1,4 +1,7 @@
 import { NextResponse } from 'next/server'
+import https from 'https'
+
+export const runtime = 'nodejs'
 
 export async function POST(request: Request) {
   try {
@@ -9,40 +12,91 @@ export async function POST(request: Request) {
     const file = formData.get('file') as File | null
 
     if (!file) {
-      return NextResponse.json({ status: false, message: 'No file provided' }, { status: 400 })
+      return NextResponse.json({ status: false, message: 'No file' }, { status: 400 })
     }
 
-    const buffer = Buffer.from(await file.arrayBuffer())
+    const arrayBuffer = await file.arrayBuffer()
+    const fileBuffer = Buffer.from(arrayBuffer)
+    const fileName = file.name || 'image.png'
+    const mimeType = file.type || 'image/png'
 
-    // Send as multipart form data directly (no base64)
-    const cloudForm = new FormData()
-    cloudForm.append('file', new Blob([buffer], { type: file.type || 'image/png' }), file.name || 'image.png')
-    cloudForm.append('upload_preset', uploadPreset)
-    cloudForm.append('folder', 'products')
+    const boundary = '----CloudinaryBoundary' + Date.now()
+    const endLine = '\r\n'
 
-    const res = await fetch(
-      'https://api.cloudinary.com/v1_1/' + cloudName + '/image/upload',
-      {
-        method: 'POST',
-        body: cloudForm,
-      }
-    )
+    const parts: Buffer[] = []
 
-    const text = await res.text()
+    // File part
+    const fileHeader = '--' + boundary + endLine
+      + 'Content-Disposition: form-data; name="file"; filename="' + fileName + '"' + endLine
+      + 'Content-Type: ' + mimeType + endLine
+      + endLine
 
-    if (!res.ok) {
-      return NextResponse.json(
-        { status: false, message: 'Cloudinary: ' + text.substring(0, 300) },
-        { status: 500 }
-      )
+    parts.push(Buffer.from(fileHeader))
+    parts.push(fileBuffer)
+    parts.push(Buffer.from(endLine))
+
+    // Upload preset part
+    const presetHeader = '--' + boundary + endLine
+      + 'Content-Disposition: form-data; name="upload_preset"' + endLine
+      + endLine
+      + uploadPreset + endLine
+
+    parts.push(Buffer.from(presetHeader))
+
+    // Folder part
+    const folderHeader = '--' + boundary + endLine
+      + 'Content-Disposition: form-data; name="folder"' + endLine
+      + endLine
+      + 'products' + endLine
+
+    parts.push(Buffer.from(folderHeader))
+
+    // Closing boundary
+    parts.push(Buffer.from('--' + boundary + '--' + endLine))
+
+    const body = Buffer.concat(parts)
+
+    const options = {
+      hostname: 'api.cloudinary.com',
+      path: '/v1_1/' + cloudName + '/image/upload',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'multipart/form-data; boundary=' + boundary,
+        'Content-Length': body.length.toString(),
+      },
     }
 
-    const data = JSON.parse(text)
+    return new Promise((resolve) => {
+      const req = https.request(options, (res) => {
+        let data = ''
+        res.on('data', (chunk) => { data += chunk })
+        res.on('end', () => {
+          if (res.statusCode && res.statusCode >= 200 && res.statusCode < 300) {
+            try {
+              const parsed = JSON.parse(data)
+              resolve(NextResponse.json({
+                status: true,
+                message: 'Uploaded successfully',
+                data: { url: parsed.secure_url, name: fileName },
+              }))
+            } catch {
+              resolve(NextResponse.json({ status: false, message: 'Parse error' }, { status: 500 }))
+            }
+          } else {
+            resolve(NextResponse.json({
+              status: false,
+              message: 'Cloudinary ' + res.statusCode + ': ' + data.substring(0, 300),
+            }, { status: 500 }))
+          }
+        })
+      })
 
-    return NextResponse.json({
-      status: true,
-      message: 'Uploaded successfully',
-      data: { url: data.secure_url, name: file.name },
+      req.on('error', (err) => {
+        resolve(NextResponse.json({ status: false, message: err.message }, { status: 500 }))
+      })
+
+      req.write(body)
+      req.end()
     })
   } catch (error) {
     const msg = error instanceof Error ? error.message : String(error)
