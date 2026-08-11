@@ -2,16 +2,9 @@ import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {
   try {
-    const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-    const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
-
-    if (!cloudName || !uploadPreset) {
-      console.error('Missing env vars:', { cloudName: !!cloudName, uploadPreset: !!uploadPreset })
-      return NextResponse.json(
-        { status: false, message: 'Cloudinary not configured. Check .env file.' },
-        { status: 500 }
-      )
-    }
+    // Use env vars if available, otherwise use hardcoded values
+    const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'kixnmz25'
+    const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || 'urban_kitchen_preset'
 
     const formData = await request.formData()
     const file = formData.get('file') as File | null
@@ -43,12 +36,10 @@ export async function POST(request: Request) {
     )
 
     const resText = await res.text()
-    console.log('Cloudinary response status:', res.status)
-    console.log('Cloudinary response body:', resText.substring(0, 500))
 
     if (!res.ok) {
       return NextResponse.json(
-        { status: false, message: 'Cloudinary error: ' + resText.substring(0, 200) },
+        { status: false, message: 'Upload failed: ' + resText.substring(0, 200) },
         { status: 500 }
       )
     }
@@ -62,7 +53,6 @@ export async function POST(request: Request) {
     })
   } catch (error) {
     const msg = error instanceof Error ? error.message : String(error)
-    console.error('Upload error:', msg)
     return NextResponse.json({ status: false, message: msg }, { status: 500 })
   }
 }
