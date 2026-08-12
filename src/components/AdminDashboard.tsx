@@ -238,22 +238,32 @@ export default function AdminDashboard() {
   }, [adminTab, doFetchLeads, doFetchEmployees])
 
   // ─── Image Upload Handler ──────────────────────────────
-      const handleImageUpload = async (file: File): Promise<string | null> => {
+        const handleImageUpload = async (file: File): Promise<string | null> => {
     setUploading(true)
     try {
-      const fd = new FormData()
-      fd.append('file', file)
-      fd.append('upload_preset', 'urban_kitchen_preset')
-      fd.append('folder', 'products')
-      const res = await fetch('https://api.cloudinary.com/v1_1/kixnmz25/image/upload', { method: 'POST', body: fd })
-      const text = await res.text()
-      console.log('UPLOAD STATUS:', res.status, 'BODY:', text.substring(0, 500))
-      if (!res.ok) { toast.error('Upload failed: ' + text.substring(0, 100)); return null }
-      const json = JSON.parse(text)
-      if (json.secure_url) { toast.success('Image uploaded'); return json.secure_url }
-      else { toast.error('Upload failed'); return null }
-    } catch (e: any) { console.error('UPLOAD ERROR:', e); toast.error('Error: ' + (e.message || '')); return null }
-    finally { setUploading(false) }
+      const formData = new FormData()
+      formData.append('file', file)
+      const res = await fetch('/api/upload', { method: 'POST', body: formData })
+      if (!res.ok) {
+        const errData = await res.json().catch(() => null)
+        toast.error(errData?.message || `Upload failed (HTTP ${res.status})`)
+        return null
+      }
+      const json = await res.json()
+      if (json.status && json.data?.url) {
+        toast.success('Image uploaded successfully')
+        return json.data.url as string
+      } else {
+        toast.error(json.message || 'Upload failed')
+        return null
+      }
+    } catch (e: any) {
+      console.error('Upload error:', e)
+      toast.error('Failed to upload image')
+      return null
+    } finally {
+      setUploading(false)
+    }
   }
 
   // ─── Compute Quotation Totals ──────────────────────────
