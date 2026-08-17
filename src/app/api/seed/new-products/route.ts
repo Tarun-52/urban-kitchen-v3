@@ -8,7 +8,8 @@ const foodPreparationProducts = [
     name: 'Commercial Mixer',
     slug: 'commercial-mixer',
     price: 45000,
-    shortDescription: 'Heavy-duty commercial mixer for large-scale food preparation. Perfect for hotels and restaurants.',
+    shortDescription:
+      'Heavy-duty commercial mixer for large-scale food preparation. Perfect for hotels and restaurants.',
     steelGrade: 'SS304',
     capacity: '20 Litre',
     stock: 15,
@@ -19,7 +20,8 @@ const foodPreparationProducts = [
     name: 'Potato Peeler',
     slug: 'potato-peeler',
     price: 28000,
-    shortDescription: 'Automatic potato peeling machine with high efficiency. Reduces manual labor significantly.',
+    shortDescription:
+      'Automatic potato peeling machine with high efficiency. Reduces manual labor significantly.',
     steelGrade: 'SS304',
     capacity: '10-15 Kg',
     stock: 12,
@@ -30,7 +32,8 @@ const foodPreparationProducts = [
     name: 'Vegetable Washer',
     slug: 'vegetable-washer',
     price: 35000,
-    shortDescription: 'Industrial vegetable washing machine for thorough cleaning of bulk vegetables.',
+    shortDescription:
+      'Industrial vegetable washing machine for thorough cleaning of bulk vegetables.',
     steelGrade: 'SS304',
     capacity: '25 Kg',
     stock: 10,
@@ -41,7 +44,8 @@ const foodPreparationProducts = [
     name: 'Tilting Wet Grinder',
     slug: 'tilting-wet-grinder',
     price: 32000,
-    shortDescription: 'Tilting type wet grinder for easy pouring. Ideal for batter preparation in commercial kitchens.',
+    shortDescription:
+      'Tilting type wet grinder for easy pouring. Ideal for batter preparation in commercial kitchens.',
     steelGrade: 'SS304',
     capacity: '10 Litre',
     stock: 14,
@@ -52,7 +56,8 @@ const foodPreparationProducts = [
     name: 'Wet Grinder',
     slug: 'wet-grinder',
     price: 25000,
-    shortDescription: 'Commercial wet grinder for preparing batter, masala paste and other wet grinding needs.',
+    shortDescription:
+      'Commercial wet grinder for preparing batter, masala paste and other wet grinding needs.',
     steelGrade: 'SS304',
     capacity: '7 Litre',
     stock: 18,
@@ -63,7 +68,8 @@ const foodPreparationProducts = [
     name: 'Juice Extractor',
     slug: 'juice-extractor',
     price: 22000,
-    shortDescription: 'High-performance juice extractor for fresh juice production. Stainless steel construction.',
+    shortDescription:
+      'High-performance juice extractor for fresh juice production. Stainless steel construction.',
     steelGrade: 'SS304',
     capacity: '15-20 L/hr',
     stock: 10,
@@ -74,7 +80,8 @@ const foodPreparationProducts = [
     name: 'Vegetable Cutter',
     slug: 'vegetable-cutter',
     price: 18000,
-    shortDescription: 'Multi-purpose vegetable cutting machine with interchangeable blades for various cuts.',
+    shortDescription:
+      'Multi-purpose vegetable cutting machine with interchangeable blades for various cuts.',
     steelGrade: 'SS304',
     capacity: '10 Kg',
     stock: 16,
@@ -85,7 +92,8 @@ const foodPreparationProducts = [
     name: 'Attu Kneader',
     slug: 'attu-kneader',
     price: 15000,
-    shortDescription: 'Dough kneading machine for bulk attu and flour preparation. Saves time and effort.',
+    shortDescription:
+      'Dough kneading machine for bulk attu and flour preparation. Saves time and effort.',
     steelGrade: 'SS304',
     capacity: '7 Litre',
     stock: 20,
@@ -96,7 +104,8 @@ const foodPreparationProducts = [
     name: 'Mass Curd Maker',
     slug: 'mass-curd-maker',
     price: 20000,
-    shortDescription: 'Commercial curd maker for bulk curd and yogurt production. Consistent quality output.',
+    shortDescription:
+      'Commercial curd maker for bulk curd and yogurt production. Consistent quality output.',
     steelGrade: 'SS304',
     capacity: '50 Litre',
     stock: 8,
@@ -107,7 +116,8 @@ const foodPreparationProducts = [
     name: 'Work Table With Sink',
     slug: 'work-table-with-sink',
     price: 18000,
-    shortDescription: 'Stainless steel work table with built-in sink. Essential for food preparation stations.',
+    shortDescription:
+      'Stainless steel work table with built-in sink. Essential for food preparation stations.',
     steelGrade: 'SS304',
     capacity: '4 x 2.5 Ft',
     stock: 12,
@@ -121,7 +131,8 @@ const cookingRangesProducts = [
     name: 'Bar B Que',
     slug: 'bar-b-que',
     price: 55000,
-    shortDescription: 'Commercial BBQ grill for outdoor and indoor grilling. Heavy-duty construction for continuous use.',
+    shortDescription:
+      'Commercial BBQ grill for outdoor and indoor grilling. Heavy-duty construction for continuous use.',
     steelGrade: 'SS304',
     capacity: '4 Burner',
     stock: 8,
@@ -132,7 +143,8 @@ const cookingRangesProducts = [
     name: 'Roteserie Grill',
     slug: 'roteserie-grill',
     price: 65000,
-    shortDescription: 'Automatic rotisserie grill for even roasting. Perfect for chicken, kebabs and more.',
+    shortDescription:
+      'Automatic rotisserie grill for even roasting. Perfect for chicken, kebabs and more.',
     steelGrade: 'SS304',
     capacity: '12 Skewers',
     stock: 6,
@@ -143,7 +155,8 @@ const cookingRangesProducts = [
     name: 'Shawarma Machine',
     slug: 'shawarma-machine',
     price: 48000,
-    shortDescription: 'Vertical shawarma machine with gas burners. Even heating for perfect shawarma preparation.',
+    shortDescription:
+      'Vertical shawarma machine with gas burners. Even heating for perfect shawarma preparation.',
     steelGrade: 'SS304',
     capacity: '3 Spits',
     stock: 10,
@@ -154,7 +167,8 @@ const cookingRangesProducts = [
     name: 'Roasted Chicken Display',
     slug: 'roasted-chicken-display',
     price: 75000,
-    shortDescription: 'Heated display counter for roasted chicken. Keeps food warm while attracting customers.',
+    shortDescription:
+      'Heated display counter for roasted chicken. Keeps food warm while attracting customers.',
     steelGrade: 'SS304',
     capacity: '8 Shelves',
     stock: 5,
@@ -165,7 +179,8 @@ const cookingRangesProducts = [
     name: 'Tandoor',
     slug: 'tandoor',
     price: 35000,
-    shortDescription: 'Commercial gas tandoor for authentic tandoori cooking. High heat retention clay lining.',
+    shortDescription:
+      'Commercial gas tandoor for authentic tandoori cooking. High heat retention clay lining.',
     steelGrade: 'SS304',
     capacity: 'Standard',
     stock: 12,
@@ -176,7 +191,8 @@ const cookingRangesProducts = [
     name: 'Tava',
     slug: 'tava',
     price: 12000,
-    shortDescription: 'Heavy-duty commercial tava for making chapati, paratha and flatbreads in bulk.',
+    shortDescription:
+      'Heavy-duty commercial tava for making chapati, paratha and flatbreads in bulk.',
     steelGrade: 'SS304',
     capacity: '18 Inch',
     stock: 20,
@@ -187,7 +203,8 @@ const cookingRangesProducts = [
     name: 'Dosa Tava',
     slug: 'dosa-tava',
     price: 15000,
-    shortDescription: 'Specialized dosa tava with even heat distribution. Non-stick surface for perfect dosas.',
+    shortDescription:
+      'Specialized dosa tava with even heat distribution. Non-stick surface for perfect dosas.',
     steelGrade: 'SS304',
     capacity: '24 Inch',
     stock: 15,
@@ -203,8 +220,18 @@ export async function GET() {
       where: {
         OR: [
           { slug: 'preparation-equipment' },
-          { name: { contains: 'Preparation', mode: 'insensitive' } },
-          { name: { contains: 'Food Preparation', mode: 'insensitive' } },
+          {
+            name: {
+              contains: 'Preparation',
+              mode: 'insensitive',
+            },
+          },
+          {
+            name: {
+              contains: 'Food Preparation',
+              mode: 'insensitive',
+            },
+          },
         ],
       },
     })
@@ -215,7 +242,12 @@ export async function GET() {
         OR: [
           { slug: 'cooking-ranges' },
           { slug: 'cooking-equipment' },
-          { name: { contains: 'Cooking', mode: 'insensitive' } },
+          {
+            name: {
+              contains: 'Cooking',
+              mode: 'insensitive',
+            },
+          },
         ],
       },
     })
@@ -224,7 +256,8 @@ export async function GET() {
       return NextResponse.json(
         {
           status: false,
-          message: 'Categories not found. Please create "Food Preparation" and "Cooking Ranges" categories first.',
+          message:
+            'Categories not found. Please create "Food Preparation" and "Cooking Ranges" categories first.',
         },
         { status: 404 }
       )
@@ -236,45 +269,67 @@ export async function GET() {
     // Add Food Preparation products
     if (prepCategory) {
       for (const product of foodPreparationProducts) {
-        const exists = await prisma.product.findFirst({ where: { slug: product.slug } })
+        const exists = await prisma.product.findFirst({
+          where: {
+            slug: product.slug,
+          },
+        })
+
         if (!exists) {
           await prisma.product.create({
             data: {
               ...product,
+              description: product.shortDescription,
               status: 'active',
               categoryId: prepCategory.id,
             },
           })
+
           createdCount++
-          results.push(`Created: ${product.name} (Food Preparation)`)
+          results.push(
+            `Created: ${product.name} (Food Preparation)`
+          )
         } else {
           results.push(`Skipped (exists): ${product.name}`)
         }
       }
     } else {
-      results.push('WARNING: Food Preparation category not found')
+      results.push(
+        'WARNING: Food Preparation category not found'
+      )
     }
 
     // Add Cooking Ranges products
     if (cookingCategory) {
       for (const product of cookingRangesProducts) {
-        const exists = await prisma.product.findFirst({ where: { slug: product.slug } })
+        const exists = await prisma.product.findFirst({
+          where: {
+            slug: product.slug,
+          },
+        })
+
         if (!exists) {
           await prisma.product.create({
             data: {
               ...product,
+              description: product.shortDescription,
               status: 'active',
               categoryId: cookingCategory.id,
             },
           })
+
           createdCount++
-          results.push(`Created: ${product.name} (Cooking Ranges)`)
+          results.push(
+            `Created: ${product.name} (Cooking Ranges)`
+          )
         } else {
           results.push(`Skipped (exists): ${product.name}`)
         }
       }
     } else {
-      results.push('WARNING: Cooking Ranges category not found')
+      results.push(
+        'WARNING: Cooking Ranges category not found'
+      )
     }
 
     return NextResponse.json({
@@ -282,8 +337,12 @@ export async function GET() {
       message: `Seeded ${createdCount} products`,
       data: {
         categoriesFound: {
-          foodPreparation: prepCategory ? prepCategory.name : 'NOT FOUND',
-          cookingRanges: cookingCategory ? cookingCategory.name : 'NOT FOUND',
+          foodPreparation: prepCategory
+            ? prepCategory.name
+            : 'NOT FOUND',
+          cookingRanges: cookingCategory
+            ? cookingCategory.name
+            : 'NOT FOUND',
         },
         productsCreated: createdCount,
         details: results,
