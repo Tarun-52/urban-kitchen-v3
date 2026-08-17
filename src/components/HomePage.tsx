@@ -412,6 +412,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════ CATEGORIES ═══════════════════ */}
+            {/* ═══════════════════ CATEGORIES ═══════════════════ */}
       <section className="py-16 md:py-24 bg-[#0b0b0b]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -422,37 +423,76 @@ export default function HomePage() {
             className="text-center mb-12"
           >
             <motion.h2 variants={fadeUp} custom={0} className="font-[family-name:var(--font-poppins)] text-2xl md:text-3xl lg:text-4xl font-bold mb-3">
-              Browse by <span className="text-[#59ff00]">Category</span>
+              Our Product <span className="text-[#59ff00]">Categories</span>
             </motion.h2>
             <motion.p variants={fadeUp} custom={1} className="text-gray-500 max-w-xl mx-auto">
               Explore our comprehensive range of commercial kitchen equipment
             </motion.p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {categories.map((cat, i) => (
-              <motion.button
-                key={cat.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                onClick={() => handleCategoryClick(cat.slug)}
-                className="group relative bg-[#151515] border border-[#2a2a2a] rounded-xl p-5 md:p-6 text-center hover:border-[#59ff00]/40 hover-lift transition-all"
-              >
-                <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-[#59ff00]/10 flex items-center justify-center text-[#59ff00] group-hover:bg-[#59ff00]/20 transition-colors">
-                  {categoryIcons[cat.slug] || <span className="text-3xl">🔧</span>}
-                </div>
-                <h3 className="text-white text-sm font-semibold group-hover:text-[#59ff00] transition-colors">
-                  {cat.displayName || cat.name}
-                </h3>
-                <p className="text-gray-600 text-xs mt-1">{cat.productCount || cat._count?.products || 0} Products</p>
-                {/* Hover glow */}
-                <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{ boxShadow: '0 0 30px rgba(89, 255, 0, 0.1)' }} />
-              </motion.button>
-            ))}
-          </div>
+          {(() => {
+            const categoryOrder = [
+              { slug: 'preparation-equipment', name: 'Preparation Equipments' },
+              { slug: 'food-preparation', name: 'Preparation Equipments' },
+              { slug: 'cooking-equipment', name: 'Cooking Equipments' },
+              { slug: 'cooking-ranges', name: 'Cooking Equipments' },
+              { slug: 'commercial-burners', name: 'Cooking Equipments' },
+              { slug: 'serving-equipment', name: 'Serving Equipments' },
+              { slug: 'washing-equipment', name: 'Washing Equipments' },
+              { slug: 'dishwashing', name: 'Washing Equipments' },
+              { slug: 'storage-equipment', name: 'Storage Equipments' },
+              { slug: 'refrigeration-equipment', name: 'Refrigeration Equipments' },
+              { slug: 'refrigeration', name: 'Refrigeration Equipments' },
+              { slug: 'bakery-equipment', name: 'Bakery Equipments' },
+              { slug: 'display-equipment', name: 'Display Cabinets' },
+              { slug: 'display-counters', name: 'Display Cabinets' },
+              { slug: 'food-carts', name: 'Food Carts' },
+            ]
+            const hideSlugs = ['food-counter', 'miscellaneous']
+            const displayNameMap: Record<string, string> = {}
+            const sortOrderMap: Record<string, number> = {}
+            categoryOrder.forEach((item, idx) => {
+              sortOrderMap[item.slug] = idx
+              if (!displayNameMap[item.slug]) {
+                displayNameMap[item.slug] = item.name
+              }
+            })
+            const sorted = categories
+              .filter((cat) => !hideSlugs.includes(cat.slug))
+              .map((cat) => ({
+                ...cat,
+                displayName: displayNameMap[cat.slug] || cat.name,
+                sortIndex: sortOrderMap[cat.slug] !== undefined ? sortOrderMap[cat.slug] : 999,
+              }))
+              .sort((a, b) => a.sortIndex - b.sortIndex)
+            return (
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                {sorted.map((cat, i) => (
+                  <motion.button
+                    key={cat.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05 }}
+                    onClick={() => handleCategoryClick(cat.slug)}
+                    className="group relative bg-[#151515] border border-[#2a2a2a] rounded-xl p-5 md:p-6 text-center hover:border-[#59ff00]/40 hover-lift transition-all"
+                  >
+                    <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-[#59ff00]/10 flex items-center justify-center text-[#59ff00] group-hover:bg-[#59ff00]/20 transition-colors">
+                      {categoryIcons[cat.slug] || <span className="text-3xl">🔧</span>}
+                    </div>
+                    <h3 className="text-white text-sm font-semibold group-hover:text-[#59ff00] transition-colors">
+                      {cat.displayName}
+                    </h3>
+                    {cat._count && (
+                      <p className="text-gray-600 text-xs mt-1">{cat._count.products} Products</p>
+                    )}
+                    <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" 
+                      style={{ boxShadow: '0 0 30px rgba(89, 255, 0, 0.1)' }} />
+                  </motion.button>
+                ))}
+              </div>
+            )
+          })()}
         </div>
       </section>
 
