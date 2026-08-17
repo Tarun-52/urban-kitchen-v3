@@ -348,10 +348,10 @@ export default function HomePage() {
               custom={1}
               className="font-[family-name:var(--font-poppins)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight mb-6"
             >
-              Engineering{' '}
-              <span className="text-[#59ff00] neon-text">Excellence</span>
+              Powering{' '}
+              <span className="text-[#59ff00] neon-text">Professional Kitchens</span>
               <br />
-              for Commercial Kitchens
+              With Precision. Performance. Perfection.
             </motion.h1>
 
             <motion.p
