@@ -178,11 +178,11 @@ const stagger = {
 }
 
 /* ─── MarqueeScroll component (auto-scrolling infinite marquee) ─── */
-function MarqueeScroll({ 
-  children, 
-  direction = 'left', 
-  speed = 25 
-}: { 
+function MarqueeScroll({
+  children,
+  direction = 'left',
+  speed = 25
+}: {
   children: React.ReactNode
   direction?: 'left' | 'right'
   speed?: number
@@ -285,10 +285,11 @@ export default function HomePage() {
           ))}
         </div>
 
-        {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-[#0b0b0b]/75" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0b0b0b]/60 via-transparent to-[#0b0b0b]/90" />
-        
+
+        {/* Light overlay for readability */}
+        <div className="absolute inset-0 bg-dark-bg/15" />
+        <div className="absolute inset-0 bg-linear-to-b from-dark-bg/10 via-transparent to-dark-bg/20" />
+
         {/* Decorative glow */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#59ff00]/5 rounded-full blur-[120px]" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#59ff00]/3 rounded-full blur-[100px]" />
@@ -299,11 +300,10 @@ export default function HomePage() {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`transition-all duration-300 rounded-full ${
-                currentSlide === index
+              className={`transition-all duration-300 rounded-full ${currentSlide === index
                   ? 'w-8 h-2 bg-[#59ff00]'
                   : 'w-2 h-2 bg-white/30 hover:bg-white/50'
-              }`}
+                }`}
             />
           ))}
         </div>
@@ -333,8 +333,8 @@ export default function HomePage() {
               custom={2}
               className="text-gray-400 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
             >
-              From heavy-duty burners to walk-in cold rooms — we manufacture 
-              precision-engineered stainless steel equipment trusted by India&apos;s 
+              From heavy-duty burners to walk-in cold rooms — we manufacture
+              precision-engineered stainless steel equipment trusted by India&apos;s
               top hotels, restaurants, and catering businesses.
             </motion.p>
 
@@ -424,7 +424,7 @@ export default function HomePage() {
                   <p className="text-gray-600 text-xs mt-1">{cat._count.products} Products</p>
                 )}
                 {/* Hover glow */}
-                <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" 
+                <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   style={{ boxShadow: '0 0 30px rgba(89, 255, 0, 0.1)' }} />
               </motion.button>
             ))}
@@ -729,7 +729,7 @@ export default function HomePage() {
           {/* Fade edges */}
           <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-[#0d0d0d] to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-[#0d0d0d] to-transparent z-10 pointer-events-none" />
-          
+
           <MarqueeScroll direction="left" speed={25}>
             {[...partnerLogos, ...partnerLogos].map((partner, i) => (
               <div
@@ -753,7 +753,7 @@ export default function HomePage() {
       <section className="py-16 md:py-24 bg-[#0b0b0b] relative overflow-hidden">
         <div className="absolute inset-0 grid-pattern opacity-50" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#59ff00]/5 rounded-full blur-[150px]" />
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -804,7 +804,7 @@ export default function HomePage() {
           {/* Fade edges */}
           <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-[#0b0b0b] to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-[#0b0b0b] to-transparent z-10 pointer-events-none" />
-          
+
           <MarqueeScroll direction="right" speed={30}>
             {[...clientLogos, ...clientLogos].map((client, i) => (
               <div
