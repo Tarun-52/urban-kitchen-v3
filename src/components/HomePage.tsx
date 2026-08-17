@@ -411,7 +411,6 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* ═══════════════════ CATEGORIES ═══════════════════ */}
             {/* ═══════════════════ CATEGORIES ═══════════════════ */}
       <section className="py-16 md:py-24 bg-[#0b0b0b]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -466,7 +465,7 @@ export default function HomePage() {
               }))
               .sort((a, b) => a.sortIndex - b.sortIndex)
             return (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-3">
                 {sorted.map((cat, i) => (
                   <motion.button
                     key={cat.id}
@@ -475,16 +474,16 @@ export default function HomePage() {
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05 }}
                     onClick={() => handleCategoryClick(cat.slug)}
-                    className="group relative bg-[#151515] border border-[#2a2a2a] rounded-xl p-5 md:p-6 text-center hover:border-[#59ff00]/40 hover-lift transition-all"
+                    className="group relative bg-[#151515] border border-[#2a2a2a] rounded-xl p-3 md:p-4 text-center hover:border-[#59ff00]/40 hover-lift transition-all"
                   >
-                    <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-[#59ff00]/10 flex items-center justify-center text-[#59ff00] group-hover:bg-[#59ff00]/20 transition-colors">
-                      {categoryIcons[cat.slug] || <span className="text-3xl">🔧</span>}
+                    <div className="w-10 h-10 md:w-12 md:h-12 mx-auto mb-2 rounded-lg bg-[#59ff00]/10 flex items-center justify-center text-[#59ff00] group-hover:bg-[#59ff00]/20 transition-colors">
+                      {categoryIcons[cat.slug] || <span className="text-2xl md:text-3xl">🔧</span>}
                     </div>
-                    <h3 className="text-white text-sm font-semibold group-hover:text-[#59ff00] transition-colors">
+                    <h3 className="text-white text-[11px] md:text-sm font-semibold group-hover:text-[#59ff00] transition-colors leading-tight">
                       {cat.displayName}
                     </h3>
                     {cat._count && (
-                      <p className="text-gray-600 text-xs mt-1">{cat._count.products} Products</p>
+                      <p className="text-gray-600 text-[10px] md:text-xs mt-1">{cat._count.products} Products</p>
                     )}
                     <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" 
                       style={{ boxShadow: '0 0 30px rgba(89, 255, 0, 0.1)' }} />
