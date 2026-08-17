@@ -37,36 +37,40 @@ const formatPrice = (price: number) => {
   return '₹' + otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + lastThree
 }
 
-const categoryIcons: Record<string, React.ReactNode> = {
-  'preparation-equipment': <span className="text-3xl">🔪</span>,
-  'cooking-equipment': <span className="text-3xl">🔥</span>,
-  'serving-equipment': <span className="text-3xl">🍽️</span>,
-  'washing-equipment': <span className="text-3xl">🧼</span>,
-  'storage-equipment': <span className="text-3xl">📦</span>,
-  'refrigeration-equipment': <span className="text-3xl">❄️</span>,
-  'bakery-equipment': <span className="text-3xl">🍞</span>,
-  'display-equipment': <span className="text-3xl">🏪</span>,
-  'food-carts': <span className="text-3xl">🛒</span>,
-  // Legacy slugs for backward compatibility
-  'commercial-burners': <span className="text-3xl">🔥</span>,
-  'cooking-ranges': <span className="text-3xl">🔥</span>,
-  'refrigeration': <span className="text-3xl">❄️</span>,
-  'food-preparation': <span className="text-3xl">🔪</span>,
-  'dishwashing': <span className="text-3xl">🧼</span>,
-  'display-counters': <span className="text-3xl">🏪</span>,
-}
+/* ─── Category order & mapping ─── */
+const CATEGORY_ORDER = [
+  { slug: 'preparation-equipment', name: 'PREPARATION EQUIPMENTS', emoji: '🔪' },
+  { slug: 'preparation-equipments', name: 'PREPARATION EQUIPMENTS', emoji: '🔪' },
+  { slug: 'cooking-equipment', name: 'COOKING EQUIPMENTS', emoji: '🔥' },
+  { slug: 'cooking-equipments', name: 'COOKING EQUIPMENTS', emoji: '🔥' },
+  { slug: 'cooking-ranges', name: 'COOKING EQUIPMENTS', emoji: '🔥' },
+  { slug: 'commercial-burners', name: 'COOKING EQUIPMENTS', emoji: '🔥' },
+  { slug: 'serving-equipment', name: 'SERVING EQUIPMENTS', emoji: '🍽️' },
+  { slug: 'serving-equipments', name: 'SERVING EQUIPMENTS', emoji: '🍽️' },
+  { slug: 'washing-equipment', name: 'WASHING EQUIPMENTS', emoji: '🧼' },
+  { slug: 'washing-equipments', name: 'WASHING EQUIPMENTS', emoji: '🧼' },
+  { slug: 'dishwashing', name: 'WASHING EQUIPMENTS', emoji: '🧼' },
+  { slug: 'storage-equipment', name: 'STORAGE EQUIPMENTS', emoji: '📦' },
+  { slug: 'storage-equipments', name: 'STORAGE EQUIPMENTS', emoji: '📦' },
+  { slug: 'refrigeration-equipment', name: 'REFRIGERATION EQUIPMENTS', emoji: '❄️' },
+  { slug: 'refrigeration-equipments', name: 'REFRIGERATION EQUIPMENTS', emoji: '❄️' },
+  { slug: 'refrigeration', name: 'REFRIGERATION EQUIPMENTS', emoji: '❄️' },
+  { slug: 'bakery-equipment', name: 'BAKERY EQUIPMENTS', emoji: '🍞' },
+  { slug: 'bakery-equipments', name: 'BAKERY EQUIPMENTS', emoji: '🍞' },
+  { slug: 'display-equipment', name: 'DISPLAY CABINETS', emoji: '🏪' },
+  { slug: 'display-equipments', name: 'DISPLAY CABINETS', emoji: '🏪' },
+  { slug: 'display-counters', name: 'DISPLAY CABINETS', emoji: '🏪' },
+  { slug: 'food-carts', name: 'FOOD CARTS', emoji: '🛒' },
+  { slug: 'food-counter', name: 'FOOD CARTS', emoji: '🛒' },
+  { slug: 'miscellaneous', name: 'FOOD CARTS', emoji: '🛒' },
+]
 
-const CATEGORY_EMOJIS: Record<string, string> = {
-  'preparation-equipment': '🔪',
-  'cooking-equipment': '🔥',
-  'serving-equipment': '🍽️',
-  'washing-equipment': '🧼',
-  'storage-equipment': '📦',
-  'refrigeration-equipment': '❄️',
-  'bakery-equipment': '🍞',
-  'display-equipment': '🏪',
-  'food-carts': '🛒',
-}
+const categoryIcons: Record<string, React.ReactNode> = {}
+const CATEGORY_EMOJIS: Record<string, string> = {}
+CATEGORY_ORDER.forEach(c => {
+  categoryIcons[c.slug] = <span className="text-3xl">{c.emoji}</span>
+  CATEGORY_EMOJIS[c.slug] = c.emoji
+})
 
 /* ─── Hero slider images ─── */
 const heroImages = [
@@ -161,6 +165,8 @@ interface Category {
   name: string
   slug: string
   _count?: { products: number }
+  displayName?: string
+  productCount?: number
 }
 
 /* ─── Animation variants ─── */
@@ -234,7 +240,27 @@ export default function HomePage() {
         const catData = await catRes.json()
         const prodData = await prodRes.json()
         const blogData = await blogRes.json()
-        if (catData.status) setCategories(catData.data || [])
+        if (catData.status) {
+          const rawCats = catData.data || []
+          // Merge categories with same display name
+          const mergedMap: Record<string, any> = {}
+          rawCats.forEach((cat: any) => {
+            const orderInfo = CATEGORY_ORDER.find(o => o.slug === cat.slug)
+            const displayName = orderInfo?.name || cat.name
+            if (!mergedMap[displayName]) {
+              mergedMap[displayName] = { ...cat, displayName, productCount: cat._count?.products || 0 }
+            } else {
+              mergedMap[displayName].productCount += cat._count?.products || 0
+            }
+          })
+          // Sort by CATEGORY_ORDER
+          const sorted = Object.values(mergedMap).sort((a: any, b: any) => {
+            const aIdx = CATEGORY_ORDER.findIndex(o => o.slug === a.slug)
+            const bIdx = CATEGORY_ORDER.findIndex(o => o.slug === b.slug)
+            return (aIdx === -1 ? 999 : aIdx) - (bIdx === -1 ? 999 : bIdx)
+          })
+          setCategories(sorted)
+        }
         if (prodData.status) setFeaturedProducts(prodData.data?.products || [])
         if (blogData.status) setFeaturedBlogs(blogData.data?.posts || [])
       } catch (err) {
@@ -418,11 +444,9 @@ export default function HomePage() {
                   {categoryIcons[cat.slug] || <span className="text-3xl">🔧</span>}
                 </div>
                 <h3 className="text-white text-sm font-semibold group-hover:text-[#59ff00] transition-colors">
-                  {cat.name}
+                  {cat.displayName || cat.name}
                 </h3>
-                {cat._count && (
-                  <p className="text-gray-600 text-xs mt-1">{cat._count.products} Products</p>
-                )}
+                <p className="text-gray-600 text-xs mt-1">{cat.productCount || cat._count?.products || 0} Products</p>
                 {/* Hover glow */}
                 <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   style={{ boxShadow: '0 0 30px rgba(89, 255, 0, 0.1)' }} />
