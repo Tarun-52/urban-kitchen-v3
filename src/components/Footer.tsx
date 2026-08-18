@@ -77,7 +77,7 @@ export default function Footer() {
               </a>
               <div className="flex items-start gap-2 text-gray-500 text-sm">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                Plot No. 45, Sector 12, Industrial Area, New Delhi - 110020
+                Flat No. 207, Second Floor, A-Block, Rolex Estate, Ayodhya - Lucknow Rd, Shankar Puri, Kamta, Lucknow, Uttar Pradesh 226028
               </div>
             </div>
           </div>
