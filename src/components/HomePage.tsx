@@ -417,7 +417,7 @@ export default function HomePage() {
       <section className="py-16 md:py-20 bg-[#0b0b0b]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* Header - Matching old layout with View All Button */}
+          {/* Header with View All Button */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -432,11 +432,11 @@ export default function HomePage() {
               Explore our comprehensive range of commercial kitchen equipment
             </motion.p>
 
-            {/* Changed from <Link> to <button> using your existing handleCategoryClick function to prevent 404 */}
+            {/* FIXED: Forces a fresh page load to /catalog with NO filters */}
             <motion.button
               variants={fadeUp}
               custom={2}
-              onClick={() => handleCategoryClick('all')}
+              onClick={() => handleCategoryClick('')}
               className="inline-flex items-center gap-2 text-sm font-semibold text-[#59ff00] border border-[#59ff00]/30 rounded-full px-5 py-2.5 hover:bg-[#59ff00]/10 transition-all duration-300 group mx-auto"
             >
               View All Categories
@@ -453,72 +453,63 @@ export default function HomePage() {
                 slug: 'preparation-equipment',
                 displayName: 'Preparation Equipments',
                 matchSlugs: ['preparation-equipment', 'food-preparation'],
-                image: '/images/categories/preparation.jpg',
-                gradient: 'from-emerald-900/80 to-emerald-950',
+                image: '/products/PREPRATION EQUIPMENTS.jpg',
                 emoji: '🔪',
               },
               {
                 slug: 'cooking-equipment',
                 displayName: 'Cooking Equipments',
                 matchSlugs: ['cooking-equipment', 'cooking-ranges', 'commercial-burners'],
-                image: '/images/categories/cooking.jpg',
-                gradient: 'from-orange-900/80 to-red-950',
+                image: '/products/COOKING EQUIPMENTS.jpg',
                 emoji: '🔥',
               },
               {
                 slug: 'serving-equipment',
                 displayName: 'Serving Equipments',
                 matchSlugs: ['serving-equipment'],
-                image: '/images/categories/serving.jpg',
-                gradient: 'from-sky-900/80 to-blue-950',
+                image: '/products/SERVING EQUIPMENTS.jpg',
                 emoji: '🍽️',
               },
               {
                 slug: 'washing-equipment',
                 displayName: 'Washing Equipments',
                 matchSlugs: ['washing-equipment', 'dishwashing'],
-                image: '/images/categories/washing.jpg',
-                gradient: 'from-cyan-900/80 to-teal-950',
+                image: '/products/WASHING EQUIPMENTS.jpg',
                 emoji: '💧',
               },
               {
                 slug: 'storage-equipment',
                 displayName: 'Storage Equipments',
                 matchSlugs: ['storage-equipment'],
-                image: '/images/categories/storage.jpg',
-                gradient: 'from-amber-900/80 to-yellow-950',
+                image: '/products/STORAGE EQUIPMENTS.jpg',
                 emoji: '📦',
               },
               {
                 slug: 'refrigeration-equipment',
                 displayName: 'Refrigeration Equipments',
                 matchSlugs: ['refrigeration-equipment', 'refrigeration'],
-                image: '/images/categories/refrigeration.jpg',
-                gradient: 'from-blue-900/80 to-indigo-950',
+                image: '/products/REFRIGERATION EQUIPMENTS.jpg',
                 emoji: '❄️',
               },
               {
                 slug: 'bakery-equipment',
                 displayName: 'Bakery Equipments',
                 matchSlugs: ['bakery-equipment'],
-                image: '/images/categories/bakery.jpg',
-                gradient: 'from-amber-800/80 to-stone-950',
+                image: '/products/BAKERY EQUIPMENTS.jpg',
                 emoji: '🍞',
               },
               {
                 slug: 'display-equipment',
                 displayName: 'Display Cabinets',
                 matchSlugs: ['display-equipment', 'display-counters'],
-                image: '/images/categories/display.jpg',
-                gradient: 'from-violet-900/80 to-purple-950',
+                image: '/products/DISPLAY CABINETS.jpg',
                 emoji: '🛒',
               },
               {
                 slug: 'food-carts',
                 displayName: 'Food Carts',
                 matchSlugs: ['food-carts'],
-                image: '/images/categories/food-carts.jpg',
-                gradient: 'from-rose-900/80 to-pink-950',
+                image: '/products/Food carts.jpg',
                 emoji: '🛗',
               },
             ]
@@ -533,7 +524,6 @@ export default function HomePage() {
                 productCount: match?._count?.products ?? 0,
                 id: match?.id ?? oc.slug,
                 image: oc.image,
-                gradient: oc.gradient,
                 emoji: oc.emoji,
               }
             })
@@ -552,8 +542,8 @@ export default function HomePage() {
                       onClick={() => handleCategoryClick(item.slug)}
                       className="group relative block w-full aspect-square rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(89,255,0,0.15)]"
                     >
-                      {/* Background Image or Gradient Fallback */}
-                      <div className="absolute inset-0 bg-gradient-to-br">
+                      {/* Background Image - NO dark gradient overlay */}
+                      <div className="absolute inset-0 bg-[#151515]">
                         {item.image ? (
                           <img
                             src={item.image}
@@ -564,29 +554,26 @@ export default function HomePage() {
                             }}
                           />
                         ) : null}
-                        {/* Gradient overlay always on top */}
-                        <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`} />
                       </div>
 
-                      {/* Center Icon - visible by default, fades on hover */}
+                      {/* Center Icon - semi-transparent */}
                       <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 group-hover:opacity-0">
-                        <span className="text-4xl md:text-5xl drop-shadow-lg filter">
+                        <span className="text-3xl md:text-4xl opacity-40 drop-shadow-lg">
                           {item.emoji}
                         </span>
                       </div>
 
-                      {/* Hover Overlay - hidden by default, slides up on hover */}
-                      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm flex flex-col items-center justify-center opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 px-2">
-                        <div className="w-10 h-10 mb-2 rounded-xl bg-[#59ff00]/15 flex items-center justify-center text-[#59ff00]">
-                          <span className="text-xl">{item.emoji}</span>
+                      {/* Hover Overlay - Fixed tight mobile spacing */}
+                      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center gap-1.5 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 p-3 md:p-4">
+                        <div className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-[#59ff00]/15 flex items-center justify-center text-[#59ff00]">
+                          <span className="text-lg md:text-xl">{item.emoji}</span>
                         </div>
-                        <h3 className="text-white text-xs md:text-sm font-bold text-center leading-tight">
+                        <h3 className="text-white text-[11px] md:text-sm font-bold text-center leading-tight">
                           {item.displayName}
                         </h3>
-                        <p className="text-[#59ff00]/80 text-[10px] md:text-xs mt-1 font-medium">
+                        <p className="text-[#59ff00]/80 text-[9px] md:text-xs font-medium">
                           {item.productCount} {item.productCount === 1 ? 'Product' : 'Products'}
                         </p>
-                        <div className="mt-2 w-6 h-0.5 bg-[#59ff00]/40 rounded-full group-hover:w-10 transition-all duration-500" />
                       </div>
 
                       {/* Bottom green accent line */}
