@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef, useCallback } from 'react'
+import Link from 'next/link';
 import { motion } from 'framer-motion'
 import {
   Flame,
@@ -413,84 +414,116 @@ export default function HomePage() {
 
       {/* ═══════════════════ CATEGORIES ═══════════════════ */}
 
-      <section className="py-16 md:py-24 bg-[#0b0b0b]">
+      <section className="py-16 md:py-20 bg-[#0b0b0b]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* Header - Matching old layout with View All Button */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-100px' }}
             variants={stagger}
-            className="text-center mb-12"
+            className="text-center mb-10"
           >
             <motion.h2 variants={fadeUp} custom={0} className="font-[family-name:var(--font-poppins)] text-2xl md:text-3xl lg:text-4xl font-bold mb-3">
               Our Product <span className="text-[#59ff00]">Categories</span>
             </motion.h2>
-            <motion.p variants={fadeUp} custom={1} className="text-gray-500 max-w-xl mx-auto">
+            <motion.p variants={fadeUp} custom={1} className="text-gray-500 max-w-xl mx-auto mb-6">
               Explore our comprehensive range of commercial kitchen equipment
             </motion.p>
+
+            {/* Changed from <Link> to <button> using your existing handleCategoryClick function to prevent 404 */}
+            <motion.button
+              variants={fadeUp}
+              custom={2}
+              onClick={() => handleCategoryClick('all')}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[#59ff00] border border-[#59ff00]/30 rounded-full px-5 py-2.5 hover:bg-[#59ff00]/10 transition-all duration-300 group mx-auto"
+            >
+              View All Categories
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 group-hover:translate-x-1 transition-transform">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </motion.button>
           </motion.div>
 
+          {/* Category Grid */}
           {(() => {
-            // Fixed 9 categories in exact order — each with fallback slugs to match API data
             const orderedCategories = [
               {
                 slug: 'preparation-equipment',
                 displayName: 'Preparation Equipments',
                 matchSlugs: ['preparation-equipment', 'food-preparation'],
-                fallbackIcon: '🔪',
+                image: '/images/categories/preparation.jpg',
+                gradient: 'from-emerald-900/80 to-emerald-950',
+                emoji: '🔪',
               },
               {
                 slug: 'cooking-equipment',
                 displayName: 'Cooking Equipments',
                 matchSlugs: ['cooking-equipment', 'cooking-ranges', 'commercial-burners'],
-                fallbackIcon: '🔥',
+                image: '/images/categories/cooking.jpg',
+                gradient: 'from-orange-900/80 to-red-950',
+                emoji: '🔥',
               },
               {
                 slug: 'serving-equipment',
                 displayName: 'Serving Equipments',
                 matchSlugs: ['serving-equipment'],
-                fallbackIcon: '🍽️',
+                image: '/images/categories/serving.jpg',
+                gradient: 'from-sky-900/80 to-blue-950',
+                emoji: '🍽️',
               },
               {
                 slug: 'washing-equipment',
                 displayName: 'Washing Equipments',
                 matchSlugs: ['washing-equipment', 'dishwashing'],
-                fallbackIcon: '💧',
+                image: '/images/categories/washing.jpg',
+                gradient: 'from-cyan-900/80 to-teal-950',
+                emoji: '💧',
               },
               {
                 slug: 'storage-equipment',
                 displayName: 'Storage Equipments',
                 matchSlugs: ['storage-equipment'],
-                fallbackIcon: '📦',
+                image: '/images/categories/storage.jpg',
+                gradient: 'from-amber-900/80 to-yellow-950',
+                emoji: '📦',
               },
               {
                 slug: 'refrigeration-equipment',
                 displayName: 'Refrigeration Equipments',
                 matchSlugs: ['refrigeration-equipment', 'refrigeration'],
-                fallbackIcon: '❄️',
+                image: '/images/categories/refrigeration.jpg',
+                gradient: 'from-blue-900/80 to-indigo-950',
+                emoji: '❄️',
               },
               {
                 slug: 'bakery-equipment',
                 displayName: 'Bakery Equipments',
                 matchSlugs: ['bakery-equipment'],
-                fallbackIcon: '🍞',
+                image: '/images/categories/bakery.jpg',
+                gradient: 'from-amber-800/80 to-stone-950',
+                emoji: '🍞',
               },
               {
                 slug: 'display-equipment',
                 displayName: 'Display Cabinets',
                 matchSlugs: ['display-equipment', 'display-counters'],
-                fallbackIcon: '🛒',
+                image: '/images/categories/display.jpg',
+                gradient: 'from-violet-900/80 to-purple-950',
+                emoji: '🛒',
               },
               {
                 slug: 'food-carts',
                 displayName: 'Food Carts',
                 matchSlugs: ['food-carts'],
-                fallbackIcon: '🛗',
+                image: '/images/categories/food-carts.jpg',
+                gradient: 'from-rose-900/80 to-pink-950',
+                emoji: '🛗',
               },
             ]
 
             const items = orderedCategories.map((oc) => {
-              // Find the first matching category from API data
               const match = categories.find((cat) =>
                 oc.matchSlugs.includes(cat.slug)
               )
@@ -499,38 +532,67 @@ export default function HomePage() {
                 displayName: oc.displayName,
                 productCount: match?._count?.products ?? 0,
                 id: match?.id ?? oc.slug,
-                fallbackIcon: oc.fallbackIcon,
+                image: match?.image ?? oc.image,
+                gradient: oc.gradient,
+                emoji: oc.emoji,
               }
             })
 
             return (
-              <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-3">
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
                 {items.map((item, i) => (
-                  <motion.button
+                  <motion.div
                     key={item.id}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05 }}
-                    onClick={() => handleCategoryClick(item.slug)}
-                    className="group relative bg-[#151515] border border-[#2a2a2a] rounded-xl p-3 md:p-4 text-center hover:border-[#59ff00]/40 hover-lift transition-all"
                   >
-                    <div className="w-10 h-10 md:w-12 md:h-12 mx-auto mb-2 rounded-lg bg-[#59ff00]/10 flex items-center justify-center text-[#59ff00] group-hover:bg-[#59ff00]/20 transition-colors">
-                      {categoryIcons[item.slug] || (
-                        <span className="text-2xl md:text-3xl">{item.fallbackIcon}</span>
-                      )}
-                    </div>
-                    <h3 className="text-white text-[11px] md:text-sm font-semibold group-hover:text-[#59ff00] transition-colors leading-tight">
-                      {item.displayName}
-                    </h3>
-                    <p className="text-gray-600 text-[10px] md:text-xs mt-1">
-                      {item.productCount} {item.productCount === 1 ? 'Product' : 'Products'}
-                    </p>
-                    <div
-                      className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                      style={{ boxShadow: '0 0 30px rgba(89, 255, 0, 0.1)' }}
-                    />
-                  </motion.button>
+                    <button
+                      onClick={() => handleCategoryClick(item.slug)}
+                      className="group relative block w-full aspect-square rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(89,255,0,0.15)]"
+                    >
+                      {/* Background Image or Gradient Fallback */}
+                      <div className="absolute inset-0 bg-gradient-to-br">
+                        {item.image ? (
+                          <img
+                            src={item.image}
+                            alt={item.displayName}
+                            className="absolute inset-0 w-full h-full object-cover"
+                            onError={(e) => {
+                              e.currentTarget.style.display = 'none'
+                            }}
+                          />
+                        ) : null}
+                        {/* Gradient overlay always on top */}
+                        <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`} />
+                      </div>
+
+                      {/* Center Icon - visible by default, fades on hover */}
+                      <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 group-hover:opacity-0">
+                        <span className="text-4xl md:text-5xl drop-shadow-lg filter">
+                          {item.emoji}
+                        </span>
+                      </div>
+
+                      {/* Hover Overlay - hidden by default, slides up on hover */}
+                      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm flex flex-col items-center justify-center opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 px-2">
+                        <div className="w-10 h-10 mb-2 rounded-xl bg-[#59ff00]/15 flex items-center justify-center text-[#59ff00]">
+                          <span className="text-xl">{item.emoji}</span>
+                        </div>
+                        <h3 className="text-white text-xs md:text-sm font-bold text-center leading-tight">
+                          {item.displayName}
+                        </h3>
+                        <p className="text-[#59ff00]/80 text-[10px] md:text-xs mt-1 font-medium">
+                          {item.productCount} {item.productCount === 1 ? 'Product' : 'Products'}
+                        </p>
+                        <div className="mt-2 w-6 h-0.5 bg-[#59ff00]/40 rounded-full group-hover:w-10 transition-all duration-500" />
+                      </div>
+
+                      {/* Bottom green accent line */}
+                      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#59ff00] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                    </button>
+                  </motion.div>
                 ))}
               </div>
             )

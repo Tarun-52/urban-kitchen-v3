@@ -70,7 +70,7 @@ export default function AboutPage() {
       <section className="relative pt-24 md:pt-32 pb-16 md:pb-24 overflow-hidden">
         <div className="absolute inset-0 grid-pattern opacity-50" />
         <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-neon/5 rounded-full blur-[120px]" />
-        
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial="hidden" animate="visible">
             <motion.div variants={fadeUp} custom={0}>
@@ -89,8 +89,8 @@ export default function AboutPage() {
               custom={2}
               className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
             >
-              Urban Kitchen Manufacturing & Solutions has been at the forefront of commercial 
-              kitchen equipment innovation, delivering precision-engineered products to India&apos;s 
+              Urban Kitchen Manufacturing & Solutions has been at the forefront of commercial
+              kitchen equipment innovation, delivering precision-engineered products to India&apos;s
               hospitality industry.
             </motion.p>
           </motion.div>
@@ -101,41 +101,50 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 bg-[#0d0d0d]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
+              // Centered on mobile, aligned to left on desktop
+              className="flex items-center justify-center lg:justify-start"
             >
-              <div className="h-72 md:h-96 bg-#151515 border border-#2a2a2a rounded-xl flex items-center justify-center">
-                <Factory className="w-20 h-20 text-gray-700" />
-              </div>
+              <img
+                src="/our-story.jpeg"
+                alt="Urban Kitchen Manufacturing Facility"
+                // w-auto prevents stretching, max-w limits the width, max-h increases the allowed height
+                // object-contain guarantees NO PART of the image is cut off
+                className="w-auto max-w-[85%] sm:max-w-sm md:max-w-md lg:max-w-lg max-h-80 md:max-h-[28rem] lg:max-h-[32rem] rounded-xl border border-[#2a2a2a] object-contain"
+              />
             </motion.div>
+
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h2 className="font-(family-name:--font-poppins) text-2xl md:text-3xl font-bold mb-4">
-                Our <span className="text-#59ff00">Story</span>
+              <h2 className="font-[family-name:var(--font-poppins)] text-2xl md:text-3xl font-bold mb-4">
+                Our <span className="text-[#59ff00]">Story</span>
               </h2>
-              <div className="w-12 h-0.5 bg-#59ff00 mb-6" />
+              <div className="w-12 h-0.5 bg-[#59ff00] mb-6" />
               <p className="text-gray-400 leading-relaxed mb-4">
-                Founded in 2009, Urban Kitchen began with a simple vision — to provide Indian 
-                commercial kitchens with world-class stainless steel equipment that matches 
+                Founded in 2009, Urban Kitchen began with a simple vision — to provide Indian
+                commercial kitchens with world-class stainless steel equipment that matches
                 international standards at competitive prices.
               </p>
               <p className="text-gray-400 leading-relaxed mb-4">
-                From a small workshop in New Delhi, we&apos;ve grown into a full-fledged manufacturing 
-                facility with over 50 skilled craftsmen, serving 500+ clients across the country 
+                From a small workshop in New Delhi, we&apos;ve grown into a full-fledged manufacturing
+                facility with over 50 skilled craftsmen, serving 500+ clients across the country
                 including star-rated hotels, restaurant chains, and catering businesses.
               </p>
               <p className="text-gray-400 leading-relaxed">
-                Our commitment to quality, customization, and after-sales support has made us 
+                Our commitment to quality, customization, and after-sales support has made us
                 one of India&apos;s most trusted names in commercial kitchen manufacturing.
               </p>
             </motion.div>
+
           </div>
         </div>
       </section>
@@ -155,8 +164,8 @@ export default function AboutPage() {
               </div>
               <h3 className="font-[family-name:var(--font-poppins)] text-white text-xl font-bold mb-3">Our Mission</h3>
               <p className="text-gray-400 leading-relaxed">
-                To engineer and deliver the finest commercial kitchen equipment that empowers 
-                culinary professionals to achieve their best, while maintaining the highest 
+                To engineer and deliver the finest commercial kitchen equipment that empowers
+                culinary professionals to achieve their best, while maintaining the highest
                 standards of hygiene, durability, and energy efficiency.
               </p>
             </motion.div>
@@ -172,8 +181,8 @@ export default function AboutPage() {
               </div>
               <h3 className="font-[family-name:var(--font-poppins)] text-white text-xl font-bold mb-3">Our Vision</h3>
               <p className="text-gray-400 leading-relaxed">
-                To be India&apos;s most trusted and innovative commercial kitchen equipment 
-                manufacturer, setting the benchmark for quality, customization, and 
+                To be India&apos;s most trusted and innovative commercial kitchen equipment
+                manufacturer, setting the benchmark for quality, customization, and
                 sustainability in the foodservice industry.
               </p>
             </motion.div>
@@ -193,7 +202,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── TEAM ─── */}
+      {/* ─── TEAM ─── 
       <section className="py-16 md:py-24 bg-[#0b0b0b]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -234,7 +243,7 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section>*/}
 
       {/* ─── MANUFACTURING ─── */}
       <section className="py-16 md:py-24 bg-[#0d0d0d]">
@@ -251,8 +260,8 @@ export default function AboutPage() {
               </h2>
               <div className="w-12 h-0.5 bg-[#59ff00] mb-6" />
               <p className="text-gray-400 leading-relaxed mb-6">
-                Our state-of-the-art manufacturing facility in New Delhi is equipped with 
-                modern welding, fabrication, and quality testing equipment. Every product 
+                Our state-of-the-art manufacturing facility in New Delhi is equipped with
+                modern welding, fabrication, and quality testing equipment. Every product
                 undergoes rigorous quality checks before leaving our factory floor.
               </p>
               <div className="flex flex-col gap-3">
