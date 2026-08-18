@@ -532,7 +532,7 @@ export default function HomePage() {
                 displayName: oc.displayName,
                 productCount: match?._count?.products ?? 0,
                 id: match?.id ?? oc.slug,
-                image: match?.image ?? oc.image,
+                image: oc.image,
                 gradient: oc.gradient,
                 emoji: oc.emoji,
               }
