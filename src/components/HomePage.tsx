@@ -327,8 +327,8 @@ export default function HomePage() {
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={`transition-all duration-300 rounded-full ${currentSlide === index
-                  ? 'w-8 h-2 bg-[#59ff00]'
-                  : 'w-2 h-2 bg-white/30 hover:bg-white/50'
+                ? 'w-8 h-2 bg-[#59ff00]'
+                : 'w-2 h-2 bg-white/30 hover:bg-white/50'
                 }`}
             />
           ))}
@@ -411,7 +411,8 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-            {/* ═══════════════════ CATEGORIES ═══════════════════ */}
+      {/* ═══════════════════ CATEGORIES ═══════════════════ */}
+
       <section className="py-16 md:py-24 bg-[#0b0b0b]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -430,63 +431,105 @@ export default function HomePage() {
           </motion.div>
 
           {(() => {
-            const categoryOrder = [
-              { slug: 'preparation-equipment', name: 'Preparation Equipments' },
-              { slug: 'food-preparation', name: 'Preparation Equipments' },
-              { slug: 'cooking-equipment', name: 'Cooking Equipments' },
-              { slug: 'cooking-ranges', name: 'Cooking Equipments' },
-              { slug: 'commercial-burners', name: 'Cooking Equipments' },
-              { slug: 'serving-equipment', name: 'Serving Equipments' },
-              { slug: 'washing-equipment', name: 'Washing Equipments' },
-              { slug: 'dishwashing', name: 'Washing Equipments' },
-              { slug: 'storage-equipment', name: 'Storage Equipments' },
-              { slug: 'refrigeration-equipment', name: 'Refrigeration Equipments' },
-              { slug: 'refrigeration', name: 'Refrigeration Equipments' },
-              { slug: 'bakery-equipment', name: 'Bakery Equipments' },
-              { slug: 'display-equipment', name: 'Display Cabinets' },
-              { slug: 'display-counters', name: 'Display Cabinets' },
-              { slug: 'food-carts', name: 'Food Carts' },
+            // Fixed 9 categories in exact order — each with fallback slugs to match API data
+            const orderedCategories = [
+              {
+                slug: 'preparation-equipment',
+                displayName: 'Preparation Equipments',
+                matchSlugs: ['preparation-equipment', 'food-preparation'],
+                fallbackIcon: '🔪',
+              },
+              {
+                slug: 'cooking-equipment',
+                displayName: 'Cooking Equipments',
+                matchSlugs: ['cooking-equipment', 'cooking-ranges', 'commercial-burners'],
+                fallbackIcon: '🔥',
+              },
+              {
+                slug: 'serving-equipment',
+                displayName: 'Serving Equipments',
+                matchSlugs: ['serving-equipment'],
+                fallbackIcon: '🍽️',
+              },
+              {
+                slug: 'washing-equipment',
+                displayName: 'Washing Equipments',
+                matchSlugs: ['washing-equipment', 'dishwashing'],
+                fallbackIcon: '💧',
+              },
+              {
+                slug: 'storage-equipment',
+                displayName: 'Storage Equipments',
+                matchSlugs: ['storage-equipment'],
+                fallbackIcon: '📦',
+              },
+              {
+                slug: 'refrigeration-equipment',
+                displayName: 'Refrigeration Equipments',
+                matchSlugs: ['refrigeration-equipment', 'refrigeration'],
+                fallbackIcon: '❄️',
+              },
+              {
+                slug: 'bakery-equipment',
+                displayName: 'Bakery Equipments',
+                matchSlugs: ['bakery-equipment'],
+                fallbackIcon: '🍞',
+              },
+              {
+                slug: 'display-equipment',
+                displayName: 'Display Cabinets',
+                matchSlugs: ['display-equipment', 'display-counters'],
+                fallbackIcon: '🛒',
+              },
+              {
+                slug: 'food-carts',
+                displayName: 'Food Carts',
+                matchSlugs: ['food-carts'],
+                fallbackIcon: '🛗',
+              },
             ]
-            const hideSlugs = ['food-counter', 'miscellaneous']
-            const displayNameMap: Record<string, string> = {}
-            const sortOrderMap: Record<string, number> = {}
-            categoryOrder.forEach((item, idx) => {
-              sortOrderMap[item.slug] = idx
-              if (!displayNameMap[item.slug]) {
-                displayNameMap[item.slug] = item.name
+
+            const items = orderedCategories.map((oc) => {
+              // Find the first matching category from API data
+              const match = categories.find((cat) =>
+                oc.matchSlugs.includes(cat.slug)
+              )
+              return {
+                slug: oc.slug,
+                displayName: oc.displayName,
+                productCount: match?._count?.products ?? 0,
+                id: match?.id ?? oc.slug,
+                fallbackIcon: oc.fallbackIcon,
               }
             })
-            const sorted = categories
-              .filter((cat) => !hideSlugs.includes(cat.slug))
-              .map((cat) => ({
-                ...cat,
-                displayName: displayNameMap[cat.slug] || cat.name,
-                sortIndex: sortOrderMap[cat.slug] !== undefined ? sortOrderMap[cat.slug] : 999,
-              }))
-              .sort((a, b) => a.sortIndex - b.sortIndex)
+
             return (
               <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-3">
-                {sorted.map((cat, i) => (
+                {items.map((item, i) => (
                   <motion.button
-                    key={cat.id}
+                    key={item.id}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05 }}
-                    onClick={() => handleCategoryClick(cat.slug)}
+                    onClick={() => handleCategoryClick(item.slug)}
                     className="group relative bg-[#151515] border border-[#2a2a2a] rounded-xl p-3 md:p-4 text-center hover:border-[#59ff00]/40 hover-lift transition-all"
                   >
                     <div className="w-10 h-10 md:w-12 md:h-12 mx-auto mb-2 rounded-lg bg-[#59ff00]/10 flex items-center justify-center text-[#59ff00] group-hover:bg-[#59ff00]/20 transition-colors">
-                      {categoryIcons[cat.slug] || <span className="text-2xl md:text-3xl">🔧</span>}
+                      {categoryIcons[item.slug] || (
+                        <span className="text-2xl md:text-3xl">{item.fallbackIcon}</span>
+                      )}
                     </div>
                     <h3 className="text-white text-[11px] md:text-sm font-semibold group-hover:text-[#59ff00] transition-colors leading-tight">
-                      {cat.displayName}
+                      {item.displayName}
                     </h3>
-                    {cat._count && (
-                      <p className="text-gray-600 text-[10px] md:text-xs mt-1">{cat._count.products} Products</p>
-                    )}
-                    <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" 
-                      style={{ boxShadow: '0 0 30px rgba(89, 255, 0, 0.1)' }} />
+                    <p className="text-gray-600 text-[10px] md:text-xs mt-1">
+                      {item.productCount} {item.productCount === 1 ? 'Product' : 'Products'}
+                    </p>
+                    <div
+                      className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                      style={{ boxShadow: '0 0 30px rgba(89, 255, 0, 0.1)' }}
+                    />
                   </motion.button>
                 ))}
               </div>
