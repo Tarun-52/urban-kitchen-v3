@@ -87,8 +87,8 @@ export default function Navbar() {
                 className="w-8 h-8 md:w-9 md:h-9 rounded-lg object-contain group-hover:scale-105 transition-transform"
               />
               <span className="font-[family-name:var(--font-poppins)] text-lg md:text-xl font-bold tracking-tight">
-                <span className="text-[#59ff00] neon-text">Urban</span>
-                <span className="text-white ml-1">Kitchen</span>
+                <span className="text-white">Urban</span>
+                <span className="inline-block bg-[#59ff00] text-black px-1.5 py-0.5 rounded-sm ml-1 text-base md:text-lg font-extrabold">Kitchen</span>
               </span>
             </button>
 
@@ -211,8 +211,8 @@ export default function Navbar() {
         <SheetContent side="right" className="bg-[#0b0b0b] border-[#2a2a2a] w-[280px]">
           <SheetHeader>
             <SheetTitle className="font-[family-name:var(--font-poppins)] text-left">
-              <span className="text-[#59ff00]">Urban</span>
-              <span className="text-white ml-1">Kitchen</span>
+              <span className="text-white">Urban</span>
+              <span className="inline-block bg-[#59ff00] text-black px-1.5 py-0.5 rounded-sm ml-1 text-sm font-extrabold">Kitchen</span>
             </SheetTitle>
           </SheetHeader>
           <div className="flex flex-col gap-2 mt-4 px-2">
