@@ -432,7 +432,6 @@ export default function HomePage() {
               Explore our comprehensive range of commercial kitchen equipment
             </motion.p>
 
-            {/* FIXED: Forces a fresh page load to /catalog with NO filters */}
             <motion.button
               variants={fadeUp}
               custom={2}
@@ -453,7 +452,7 @@ export default function HomePage() {
                 slug: 'preparation-equipment',
                 displayName: 'Preparation Equipments',
                 matchSlugs: ['preparation-equipment', 'food-preparation'],
-                image: '/products/PREPRATION EQUIPMENTS.jpg',
+                image: '/products/PREPRATION EQUIPMENTS.jpg', // Ensure exact spelling/caps on your computer
                 emoji: '🔪',
               },
               {
@@ -495,7 +494,7 @@ export default function HomePage() {
                 slug: 'bakery-equipment',
                 displayName: 'Bakery Equipments',
                 matchSlugs: ['bakery-equipment'],
-                image: '/products/BAKERY EQUIPMENTS.jpg',
+                image: '/products/BAKERY EQUIPMENTS.jpg', // Check if this is .jpg or .JPG on your PC
                 emoji: '🍞',
               },
               {
@@ -539,7 +538,8 @@ export default function HomePage() {
                     transition={{ delay: i * 0.05 }}
                   >
                     <button
-                      onClick={() => handleCategoryClick(item.slug)}
+                      // FIXED: Now passes empty string so NO FILTER is applied when clicking any card
+                      onClick={() => handleCategoryClick('')}
                       className="group relative block w-full aspect-square rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(89,255,0,0.15)]"
                     >
                       {/* Background Image - NO dark gradient overlay */}
