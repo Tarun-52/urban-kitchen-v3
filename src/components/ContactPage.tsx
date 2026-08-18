@@ -85,7 +85,7 @@ export default function ContactPage() {
     {
       icon: <MapPin className="w-6 h-6" />,
       title: 'Address',
-      details: ['Plot No. 45, Sector 12', 'Industrial Area, New Delhi - 110020'],
+      details: ['Flat No. 207, Second Floor, A-Block, Rolex Estate, Ayodhya - Lucknow Rd, Shankar Puri, Kamta, Lucknow, Uttar Pradesh 226028'],
       action: '#',
     },
   ]
