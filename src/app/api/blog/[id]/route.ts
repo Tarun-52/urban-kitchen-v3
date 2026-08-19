@@ -39,6 +39,7 @@ export async function GET(
 }
 
 // PUT /api/blog/[id] - Update a blog post
+// PUT /api/blog/[id] - Update a blog post
 export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -56,9 +57,12 @@ export async function PUT(
     }
 
     const updateData: Record<string, unknown> = {}
+
+    // REMOVED 'category' from here because your DB uses 'categoryId' and 'categoryRef'. 
+    // Passing a text string to 'category' crashes Prisma.
     const allowedFields = [
       'title', 'slug', 'excerpt', 'content', 'featuredImage',
-      'category', 'categoryId', 'tags', 'authorId', 'status', 'featured',
+      'categoryId', 'authorId', 'status', 'featured',
       'seoTitle', 'seoDescription',
     ]
 
@@ -69,6 +73,17 @@ export async function PUT(
         } else {
           updateData[field] = body[field]
         }
+      }
+    }
+
+    // Safely handle tags: convert comma-separated string to array if needed
+    if (body.tags !== undefined) {
+      if (Array.isArray(body.tags)) {
+        updateData.tags = body.tags
+      } else if (typeof body.tags === 'string') {
+        updateData.tags = body.tags.split(',').map((t: string) => t.trim()).filter(Boolean)
+      } else {
+        updateData.tags = []
       }
     }
 
@@ -91,10 +106,18 @@ export async function PUT(
       message: 'Blog post updated successfully',
       data: post,
     })
-  } catch (error) {
+    } catch (error) {
     console.error('Blog post update error:', error)
+    
+    // This line forces the exact error to show up
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    
     return NextResponse.json(
-      { status: false, message: 'Failed to update blog post' },
+      { 
+        status: false, 
+        message: 'Failed to update blog post',
+        debugError: errorMessage // <--- This is the magic line
+      },
       { status: 500 }
     )
   }
