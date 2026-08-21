@@ -135,28 +135,6 @@ function LoginForm() {
           Register
         </button>
       </p>
-
-      {/* Demo Credentials */}
-      <div className="mt-4 border border-[#2a2a2a] rounded-lg p-3 bg-[#111111]">
-        <p className="text-gray-500 text-[10px] font-medium uppercase tracking-wider mb-2">Demo Credentials</p>
-        <div className="space-y-1">
-          {[
-            { role: 'Admin', email: 'admin@urbankitchens.com', pass: 'admin123' },
-            { role: 'Employee', email: 'suresh@urbankitchens.com', pass: 'employee123' },
-            { role: 'Manager', email: 'priya@urbankitchens.com', pass: 'manager123' },
-          ].map(d => (
-            <button
-              key={d.role}
-              type="button"
-              onClick={() => { setEmail(d.email); setPassword(d.pass) }}
-              className="w-full flex items-center justify-between px-2 py-1.5 rounded text-[11px] hover:bg-[#1a1a1a] transition-colors group"
-            >
-              <span className="text-[#59ff00] font-medium">{d.role}</span>
-              <span className="text-gray-600 group-hover:text-gray-400 transition-colors">{d.email}</span>
-            </button>
-          ))}
-        </div>
-      </div>
     </form>
   )
 }
