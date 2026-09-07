@@ -440,7 +440,7 @@ export default function HomePage() {
               variants={fadeUp}
               custom={2}
               onClick={() => handleCategoryClick('')}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-[#59ff00] border border-[#59ff00]/30 rounded-full px-5 py-2.5 hover:bg-[#59ff00]/10 transition-all duration-300 group mx-auto"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[#59ff00] border border-[#59ff00]/30 rounded-full px-5 py-2.5 hover:bg-[#59ff00]/10 hover:border-[#59ff00]/60 transition-all duration-300 group mx-auto"
             >
               View All Categories
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 group-hover:translate-x-1 transition-transform">
@@ -456,8 +456,9 @@ export default function HomePage() {
                 slug: 'preparation-equipment',
                 displayName: 'Preparation Equipments',
                 matchSlugs: ['preparation-equipment', 'food-preparation'],
-                image: '/products/PREPRATION EQUIPMENTS.jpg', // Ensure exact spelling/caps on your computer
+                image: '/products/PREPRATION EQUIPMENTS.jpg',
                 emoji: '🔪',
+                description: 'High-performance prep tables and slicers designed to streamline your kitchen workflow.',
               },
               {
                 slug: 'cooking-equipment',
@@ -465,6 +466,7 @@ export default function HomePage() {
                 matchSlugs: ['cooking-equipment', 'cooking-ranges', 'commercial-burners'],
                 image: '/products/COOKING EQUIPMENTS.jpg',
                 emoji: '🔥',
+                description: 'Heavy-duty ranges, ovens, and fryers built to withstand high-volume commercial cooking with precision heat control.',
               },
               {
                 slug: 'serving-equipment',
@@ -472,6 +474,7 @@ export default function HomePage() {
                 matchSlugs: ['serving-equipment'],
                 image: '/products/SERVING EQUIPMENTS.jpg',
                 emoji: '🍽️',
+                description: 'Elegant serving counters, warmers, and buffet units designed to keep food fresh and presentable for your guests.',
               },
               {
                 slug: 'washing-equipment',
@@ -479,6 +482,7 @@ export default function HomePage() {
                 matchSlugs: ['washing-equipment', 'dishwashing'],
                 image: '/products/WASHING EQUIPMENTS.jpg',
                 emoji: '💧',
+                description: 'Industrial dishwashers and stainless steel sinks ensuring fast, hygienic, and efficient cleaning for your kitchen.',
               },
               {
                 slug: 'storage-equipment',
@@ -486,6 +490,7 @@ export default function HomePage() {
                 matchSlugs: ['storage-equipment'],
                 image: '/products/STORAGE EQUIPMENTS.jpg',
                 emoji: '📦',
+                description: 'Robust shelving units and airtight containers to organize your ingredients safely and optimize kitchen space.',
               },
               {
                 slug: 'refrigeration-equipment',
@@ -493,13 +498,15 @@ export default function HomePage() {
                 matchSlugs: ['refrigeration-equipment', 'refrigeration'],
                 image: '/products/REFRIGERATION EQUIPMENTS.jpg',
                 emoji: '❄️',
+                description: 'Premium commercial freezers and chillers designed to keep your perishables fresh, safe, and compliant with standards.',
               },
               {
                 slug: 'bakery-equipment',
                 displayName: 'Bakery Equipments',
                 matchSlugs: ['bakery-equipment'],
-                image: '/products/BAKERY EQUIPMENTS.jpg', // Check if this is .jpg or .JPG on your PC
+                image: '/products/BAKERY EQUIPMENTS.jpg',
                 emoji: '🍞',
+                description: 'Professional ovens, proofers, and dough mixers engineered for artisanal and high-volume commercial baking.',
               },
               {
                 slug: 'display-equipment',
@@ -507,6 +514,7 @@ export default function HomePage() {
                 matchSlugs: ['display-equipment', 'display-counters'],
                 image: '/products/DISPLAY CABINETS.jpg',
                 emoji: '🛒',
+                description: 'Stunning display cases with optimal temperature control and elegant lighting to showcase your finest delicacies.',
               },
               {
                 slug: 'food-carts',
@@ -514,13 +522,12 @@ export default function HomePage() {
                 matchSlugs: ['food-carts'],
                 image: '/products/Food carts.jpg',
                 emoji: '🛗',
+                description: 'Mobile, versatile, and compact cart units perfect for catering, outdoor events, and dynamic kitchen spaces.',
               },
             ]
 
             const items = orderedCategories.map((oc) => {
-              const match = categories.find((cat) =>
-                oc.matchSlugs.includes(cat.slug)
-              )
+              const match = categories.find((cat) => oc.matchSlugs.includes(cat.slug))
               return {
                 slug: oc.slug,
                 displayName: oc.displayName,
@@ -528,61 +535,112 @@ export default function HomePage() {
                 id: match?.id ?? oc.slug,
                 image: oc.image,
                 emoji: oc.emoji,
+                description: oc.description,
               }
             })
 
             return (
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
                 {items.map((item, i) => (
                   <motion.div
                     key={item.id}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: i * 0.05 }}
+                    transition={{ delay: i * 0.05, duration: 0.4 }}
+                    // Group class for hover state, perspective to enable 3D space
+                    className="group relative w-full aspect-square [perspective:1000px]"
                   >
-                    <button
-                      // FIXED: Now passes empty string so NO FILTER is applied when clicking any card
-                      onClick={() => handleCategoryClick('')}
-                      className="group relative block w-full aspect-square rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(89,255,0,0.15)]"
-                    >
-                      {/* Background Image - NO dark gradient overlay */}
-                      <div className="absolute inset-0 bg-[#151515]">
-                        {item.image ? (
-                          <img
-                            src={item.image}
-                            alt={item.displayName}
-                            className="absolute inset-0 w-full h-full object-cover"
-                            onError={(e) => {
-                              e.currentTarget.style.display = 'none'
-                            }}
-                          />
-                        ) : null}
+                    {/* Inner container that actually flips */}
+                    <div className="relative w-full h-full transition-transform duration-700 ease-out [transform-style:preserve-3d] md:group-hover:[transform:rotateY(180deg)]">
+
+                      {/* --- FRONT FACE --- */}
+                      <div className="absolute inset-0 [backface-visibility:hidden]">
+                        <button
+                          onClick={() => handleCategoryClick(item.slug)}
+                          className="group relative block w-full h-full rounded-2xl overflow-hidden bg-[#111] border border-white/5 transition-all duration-500 ease-out hover:border-[#59ff00]/40 hover:shadow-[0_15px_40px_-10px_rgba(89,255,0,0.25)] md:hover:scale-100 hover:-translate-y-1"
+                        >
+                          {/* Background Image - Zooms on Hover */}
+                          <div className="absolute inset-0">
+                            {item.image ? (
+                              <img
+                                src={item.image}
+                                alt={item.displayName}
+                                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                                onError={(e) => {
+                                  e.currentTarget.style.display = 'none'
+                                }}
+                              />
+                            ) : null}
+                          </div>
+
+                          {/* Gradient Overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#0b0b0b] via-[#0b0b0b]/40 to-transparent"></div>
+
+                          {/* Floating Glassmorphism Icon Badge */}
+                          <div className="absolute top-3 left-3 w-10 h-10 flex items-center justify-center bg-black/40 backdrop-blur-md rounded-xl border border-white/10 text-xl transition-transform duration-300 group-hover:scale-90 group-hover:bg-[#59ff00]/20 group-hover:border-[#59ff00]/50">
+                            {item.emoji}
+                          </div>
+
+                          {/* Bottom Content */}
+                          <div className="absolute bottom-0 left-0 right-0 p-4 text-left">
+                            <h3 className="text-white text-sm md:text-base font-bold leading-tight mb-1 transition-colors duration-300 group-hover:text-[#59ff00]">
+                              {item.displayName}
+                            </h3>
+                            <div className="flex items-center justify-between mt-2 overflow-hidden">
+                              <span className="text-gray-400 text-[10px] md:text-xs font-medium">
+                                {item.productCount} {item.productCount === 1 ? 'Product' : 'Products'}
+                              </span>
+                              <span className="flex items-center gap-1 text-[#59ff00] text-[10px] md:text-xs font-bold opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                                View
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-3 h-3">
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* Bottom green accent line */}
+                          <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#59ff00] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                        </button>
                       </div>
 
-                      {/* Center Icon - semi-transparent */}
-                      <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 group-hover:opacity-0">
-                        <span className="text-3xl md:text-4xl opacity-40 drop-shadow-lg">
+                      {/* --- BACK FACE --- */}
+                      <button
+                        onClick={() => handleCategoryClick(item.slug)}
+                        className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] hidden md:flex flex-col justify-between p-5 rounded-2xl bg-[#111] border border-[#59ff00]/40 shadow-[0_15px_40px_-10px_rgba(89,255,0,0.35)] overflow-hidden"
+                      >
+                        {/* Decorative Background Watermark Emoji */}
+                        <div className="absolute -bottom-5 -right-5 text-9xl opacity-5 select-none rotate-12 pointer-events-none">
                           {item.emoji}
-                        </span>
-                      </div>
-
-                      {/* Hover Overlay - Fixed tight mobile spacing */}
-                      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center gap-1.5 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 p-3 md:p-4">
-                        <div className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-[#59ff00]/15 flex items-center justify-center text-[#59ff00]">
-                          <span className="text-lg md:text-xl">{item.emoji}</span>
                         </div>
-                        <h3 className="text-white text-[11px] md:text-sm font-bold text-center leading-tight">
-                          {item.displayName}
-                        </h3>
-                        <p className="text-[#59ff00]/80 text-[9px] md:text-xs font-medium">
-                          {item.productCount} {item.productCount === 1 ? 'Product' : 'Products'}
-                        </p>
-                      </div>
 
-                      {/* Bottom green accent line */}
-                      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#59ff00] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-                    </button>
+                        {/* Top Content */}
+                        <div className="relative z-10">
+                          <div className="w-12 h-12 mb-4 flex items-center justify-center bg-[#59ff00]/10 border border-[#59ff00]/30 rounded-xl text-2xl">
+                            {item.emoji}
+                          </div>
+                          <h3 className="text-white text-lg font-bold mb-2 leading-tight">
+                            {item.displayName}
+                          </h3>
+                          <p className="text-gray-400 text-xs leading-relaxed font-medium">
+                            {item.description}
+                          </p>
+                        </div>
+
+                        {/* Bottom CTA */}
+                        <div className="relative z-10 flex items-center justify-between text-[#59ff00] mt-4 pt-3 border-t border-white/5">
+                          <span className="text-xs font-bold">{item.productCount} Products</span>
+                          <span className="flex items-center gap-1 text-xs font-bold">
+                            Explore Now
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                            </svg>
+                          </span>
+                        </div>
+                      </button>
+
+                    </div>
                   </motion.div>
                 ))}
               </div>
