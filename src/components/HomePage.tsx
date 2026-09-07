@@ -294,7 +294,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* ═══════════════════ HERO ═══════════════════ */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image Slider */}
         <div className="absolute inset-0">
           {heroImages.map((img, index) => (
@@ -312,34 +312,33 @@ export default function HomePage() {
           ))}
         </div>
 
-
         {/* Light overlay for readability */}
         <div className="absolute inset-0 bg-dark-bg/15" />
         <div className="absolute inset-0 bg-linear-to-b from-dark-bg/10 via-transparent to-dark-bg/20" />
 
         {/* Decorative glow */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#59ff00]/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#59ff00]/3 rounded-full blur-[100px]" />
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#59ff00]/5 rounded-full blur-[100px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-52 h-52 bg-[#59ff00]/3 rounded-full blur-[80px]" />
 
         {/* Slider dots indicator */}
-        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5">
           {heroImages.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={`transition-all duration-300 rounded-full ${currentSlide === index
-                ? 'w-8 h-2 bg-[#59ff00]'
-                : 'w-2 h-2 bg-white/30 hover:bg-white/50'
+                ? 'w-6 h-1.5 bg-[#59ff00]'
+                : 'w-1.5 h-1.5 bg-white/30 hover:bg-white/50'
                 }`}
             />
           ))}
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial="hidden" animate="visible" variants={stagger}>
             <motion.div variants={fadeUp} custom={0}>
-              <Badge className="bg-[#59ff00]/10 text-[#59ff00] border-[#59ff00]/20 mb-6 px-4 py-1.5 text-sm">
-                <Flame className="w-3.5 h-3.5 mr-1.5" />
+              <Badge className="bg-[#59ff00]/10 text-[#59ff00] border-[#59ff00]/20 mb-3 px-2.5 py-0.5 text-[10px] sm:text-xs">
+                <Flame className="w-3 h-3 mr-1" />
                 Premium Commercial Kitchen Equipment
               </Badge>
             </motion.div>
@@ -347,7 +346,7 @@ export default function HomePage() {
             <motion.h1
               variants={fadeUp}
               custom={1}
-              className="font-[family-name:var(--font-poppins)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight mb-6"
+              className="font-[family-name:var(--font-poppins)] text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[2.75rem] font-extrabold leading-tight mb-3 sm:mb-4"
             >
               Powering{' '}
               <span className="text-[#59ff00] neon-text">Professional Kitchens</span>
@@ -358,7 +357,7 @@ export default function HomePage() {
             <motion.p
               variants={fadeUp}
               custom={2}
-              className="text-gray-400 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+              className="text-gray-400 text-xs sm:text-sm md:text-base max-w-lg mx-auto mb-5 sm:mb-6 leading-relaxed"
             >
               From heavy-duty burners to walk-in cold rooms — we manufacture
               precision-engineered stainless steel equipment trusted by India&apos;s
@@ -368,19 +367,19 @@ export default function HomePage() {
             <motion.div
               variants={fadeUp}
               custom={3}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3"
             >
               <Button
                 onClick={() => setView('products')}
-                className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold px-8 h-12 text-base neon-glow"
+                className="bg-[#59ff00] text-black hover:bg-[#59ff00]/90 font-semibold px-5 sm:px-6 h-9 sm:h-10 text-xs sm:text-sm neon-glow"
               >
                 Explore Products
-                <ArrowRight className="w-4 h-4 ml-2" />
+                <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
               </Button>
               <Button
                 onClick={() => setView('contact')}
                 variant="outline"
-                className="border-[#59ff00] text-[#59ff00] hover:bg-[#59ff00]/10 font-semibold px-8 h-12 text-base"
+                className="border-[#59ff00] text-[#59ff00] hover:bg-[#59ff00]/10 font-semibold px-5 sm:px-6 h-9 sm:h-10 text-xs sm:text-sm"
               >
                 Request a Quote
               </Button>
@@ -389,28 +388,33 @@ export default function HomePage() {
 
           {/* Floating Stats */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="mt-16 md:mt-20 grid grid-cols-3 gap-4 md:gap-8 max-w-2xl mx-auto"
+            className="mt-6 sm:mt-8 md:mt-10 grid grid-cols-3 gap-2 sm:gap-3 md:gap-6 max-w-lg mx-auto"
           >
-            <StatCounter end={500} label="Projects Delivered" className="glass rounded-xl p-4 md:p-6 text-center hover-lift" />
-            <StatCounter end={15} label="Years Experience" className="glass rounded-xl p-4 md:p-6 text-center hover-lift" />
-            <StatCounter end={200} label="Products Range" className="glass rounded-xl p-4 md:p-6 text-center hover-lift" />
+            <StatCounter end={500} label="Projects Delivered" className="glass rounded-lg p-2 sm:p-3 md:p-4 text-center hover-lift" />
+            <StatCounter end={15} label="Years Experience" className="glass rounded-lg p-2 sm:p-3 md:p-4 text-center hover-lift" />
+            <StatCounter end={200} label="Products Range" className="glass rounded-lg p-2 sm:p-3 md:p-4 text-center hover-lift" />
           </motion.div>
         </div>
 
         {/* Scroll indicator */}
         <motion.div
-          animate={{ y: [0, 8, 0] }}
+          animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          className="absolute bottom-3 left-1/2 -translate-x-1/2"
         >
-          <div className="w-6 h-10 rounded-full border-2 border-[#59ff00]/30 flex items-start justify-center p-1">
-            <div className="w-1.5 h-3 bg-[#59ff00] rounded-full" />
+          <div className="w-5 h-8 rounded-full border-2 border-[#59ff00]/30 flex items-start justify-center p-0.5">
+            <div className="w-1 h-2.5 bg-[#59ff00] rounded-full" />
           </div>
         </motion.div>
       </section>
+
+
+
+
+
 
       {/* ═══════════════════ CATEGORIES ═══════════════════ */}
 
