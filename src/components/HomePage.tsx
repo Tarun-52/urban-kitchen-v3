@@ -73,13 +73,7 @@ CATEGORY_ORDER.forEach(c => {
   CATEGORY_EMOJIS[c.slug] = c.emoji
 })
 
-/* ─── Hero slider images ─── */
-const heroImages = [
-  '/Herobaner-1.png',
-  '/Herobaner-2.png',
-  '/Herobaner-3.png',
-  '/Herobaner-4.png',
-]
+
 
 /* ─── Partner logos for scrolling sections ─── */
 const partnerLogos = [
@@ -220,15 +214,9 @@ export default function HomePage() {
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([])
   const [featuredBlogs, setFeaturedBlogs] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
-  const [currentSlide, setCurrentSlide] = useState(0)
 
-  /* ─── Hero slider auto-play ─── */
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroImages.length)
-    }, 2000)
-    return () => clearInterval(interval)
-  }, [])
+
+
 
   useEffect(() => {
     const loadData = async () => {
@@ -294,45 +282,26 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* ═══════════════════ HERO ═══════════════════ */}
+      {/* ═══════════════════ HERO ═══════════════════ */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image Slider */}
-        <div className="absolute inset-0">
-          {heroImages.map((img, index) => (
-            <div
-              key={img}
-              className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
-              style={{ opacity: currentSlide === index ? 1 : 0 }}
-            >
-              <img
-                src={img}
-                alt={`Hero banner ${index + 1}`}
-                className="w-full h-full object-cover object-center"
-              />
-            </div>
-          ))}
-        </div>
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/hero-section.mp4" type="video/mp4" />
+        </video>
 
-        {/* Light overlay for readability */}
-        <div className="absolute inset-0 bg-dark-bg/15" />
-        <div className="absolute inset-0 bg-linear-to-b from-dark-bg/10 via-transparent to-dark-bg/20" />
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-dark-bg/40" />
+        <div className="absolute inset-0 bg-linear-to-b from-dark-bg/30 via-transparent to-dark-bg/40" />
 
         {/* Decorative glow */}
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#59ff00]/5 rounded-full blur-[100px]" />
         <div className="absolute bottom-1/4 right-1/4 w-52 h-52 bg-[#59ff00]/3 rounded-full blur-[80px]" />
-
-        {/* Slider dots indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5">
-          {heroImages.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`transition-all duration-300 rounded-full ${currentSlide === index
-                ? 'w-6 h-1.5 bg-[#59ff00]'
-                : 'w-1.5 h-1.5 bg-white/30 hover:bg-white/50'
-                }`}
-            />
-          ))}
-        </div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial="hidden" animate="visible" variants={stagger}>
